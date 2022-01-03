@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
 
   return(
     <>
-    <h1> Jusos Heidelberg</h1>
+    <h1> Jusos Heidelberg - Welcome</h1>
   <Component {...pageProps} />
   </>
   
