@@ -1,44 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# React App as Jusos Heidelberg front-end
+A simplistic front-end component for the possible new website of the Jusos Heidelberg.
 
-The app is deployed on Netlify at
+## Overview
 
-https://amazing-goodall-d67069.netlify.app/
+<p>This application is made with React Netxt.js. It serves for the front-end of a possible new website of Jusos Heidelberg. It is deployed on Netlify. Changes to this web application, which are pushed onto this repository are being continiously deployed. To change the app, it needs to be running locally on your computer.</p>
 
-# h1 heading
-## h2 heading
-### 
+<p>Note: This is the current domain of the app: <https://amazing-goodall-d67069.netlify.app> it does not have a pourposeful meaning. </p>
 
-**bold face**
+## Installation 
 
-## Getting Started
+<p>To run the app locally, make sure git and Node.js (including npm and yarn) are installed, and you have access to gitHub. Then clone the repo with the command line with</p>
 
-First, run the development server:
+>git clone <https://github.com/mwalcher3/jusos-front.git
+and resolve dependencies with yarn install
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<p>To start the App in development mode: yarn run dev To build the App in production mode: yarn run build To start the finished app: yarn run start</p>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contribute
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<p>Continously deploy changes to the branch main via:</p>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+>git commit -am "any commit message"
+>git push origin 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p>Note: To view the backend component repository, wich is a Strapi app deployed on Heroku, acces this link :<https://github.com/mwalcher3/jusos-content></p>
