@@ -12,7 +12,7 @@ A simplistic front-end component for the possible new website of the Jusos Heide
 <p>To run the app locally, make sure git and Node.js (including npm and yarn) are installed, and you have access to gitHub. Then clone the repo with the command line with</p>
 
 >git clone <https://github.com/mwalcher3/jusos-front.git
-and resolve dependencies with yarn install
+and resolve dependencies with ```yarn install```
 
 <p>To start the App in development mode: yarn run dev To build the App in production mode: yarn run build To start the finished app: yarn run start</p>
 
