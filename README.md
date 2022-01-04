@@ -5,7 +5,7 @@ A simplistic front-end component for the possible new website of the Jusos Heide
 
 This application is made with React Netxt.js. It serves for the front-end of a possible new website of Jusos Heidelberg. It is deployed on Netlify: https://www.netlify.com/. Changes to this web application, which are pushed onto this repository are being continiously deployed. To change the app, it needs to be running locally on your computer.
 
-**Note:**This is the current domain of the app: https://amazing-goodall-d67069.netlify.app it does not have a pourposeful meaning. Netfligy gave the domain name randomly. 
+**Note:** This is the current domain of the app: https://amazing-goodall-d67069.netlify.app it does not have a pourposeful meaning. Netfligy gave the domain name randomly. 
 
 ## Installation 
 
