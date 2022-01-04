@@ -15,7 +15,7 @@ A simplistic front-end component for the possible new website of the Jusos Heide
 and resolve dependencies with ```yarn install```
 >git clone https://github.com/mwalcher3/jusos-front.git
 and resolve dependencies with ```yarn install```
-```
+
 
 To start the App in development mode: ```yarn run dev``` To build the App in production mode: ```yarn run build``` To start the finished app: ```yarn run start```
 
@@ -27,5 +27,5 @@ To start the App in development mode: ```yarn run dev``` To build the App in pro
 >
 >git push origin 
 
-```
+
 **Note:** To view the backend component repository, wich is a Strapi app deployed on Heroku, acces this link :https://github.com/mwalcher3/jusos-content>
