@@ -1,0 +1,53 @@
+.nav{
+    position:fixed;
+    top: 0;
+    left: 0px;
+    width: 100%;
+    background-color: rgb(204, 0, 0);
+    height: 40px;
+    color:white;
+    display:flex;
+    padding: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.burger{
+    height: 40px;
+    margin-left: 15px;
+
+}
+.title1{
+     margin:10px;
+}
+
+
+.container{
+    color: black;
+    display: flex;
+    top: 10px;
+    padding: 10px;
+    font-size: 23px;
+    width: 300px;
+    justify-content: space-evenly;
+
+
+}
+
+
+.title2{
+    padding-right: 40px;
+}
+
+.logo{
+    height: 80px;
+    padding: 60px 0px 0px 20px
+}
+
+.a{
+    text-decoration: none;
+    color: black;
+}
+
+
+

@@ -9,7 +9,7 @@ This application is made with React Netxt.js. It serves for the front-end of a p
 
 ## Installation 
 
-<p>To run the app locally, make sure git and Node.js (including npm and yarn) are installed, and you have access to gitHub. Then clone the repo with the command line with</p>
+To run the app locally, make sure git and Node.js (including npm and yarn) are installed, and you have access to gitHub. Then clone the repo with the command line with
 
 >git clone <https://github.com/mwalcher3/jusos-front.git
 and resolve dependencies with ```yarn install```
@@ -21,7 +21,7 @@ To start the App in development mode: ```yarn run dev``` To build the App in pro
 
 ## Contribute
 
-<p>Continously deploy changes to the branch main via:</p>
+Continously deploy changes to the branch main via:
 
 >git commit -am "any commit message"
 >

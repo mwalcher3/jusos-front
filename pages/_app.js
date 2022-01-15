@@ -1,13 +1,14 @@
 import '../styles/globals.css'
-
-
+import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }) {
 
   return(
     <>
-    <h1> Jusos Heidelberg - Welcome</h1>
+  <Layout>
   <Component {...pageProps} />
+  </Layout>
+  
   </>
   
   )

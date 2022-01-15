@@ -1,21 +1,30 @@
-import useFetch from '../hooks/useFetch'
 
-export default function Home() {
+import Description from '../components/Description'
 
-  const {data, loading} = useFetch('https://jusos-content.herokuapp.com/api/articles')
-  console.log(data)
-
- if(loading){
-    return( <p>still loading</p>)
+export const getStaticProps= async ()=>{
+  const res= await fetch(`https://jusos-content.herokuapp.com/api/abouts`)
+  const json= await res.json()
+  
+  //const res1= await fetch(`https://jusos-content.herokuapp.com/api/articles`)
+ // const json1= await res1.json()
+  
+  return {
+    props: {text: json,
+      //article: json1
+    }
   }
-  else{
+}
+
+export default function Home({text}) {
+  console.log(text)
+
   return (
      <div>
-        {data.data.map((item)=>{
-        return (
-         item.attributes.article)
-      })}  
+       <Description data={text}/>
+       
+    
     </div>
+
   )
  }
-}
+
