@@ -12,7 +12,7 @@ export const getStaticProps= async ()=>{
     }
   }
 
-const articles = ({article}) => {
+const Articles = ({article}) => {
     console.log(article)
     const [active, setActive]= useState(-1)
     
@@ -31,4 +31,4 @@ const articles = ({article}) => {
     )
 }
 
-export default articles
+export default Articles
