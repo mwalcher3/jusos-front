@@ -1,28 +1,28 @@
 
 import Description from '../components/Description'
+import Slider from '../components/Slider'
 
 export const getStaticProps= async ()=>{
   const res= await fetch(`https://jusos-content.herokuapp.com/api/abouts`)
   const json= await res.json()
   
-  //const res1= await fetch(`https://jusos-content.herokuapp.com/api/articles`)
- // const json1= await res1.json()
+  const resSlider= await fetch(`https://jusos-content.herokuapp.com/api/sliders`)
+  const jsonSlider= await resSlider.json()
   
   return {
     props: {text: json,
-      //article: json1
+       sliderData: jsonSlider
     }
   }
 }
 
-export default function Home({text}) {
-  console.log(text)
+export default function Home({text, sliderData}) {
 
   return (
      <div>
-       <Description data={text}/>
        
-    
+       <Description data={text}/>
+       <Slider data={sliderData}/> 
     </div>
 
   )

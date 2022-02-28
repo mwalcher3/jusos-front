@@ -1,29 +1,56 @@
 import Link from 'next/link'
-import layoutcss from '../styles/layout.module.css'
+import layoutcss from '../styles/layout.module.scss'
+import {useState, useEffect} from 'react'
 
 
-const navbar = () => {
+const Navbar = () => {
+
+    const [scrolled, setScrolled]= useState(false)
+
+    useEffect(()=>{
+        window.addEventListener("scroll",()=>{
+            if(window.scrollY>100){
+                setScrolled(true)
+            }
+            else{
+                setScrolled(false)
+            }
+        })
+    })
+        
+    const menu=[{"label":"home","link":"./"},
+   {"label":"articles","link":"./articles"},
+   {"label":"calender","link":"./calender"}]
+    
     return (
         <>
         <div className={layoutcss.nav}>
-        <img src="Hamburger_icon.svg.png" alt="Burger-icon" className={layoutcss.burger}></img>            
-        <div>
-            <h2 className={layoutcss.title1}>Jusos Heidelberg</h2>
-        </div>
-            <div className={layoutcss.container}>
-                
-                <Link href= "/"><a className={layoutcss.a}>Home</a></Link>
-                <Link href="/articles"><a className={layoutcss.a}>Articles</a></Link>
-                <div>Calender </div>
-         </div>
 
-            <div>
-            <Link href="https://www.spd.de/"><h2 className={layoutcss.title2}>SPD</h2></Link>
-            </div>
+        <div className={layoutcss.logodiv}>
+            <img src="Jusos_Logo_4c.svg_.png" alt="Jusos Logo" className={scrolled? layoutcss.logoscrolled: layoutcss.logo}></img>  
         </div>
+
+         <div className={layoutcss.main}>
+        <div> Jusos Heidelberg</div>
+            {menu.map((item, index)=>{
+                return(
+                    <div className= {layoutcss.navlabel} key={index}>
+                       <Link href={item.link}>
+                          <div>{item.label}</div>
+                        </Link>
+                    </div>
+            )
+        })}
+
+        <div> SPD </div>
+        </div>
+
+
+        </div>
+
         
         </>
     )
 }
 
-export default navbar
+export default Navbar
