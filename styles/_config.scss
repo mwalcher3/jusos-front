@@ -11,12 +11,13 @@ $XXXlarge: 2000px;
 $redsliderbutton: rgba(255, 0, 0, 0.534);
 $red: rgb(204, 0, 0);
 $lightblack: rgb(43, 43, 43);
+$lightblacktrans: rgba(27, 27, 27, 0.774);
 
 @mixin movingslides($translate){
     position: absolute;
     left:10vw;
     right: 10vw;
-    padding: 5%;
+    padding: 10%;
     z-index: -1;
     transform: translate($translate);
 }

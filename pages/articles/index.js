@@ -14,11 +14,7 @@ export const getStaticProps= async ()=>{
   }
 
 const Articles = ({article}) => {
-  const articleRef= useRef();
   
-  useEffect(()=>{
-    console.log(articleRef.current)
-  })
 
     const articleimages= [
     {url:'Feierbad21.jpg', id: 5}, 
@@ -60,7 +56,6 @@ const Articles = ({article}) => {
               if(item.id==image.id){
                  return(
                  <img src={`/articles/${image.url}`}
-                 ref={articleRef}
                  key={image.id}alt="image" 
                  className={articlecss.images}/>
               )}

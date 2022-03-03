@@ -1,33 +1,45 @@
 import Link from 'next/link'
 import layoutcss from '../styles/layout.module.scss'
-import {useState, useEffect} from 'react'
-
+import {useEffect, useRef, useState} from 'react'
 
 const Navbar = () => {
+    const intersectionRef= useRef();
+    const [intersection, setIntersection]= useState(false)
 
-    const [scrolled, setScrolled]= useState(false)
+     const menu=[{"label":"home","link":"./"},
+   {"label":"artikel","link":"./articles"},
+   {"label":"kalender","link":"./calender"},
+   {"label": "sprecher", "link": "./sprecher"}]
 
-    useEffect(()=>{
-        window.addEventListener("scroll",()=>{
-            if(window.scrollY>100){
-                setScrolled(true)
+   useEffect(()=>{
+    const options={
+        threshold: .5,
+    }
+
+    const observer= new IntersectionObserver((entries, observer)=>{
+        entries.map((entry)=>{
+
+            if(entry.isIntersecting){
+                setIntersection(true);
             }
             else{
-                setScrolled(false)
+                setIntersection(false);
             }
         })
-    })
-        
-    const menu=[{"label":"home","link":"./"},
-   {"label":"articles","link":"./articles"},
-   {"label":"calender","link":"./calender"}]
+    }, options)
+ 
+    observer.observe(intersectionRef.current)
+   },)
+   
     
     return (
         <>
         <div className={layoutcss.nav}>
 
         <div className={layoutcss.logodiv}>
-            <img src="Jusos_Logo_4c.svg_.png" alt="Jusos Logo" className={scrolled? layoutcss.logoscrolled: layoutcss.logo}></img>  
+            <img src="Jusos_Logo_4c.svg_.png"
+            alt="Jusos Logo"
+            className={intersection? layoutcss.logo: layoutcss.logoscrolled}></img>  
         </div>
 
          <div className={layoutcss.main}>
@@ -45,10 +57,9 @@ const Navbar = () => {
         <div> SPD </div>
         </div>
 
-
         </div>
 
-        
+        <div ref={intersectionRef}className={layoutcss.intersectingelement}></div>
         </>
     )
 }
