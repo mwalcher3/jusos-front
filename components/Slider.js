@@ -24,10 +24,11 @@ return <div className={slidercss.mainslider}>
 
        {data.data.map((item, index)=>{
            return(
-           <div className={index==currentSlide? slidercss.current: 
+           <div className={
+            index==currentSlide? slidercss.current: 
             index==next? reduceBoolean? slidercss.nextreduce: slidercss.next: 
-            index==previous?
-            reduceBoolean? slidercss.previousreduce: slidercss.previous : slidercss.none} 
+            index==previous? reduceBoolean? slidercss.previousreduce: slidercss.previous :
+            slidercss.none} 
 
               key={item.id}
               >

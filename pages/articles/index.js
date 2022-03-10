@@ -1,11 +1,13 @@
 import articlecss from "../../styles/article.module.scss"
+import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef} from "react"
+import {useRef, useState, useEffect} from 'react'
 
 
 export const getStaticProps= async ()=>{
     const res= await fetch(`https://jusos-content.herokuapp.com/api/articles`)
     const json= await res.json()
+
     
     return {
       props: {article: json,
@@ -14,57 +16,73 @@ export const getStaticProps= async ()=>{
   }
 
 const Articles = ({article}) => {
-  
 
-    const articleimages= [
+  const articleimages= [
     {url:'Feierbad21.jpg', id: 5}, 
     {url:'Landesparteitag21Menstruationsfreistellung.jpeg', id:1},
     {url:'OBWahlen_Semesterferien.jpg', id: 2},
     {url:'Sharepic_HD_solidarisch_VOL2.png', id: 4},
     {url:'SemesterOpening.jpg', id: 3}]
 
-   /* const options={
-      threshold: 0,
-    }
-
-    const callbackFunction=(entries)=>{
-      entries.forEach((entry)=>{
-        console.log(entry)
-      })
-    }
-
-    useEffect(()=>{
-
-      const observer= new IntersectionObserver(callbackFunction,options)
-
-        observer.observe(articleRef.current)
-    
-    },[])*/
+  const imageRefs= useRef([]);
+  const scrollContainer= useRef();
+  const [scroll, setScroll]= useState(scrollContainer.current)
   
+  
+//  const initialIntersections = Array(articleimages.length).fill(false)
+//  const [intersections, setIntersections] =useState(initialIntersections)
 
-    
+  useEffect(()=>{
+      const options={
+        root: scroll,
+        threshold: .2,
+      }
+
+      const observer  = new IntersectionObserver((entries) =>{
+        entries.map((entry,i)=> {
+          if(entry.isIntersecting) { 
+          entry.target.classList.remove(articlecss.hidden)
+          }
+          else
+          {
+            entry.target.classList.add(articlecss.hidden)
+          }
+        }
+        )
+      },options)
+
+     imageRefs.current.map((image,i) => {
+        observer.observe(imageRefs.current[i])
+      })
+    },)  
+     
     return (
-      <>
-  <div className={articlecss.grid} >
-  <h1 className={articlecss.pagetitle}>Artikel</h1>
+      <div>
+    <div className={articlecss.grid}  ref={scrollContainer}>
+    <h1 className={articlecss.pagetitle}>Artikel</h1>
 
       {
-          article.data.map((item)=>{
-              return(
-            <div key={item.id} className={articlecss.articleboxes}>
-            {articleimages.map((image, index)=>{
-              if(item.id==image.id){
-                 return(
-                 <img src={`/articles/${image.url}`}
-                 key={image.id}alt="image" 
-                 className={articlecss.images}/>
-              )}
-              })}
-                <Link href= {`./articles/${item.id}`}>
+          article.data.map((item, i)=>{
+            const image = articleimages[i]
+            return(
+            <div key={item.id} 
+            className={articlecss.articleboxes}
+            ref={el => imageRefs.current[i] = el} >
+                
+              <div className={articlecss.images}>
+                  <Image
+                    src={`/articles/${image.url}`}
+                    alt="Picture of the author"
+                    key={image.id}
+                    layout='fill'
+                    objectFit= 'cover'
+                  />
+                  </div>
+               {<Link href= {`./articles/${item.id}`}>
                     <div className={articlecss.articletitle}>
                     {item.attributes.Title}
                     </div>
-                 </Link>
+            </Link>}
                  <div className={articlecss.articledate}>
                    {item.attributes.date}
                  </div>
@@ -73,8 +91,9 @@ const Articles = ({article}) => {
           })
       }
 
+
       </div>
-      </>
+      </div>
     )
 }
 

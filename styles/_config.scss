@@ -22,3 +22,10 @@ $lightblacktrans: rgba(27, 27, 27, 0.774);
     transform: translate($translate);
 }
 
+@mixin burger(){
+    background-color: white;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+}
+

@@ -22,16 +22,15 @@ const Navbar = () => {
             if(entry.isIntersecting){
                 setIntersection(true);
             }
-            else{
+            else if(entry.isIntersecting==false){
                 setIntersection(false);
             }
         })
     }, options)
  
     observer.observe(intersectionRef.current)
-   },)
-   
-    
+   },[])
+
     return (
         <>
         <div className={layoutcss.nav}>
@@ -42,7 +41,7 @@ const Navbar = () => {
             className={intersection? layoutcss.logo: layoutcss.logoscrolled}></img>  
         </div>
 
-         <div className={layoutcss.main}>
+         <div className={layoutcss.navmenu}>
         <div> Jusos Heidelberg</div>
             {menu.map((item, index)=>{
                 return(
@@ -55,6 +54,13 @@ const Navbar = () => {
         })}
 
         <div> SPD </div>
+
+        </div>
+
+        <div className={layoutcss.burger}>
+            <div className={layoutcss.burgertop}></div>
+            <div className={layoutcss.burgermiddle}></div>
+            <div className={layoutcss.burgerbottom}></div>
         </div>
 
         </div>
