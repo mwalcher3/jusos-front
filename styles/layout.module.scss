@@ -7,7 +7,7 @@
     background-color: $red;
     z-index: 1;
     position: fixed;
-    top: 0;
+    top: 0px;
     height: 65px;
     width: 100%;
     display: flex;
@@ -23,7 +23,7 @@
 
 .logodiv{
     height: 100%;
-    width: 100px;
+    width: 120px;
     margin-left: 20px;
     margin-top: 50px;
 }
@@ -76,13 +76,18 @@
     position: absolute
 }
 
-.burger{
+.burgeropen{
     width: 20px;
     height: 17px;  
     margin-right: 30px;
     display: flex;
     gap: 20%;
     flex-direction: column;
+    cursor: pointer;
+}
+
+.closed{
+    background-color: blue;
 }
 
 .burgertop{
@@ -114,7 +119,7 @@
         justify-content: flex-start;
     }
 
-    .burger{
+    .burgeropen{
         display: none;
     }
 }

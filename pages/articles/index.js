@@ -72,11 +72,13 @@ const Articles = ({article}) => {
               <div className={articlecss.images}>
                   <Image
                     src={`/articles/${image.url}`}
-                    alt="Picture of the author"
+                    alt="article image"
                     key={image.id}
                     layout='fill'
                     objectFit= 'cover'
+                    priority
                   />
+
                   </div>
                {<Link href= {`./articles/${item.id}`}>
                     <div className={articlecss.articletitle}>

@@ -5,6 +5,7 @@ import {useEffect, useRef, useState} from 'react'
 const Navbar = () => {
     const intersectionRef= useRef();
     const [intersection, setIntersection]= useState(false)
+    const [burgerIsOpen, setBurgerIsOpen] = useState(false)
 
      const menu=[{"label":"home","link":"./"},
    {"label":"artikel","link":"./articles"},
@@ -30,6 +31,15 @@ const Navbar = () => {
  
     observer.observe(intersectionRef.current)
    },[])
+
+   const burgerClick= ()=>{
+       if (burgerIsOpen){
+           setBurgerIsOpen(false);
+       }
+       else{
+           setBurgerIsOpen(true);
+       }
+   }
 
     return (
         <>
@@ -57,7 +67,7 @@ const Navbar = () => {
 
         </div>
 
-        <div className={layoutcss.burger}>
+        <div className={layoutcss.burgeropen} onClick={burgerClick}>
             <div className={layoutcss.burgertop}></div>
             <div className={layoutcss.burgermiddle}></div>
             <div className={layoutcss.burgerbottom}></div>
