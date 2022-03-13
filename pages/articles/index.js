@@ -35,7 +35,7 @@ const Articles = ({article}) => {
   useEffect(()=>{
       const options={
         root: scroll,
-        threshold: .2,
+        threshold: .3,
       }
 
       const observer  = new IntersectionObserver((entries) =>{
