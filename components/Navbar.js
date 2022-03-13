@@ -51,6 +51,14 @@ const Navbar = () => {
             className={intersection? layoutcss.logo: layoutcss.logoscrolled}></img>  
         </div>
 
+        <div  className={layoutcss.navlabel}>
+            <Link href={menu[1].link}>
+                <div>
+            {menu[1].label}
+            </div>
+            </Link>
+        </div>
+
          <div className={layoutcss.navmenu}>
         <div> Jusos Heidelberg</div>
             {menu.map((item, index)=>{
@@ -60,6 +68,7 @@ const Navbar = () => {
                           <div>{item.label}</div>
                         </Link>
                     </div>
+
             )
         })}
 

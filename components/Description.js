@@ -1,14 +1,18 @@
 import aboutcss from '../styles/about.module.scss'
-import{useRef, useEffect, useState} from 'react'
+import Image from 'next/image'
 
 const Description = ({data}) => {
 
     return (
-        <div className={aboutcss.main}>
-            <img className={aboutcss.spaziergang}
-            src="JusosSpaziergangCroped.jpg" 
-            alt="Spaziergang">
-            </img>
+        <>
+        <div className={aboutcss.spaziergang}>
+            <Image
+             src="/JusosSpaziergangCroped.jpg" 
+             alt="Spaziergang"
+             layout="fill"
+             objectFit='cover'
+            />
+            </div>
             {data.data.map((item)=>{
                 return(
                   <div key= {item.id} className={aboutcss.überuns}>
@@ -22,7 +26,7 @@ const Description = ({data}) => {
                 )
             })}
 
-        </div>
+        </>
     )
 }
 

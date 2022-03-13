@@ -104,21 +104,22 @@
 
 @media(min-width: $medium){
     .navmenu{
-    width: 60%;
-    display: flex;
-    align-items: center;
-    gap: 5%;
-    }
-
-    .logodiv{
-        width: 140px;
-        margin-left: 40px;
+       width: 60%;
+       display: flex;
+       align-items: center;
+       grid-gap: 5%;
+       gap: 5%;
     }
     .nav{
         height: 85px;
         justify-content: flex-start;
     }
 
+    .logodiv{
+        width: 140px;
+        margin-left: 40px;
+    }
+    
     .burgeropen{
         display: none;
     }
