@@ -25,27 +25,32 @@
     height: 100%;
     width: 120px;
     margin-left: 20px;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .logo{
-    width: 90%;
     background-color: $lightblacktrans;
+    width: 90%;
     padding: 5%;
     border-radius: 20%;
     transition: 0.2s ease-in-out;
 }
 
 .logoscrolled{
-    width: 60%;
     background-color: $lightblacktrans;
+    width: 60%;
     padding: 5%;
     border-radius: 20%;
-    transform: translateY(-10px);
+    transform: translateY(-2vh);
     transition: 0.2s  ease-in-out;
 }
 
-
+.extraarticle{
+    color:  $lightblack;
+    position: relative;
+    top:0px;
+    cursor: pointer;
+}
 
 .navlabel {
     color:  $lightblack;
@@ -53,6 +58,7 @@
     top:0px;
     cursor: pointer;
 }
+
 
 .navlabel::after{
     content:"";
@@ -76,30 +82,47 @@
     position: absolute
 }
 
-.burgeropen{
-    width: 20px;
-    height: 17px;  
+.burger{
+    width: 23px;
+    height: 15px;  
     margin-right: 30px;
-    display: flex;
-    gap: 20%;
+    display:flex;
     flex-direction: column;
     cursor: pointer;
 }
 
-.closed{
-    background-color: blue;
+
+.burger::before{
+    content:"";
+    display: inline-block;
+    @include burger();
+    transform: translateY(11px);
 }
 
-.burgertop{
-    @include burger();
+.burgeropen::before{
+    transform: rotate(-45deg) translateY(5.5px);
+    width: 110%
 }
 
 .burgermiddle{
     @include burger();
 }
 
-.burgerbottom{
+.burgermiddleopen{
+    opacity: 0;
+}
+
+
+.burger::after{
+    content: "";
+    display: inline-block;
     @include burger();
+    transform: translateY(-11px);
+}
+
+.burgeropen::after{
+    transform: rotate(45deg) translateY(-5.5px);
+    width: 110%
 }
 
 @media(min-width: $medium){
@@ -115,12 +138,17 @@
         justify-content: flex-start;
     }
 
+    .extraarticle{
+        display:none;
+    }
+
     .logodiv{
         width: 140px;
         margin-left: 40px;
+        margin-top: 55px
     }
     
-    .burgeropen{
+    .burger{
         display: none;
     }
 }

@@ -5,7 +5,7 @@ import {useEffect, useRef, useState} from 'react'
 const Navbar = () => {
     const intersectionRef= useRef();
     const [intersection, setIntersection]= useState(false)
-    const [burgerIsOpen, setBurgerIsOpen] = useState(false)
+    const [burgerIsOpen, setBurgerIsOpen] = useState("")
 
      const menu=[{"label":"home","link":"./"},
    {"label":"artikel","link":"./articles"},
@@ -34,10 +34,10 @@ const Navbar = () => {
 
    const burgerClick= ()=>{
        if (burgerIsOpen){
-           setBurgerIsOpen(false);
+           setBurgerIsOpen("");
        }
        else{
-           setBurgerIsOpen(true);
+           setBurgerIsOpen([layoutcss.burgeropen, layoutcss.burgermiddleopen]);
        }
    }
 
@@ -51,7 +51,7 @@ const Navbar = () => {
             className={intersection? layoutcss.logo: layoutcss.logoscrolled}></img>  
         </div>
 
-        <div  className={layoutcss.navlabel}>
+        <div  className={layoutcss.extraarticle}>
             <Link href={menu[1].link}>
                 <div>
             {menu[1].label}
@@ -76,10 +76,8 @@ const Navbar = () => {
 
         </div>
 
-        <div className={layoutcss.burgeropen} onClick={burgerClick}>
-            <div className={layoutcss.burgertop}></div>
-            <div className={layoutcss.burgermiddle}></div>
-            <div className={layoutcss.burgerbottom}></div>
+        <div className={layoutcss.burger+" "+ burgerIsOpen[0]} onClick={burgerClick}>
+            <div className={layoutcss.burgermiddle  +" "+ burgerIsOpen[1]}></div>
         </div>
 
         </div>

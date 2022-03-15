@@ -11,6 +11,7 @@ const Description = ({data}) => {
              alt="Spaziergang"
              layout="fill"
              objectFit='cover'
+             priority
             />
             </div>
             {data.data.map((item)=>{
