@@ -1,6 +1,7 @@
-
+import React from 'react'
 import Description from '../components/Description'
 import Slider from '../components/Slider'
+
 
 export const getStaticProps= async ()=>{
   const res= await fetch(`https://jusos-content.herokuapp.com/api/abouts`)
@@ -18,13 +19,14 @@ export const getStaticProps= async ()=>{
 
 export default function Home({text, sliderData}) {
 
+
   return (
      <div>
-       
        <Description data={text}/>
        <Slider data={sliderData}/> 
     </div>
 
   )
  }
+
 

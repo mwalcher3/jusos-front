@@ -1,5 +1,7 @@
 import aboutcss from '../styles/about.module.scss'
+import React from 'react'
 import Image from 'next/image'
+
 
 const Description = ({data}) => {
 

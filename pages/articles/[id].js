@@ -35,7 +35,6 @@ const id = ({data}) => {
   return (
     <div>
         <div className={articlecss.content}>
-        <Link href='/articles'><button className={articlecss.readmorebutton}>Read other articles</button></Link>
         <h2>{data.data.attributes.Title}</h2>
         <p>{data.data.attributes.article}</p>
         </div>

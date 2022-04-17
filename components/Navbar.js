@@ -1,13 +1,15 @@
+import React, {useEffect, useContext, useRef, useState} from 'react'
 import Link from 'next/link'
 import layoutcss from '../styles/layout.module.scss'
-import {useEffect, useRef, useState} from 'react'
+import useToggle from '../hooks/useToggle'
 
 const Navbar = () => {
     const intersectionRef= useRef();
     const [intersection, setIntersection]= useState(false)
-    const [burgerIsOpen, setBurgerIsOpen] = useState("")
+    const [value, toggleValue] = useToggle(false)
 
-     const menu=[{"label":"home","link":"./"},
+
+    const menu=[{"label":"home","link":"./"},
    {"label":"artikel","link":"./articles"},
    {"label":"kalender","link":"./calender"},
    {"label": "sprecher", "link": "./sprecher"}]
@@ -32,15 +34,19 @@ const Navbar = () => {
     observer.observe(intersectionRef.current)
    },[])
 
-   const burgerClick= ()=>{
-       if (burgerIsOpen){
-           setBurgerIsOpen("");
+   const toggleTheme=()=>{
+       var colorTheme= localStorage.getItem('color-mode')
+       localStorage.setItem('color-mode', colorTheme==='light'? 'dark': 'light')
+       var wrapper= document.querySelector("#wrapper")
+       if(colorTheme== 'light'){
+        wrapper.classList.add('dark')
        }
        else{
-           setBurgerIsOpen([layoutcss.burgeropen, layoutcss.burgermiddleopen]);
+        wrapper.classList.remove('dark')
        }
    }
 
+ 
     return (
         <>
         <div className={layoutcss.nav}>
@@ -48,10 +54,10 @@ const Navbar = () => {
         <div className={layoutcss.logodiv}>
             <img src="Jusos_Logo_4c.svg_.png"
             alt="Jusos Logo"
-            className={intersection? layoutcss.logo: layoutcss.logoscrolled}></img>  
+            className={layoutcss.logo + " " + (intersection? "":layoutcss.logoscrolled)}></img>  
         </div>
 
-        <div  className={layoutcss.extraarticle}>
+        <div  className={layoutcss.navlabel+ " "+ layoutcss.extraarticle}>
             <Link href={menu[1].link}>
                 <div>
             {menu[1].label}
@@ -76,9 +82,17 @@ const Navbar = () => {
 
         </div>
 
-        <div className={layoutcss.burger+" "+ burgerIsOpen[0]} onClick={burgerClick}>
-            <div className={layoutcss.burgermiddle  +" "+ burgerIsOpen[1]}></div>
+       <button onClick={toggleTheme}>
+           dark/light
+       </button>
+
+        <div className={layoutcss.burger+" "+ (value? layoutcss.burgeropen : "")} 
+        onClick={toggleValue}>
+
+            <div className={layoutcss.burgermiddle  +" "+ (value? layoutcss.burgermiddleopen:"")}>
+            </div>
         </div>
+
 
         </div>
 
