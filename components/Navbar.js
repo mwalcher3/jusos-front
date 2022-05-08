@@ -5,7 +5,7 @@ import useToggle from '../hooks/useToggle'
 
 const Navbar = () => {
     const intersectionRef= useRef();
-    const [intersection, setIntersection]= useState(false)
+    const [intersection, setIntersection]= useState(true)
     const [value, toggleValue] = useToggle(false)
 
 
@@ -46,7 +46,7 @@ const Navbar = () => {
        }
    }
 
- 
+ //  className={layoutcss.logo + " " + (intersection==false? layoutcss.logoscrolled: "")}></img>  
     return (
         <>
         <div className={layoutcss.nav}>
@@ -54,8 +54,10 @@ const Navbar = () => {
         <div className={layoutcss.logodiv}>
             <img src="Jusos_Logo_4c.svg_.png"
             alt="Jusos Logo"
-            className={layoutcss.logo + " " + (intersection? "":layoutcss.logoscrolled)}></img>  
+            className={layoutcss.logo + " " + (intersection==false? layoutcss.logoscrolled: "")}></img> 
+
         </div>
+
 
         <div  className={layoutcss.navlabel+ " "+ layoutcss.extraarticle}>
             <Link href={menu[1].link}>

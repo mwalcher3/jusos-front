@@ -19,13 +19,14 @@ body{
   display: none;
 }
 
-.wrapper{
+.wrapper {
   overflow-x: hidden;
   overflow-y: hidden;
   width: 100%;
   position: absolute;
  -ms-overflow-style: none;  /* Hide scrollbar IE and Edge */
   scrollbar-width: none;  /*Hide scrollbar Firefox */
+
 }
 
 

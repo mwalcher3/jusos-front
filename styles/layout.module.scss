@@ -39,7 +39,7 @@
 
 .logo{
     background-color: var(--lightblacktrans);
-    height: 130%;
+    height:130%;
     position:absolute;
     top:5px;
     left:0px;
@@ -52,6 +52,7 @@
     height:80%;
     transform: translate(0px,-5px);
 }
+
 
 
 .navlabel {
@@ -116,7 +117,7 @@
         margin-left:0;
     }
     100%{
-        transform: rotate(-45deg) translateY(12.5px);
+        transform: rotate(-45deg) translate(-5px,6px);
         transform-origin: center;
         margin-top: 0%;
         align-self: center;
@@ -150,8 +151,7 @@
         margin-left:0;
     } 
     100%{
-        transform: rotate(45deg) translateY(-12.5px);
-        transform-origin: center;
+        transform: rotate(45deg) translate(-5px, -6px);
         margin-bottom: 0%;
         align-self: center
     }
