@@ -1,7 +1,7 @@
 import slidercss from'../styles/slider.module.scss'
 import {useEffect, useState} from 'react'
 
-const Slider2 = ({data}) => {  
+const Slider = ({data}) => {  
     const length= data.data.length
     const [currentSlide, setCurrentSlide]= useState(0);
     const [next, setNext]= useState(1);
@@ -50,4 +50,4 @@ return <div className={slidercss.mainslider}>
       </div>;
 };
 
-export default Slider2;
+export default Slider;

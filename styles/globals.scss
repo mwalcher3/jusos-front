@@ -10,9 +10,13 @@ header{
 body{
   font-family: 'Roboto', sans-serif;
   margin: 0px;
-  overflow-x: hidden;
   position: relative;
 }
+
+body.burgeropen{
+  overflow-y: hidden;
+}
+
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .wrapper::-webkit-scrollbar {
@@ -20,13 +24,19 @@ body{
 }
 
 .wrapper {
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-x: clip;
+  overflow-y: clip;
   width: 100%;
+  min-height: 100vh;
   position: absolute;
  -ms-overflow-style: none;  /* Hide scrollbar IE and Edge */
   scrollbar-width: none;  /*Hide scrollbar Firefox */
 
 }
 
+/*@media(min-width: $medium){
+  body.burgeropen{
+    overflow-y: visible;
+  }
+}*/
 

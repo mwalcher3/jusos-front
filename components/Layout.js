@@ -1,10 +1,10 @@
-import Nav from './Navbar'
+import Nav from './Header'
 
 
-const Layout = ({children}) => {
+const Layout = ({children, menuData}) => {
     return (
         <>
-        <Nav/>
+        <Nav menuData={menuData}/>
         <div>
             {children}
         </div>

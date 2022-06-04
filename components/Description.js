@@ -5,6 +5,7 @@ import Image from 'next/image'
 
 const Description = ({data}) => {
 
+    
     return (
         <>
         <div className={aboutcss.spaziergang}>
@@ -15,19 +16,11 @@ const Description = ({data}) => {
              objectFit='cover'
              priority
             />
-            </div>
-            {data.data.map((item)=>{
-                return(
-                  <div key= {item.id} className={aboutcss.überuns}>
-                      <div>
-                      <h2>{item.attributes.Title}</h2>
-                      </div>
-                      <div>
-                      {item.attributes.Text}
-                      </div>
-                  </div>
-                )
-            })}
+        </div>
+        <div className={aboutcss.überuns}>
+        <h2>Über Uns</h2>
+        {data}
+        </div>
 
         </>
     )

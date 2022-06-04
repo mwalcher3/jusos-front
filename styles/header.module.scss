@@ -7,21 +7,31 @@
     width: 100%;
 }
 
+@mixin burgerMenuSubtitles($height){
+   // border: 2px solid white;
+    max-height: $height;
+    overflow: hidden;
+    transition: 1s ;
+}
+
+
 .nav{
     font-size: 1.4rem;
     font-weight: 700;
     color:white;
     background-color: var(--red);
-    z-index: 1;
-    position: fixed;
-    top: 0px;
+    z-index: 5;
+    position: sticky;
+    top: 0;
     height: 65px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 3%;
+    box-shadow: 7px 7px 7px rgba(24, 24, 24, 0.312);
 }
+
 
 
 .navmenu{
@@ -54,7 +64,6 @@
 }
 
 
-
 .navlabel {
     color:  var(--lightblack);
     position: relative;
@@ -82,7 +91,7 @@
     width: 100%;
     height: 30vh;
     top: 0;
-    position: absolute
+    position: absolute;
 }
 
 .darklightbutton{
@@ -144,6 +153,8 @@
     animation: burgerAfter .5s forwards;
 }
 
+
+
 @keyframes burgerAfter{
     25%{
         margin-bottom: 30%;
@@ -157,12 +168,77 @@
     }
 }
 
+.burgerMenu{
+    color: var(--darkmode-text-color);
+    background-color: black;
+    font-size: 1.5rem;
+    position: fixed;
+    width: 100vw;
+    height: calc(100vh - 65px); 
+    overflow: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    z-index: 3;
+    text-align: center;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.burgerMenu::-webkit-scrollbar {
+    display: none;
+  }
+  
+  
+.burgerMenuContent{
+    padding: 5%
+}
+
+.burgerMenuTitles{
+    //font-size: 1.7rem;
+    font-weight: 700;
+    padding-bottom: 5px;
+    cursor: pointer;
+   // border: 2px solid white;
+}
+
+.burgerMenuSubtitles{
+    @include burgerMenuSubtitles(200px);
+}
+
+.burgerMenuSubtitlesHidden{
+    @include burgerMenuSubtitles(0)
+}
+
+
+.horizontalLine{
+    border: 0px;
+    height: 1px;
+    width: 100%;
+    margin: 24px auto;
+    background: rgb(77, 77, 77);
+}
+
+.donationButton{
+    background-color: white;
+    color: var(--red);
+    padding:10px;
+    border-radius: 4rem;
+}
+
+.donationButton:hover{
+    background-color: var(--red);
+    color:white;
+}
+
+.none{
+    display: none;
+}
+
 
   
 
 @media(min-width: $medium){
     .nav{
-        height: 85px;
+        height: 75px;
         justify-content: flex-start;
     }
     .navmenu{
@@ -171,10 +247,6 @@
        align-items: center;
        grid-gap: 5%;
        gap: 5%;
-    }
-
-    .extraarticle{
-        display:none;
     }
 
     .logodiv{

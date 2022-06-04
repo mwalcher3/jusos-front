@@ -3,18 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'
 
-
-export const getStaticProps= async ()=>{
-    const res= await fetch(`https://jusos-content.herokuapp.com/api/articles`)
-    const json= await res.json()
-
-    
-    return {
-      props: {article: json,
-      }
-    }
-  }
-
 const Articles = ({article}) => {
 
   const articleimages= [
@@ -29,9 +17,6 @@ const Articles = ({article}) => {
   const [scroll, setScroll]= useState(scrollContainer.current)
   
   
-//  const initialIntersections = Array(articleimages.length).fill(false)
-//  const [intersections, setIntersections] =useState(initialIntersections)
-
   useEffect(()=>{
       const options={
         root: scroll,
@@ -80,7 +65,7 @@ const Articles = ({article}) => {
                   />
 
                   </div>
-               {<Link href= {`./articles/${item.id}`}>
+               {<Link href= {`./arrticles/${item.id}`} passHref>
                     <div className={articlecss.articletitle}>
                     {item.attributes.Title}
                     </div>
