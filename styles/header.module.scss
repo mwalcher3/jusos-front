@@ -9,9 +9,9 @@
 
 @mixin burgerMenuSubtitles($height){
    // border: 2px solid white;
+    cursor: pointer;
     max-height: $height;
     overflow: hidden;
-    transition: 1s ;
 }
 
 
@@ -189,7 +189,7 @@
   
   
 .burgerMenuContent{
-    padding: 5%
+    padding: 10%
 }
 
 .burgerMenuTitles{
@@ -201,12 +201,18 @@
 }
 
 .burgerMenuSubtitles{
-    @include burgerMenuSubtitles(200px);
+    @include burgerMenuSubtitles(150px);
+    transition: 1s max-height;
+
 }
 
+
 .burgerMenuSubtitlesHidden{
-    @include burgerMenuSubtitles(0)
+    @include burgerMenuSubtitles(0);
+    transition: 1s max-height  ;
+
 }
+
 
 
 .horizontalLine{
@@ -220,13 +226,16 @@
 .donationButton{
     background-color: white;
     color: var(--red);
+    font-weight: 700;
     padding:10px;
-    border-radius: 4rem;
+    border-radius: 3rem;
+    border:none;
 }
 
 .donationButton:hover{
     background-color: var(--red);
     color:white;
+
 }
 
 .none{

@@ -1,10 +1,10 @@
-import Nav from './Header'
+import Header from './Header'
 
 
 const Layout = ({children, menuData}) => {
     return (
         <>
-        <Nav menuData={menuData}/>
+        <Header menuData={menuData}/>
         <div>
             {children}
         </div>

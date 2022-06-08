@@ -3,7 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'
 
-const Articles = ({article}) => {
+const Articles = ({articlePage}) => {
+  console.log(articlePage);
 
   const articleimages= [
     {url:'Feierbad21.jpg', id: 5}, 
@@ -47,7 +48,7 @@ const Articles = ({article}) => {
     <h1 className={articlecss.pagetitle}>Artikel</h1>
 
       {
-          article.data.map((item, i)=>{
+          articlePage.data.attributes.children.data.map((item, i)=>{
             const image = articleimages[i]
             return(
             <div key={item.id} 
@@ -65,7 +66,7 @@ const Articles = ({article}) => {
                   />
 
                   </div>
-               {<Link href= {`./arrticles/${item.id}`} passHref>
+               {<Link href= {`./artikel/${item.id}`} passHref>
                     <div className={articlecss.articletitle}>
                     {item.attributes.Title}
                     </div>

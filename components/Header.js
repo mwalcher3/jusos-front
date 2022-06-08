@@ -3,7 +3,7 @@ import Link from 'next/link'
 import layoutcss from '../styles/header.module.scss'
 
 
-  const Navbar = ({menuData})  =>{
+  const Header = ({menuData})  =>{
 
     const intersectionRef= useRef();
     const [intersection, setIntersection]= useState(true)
@@ -54,6 +54,7 @@ import layoutcss from '../styles/header.module.scss'
 
    const toggleBurger= () =>{
        setBurgerOpen(!burgerOpen)
+       setSubMenuCount(-1)
    }
 
 
@@ -88,14 +89,15 @@ React.useEffect(()=>{
     return (
         <>
         
-        {/*Jusos Logo*/}
+        {/*Intersecting Element*/}
         <div ref={intersectionRef}className={layoutcss.intersectingelement}></div>
         <div className={layoutcss.nav}>
 
+        {/*Jusos Logo*/}
         <div className={layoutcss.logodiv}>
             <img src="Jusos_Logo_4c.svg_.png"
             alt="Jusos Logo"
-            className={layoutcss.logo + " " + (intersection==false? layoutcss.logoscrolled: "") }></img> 
+            className={layoutcss.logo + " " + (intersection==false || burgerOpen? layoutcss.logoscrolled: "") }></img> 
 
         </div>
 
@@ -150,12 +152,13 @@ React.useEffect(()=>{
                         key= {index} 
                         className={layoutcss.burgerMenuTitles } 
                         onClick={()=> 
-                        {index == subMenuCount? setSubMenuCount(-1): setSubMenuCount(index)}}>
+                        {index == subMenuCount ? setSubMenuCount(-1): setSubMenuCount(index)}}>
                         {item.title}
                     </div>
                 
                   <div 
-                        className={index == subMenuCount ? layoutcss.burgerMenuSubtitles: layoutcss.burgerMenuSubtitlesHidden}>
+                        className={index == subMenuCount ? 
+                        layoutcss.burgerMenuSubtitles: layoutcss.burgerMenuSubtitlesHidden}>
                         {item.children.map((itemChildren)=>{
                         return (<div key={itemChildren.id} >{itemChildren.title}</div>)
                         })}  
@@ -170,5 +173,5 @@ React.useEffect(()=>{
     )
 }
 
-export default Navbar
+export default Header
 
