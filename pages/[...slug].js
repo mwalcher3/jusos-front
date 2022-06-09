@@ -10,15 +10,15 @@ const Slugs = ({ menuData, data}) => {
     const router= useRouter();
     const {slug = []} = router.query;
 
-    if(slug[0]=="artikel"){
+   if(slug[0]=="artikel"){
 
-      if(slug[1] && slug[1] == data.data.id){
+      if(slug[1] && slug[1] == data.id){
        return(
           <Layout menuData={menuData}>
           <SingleArticles singleArticle={data}/>
           </Layout>
           )
-      }
+      } 
      return(
         <Layout menuData={menuData}>
           <Articles articlePage={data}/>
@@ -26,7 +26,7 @@ const Slugs = ({ menuData, data}) => {
       )
      }
 
-     else if(slug[0]=="geschichte"){
+     if(slug[0]=="geschichte"){
        return <div>hello</div>
      }
 
@@ -38,29 +38,21 @@ const Slugs = ({ menuData, data}) => {
 
 export default Slugs
 
-
-
+const endpointsToFetch=[]
+const slug0List=[]
+const slug1List=[]
 
 export async function getStaticPaths(){
 
-  const slug0List=[]
-  const slug1List=[]
-    
 //fetch all possible enpoints out of the menu to get access to the possible page components
 
   const menuData= await fetch(`https://jusos-content.herokuapp.com/api/menus/menu?nested`);
   const menuDataJson = await menuData.json();
-
-  const endpointsToFetchNested= 
-   menuDataJson.menu.items.map((item)=>{
-   return item.children.map((child)=>{
-      return child.url
-    })
-  })
-
-  let endpointsToFetch= endpointsToFetchNested.flat();
-
-  //fetch the different compontents attributed to the endpoints of the menu
+  
+  JSON.stringify(menuDataJson,(key,value) => 
+    {if (key=="url") endpointsToFetch.push(value)
+    return(value)}
+    )
 
 
   for(let endpoint of endpointsToFetch){
@@ -72,9 +64,7 @@ export async function getStaticPaths(){
   //return the slugs of the data, if they exist
 
 
-  let slug0ListFiltered= slug0List.filter((item)=>{
-    return item.data!=null;
-  })
+  let slug0ListFiltered= slug0List.filter((item) => item.data)
   
   const slugs= slug0ListFiltered.map((item)=>{
 
@@ -86,7 +76,6 @@ export async function getStaticPaths(){
 
       return attribute.slug
     
-   
   })
   
 
@@ -99,6 +88,7 @@ export async function getStaticPaths(){
       }
   })
 
+
   //create params for the nested slugs out of the slug1List
   const nestedParams=
     slug1List[0].map((item)=>{
@@ -106,8 +96,6 @@ export async function getStaticPaths(){
         params: {slug:[`artikel`, `${item.id}`]}
       }
     })
-  
-
 
   return{
     paths: [
@@ -122,8 +110,8 @@ export async function getStaticPaths(){
 
 
 export const getStaticProps= async (context)=>{
-    const slug1List=[]
-    const slug0List=[]
+  console.log(endpointsToFetch)
+
     const rewriteObject= {}
 
   //first part the same as in the getStaticPath function to get access to the englisch slugs attributed
@@ -132,16 +120,12 @@ export const getStaticProps= async (context)=>{
   const menuData= await fetch(`https://jusos-content.herokuapp.com/api/menus/menu?nested`);
   const menuDataJson = await menuData.json();
 
-  const endpointsToFetchNested= 
-   menuDataJson.menu.items.map((item)=>{
-   return item.children.map((child)=>{
-      return child.url
-    })
-  })
+  JSON.stringify(menuDataJson,(key,value) => 
+    {if (key=="url") endpointsToFetch.push(value)
+    return(value)}
+    )
 
-  let endpointsToFetch= endpointsToFetchNested.flat();
-
-  //fetch the different compontents attributed to the endpoints of the menu
+  //fetch the different components attributed to the endpoints of the menu
 
   for(let endpoint of endpointsToFetch){
     const data= await fetch (`https://jusos-content.herokuapp.com/api${endpoint}?populate=*`);
@@ -149,52 +133,37 @@ export const getStaticProps= async (context)=>{
     slug0List.push(json)
   }
 
+  //get the items with null out of the array
+  let slug0ListFiltered= slug0List.filter((item) => item.data)
 
-  const slugs= slug0List.map((item)=>{
-    if(item.data!=null) {
+  const slugs= slug0ListFiltered.map((item)=>{
+
       const attribute= item.data.attributes
-
-   //push the data for nested pages, like articles into the slug1List
 
       if(attribute.slug== "artikel"){
         slug1List.push(attribute.children.data)
       }
-
-      //return the slugs written in the data, if they exist
       return attribute.slug
-    }
-    
-    else return null
   })
-  
-
-  //create an object of the form {displayedSlugs: FetchingSlugs}
+  //create an object of the form {displayedSlugs: data}
 
   slugs.forEach((item, index)=>{
-    rewriteObject[item] = endpointsToFetch[index];
+    rewriteObject[item] = slug0ListFiltered[index];
   })
 
-  //push the slugs of the nested pages into the rewrite object
+  //push the data of the nested pages into the rewrite object
 
   slug1List[0].forEach((item)=>{
-    rewriteObject[[`artikel`,`${item.id}`]]= `/articles/${item.id}`;
+    rewriteObject[[`artikel`,`${item.id}`]]= item;
   })
 
-
   const displayedSlug= context.params.slug;
-//fetch the data of the url displayed on the screen by accessing 
-//the corresponding endpointToFetch out of the rewrite object
-
-   const response= await fetch(`https://jusos-content.herokuapp.com/api${rewriteObject[displayedSlug]}?populate=*`);
-   const responseJson= await response.json();
-
+   const data= rewriteObject[displayedSlug]
 
   return {
     props: {
       menuData: menuDataJson,
-      data: responseJson,
+      data: data,
     }
   }
 }
-
-

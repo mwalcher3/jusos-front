@@ -4,7 +4,6 @@ import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'
 
 const Articles = ({articlePage}) => {
-  console.log(articlePage);
 
   const articleimages= [
     {url:'Feierbad21.jpg', id: 5}, 

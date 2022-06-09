@@ -5,8 +5,8 @@ const SingleArticles = ({singleArticle}) => {
     return (
       <>
          <div className={articlecss.content}>
-          <h2>{singleArticle.data.attributes.Title}</h2>
-          <p>{singleArticle.data.attributes.article}</p>
+          <h2>{singleArticle.attributes.Title}</h2>
+          <p>{singleArticle.attributes.article}</p>
     </div>
       </>
     )
