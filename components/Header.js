@@ -8,7 +8,7 @@ import headercss from '../styles/header.module.scss'
     const intersectionRef= useRef();
     const [intersection, setIntersection]= useState(true)
     const [burgerOpen, setBurgerOpen] = useState(false)
-    const [clickCount, setClickCount] = useState(-1)
+    const [subMenuCount, setSubMenuCount] =useState(-1)
     const [hoveringCount, setHoveringCount] = useState(-1)
 
 
@@ -45,15 +45,6 @@ import headercss from '../styles/header.module.scss'
         wrapper.classList.remove('dark')
        }
    }
-
-   //nav bar
-
-    const isOpen =(index)=>{
-        if(index==clickCount || index==hoveringCount){
-            return true
-        }
-    }
-
 
    //burger Icon
 
@@ -114,21 +105,18 @@ React.useEffect(()=>{
                     <div key={index}>
                     <div
                     className= {headercss.navlabel} 
-                    onClick={()=>{
-                        index== clickCount? setClickCount(-1) :setClickCount(index)
-                    }}
                     onMouseOver= {()=>{setHoveringCount(index)}}
                     onMouseOut= {()=>{setHoveringCount(-1)}} 
                     key={index}>
                     
                    {item.title}
-                   <div className={headercss.navlabelunderline+ " "+ (isOpen(index)? "": headercss.navlabelunderlineclosed)}></div>
+                   <div className={headercss.navlabelunderline+ " "+ (hoveringCount==index? "": headercss.navlabelunderlineclosed)}></div>
                     </div>
 
                     <div  
                     onMouseOver= {()=>{setHoveringCount(index)}}
                     onMouseOut= {()=>{setHoveringCount(-1)}} 
-                    className={isOpen(index)?  headercss.navsublabel +" "+(index==hoveringCount? headercss.navsubhover:"") : headercss.navsubclosed } >
+                    className={hoveringCount== index?  headercss.navsublabel  : headercss.navsubclosed } >
                     {item.children.map((itemChildren, index)=>{
                         return(
                             <>
@@ -178,12 +166,12 @@ React.useEffect(()=>{
                         key= {index} 
                         className={headercss.burgerMenuTitles } 
                         onClick={()=> 
-                        {index == clickCount ? setClickCount(-1): setClickCount(index)}}>
+                        {index == subMenuCount ? setSubMenuCount(-1): setSubMenuCount(index)}}>
                         {item.title}
                     </div>
                 
                   <div 
-                        className={index == clickCount ? 
+                        className={index == subMenuCount ? 
                         headercss.burgerMenuSubtitles: headercss.burgerMenuSubtitlesHidden}>
                         {item.children.map((itemChildren)=>{
 

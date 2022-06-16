@@ -198,6 +198,7 @@ $navheightmedium: 75px;
     border: 0px;
     height: 1px;
     width: 100%;
+    margin: 24px auto;
     background: rgb(77, 77, 77);
 }
 
@@ -226,6 +227,8 @@ $navheightmedium: 75px;
   
 
 @media(min-width: $medium){
+
+    //navbar
     .nav{
         height: $navheightmedium;
         justify-content: flex-start;
@@ -280,7 +283,7 @@ $navheightmedium: 75px;
         padding: 15px;
         overflow: hidden;
         transform-origin: top left;
-        transition: max-height 1s ;
+        transition: max-height .7s ;
     }
 
     .navsubclosed{
@@ -289,11 +292,6 @@ $navheightmedium: 75px;
         padding: 0;
         overflow:hidden;
     }
-
-    .navsubhover{
-        z-index: 1;
-    }
-
 
     .navsubitems{
         cursor: pointer;
@@ -304,6 +302,12 @@ $navheightmedium: 75px;
     .navsubitems:hover{
         color: var(--red)
     }
+
+    .horizontalLine{
+        margin: 0;
+    }
+
+    //logo
 
     .logodiv{
         width: 140px;
