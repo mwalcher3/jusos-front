@@ -1,7 +1,8 @@
 import slidercss from'../styles/slider.module.scss'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 const Slider = ({data}) => {  
+
     const length= data.data.length
     const [currentSlide, setCurrentSlide]= useState(0);
     const [next, setNext]= useState(1);

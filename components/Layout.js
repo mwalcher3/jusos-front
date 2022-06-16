@@ -1,10 +1,10 @@
 import Header from './Header'
 
 
-const Layout = ({children, menuData}) => {
+const Layout = ({children, menuData, linkObject}) => {
     return (
         <>
-        <Header menuData={menuData}/>
+        <Header menuData={menuData} linkObject={linkObject}/>
         <div>
             {children}
         </div>
@@ -13,3 +13,6 @@ const Layout = ({children, menuData}) => {
 }
 
 export default Layout
+
+
+

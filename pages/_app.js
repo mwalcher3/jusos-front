@@ -3,6 +3,12 @@ import '../styles/globals.scss'
 import '../styles/color.mode.scss'
 import Script from 'next/script'
 
+
+export const global= {
+  fetchURI: "https://jusos-content.herokuapp.com/api"
+}
+
+
 function MyApp({ Component, pageProps}) {
 
   return(
@@ -13,6 +19,8 @@ function MyApp({ Component, pageProps}) {
   
   )
 }
+
+
 
 export default MyApp
 

@@ -29,6 +29,24 @@
 
 	//
 
+	"getStaticProps": {
+		"scope": "javascript, typescript",
+		"prefix": "gsp",
+	"body": [
+		"export const getStaticProps= async()=>{",
+		"     ${1}",
+		" return{",
+		"  props:{",
+		"  ",
+		"  }",
+		" }",
+		"}"
+	],
+	"description": "get Static Props function"
+	},
+
+	//
+
 	"media query": {
 		"scope": "scss, css, sass",
 		"prefix": "mq",
@@ -38,5 +56,17 @@
 		"}"
 	],
 	"description": "add a media query"
-	}
+	},
+
+	//
+
+	"border": {
+		"scope": "scss, css, sass",
+		"prefix": "border",
+	"body": [
+		"border: 2px solid black;"
+	],
+	"description": "make a border in css"
+	},
+
 }

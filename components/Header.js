@@ -1,20 +1,16 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Link from 'next/link'
-import layoutcss from '../styles/header.module.scss'
+import headercss from '../styles/header.module.scss'
 
 
-  const Header = ({menuData})  =>{
+  const Header = ({menuData, linkObject})  =>{
 
     const intersectionRef= useRef();
     const [intersection, setIntersection]= useState(true)
     const [burgerOpen, setBurgerOpen] = useState(false)
-    const [subMenuCount, setSubMenuCount] = useState(-1)
+    const [clickCount, setClickCount] = useState(-1)
+    const [hoveringCount, setHoveringCount] = useState(-1)
 
-
-    const menu=[{"label":"home","link":"./"},
-   {"label":"artikel","link":"./articles"},
-   {"label":"kalender","link":"./calender"},
-   {"label": "sprecher", "link": "./sprecher"}]
 
    useEffect(()=>{
     const options={
@@ -50,6 +46,15 @@ import layoutcss from '../styles/header.module.scss'
        }
    }
 
+   //nav bar
+
+    const isOpen =(index)=>{
+        if(index==clickCount || index==hoveringCount){
+            return true
+        }
+    }
+
+
    //burger Icon
 
    const toggleBurger= () =>{
@@ -83,42 +88,63 @@ React.useEffect(()=>{
     observer.observe(body)
 })
 
-
-
  
     return (
         <>
         
         {/*Intersecting Element*/}
-        <div ref={intersectionRef}className={layoutcss.intersectingelement}></div>
-        <div className={layoutcss.nav}>
+        <div ref={intersectionRef}className={headercss.intersectingelement}></div>
+        <div className={headercss.nav+ " " +(intersection? "" : headercss.navscrolled)}>
 
         {/*Jusos Logo*/}
-        <div className={layoutcss.logodiv}>
+        <div className={headercss.logodiv}>
             <img src="Jusos_Logo_4c.svg_.png"
             alt="Jusos Logo"
-            className={layoutcss.logo + " " + (intersection==false || burgerOpen? layoutcss.logoscrolled: "") }></img> 
+            className={headercss.logo + " " + (intersection==false || burgerOpen? headercss.logoscrolled: "") }></img> 
 
         </div>
+        
 
         {/*Nav Bar*/}
-
-         <div className={layoutcss.navmenu}>
-        <div> Jusos Heidelberg</div>
-            {menu.map((item, index)=>{
+        { <div> Jusos Heidelberg</div> }
+        <div className={headercss.navmenu}>
+            
+            {menuData.menu.items.map((item, index)=>{
                 return(
-                    <div className= {layoutcss.navlabel} key={index}>
-                       <Link href={item.link}>
-                          <div>{item.label}</div>
-                        </Link>
+                    <div key={index}>
+                    <div
+                    className= {headercss.navlabel} 
+                    onClick={()=>{
+                        index== clickCount? setClickCount(-1) :setClickCount(index)
+                    }}
+                    onMouseOver= {()=>{setHoveringCount(index)}}
+                    onMouseOut= {()=>{setHoveringCount(-1)}} 
+                    key={index}>
+                    
+                   {item.title}
+                   <div className={headercss.navlabelunderline+ " "+ (isOpen(index)? "": headercss.navlabelunderlineclosed)}></div>
                     </div>
 
+                    <div  
+                    onMouseOver= {()=>{setHoveringCount(index)}}
+                    onMouseOut= {()=>{setHoveringCount(-1)}} 
+                    className={isOpen(index)?  headercss.navsublabel +" "+(index==hoveringCount? headercss.navsubhover:"") : headercss.navsubclosed } >
+                    {item.children.map((itemChildren, index)=>{
+                        return(
+                            <>
+                            <div key={index} className={headercss.navsubitems}>{itemChildren.title}</div>
+                            <div className={headercss.horizontalLine}></div>
+                            </>
+                        )
+                    })}
+                    </div>
+                    </div>
             )
         })}
+        </div>
 
         <div> SPD </div>
 
-        </div>
 
         {/*Toggle dark mode*/}
 
@@ -127,10 +153,10 @@ React.useEffect(()=>{
        </button>
 
        {/*Burger Icon*/}
-        <div className={layoutcss.burger+" "+ (burgerOpen? layoutcss.burgeropen : "")} 
+        <div className={headercss.burger+" "+ (burgerOpen? headercss.burgeropen : "")} 
         onClick={toggleBurger}>
 
-            <div className={layoutcss.burgermiddle  +" "+ (burgerOpen? layoutcss.burgermiddleopen:"")}>
+            <div className={headercss.burgermiddle  +" "+ (burgerOpen? headercss.burgermiddleopen:"")}>
             </div>
         </div>
 
@@ -139,28 +165,34 @@ React.useEffect(()=>{
 
         {/*Burger Menu*/}
 
-        <div className={burgerOpen? layoutcss.burgerMenu: layoutcss.none}>
-            <div className={layoutcss.burgerMenuContent}>
+        <div className={burgerOpen? headercss.burgerMenu: headercss.none}>
+            <div className={headercss.burgerMenuContent}>
                 <h2>Menü</h2>
-                <button className={layoutcss.donationButton}>Spenden</button>
+                <button className={headercss.donationButton}>Spenden</button>
            {menuData.menu.items.map((item, index)=>{
               
                return(
                    <>
-                         <div className={layoutcss.horizontalLine}></div>
+                         <div className={headercss.horizontalLine}></div>
                    <div
                         key= {index} 
-                        className={layoutcss.burgerMenuTitles } 
+                        className={headercss.burgerMenuTitles } 
                         onClick={()=> 
-                        {index == subMenuCount ? setSubMenuCount(-1): setSubMenuCount(index)}}>
+                        {index == clickCount ? setClickCount(-1): setClickCount(index)}}>
                         {item.title}
                     </div>
                 
                   <div 
-                        className={index == subMenuCount ? 
-                        layoutcss.burgerMenuSubtitles: layoutcss.burgerMenuSubtitlesHidden}>
+                        className={index == clickCount ? 
+                        headercss.burgerMenuSubtitles: headercss.burgerMenuSubtitlesHidden}>
                         {item.children.map((itemChildren)=>{
-                        return (<div key={itemChildren.id} >{itemChildren.title}</div>)
+
+                        return (
+                        <div key={itemChildren.title}>
+                          <Link href={`./${linkObject[itemChildren.url]}`}>
+                            {itemChildren.title}
+                           </Link>
+                            </div>)
                         })}  
                     </div>
                    

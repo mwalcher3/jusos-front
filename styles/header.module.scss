@@ -1,5 +1,8 @@
 @import "../styles/config";
 
+$navheightsmall: 65px;
+$navheightmedium: 75px;
+
 @mixin burger(){
     background-color: white;
     border-radius: 20px;
@@ -15,6 +18,8 @@
 }
 
 
+////////////
+
 .nav{
     font-size: 1.4rem;
     font-weight: 700;
@@ -23,16 +28,17 @@
     z-index: 5;
     position: sticky;
     top: 0;
-    height: 65px;
+    height: $navheightsmall;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 3%;
-    box-shadow: 7px 7px 7px rgba(24, 24, 24, 0.312);
 }
 
-
+.navscrolled{
+    box-shadow: 7px 7px 7px var(--shadow);
+}
 
 .navmenu{
     display: none;
@@ -44,7 +50,6 @@
     margin-left: 10px;
     display: flex;
     position:relative;
-   /* border: 2px solid blue*/
 }
 
 .logo{
@@ -61,30 +66,6 @@
 .logoscrolled{
     height:80%;
     transform: translate(0px,-5px);
-}
-
-
-.navlabel {
-    color:  var(--lightblack);
-    position: relative;
-    top:0px;
-    cursor: pointer;
-}
-
-
-.navlabel::after{
-    content:"";
-    background-color: var(--lightblack);
-    position:absolute;
-    left: 0px;
-    bottom:0px;
-    height: 2px;
-    width: 0%;
-    transition: 0.25s ease-in-out;
-}
-
-.navlabel:hover::after{
-    width: 100%;  
 }
 
 .intersectingelement{
@@ -193,11 +174,9 @@
 }
 
 .burgerMenuTitles{
-    //font-size: 1.7rem;
     font-weight: 700;
     padding-bottom: 5px;
     cursor: pointer;
-   // border: 2px solid white;
 }
 
 .burgerMenuSubtitles{
@@ -219,7 +198,6 @@
     border: 0px;
     height: 1px;
     width: 100%;
-    margin: 24px auto;
     background: rgb(77, 77, 77);
 }
 
@@ -230,6 +208,8 @@
     padding:10px;
     border-radius: 3rem;
     border:none;
+    cursor: pointer;
+    transition: .2s ease-in-out;
 }
 
 .donationButton:hover{
@@ -247,15 +227,82 @@
 
 @media(min-width: $medium){
     .nav{
-        height: 75px;
+        height: $navheightmedium;
         justify-content: flex-start;
     }
+    
+
     .navmenu{
-       width: 60%;
-       display: flex;
-       align-items: center;
-       grid-gap: 5%;
-       gap: 5%;
+        position: relative;
+        align-self: stretch;
+        display: grid;
+        grid-auto-flow: column;
+        grid-gap: 50px;
+    }
+
+    .navlabel{
+        height: $navheightmedium;
+        color: var(--lightblack);
+        cursor: pointer;
+        display: grid;
+        align-content: center;
+        width: auto;
+        transition: .3s;
+        position: relative;
+    }
+
+    
+    .navlabelunderline{
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(1);
+        height: 3px;
+        bottom: 20px;
+        left: 0;
+        background-color: var(--lightblack);
+        transform-origin: bottom left;
+        transition: transform 0.25s ease-out;
+    }
+
+    .navlabelunderlineclosed{
+        transform: scaleX(0);
+        transform-origin: bottom right;
+    }
+
+    .navsublabel{
+        background-color: var(--lightblack);
+        border: 1px solid var(--nav-sublabel-border);
+        font-weight: 100; 
+        min-width: 150px;
+        max-height: 250px;
+        position: absolute;
+        padding: 15px;
+        overflow: hidden;
+        transform-origin: top left;
+        transition: max-height 1s ;
+    }
+
+    .navsubclosed{
+        max-height: 0px;
+        position:absolute; 
+        padding: 0;
+        overflow:hidden;
+    }
+
+    .navsubhover{
+        z-index: 1;
+    }
+
+
+    .navsubitems{
+        cursor: pointer;
+        transition: .2s;
+        padding: 7px;
+    }
+
+    .navsubitems:hover{
+        color: var(--red)
     }
 
     .logodiv{
