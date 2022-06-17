@@ -7,18 +7,24 @@
     --lightblack: rgb(43, 43, 43);
     --lightblacktrans: rgba(27, 27, 27, 0.774);
     --articleborders: black;
-    --burger-menu-background: white;
-    --burger-links-color: rgb(191, 191, 191);
+
+    --burger-menu-background: rgb(0, 0, 0);
+    --burger-titles: rgb(186, 186, 186);
+    --burger-links: rgb(191, 191, 191);
     --nav-sublabel-border: rgb(107, 107, 107);
 }
 
 .wrapper.dark{
     background-color: rgb(0, 0, 0);
     color: var(--darkmode-text-color);
-    --shadow: rgba(204,0,0 , 0.15);
     --darkmode-text-color: rgb(187, 187, 187);
+    --shadow: rgba(204,0,0 , 0.15);
+
     --red-slider-button: rgb(170, 10, 10);
     --articleborders: rgb(124, 124, 124);
+
     --burger-menu-background: black;
+    --burger-titles: var(--darkmode-text-color);
+    --burger-links: rgb(191, 191, 191);
     --nav-sublabel-border: black;
 }

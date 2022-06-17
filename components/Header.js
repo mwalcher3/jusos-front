@@ -97,8 +97,8 @@ React.useEffect(()=>{
         
 
         {/*Nav Bar*/}
-        { <div> Jusos Heidelberg</div> }
         <div className={headercss.navmenu}>
+        <div> Jusos Heidelberg</div> 
             
             {menuData.menu.items.map((item, index)=>{
                 return(
@@ -133,9 +133,8 @@ React.useEffect(()=>{
                     </div>
             )
         })}
+              <div> SPD </div>
         </div>
-
-        <div> SPD </div>
 
 
         {/*Toggle dark mode*/}

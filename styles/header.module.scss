@@ -149,7 +149,7 @@ $navheightmedium: 75px;
 }
 
 .burgerMenu{
-    color: var(--darkmode-text-color);
+    color: var(--burger-titles);
     background-color: black;
     font-size: 1.5rem;
     position: fixed;
@@ -194,7 +194,7 @@ $navheightmedium: 75px;
 }
 
 .burgerlinks{
-    color: var(--burger-links-color);
+    color: var(--burger-links);
     text-decoration: none;
     transition: .3s;
 }
@@ -251,6 +251,7 @@ $navheightmedium: 75px;
         align-self: stretch;
         display: grid;
         grid-auto-flow: column;
+        align-items: center;
         grid-gap: 50px;
     }
 

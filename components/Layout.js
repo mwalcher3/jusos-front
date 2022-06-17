@@ -1,4 +1,5 @@
 import Header from './Header'
+import Footer from './Footer'
 
 
 const Layout = ({children, menuData, linkObject}) => {
@@ -8,6 +9,7 @@ const Layout = ({children, menuData, linkObject}) => {
         <div>
             {children}
         </div>
+        <Footer menuData={menuData} linkObject={linkObject}/>
         </>
     )
 }
