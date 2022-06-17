@@ -24,19 +24,27 @@ export const getStaticProps= async()=>{
        cache: new InMemoryCache()
      })
 
-     const {data} = await client.query({
-       query: gql`
-       query getSlugs {
-        articlePage {
-          data {
-            attributes {
-              slug
-            }
-          }
-        }
-      }
-      `
-     })
+     const array=['articlePage', 'simplePages']
+     const data =[]
+     for(let pageType of array){
+       const dataa=
+      await client.query({
+        query: gql`
+        query {
+         ${pageType} {
+           data {
+             attributes {
+               slug
+             }
+           }
+         }
+       }
+       `
+      })
+
+      data.push(dataa.data)
+
+     } 
 
  return{
   props:{

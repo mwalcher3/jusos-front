@@ -11,7 +11,6 @@ $navheightmedium: 75px;
 }
 
 @mixin burgerMenuSubtitles($height){
-   // border: 2px solid white;
     cursor: pointer;
     max-height: $height;
     overflow: hidden;
@@ -179,6 +178,7 @@ $navheightmedium: 75px;
     cursor: pointer;
 }
 
+
 .burgerMenuSubtitles{
     @include burgerMenuSubtitles(150px);
     transition: 1s max-height;
@@ -186,10 +186,21 @@ $navheightmedium: 75px;
 }
 
 
+
 .burgerMenuSubtitlesHidden{
     @include burgerMenuSubtitles(0);
     transition: 1s max-height  ;
 
+}
+
+.burgerlinks{
+    color: var(--burger-links-color);
+    text-decoration: none;
+    transition: .3s;
+}
+
+.burgerlinks:hover{
+    color: var(--red)
 }
 
 
@@ -295,8 +306,8 @@ $navheightmedium: 75px;
 
     .navsubitems{
         cursor: pointer;
-        transition: .2s;
         padding: 7px;
+        text-decoration: none;
     }
 
     .navsubitems:hover{

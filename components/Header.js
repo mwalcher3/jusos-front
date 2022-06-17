@@ -120,7 +120,11 @@ React.useEffect(()=>{
                     {item.children.map((itemChildren, index)=>{
                         return(
                             <>
-                            <div key={index} className={headercss.navsubitems}>{itemChildren.title}</div>
+                            <Link href={`./${linkObject[itemChildren.url]}`}>
+                                <div key={index} className={headercss.navsubitems}>
+                                {itemChildren.title}
+                            </div>
+                            </Link>
                             <div className={headercss.horizontalLine}></div>
                             </>
                         )
@@ -178,7 +182,9 @@ React.useEffect(()=>{
                         return (
                         <div key={itemChildren.title}>
                           <Link href={`./${linkObject[itemChildren.url]}`}>
-                            {itemChildren.title}
+                              <div className={headercss.burgerlinks}>
+                          {itemChildren.title}
+                          </div>
                            </Link>
                             </div>)
                         })}  

@@ -15,7 +15,7 @@ const Slugs = ({ menuData, data, linkObject}) => {
 
    if(slug[0]=="artikel"){
 
-      if(slug[1] && slug[1] == data.id){
+      if(slug[1] && slug[1] == data.attributes.Title){
        return(
           <Layout menuData={menuData} linkObject={linkObject}>
           <SingleArticles singleArticle={data}/>
@@ -29,21 +29,13 @@ const Slugs = ({ menuData, data, linkObject}) => {
       )
      }
 
-     if(slug[0]=="geschichte"){
-       return <div>hello</div>
+     if(slug[0]){
+       return(
+       <Layout menuData={menuData} linkObject={linkObject}>
+      <div>{slug[0]}</div>
+       </Layout>
+       )
      }
-
-     else if(slug[0]== "teilnehmen"){
-       return <div>teilnehmen</div>
-     }
-
-     else if(slug[0] =="satzung"){
-       return <div>satzung</div>
-     }
-     else if(slug[0] =="bilder"){
-      return <div>bilder</div>
-    }
-
 }
 
 export default Slugs
@@ -103,7 +95,7 @@ export async function getStaticPaths(){
   const nestedParams=
     slug1List[0].map((item)=>{
       return{
-        params: {slug:[`artikel`, `${item.id}`]}
+        params: {slug:[`artikel`, `${item.attributes.Title}`]}
       }
     })
 
@@ -174,7 +166,7 @@ export const getStaticProps= async (context)=>{
   //push the data of the nested pages into the rewrite object
 
   slug1List[0].forEach((item)=>{
-    rewriteObject[[`artikel`,`${item.id}`]]= item;
+    rewriteObject[[`artikel`,`${item.attributes.Title}`]]= item;
   })
 
   const displayedSlug= context.params.slug;
@@ -188,6 +180,8 @@ export const getStaticProps= async (context)=>{
        notFound: true
      }
    }
+
+   console.log(data)
 
   return {
     props: {

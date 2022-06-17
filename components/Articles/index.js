@@ -65,7 +65,7 @@ const Articles = ({articlePage}) => {
                   />
 
                   </div>
-               {<Link href= {`./artikel/${item.id}`} passHref>
+               {<Link href= {`./artikel/${item.attributes.Title}`} passHref>
                     <div className={articlecss.articletitle}>
                     {item.attributes.Title}
                     </div>
