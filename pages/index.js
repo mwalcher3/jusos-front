@@ -8,7 +8,7 @@ import Layout from '../components/Layout'
 
 export const getStaticProps= async ()=>{
   const endpointsToFetch= []
-  const slug0List= []
+  const slug0= []
 
   //fetch data for the home page
   const response= await fetch(`${global.fetchURI}/home-page?populate=*`)
@@ -29,20 +29,20 @@ export const getStaticProps= async ()=>{
   for(let endpoint of endpointsToFetch){
     const data= await fetch (`${global.fetchURI}${endpoint}?populate=*`);
     const json= await data.json()
-    slug0List.push(json)
+    slug0.push(json)
   }
 
-  const slugs= slug0List.map((item)=>{
+  const slugs= slug0.map((item)=>{
     if(item.data!=null) return item.data.attributes.slug
     else return null
   })
 
   //create an object of the form {endpointsToFetch: slug} for the links in the menu
 
-  const linkObject={}
+  const links={}
 
   slugs.forEach((item, index)=>{
-    linkObject[endpointsToFetch[index]]= item;
+    links[endpointsToFetch[index]]= item;
   })
 
   
@@ -50,19 +50,19 @@ export const getStaticProps= async ()=>{
     props: {
       data: json,
       menuData: menuDataJson,
-      linkObject: linkObject,
+      links: links,
     },
     revalidate: 30,
   }
 }
 
-export default function Home({ data, menuData, linkObject}) {
+export default function Home({ data, menuData, links}) {
 
   const attributes= data.data.attributes
 
   return (
      <div>
-       <Layout menuData={menuData} linkObject={linkObject}>
+       <Layout menuData={menuData} links={links}>
         <Description data={attributes.aboutUs}/>
       {<Slider data={attributes.sliders}/> }
        </Layout>

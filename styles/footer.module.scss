@@ -1,6 +1,104 @@
+@import "../styles/config";
 
 
-
-.footermaincontainer{
-    background-color: blue;
+.maincontainer{
+    color: var(--footer);
+    background-color: var(--footerbackground);
+    border-top: 2px solid var(--lightblack);
+    padding: 5vh 0% 5vh 0%;
+   // border: 2px solid black;
 }
+
+.content{
+   // border: 2px solid black;
+    margin: 0 50px 0 50px; 
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.menu{
+    display: grid;
+   // border: 2px solid black;
+    gap: 1rem;
+}
+
+.tab{
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    //border: 2px solid black;
+}
+.title{
+    font-size: 1.1rem;
+    font-weight: bolder;
+    padding-bottom:10px;
+    //border: 2px solid black;
+}
+
+.subtitle{
+    cursor: pointer; 
+    //border: 2px solid black;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    margin: 3px 0px 3px 0;
+}
+
+
+.subtitle:after{
+    @include underline(var(--red), 2px); 
+}
+
+
+.subtitle:hover:after{
+    width: 100%;
+}
+
+.logocontainer{
+    display: flex;
+    gap: 0 10px;
+}
+
+.logos{
+    background-color: white;
+    border: 1px solid var(--lightblack);
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.heidelberglogo{
+    cursor:auto;
+}
+
+.followus{
+    font-weight: 700;
+}
+
+@media(min-width: $medium){
+
+    .content{
+        text-align: left;
+        gap: 1.5rem;
+
+    }
+
+    .menu{
+        grid-auto-flow: column;
+        gap: 3rem;
+    }
+
+    .tab{
+        justify-items: left;
+    }
+
+    .subtitle{
+        margin: 0;
+    }
+}
+
+
+

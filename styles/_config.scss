@@ -9,5 +9,15 @@ $extraextralarge: 1400px;
 $XXXlarge: 2000px;
 
 
+@mixin underline($color, $height){
+    content: '';
+    background-color: $color;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    width: 0%;
+    height: $height;
+    transition: width 0.25s ease-out;
+}
 
 

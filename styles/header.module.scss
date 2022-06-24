@@ -12,8 +12,11 @@ $navheightmedium: 75px;
 
 @mixin burgerMenuSubtitles($height){
     cursor: pointer;
+    font-size: 1.3rem;
     max-height: $height;
     overflow: hidden;
+    display: grid;
+    gap: 7px;
 }
 
 
@@ -138,8 +141,8 @@ $navheightmedium: 75px;
 @keyframes burgerAfter{
     25%{
         margin-bottom: 30%;
-        transform: rotate(0);
         margin-left:0;
+        transform: rotate(0);
     } 
     100%{
         transform: rotate(45deg) translate(-5px, -6px);
@@ -169,23 +172,24 @@ $navheightmedium: 75px;
   
   
 .burgerMenuContent{
-    padding: 10%
+    padding: 10%;
+    display: grid;
+    justify-items: center;
+    gap: .5rem;
 }
 
 .burgerMenuTitles{
-    font-weight: 700;
-    padding-bottom: 5px;
+    font-weight: bold;
+    padding-top:10px;
     cursor: pointer;
 }
 
 
 .burgerMenuSubtitles{
-    @include burgerMenuSubtitles(150px);
+    @include burgerMenuSubtitles(200px);
     transition: 1s max-height;
 
 }
-
-
 
 .burgerMenuSubtitlesHidden{
     @include burgerMenuSubtitles(0);
@@ -200,23 +204,16 @@ $navheightmedium: 75px;
 }
 
 .burgerlinks:hover{
-    color: var(--red)
+    color: var(--red);
 }
 
 
-
-.horizontalLine{
-    border: 0px;
-    height: 1px;
-    width: 100%;
-    margin: 24px auto;
-    background: rgb(77, 77, 77);
-}
 
 .donationButton{
     background-color: white;
     color: var(--red);
-    font-weight: 700;
+    font-weight: bold;
+    margin: 10px;
     padding:10px;
     border-radius: 3rem;
     border:none;
@@ -277,7 +274,7 @@ $navheightmedium: 75px;
         left: 0;
         background-color: var(--lightblack);
         transform-origin: bottom left;
-        transition: transform 0.25s ease-out;
+        transition: transform 0.25s ease-in-out;
     }
 
     .navlabelunderlineclosed{
@@ -288,7 +285,7 @@ $navheightmedium: 75px;
     .navsublabel{
         background-color: var(--lightblack);
         border: 1px solid var(--nav-sublabel-border);
-        font-weight: 100; 
+        font-weight: lighter; 
         min-width: 150px;
         max-height: 250px;
         position: absolute;
@@ -315,9 +312,6 @@ $navheightmedium: 75px;
         color: var(--red)
     }
 
-    .horizontalLine{
-        margin: 0;
-    }
 
     //logo
 

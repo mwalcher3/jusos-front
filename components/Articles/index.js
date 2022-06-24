@@ -1,3 +1,4 @@
+import {global} from '../../pages/_app'
 import articlecss from "../../styles/article.module.scss"
 import Image from 'next/image'
 import Link from 'next/link'
@@ -65,7 +66,7 @@ const Articles = ({articlePage}) => {
                   />
 
                   </div>
-               {<Link href= {`./artikel/${item.attributes.Title}`} passHref>
+               {<Link href= {`/artikel/${global.endpointSyntax(item.attributes.Title)}`} passHref>
                     <div className={articlecss.articletitle}>
                     {item.attributes.Title}
                     </div>

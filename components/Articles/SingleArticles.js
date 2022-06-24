@@ -1,7 +1,7 @@
 import articlecss from "../../styles/article.module.scss"
 
 const SingleArticles = ({singleArticle}) => {
-  console.log(singleArticle);
+
     return (
       <>
          <div className={articlecss.content}>

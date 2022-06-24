@@ -12,6 +12,9 @@
     --burger-titles: rgb(186, 186, 186);
     --burger-links: rgb(191, 191, 191);
     --nav-sublabel-border: rgb(107, 107, 107);
+
+    --footer: black;
+    --footerbackground:  rgb(218, 218, 218); 
 }
 
 .wrapper.dark{
@@ -27,4 +30,8 @@
     --burger-titles: var(--darkmode-text-color);
     --burger-links: rgb(191, 191, 191);
     --nav-sublabel-border: black;
+
+    --footer: rgb(193, 193, 193);
+    --footerbackground: rgb(34, 34, 34);
+
 }

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import headercss from '../styles/header.module.scss'
 
 
-  const Header = ({menuData, linkObject})  =>{
+  const Header = ({menuData, links})  =>{
 
     const intersectionRef= useRef();
     const [intersection, setIntersection]= useState(true)
@@ -32,19 +32,6 @@ import headercss from '../styles/header.module.scss'
     observer.observe(intersectionRef.current)
    },[])
 
-   //dark mode
-
-   const toggleTheme=()=>{
-       var colorTheme= localStorage.getItem('color-mode')
-       localStorage.setItem('color-mode', colorTheme==='light'? 'dark': 'light')
-       var wrapper= document.querySelector("#wrapper")
-       if(colorTheme== 'light'){
-        wrapper.classList.add('dark')
-       }
-       else{
-        wrapper.classList.remove('dark')
-       }
-   }
 
    //burger Icon
 
@@ -89,7 +76,7 @@ React.useEffect(()=>{
 
         {/*Jusos Logo*/}
         <div className={headercss.logodiv}>
-            <img src="Jusos_Logo_4c.svg_.png"
+            <img src="/Jusos_Logo_4c.svg_.png"
             alt="Jusos Logo"
             className={headercss.logo + " " + (intersection==false || burgerOpen? headercss.logoscrolled: "") }></img> 
 
@@ -120,12 +107,12 @@ React.useEffect(()=>{
                     {item.children.map((itemChildren, index)=>{
                         return(
                             <>
-                            <Link href={`./${linkObject[itemChildren.url]}`}>
+                            <Link href={`./${links[itemChildren.url]}`}>
                                 <div key={index} className={headercss.navsubitems}>
                                 {itemChildren.title}
                             </div>
                             </Link>
-                            <div className={headercss.horizontalLine}></div>
+                            <div className='horizontalLine'></div>
                             </>
                         )
                     })}
@@ -137,11 +124,6 @@ React.useEffect(()=>{
         </div>
 
 
-        {/*Toggle dark mode*/}
-
-       <button onClick={toggleTheme}>
-           dark/light
-       </button>
 
        {/*Burger Icon*/}
         <div className={headercss.burger+" "+ (burgerOpen? headercss.burgeropen : "")} 
@@ -164,7 +146,7 @@ React.useEffect(()=>{
               
                return(
                    <>
-                         <div className={headercss.horizontalLine}></div>
+                         <div className="horizontalLine"></div>
                    <div
                         key= {index} 
                         className={headercss.burgerMenuTitles } 
@@ -180,7 +162,7 @@ React.useEffect(()=>{
 
                         return (
                         <div key={itemChildren.title}>
-                          <Link href={`./${linkObject[itemChildren.url]}`}>
+                          <Link href={`./${links[itemChildren.url]}`}>
                               <div className={headercss.burgerlinks}>
                           {itemChildren.title}
                           </div>

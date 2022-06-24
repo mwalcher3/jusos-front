@@ -1,48 +1,52 @@
 import React from 'react'
 import {useRouter} from 'next/router'
 import {global} from './_app'
-import Articles from '../components/Articles'
 import SingleArticles from '../components/Articles/SingleArticles'
 import Layout from '../components/Layout'
+import SimplePage from '../components/Simple-page'
+import kontakt from '../components/Contact'
+import artikel from '../components/Articles'
 
 
-
-const Slugs = ({ menuData, data, linkObject}) => {
-
+const Slugs = ({ menuData, data, links}) => {
 
     const router= useRouter();
     const {slug = []} = router.query;
+    const object={
+      artikel: artikel,
+      kontakt: kontakt
+    }
+    
+    var ComponentName= object[slug[0]]
 
-   if(slug[0]=="artikel"){
+     if(object[slug[0]]==null){
+      return(
+        <Layout menuData={menuData} links={links}>
+          <SimplePage data={data}/>
+        </Layout>
+        )
+     }
 
-      if(slug[1] && slug[1] == data.attributes.Title){
+      if(slug[1] && slug[1] == global.endpointSyntax(data.attributes.Title)){
        return(
-          <Layout menuData={menuData} linkObject={linkObject}>
+          <Layout menuData={menuData} links={links}>
           <SingleArticles singleArticle={data}/>
           </Layout>
           )
       } 
      return(
-        <Layout menuData={menuData} linkObject={linkObject}>
-          <Articles articlePage={data}/>
+        <Layout menuData={menuData} links={links}>
+          <ComponentName articlePage={data}/>
         </Layout>
       )
-     }
-
-     if(slug[0]){
-       return(
-       <Layout menuData={menuData} linkObject={linkObject}>
-      <div>{slug[0]}</div>
-       </Layout>
-       )
-     }
+     
 }
 
 export default Slugs
 
 const endpointsToFetch=[]
-const slug0List=[]
-const slug1List=[]
+const slug0=[]
+const slug1=[]
 
 export async function getStaticPaths(){
 
@@ -60,20 +64,20 @@ export async function getStaticPaths(){
   for(let endpoint of endpointsToFetch){
     const data= await fetch (`${global.fetchURI}${endpoint}?populate=*`);
     const json= await data.json()
-    slug0List.push(json)
+    slug0.push(json)
   }
 
   //return the slugs of the data, if they exist
 
 
-  let slug0ListFiltered= slug0List.filter((item) => item.data)
+  let slug0Filtered= slug0.filter((item) => item.data)
   
-  const slugs= slug0ListFiltered.map((item)=>{
+  const slugs= slug0Filtered.map((item)=>{
 
       const attribute= item.data.attributes;
 
       if(attribute.slug== "artikel"){
-        slug1List.push(attribute.children.data)
+        slug1.push(attribute.children.data)
       }
 
       return attribute.slug
@@ -93,9 +97,9 @@ export async function getStaticPaths(){
 
   //create params for the nested slugs out of the slug1List
   const nestedParams=
-    slug1List[0].map((item)=>{
+    slug1[0].map((item)=>{
       return{
-        params: {slug:[`artikel`, `${item.attributes.Title}`]}
+        params: {slug:[`artikel`, `${global.endpointSyntax(item.attributes.Title)}`]}
       }
     })
 
@@ -116,10 +120,6 @@ export const getStaticProps= async (context)=>{
   //pass down data from getStaticPaths to getStaticProps
   //or create a global function to fetch the data
 
-    const rewriteObject= {}
-
-  //first part the same as in the getStaticPath function to get access to the englisch slugs attributed
-  //to the displayed slugs in german
 
   const menuData= await fetch(`${global.fetchURI}/menus/menu?nested`);
   const menuDataJson = await menuData.json();
@@ -134,16 +134,16 @@ export const getStaticProps= async (context)=>{
   for(let endpoint of endpointsToFetch){
     const data= await fetch (`${global.fetchURI}${endpoint}?populate=*`);
     const json= await data.json()
-    slug0List.push(json)
+    slug0.push(json)
   }
 
-  const slugs= slug0List.map((item)=>{
+  const slugs= slug0.map((item)=>{
     if(item.data!=null){
 
       const attribute= item.data.attributes
 
       if(attribute.slug== "artikel"){
-        slug1List.push(attribute.children.data)
+        slug1.push(attribute.children.data)
       }
       return attribute.slug
     }
@@ -151,26 +151,28 @@ export const getStaticProps= async (context)=>{
   })
   //create an object of the form {displayedSlugs: data}
 
+  const rewrite={}
+
   slugs.forEach((item, index)=>{
-    rewriteObject[item] = slug0List[index];
+    rewrite[item] = slug0[index];
   })
 
   //{endpointsToFetch: slug}
 
-  const linkObject={}
+  const links={}
 
   slugs.forEach((item, index)=>{
-    linkObject[endpointsToFetch[index]]= item;
+    links[endpointsToFetch[index]]= item;
   })
   
   //push the data of the nested pages into the rewrite object
 
-  slug1List[0].forEach((item)=>{
-    rewriteObject[[`artikel`,`${item.attributes.Title}`]]= item;
+  slug1[0].forEach((item)=>{
+    rewrite[[`artikel`,`${global.endpointSyntax(item.attributes.Title)}`]]= item;
   })
 
   const displayedSlug= context.params.slug;
-   const data= rewriteObject[displayedSlug]
+   const data= rewrite[displayedSlug]
 
    //return 404 page if the displayedSlug does not refer a any data,
    //this is because fallback is set to 'blocking' in the getStaticPaths function
@@ -187,7 +189,7 @@ export const getStaticProps= async (context)=>{
     props: {
       menuData: menuDataJson,
       data: data,
-      linkObject: linkObject,
+      links: links,
     },
     revalidate: 30,
   }
