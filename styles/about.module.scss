@@ -4,13 +4,13 @@
     border: 2px var(--red) solid;
     margin: 5vh auto 0% auto;
     padding: 0px 20px 20px 20px;
-    width: 80%;
     font-size: 1rem;
 }
 
 .spaziergang{
     border: 2px var(--red) solid;
-    width: 100%;
+    margin: 0 (-$horizontalmargin);
+    width: 100vw;
     height: 350px;
     position: relative;
 }

@@ -23,6 +23,7 @@ return <div className={slidercss.mainslider}>
            setReduceBoolean(true);
        }} className={slidercss.button1}>&#60;</button>
 
+
        {data.data.map((item, index)=>{
            return(
            <div className={

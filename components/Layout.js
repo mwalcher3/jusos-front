@@ -8,7 +8,7 @@ const Layout = ({children, menuData, links}) => {
         <>
         <Header menuData={menuData} links={links}/>
         <SideButtons/>
-        <div>
+        <div className="maincontent">
             {children}
         </div>
         <Footer menuData={menuData} links={links}/>

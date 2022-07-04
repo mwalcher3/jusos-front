@@ -1,12 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {global} from './_app'
 import Description from '../components/Description'
 import Slider from '../components/Slider'
 import Layout from '../components/Layout'
 
 
-
 export const getStaticProps= async ()=>{
+
   const endpointsToFetch= []
   const slug0= []
 
@@ -57,6 +57,8 @@ export const getStaticProps= async ()=>{
 }
 
 export default function Home({ data, menuData, links}) {
+
+
 
   const attributes= data.data.attributes
 

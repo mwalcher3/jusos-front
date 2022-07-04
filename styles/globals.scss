@@ -31,12 +31,9 @@ body.burgeropen{
   position: absolute;
  -ms-overflow-style: none;  /* Hide scrollbar IE and Edge */
   scrollbar-width: none;  /*Hide scrollbar Firefox */
-
 }
 
-/*@media(min-width: $medium){
-  body.burgeropen{
-    overflow-y: visible;
-  }
-}*/
+.maincontent{
+  margin: 0 ($horizontalmargin);
+}
 

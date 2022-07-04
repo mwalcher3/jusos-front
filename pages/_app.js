@@ -8,7 +8,13 @@ import Script from 'next/script'
 export const global= {
   fetchURI: "https://jusos-content.herokuapp.com/api",
   endpointSyntax: (item)=>{
-    return item.toLowerCase().replaceAll(' ','_');
+    const chars={
+      ' ': '_',
+      'ä': 'ae',
+      'ö': 'oe',
+      'ü': 'ue'
+    };
+    return item.toLowerCase().replaceAll(' ','_' );
   },
 }
 
