@@ -1,4 +1,5 @@
-import {useState} from 'react'
+/*import {useState} from 'react'
+import formcss from '../styles/form.module.scss'
 
 export default function Contact() {
   const [fullname, setFullname] = useState("");
@@ -21,64 +22,66 @@ export default function Contact() {
   }
 
     return (
-		<form onSubmit={handleSubmit}>
-          <h1 className="text-2xl font-bold dark:text-gray-50">
+		<form onSubmit={handleSubmit} className={formcss.container}>
+          <h1 className={formcss.title}>
             Send a message
           </h1>
 
-          <label>
-            Full name
-          </label>
+
+
+          <div>
+          <h3>Full name</h3>
           <input
             type="text"
             value={fullname}
             required
-            onChange={(e) => {
-              setFullname(e.target.value);
-            }}
-            name="fullname"
-          />
-         
+            onChange={(e) => setFullname(e.target.value)}/>
+            </div>
 
-          <label>E-mail</label>
+            <div>
+          <h3>E-mail</h3>
           <input
             type="email"
             name="email"
             required
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-          
+            onChange={(e) => setEmail(e.target.value)}/>
+            </div>
 
-          <label>Subject</label>
+            <div>
+          <h3>Subject</h3>
           <input
             type="text"
             name="subject"
             required
             value={subject}
-            onChange={(e) => {
-              setSubject(e.target.value);
-            }}
-          />
+            onChange={(e) => setSubject(e.target.value)}/>
+            </div>
          
-         <label>Message</label>
+         <div>
+         <h3>Message</h3>
           <textarea
           type="text"
           required
             name="message"
             value={message}
-            onChange={(e) => {
-              setMessage(e.target.value);
-            }}
-          ></textarea>
+            onChange={(e) => setMessage(e.target.value)}></textarea>
+            </div>
+
           
-          <div >
-            <button type="submit">
+            <button type="submit" className={formcss.submit}>
               Submit
             </button>
-          </div>
         </form>
 	)
+}*/
+
+import React from 'react'
+
+const Contact = () => {
+  return (
+    <div>Contact</div>
+  )
 }
+
+export default Contact

@@ -1,0 +1,53 @@
+/*@import "../styles/config";
+
+.container{
+    border: 2px solid var(--red);
+    display: grid;
+    margin: 5vh auto 0% auto;
+    justify-content: center;
+    width: fit-content;
+    padding: 3vw;
+    margin-bottom: 3vh;
+    gap: 4vh;
+}
+
+.container div{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+.submit{
+    color: var(--lightblack);
+    font-weight:bold;
+    padding: 10px;
+    text-decoration: none;
+    background-color: var(--red);
+    cursor:pointer;
+}
+
+@media(min-width: $medium){
+    .container{
+        grid-template-columns: 1fr 1fr ;
+    }
+
+    .title, .submit{
+        grid-column: 1/-1;
+        text-align: center;
+        justify-self: center;
+    }
+
+    .submit{
+        border-radius: 100px;
+        width: fit-content;
+        transition: .2s;
+    }
+
+    .submit:hover{
+        transform: scale(1.1);
+        color: black
+    }
+
+}*/
