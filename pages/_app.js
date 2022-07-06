@@ -14,7 +14,8 @@ export const global= {
       'ö': 'oe',
       'ü': 'ue'
     };
-    return item.toLowerCase().replaceAll(' ','_' );
+    return item.toLowerCase()
+    // replaceAll(' ','_' );
   },
 }
 
