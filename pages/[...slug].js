@@ -4,17 +4,19 @@ import {global} from './_app'
 import SingleArticles from '../components/Articles/SingleArticles'
 import Layout from '../components/Layout'
 import SimplePage from '../components/Simple-page'
-import kontakt from '../components/Contact'
-import artikel from '../components/Articles'
+import Contact from '../components/Contact'
+import Article from '../components/Articles'
 
 
 const Slugs = ({ menuData, data, links}) => {
 
     const router= useRouter();
     const {slug = []} = router.query;
+
+    
     const object={
-      artikel: artikel,
-      kontakt: kontakt
+      artikel: Article,
+      kontakt: Contact
     }
     
     var ComponentName= object[slug[0]]

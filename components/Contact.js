@@ -1,4 +1,4 @@
-/*import {useState} from 'react'
+import {useState} from 'react'
 import formcss from '../styles/form.module.scss'
 
 export default function Contact() {
@@ -74,14 +74,4 @@ export default function Contact() {
             </button>
         </form>
 	)
-}*/
-
-import React from 'react'
-
-const Contact = () => {
-  return (
-    <div>Contact</div>
-  )
 }
-
-export default Contact
