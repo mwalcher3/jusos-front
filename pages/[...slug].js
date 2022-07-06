@@ -4,8 +4,8 @@ import {global} from './_app'
 import SingleArticles from '../components/Articles/SingleArticles'
 import Layout from '../components/Layout'
 import SimplePage from '../components/Simple-page'
-import Contact from '../components/Contact'
-import Article from '../components/Articles'
+import Kontakt from '../components/Contact'
+import Artikel from '../components/Articles'
 
 
 const Slugs = ({ menuData, data, links}) => {
@@ -13,8 +13,37 @@ const Slugs = ({ menuData, data, links}) => {
     const router= useRouter();
     const {slug = []} = router.query;
 
-    
-    const object={
+    if (slug[0]=="artikel"){
+      if( slug[1]&&slug[1]==global.endpointSyntax(data.attributes.Title)){
+        return(
+          <Layout menuData={menuData} links={links}>
+          <SingleArticles singleArticle={data}/>
+          </Layout>
+          )
+      }
+      return(
+        <Layout menuData={menuData} links={links}>
+          <Artikel articlePage={data}/>
+        </Layout>
+        )
+    }
+
+    else if(slug[0]=="kontakt"){
+      return(
+        <Layout menuData={menuData} links={links}>
+          <Kontakt data={data}/>
+        </Layout>
+      )
+    }
+
+    else {
+      return(
+        <Layout menuData={menuData} links={links}>
+          <SimplePage data={data}/>
+        </Layout>
+        )
+    }
+    /*const object={
       artikel: Article,
       kontakt: Contact
     }
@@ -40,7 +69,7 @@ const Slugs = ({ menuData, data, links}) => {
         <Layout menuData={menuData} links={links}>
           <ComponentName articlePage={data}/>
         </Layout>
-      )
+      )*/
      
 }
 
