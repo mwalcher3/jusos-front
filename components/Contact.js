@@ -1,7 +1,8 @@
 import {useState} from 'react'
 import formcss from '../styles/form.module.scss'
 
-export default function Contact() {
+export default function Contact({articlePage}) {
+  console.log(articlePage)
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
