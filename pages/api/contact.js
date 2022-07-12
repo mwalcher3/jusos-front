@@ -12,8 +12,17 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
         await sendgrid.send({
           to: "melisande.walcher@gmail.com", // Your email where you'll receive emails
           from: "melisande.walcher@gmail.com", // your website email address here
-          subject: `${body.subject}`,
-          text: `${body.message}`,
+          subject: `${body.Beftreff}`,
+          html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      <html lang="en">
+      
+      <body>
+              <h3>You've got a new mail from ${body.Name}, their email is: ✉️${body.Email} </h3>
+              <p>Message:</p>
+              <p>${body.Nachricht}</p>
+      </body>
+      </html>`,
+        
         });
 
       } catch (error) {

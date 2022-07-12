@@ -276,6 +276,8 @@ $navheightmedium: 75px;
         transform-origin: bottom left;
         transition: transform 0.25s ease-in-out;
     }
+    
+    //border: solid var(--corvid-border-color,rgba(var(--brd,var(--color_15)),var(--alpha-brd,1))) var(--corvid-border-width,var(--brw,0));
 
     .navlabelunderlineclosed{
         transform: scaleX(0);

@@ -4,19 +4,22 @@
     border: 2px solid var(--red);
     display: grid;
     margin: 5vh auto 0% auto;
-    justify-content: center;
     width: fit-content;
     padding: 3vw;
     margin-bottom: 3vh;
     gap: 4vh;
 }
 
-.container div{
-    display: flex;
-    flex-direction: column;
+
+.textarea{
+    height: 100px;
+    resize: none;
 }
 
-
+.textarea, .inputs{
+    border: 2px solid var(--red);
+    border-radius: 3px;
+}
 
 
 .submit{
@@ -29,8 +32,10 @@
 }
 
 @media(min-width: $medium){
-    .container{
-        grid-template-columns: 1fr 1fr ;
+    .inputcontainer{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
     }
 
     .title, .submit{
