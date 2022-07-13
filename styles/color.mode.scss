@@ -4,7 +4,7 @@
     --shadow: rgba(60,64,67,0.15);
 
 
-    --red-slider-button: rgba(255, 0, 0, 0.534);
+    --red-slider-button: rgb(252, 99, 99);
     --red: rgb(204, 0, 0);
     
     --lightblack: rgb(43, 43, 43);
@@ -15,6 +15,8 @@
     --burger-titles: rgb(186, 186, 186);
     --burger-links: rgb(191, 191, 191);
     --nav-sublabel-border: rgb(107, 107, 107);
+
+    --inputborder: var(--lightblack);
 
     --footer: black;
     --footerbackground:  rgb(218, 218, 218); 
@@ -35,6 +37,8 @@
     --burger-titles: var(--darkmode-text-color);
     --burger-links: rgb(191, 191, 191);
     --nav-sublabel-border: black;
+
+    --inputborder: var(--red);
 
     --footer: rgb(193, 193, 193);
     --footerbackground: rgb(34, 34, 34);

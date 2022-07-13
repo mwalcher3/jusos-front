@@ -249,7 +249,9 @@ $navheightmedium: 75px;
         display: grid;
         grid-auto-flow: column;
         align-items: center;
-        grid-gap: 50px;
+        justify-content: center;
+        width: 75vw;
+        grid-gap: 3.5vw;
     }
 
     .navlabel{
