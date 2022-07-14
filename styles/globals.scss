@@ -15,6 +15,7 @@ body{
 
 body.burgeropen{
   overflow-y: hidden;
+  height: -webkit-fill-available;
 }
 
 
