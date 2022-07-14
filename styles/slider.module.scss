@@ -2,6 +2,8 @@
 
 @mixin movingslides($translate){
     position: absolute;
+    grid-column: 1;
+    grid-row: 1;
     left:10vw;
     right: 10vw;
     padding: 10%;
@@ -11,7 +13,8 @@
 .mainslider{
     font-size: .9rem;
     overflow: hidden;
-    display: flex;
+    display: grid;
+    grid-auto-flow: column;
     align-items:center;
     justify-content: space-between;
     position: relative;

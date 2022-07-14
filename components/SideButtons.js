@@ -22,8 +22,12 @@ const SideButtons = () => {
         <Link href="/">
         <button>Home</button>
         </Link>
+        
         <button onClick={toggleTheme}>dark mode</button>
+
+        <Link href="/kontakt">
         <button>contact</button>
+        </Link>
     </div>
   )
 }

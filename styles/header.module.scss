@@ -231,7 +231,6 @@ $navheightmedium: 75px;
     display: none;
 }
 
-
   
 
 @media(min-width: $medium){
@@ -249,7 +248,7 @@ $navheightmedium: 75px;
         display: grid;
         grid-auto-flow: column;
         align-items: center;
-        justify-content: center;
+        justify-content: start;
         width: 75vw;
         grid-gap: 3.5vw;
     }
@@ -271,8 +270,8 @@ $navheightmedium: 75px;
         position: absolute;
         width: 100%;
         transform: scaleX(1);
-        height: 3px;
-        bottom: 20px;
+        height: 2.7px;
+        bottom: 23px;
         left: 0;
         background-color: var(--lightblack);
         transform-origin: bottom left;
@@ -289,6 +288,7 @@ $navheightmedium: 75px;
         background-color: var(--lightblack);
         border: 1px solid var(--nav-sublabel-border);
         font-weight: lighter; 
+        font-size: 1.3rem;
         min-width: 150px;
         max-height: 250px;
         position: absolute;

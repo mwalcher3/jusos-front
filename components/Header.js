@@ -90,6 +90,8 @@ React.useEffect(()=>{
             {menuData.menu.items.map((item, index)=>{
                 return(
                     <div key={index}>
+
+                    <nobr>
                     <div
                     className= {headercss.navlabel} 
                     onMouseOver= {()=>{setHoveringCount(index)}}
@@ -99,6 +101,7 @@ React.useEffect(()=>{
                    {item.title}
                    <div className={headercss.navlabelunderline+ " "+ (hoveringCount==index? "": headercss.navlabelunderlineclosed)}></div>
                     </div>
+                    </nobr>
 
                     <div  
                     onMouseOver= {()=>{setHoveringCount(index)}}
