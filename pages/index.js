@@ -3,6 +3,7 @@ import {global} from './_app'
 import Description from '../components/Description'
 import Slider from '../components/Slider'
 import Layout from '../components/Layout'
+import Slideshow from '../components/Slideshow'
 
 
 export const getStaticProps= async ()=>{
@@ -65,6 +66,7 @@ export default function Home({ data, menuData, links}) {
   return (
      <div>
        <Layout menuData={menuData} links={links}>
+       <Slideshow/>
         <Description data={attributes.aboutUs}/>
       {<Slider data={attributes.sliders}/> }
        </Layout>

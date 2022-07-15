@@ -8,7 +8,7 @@ const Description = ({data}) => {
     
     return (
         <>
-        <div className={aboutcss.spaziergang}>
+        {/*<div className={aboutcss.spaziergang}>
             <Image
              src="/JusosSpaziergangCroped.jpg" 
              alt="Spaziergang"
@@ -16,7 +16,7 @@ const Description = ({data}) => {
              objectFit='cover'
              priority
             />
-        </div>
+    </div>*/}
         <div className={aboutcss.überuns}>
         <h2>Über Uns</h2>
         {data}
