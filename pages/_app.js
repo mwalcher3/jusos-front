@@ -5,6 +5,8 @@ import '../styles/globalelements.scss'
 import Script from 'next/script'
 
 // variables and functions used globaly
+
+
 export const global= {
   fetchURI: "https://jusos-content.herokuapp.com/api",
   endpointSyntax: (item)=>{
@@ -17,6 +19,7 @@ export const global= {
     return item.toLowerCase()
     //.replaceAll(' ','_' );
   },
+
 }
 
 

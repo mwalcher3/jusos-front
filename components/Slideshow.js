@@ -1,21 +1,49 @@
 import slideshowcss from '../styles/slideshow.module.scss'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Image from 'next/image'
+import sleep from '../hooks/sleep'
 
 const Slideshow = () => {
-     const imageSource=["/image-2.jpg", "/image-1.jpeg", "/image-3.jpeg"]
+     const imageSource=["/image-2.jpg", "/image-1.jpg", "/image-3.jpg"]
+
 
      const length= 3
     const [currentSlide, setCurrentSlide]= useState(0);
     const [next, setNext]= useState(1);
-    const [previous, setPrevious]= useState(4)
+    const [previous, setPrevious]= useState(length)
     const [reduceBoolean, setReduceBoolean]= useState(false);
+
+    
 
     const handleClick= (number)=>{
      setCurrentSlide(currentCount => (currentCount+number)%length)
      setNext((currentSlide+2*number)%length)
      setPrevious(currentSlide)
- }
+  }
+
+useEffect(()=>{
+     const asyncFunction= async (number) =>{
+          while(length) {
+               handleClick(1);
+               setReduceBoolean(false)
+               await sleep(3000);
+           }
+       }
+
+       asyncFunction()
+
+},[])
+  
+
+  useEffect(()=>{
+     console.log("current:",currentSlide)
+          console.log("next one:",next);
+          console.log("previous one:",previous)
+
+  },[currentSlide])
+  
+
+
 
   return (
     <div className={slideshowcss.maincontainer}>
