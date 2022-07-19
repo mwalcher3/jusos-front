@@ -22,17 +22,18 @@ const Slideshow = () => {
   }
 
 useEffect(()=>{
-     const asyncFunction= async (number) =>{
-          while(length) {
-               handleClick(1);
-               setReduceBoolean(false)
-               await sleep(3000);
-           }
-       }
-
-       asyncFunction()
-
-},[])
+     // const asyncFunction= async (number) =>{
+          // while(length) {
+               // await sleep(3000);
+          //  }
+     //   asyncFunction()
+       const timer = setTimeout(() => {
+          handleClick(1);
+          setReduceBoolean(false)
+        }, 3000);
+        return () => clearTimeout(timer);
+     },
+     [currentSlide])
   
 
   useEffect(()=>{
