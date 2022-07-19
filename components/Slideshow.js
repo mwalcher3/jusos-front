@@ -10,7 +10,7 @@ const Slideshow = () => {
      const length= 3
     const [currentSlide, setCurrentSlide]= useState(0);
     const [next, setNext]= useState(1);
-    const [previous, setPrevious]= useState(length)
+    const [previous, setPrevious]= useState(length-1)
     const [reduceBoolean, setReduceBoolean]= useState(false);
 
     
@@ -20,28 +20,6 @@ const Slideshow = () => {
      setNext((currentSlide+2*number)%length)
      setPrevious(currentSlide)
   }
-
-useEffect(()=>{
-     const asyncFunction= async (number) =>{
-          while(length) {
-               handleClick(1);
-               setReduceBoolean(false)
-               await sleep(3000);
-           }
-       }
-
-       asyncFunction()
-
-},[])
-  
-
-  useEffect(()=>{
-     console.log("current:",currentSlide)
-          console.log("next one:",next);
-          console.log("previous one:",previous)
-
-  },[currentSlide])
-  
 
 
 

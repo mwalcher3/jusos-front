@@ -1,5 +1,5 @@
 import slidercss from'../styles/slider.module.scss'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 const Slider = ({data}) => {  
 
@@ -14,7 +14,14 @@ const Slider = ({data}) => {
         setNext((currentSlide+2*number)%length)
         setPrevious(currentSlide)
     }
-    
+
+    /*useEffect(()=>{
+        console.log("current:",currentSlide)
+             console.log("next one:",next);
+             console.log("previous one:",previous)
+   
+     },[currentSlide])
+    */
     
 return <div className={slidercss.mainslider}>
 
