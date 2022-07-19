@@ -20,6 +20,29 @@ const Slideshow = () => {
      setNext((currentSlide+2*number)%length)
      setPrevious(currentSlide)
   }
+  
+useEffect(()=>{
+     // const asyncFunction= async (number) =>{
+          // while(length) {
+               // await sleep(3000);
+          //  }
+     //   asyncFunction()
+       const timer = setTimeout(() => {
+          handleClick(1);
+          setReduceBoolean(false)
+        }, 3000);
+        return () => clearTimeout(timer);
+     },
+     [currentSlide])
+  
+
+  useEffect(()=>{
+     console.log("current:",currentSlide)
+          console.log("next one:",next);
+          console.log("previous one:",previous)
+
+  },[currentSlide])
+  
 
 
 
