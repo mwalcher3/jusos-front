@@ -56,9 +56,8 @@
 
 .button1, .button2{
     position: absolute;
-    color: magenta;
-    //background-color: var(--lightdark);
-    font-size: 2rem;
+    background-color: var(--lightdark);
+    font-size: 2.7rem;
     font-weight: bolder;
     border: none;
     height: fit-content;
@@ -68,12 +67,12 @@
 }
 
 .button1{
-    left: 5px;
+    left: 1vw;
 }
 
 .button2{
     transform: scaleX(-1);
-    right: 5px;
+    right: 1vw;
 }
 
 .dotcontainer{
@@ -91,4 +90,8 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
+}
+
+.dotsactive{
+    background-color: black;
 }

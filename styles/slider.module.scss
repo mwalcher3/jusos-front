@@ -21,6 +21,15 @@
     height: 70vh;
     margin: 30px 0px;
     border: 2px solid var(--red);
+
+    .div{
+        position: absolute;
+        grid-column: 1;
+        grid-row: 1;
+        left:10vw;
+        right: 10vw;
+        padding: 10%;
+    }
 }
 
 
@@ -29,8 +38,6 @@
 .none{
     display:none;
 }
-
-
 
 .current{
     @include movingslides($translate: 0);
@@ -53,8 +60,8 @@
 .previousreduce{
     @include movingslides($translate: -100vw);
     transition: transform 0.7s ease-in-out;
-
 }
+
 
 
 .button1{

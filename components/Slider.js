@@ -1,40 +1,24 @@
 import slidercss from'../styles/slider.module.scss'
 import {useState, useEffect} from 'react'
+import useCounter from '../hooks/useCounter'
 
 const Slider = ({data}) => {  
 
-    const length= data.data.length
-    const [currentSlide, setCurrentSlide]= useState(0);
-    const [next, setNext]= useState(1);
-    const [previous, setPrevious]= useState(4)
-    const [reduceBoolean, setReduceBoolean]= useState(false);
-    
-    const handleClick= (number)=>{
-        setCurrentSlide(currentCount => (currentCount+number)%length)
-        setNext((currentSlide+2*number)%length)
-        setPrevious(currentSlide)
-    }
+    const dataLength= data.data.length;
+    const  [handleChange, current, next, previous, reduceBoolean]= useCounter(dataLength);
 
-    /*useEffect(()=>{
-        console.log("current:",currentSlide)
-             console.log("next one:",next);
-             console.log("previous one:",previous)
-   
-     },[currentSlide])
-    */
     
 return <div className={slidercss.mainslider}>
 
        <button onClick={()=>{
-           handleClick(-1+ length);
-           setReduceBoolean(true);
-       }} className={slidercss.button1}>&#60;</button>
+           handleChange(-1+ length);}} 
+           className={slidercss.button1}>&#60;</button>
 
 
        {data.data.map((item, index)=>{
            return(
            <div className={
-            index==currentSlide? slidercss.current: 
+            index==current? slidercss.current: 
             index==next? reduceBoolean? slidercss.nextreduce: slidercss.next: 
             index==previous? reduceBoolean? slidercss.previousreduce: slidercss.previous :
             slidercss.none} 
@@ -53,9 +37,8 @@ return <div className={slidercss.mainslider}>
       
 
       <button onClick={()=>{
-          handleClick(1);
-          setReduceBoolean(false)
-      }} className={slidercss.button1 + " " + slidercss.button2}>&#60;</button>
+          handleChange(1);}} 
+          className={slidercss.button1 + " " + slidercss.button2}>&#60;</button>
       </div>;
 };
 

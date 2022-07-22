@@ -1,49 +1,20 @@
 import slideshowcss from '../styles/slideshow.module.scss'
 import {useState, useEffect} from 'react'
 import Image from 'next/image'
-import sleep from '../hooks/sleep'
+import useCounter from '../hooks/useCounter'
 
 const Slideshow = () => {
+     const  [handleChange, current, next, previous, reduceBoolean]= useCounter(3);
      const imageSource=["/image-2.jpg", "/image-1.jpg", "/image-3.jpg"]
 
 
-     const length= 3
-    const [currentSlide, setCurrentSlide]= useState(0);
-    const [next, setNext]= useState(1);
-    const [previous, setPrevious]= useState(length-1)
-    const [reduceBoolean, setReduceBoolean]= useState(false);
-
-    
-
-    const handleClick= (number)=>{
-     setCurrentSlide(currentCount => (currentCount+number)%length)
-     setNext((currentSlide+2*number)%length)
-     setPrevious(currentSlide)
-  }
-  
-useEffect(()=>{
-     // const asyncFunction= async (number) =>{
-          // while(length) {
-               // await sleep(3000);
-          //  }
-     //   asyncFunction()
+  useEffect(()=>{
        const timer = setTimeout(() => {
-          handleClick(1);
-          setReduceBoolean(false)
+          handleChange(1);
         }, 3000);
         return () => clearTimeout(timer);
      },
-     [currentSlide])
-  
-
-  useEffect(()=>{
-     console.log("current:",currentSlide)
-          console.log("next one:",next);
-          console.log("previous one:",previous)
-
-  },[currentSlide])
-  
-
+     [current])
 
 
   return (
@@ -51,8 +22,7 @@ useEffect(()=>{
          <div className={slideshowcss.imagecontainer}>
 
         <div>
-          <button onClick={()=>{handleClick(-1+ length) 
-                          setReduceBoolean(true)}}
+          <button onClick={()=>{handleChange(-1+ length)}}
           className={slideshowcss.button1}>
           &#60;
           </button>
@@ -61,7 +31,7 @@ useEffect(()=>{
          {imageSource.map((item, index)=>{
               return(      
                <div className={
-                    index==currentSlide? slideshowcss.current: 
+                    index==current? slideshowcss.current: 
                     index==next? reduceBoolean? slideshowcss.nextreduce: slideshowcss.next: 
                     index==previous? reduceBoolean? slideshowcss.previousreduce: slideshowcss.previous :
                     slideshowcss.none}  key={index}>
@@ -80,15 +50,15 @@ useEffect(()=>{
          })}
 
          <div>
-         <button onClick={()=>{handleClick(1)
-                          setReduceBoolean(false)}}
+         <button onClick={()=>{handleChange(1)}}
         className={slideshowcss.button2}>
              &#60;
              </button>
          </div>
 
          <div className={slideshowcss.dotcontainer}>
-         {imageSource.map((item, index)=> {return (<div className={slideshowcss.dots} key={index}></div>)})}
+         {imageSource.map((item, index)=> {return (
+         <div className={slideshowcss.dots+" "+ (index== current? slideshowcss.dotsactive: "")} key={index}></div>)})}
          </div>
 
          </div>
