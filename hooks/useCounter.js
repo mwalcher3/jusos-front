@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import React, {useState} from 'react'
 
 const counter = (length) => {
     const [current, setCurrent]= useState(0);
@@ -15,7 +15,7 @@ const counter = (length) => {
           setReduceBoolean(false)
           }
           else{setReduceBoolean(true)}
-     }
+     }  
 
      /* if number is 1 counter will increment, if it is -1+length it will decrement */
   return (

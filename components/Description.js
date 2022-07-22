@@ -21,7 +21,6 @@ const Description = ({data}) => {
         <h2>Über Uns</h2>
         {data}
         </div>
-
         </>
     )
 }

@@ -4,9 +4,9 @@ import Image from 'next/image'
 import useCounter from '../hooks/useCounter'
 
 const Slideshow = () => {
-     const  [handleChange, current, next, previous, reduceBoolean]= useCounter(3);
+     const dataLength= 3
+     const  [handleChange, current, next, previous, reduceBoolean]= useCounter(dataLength);
      const imageSource=["/image-2.jpg", "/image-1.jpg", "/image-3.jpg"]
-
 
   useEffect(()=>{
        const timer = setTimeout(() => {
@@ -22,7 +22,7 @@ const Slideshow = () => {
          <div className={slideshowcss.imagecontainer}>
 
         <div>
-          <button onClick={()=>{handleChange(-1+ length)}}
+          <button onClick={()=>{handleChange(-1+ dataLength)}}
           className={slideshowcss.button1}>
           &#60;
           </button>
