@@ -20,6 +20,9 @@
 
     --footer: black;
     --footerbackground:  rgb(218, 218, 218); 
+
+    --sundisplay: none;
+    --moondisplay: block;
 }
 
 .wrapper.dark{
@@ -42,5 +45,8 @@
 
     --footer: rgb(193, 193, 193);
     --footerbackground: rgb(34, 34, 34);
+
+    --sundisplay: block;
+    --moondisplay: none;
 
 }

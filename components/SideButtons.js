@@ -1,16 +1,21 @@
 import React from 'react'
 import sidebuttoncss from '../styles/sidebutton.module.scss'
 import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faEnvelope, faSun, faMoon} from '@fortawesome/free-solid-svg-icons'
+
 
 const SideButtons = () => {
 
+
     const toggleTheme=()=>{
-        console.log('clicked');
         var colorTheme= localStorage.getItem('color-mode')
-        localStorage.setItem('color-mode', colorTheme==='light'? 'dark': 'light')
         var wrapper= document.querySelector("#wrapper")
+
+        localStorage.setItem('color-mode', colorTheme==='light'? 'dark': 'light')
+
         if(colorTheme== 'light'){
-         wrapper.classList.add('dark')
+         wrapper.classList.add('dark');
         }
         else{
          wrapper.classList.remove('dark')
@@ -20,13 +25,18 @@ const SideButtons = () => {
   return (
     <div className={sidebuttoncss.maincontainer}>
         <Link href="/">
-        <button>Home</button>
+        <button>
+          <FontAwesomeIcon icon={faHouse}/>
+          </button>
         </Link>
         
-        <button onClick={toggleTheme}>dark mode</button>
+        <button onClick={toggleTheme}>
+        <FontAwesomeIcon className={sidebuttoncss.iconsun} icon={faSun} />
+        <FontAwesomeIcon className={sidebuttoncss.iconmoon} icon={faMoon} />
+        </button>
 
         <Link href="/kontakt">
-        <button>contact</button>
+        <button><FontAwesomeIcon icon={faEnvelope} /></button>
         </Link>
     </div>
   )

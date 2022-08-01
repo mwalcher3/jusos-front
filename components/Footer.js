@@ -19,8 +19,8 @@ const Footer = ({menuData, links}) => {
 
        {item.children.map((itemChildren, index)=>{
           return ( 
-            <Link  href={`./${links[itemChildren.url]}`}>
-          <div key={index} className={footercss.subtitle}>
+            <Link key={index}  href={`./${links[itemChildren.url]}`} passHref>
+          <div  className={footercss.subtitle}>
             {itemChildren.title}
             </div>
             </Link>

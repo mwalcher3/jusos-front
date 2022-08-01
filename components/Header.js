@@ -19,18 +19,14 @@ import headercss from '../styles/header.module.scss'
 
     const observer= new IntersectionObserver((entries, observer)=>{
         entries.map((entry)=>{
-
-            if(entry.isIntersecting){
-                setIntersection(true);
-            }
-            else if(entry.isIntersecting==false){
-                setIntersection(false);
-            }
+            entry.isIntersecting? setIntersection(true): setIntersection(false)
         })
     }, options)
  
     observer.observe(intersectionRef.current)
    },[])
+
+   
 
 
    //burger Icon
@@ -53,6 +49,8 @@ import headercss from '../styles/header.module.scss'
     }
 }, [burgerOpen])
 
+
+
 React.useEffect(()=>{
     var body= document.querySelector("#body")
     const observer= new ResizeObserver((entries)=>{
@@ -71,7 +69,7 @@ React.useEffect(()=>{
         <>
         
         {/*Intersecting Element*/}
-        <div ref={intersectionRef}className={headercss.intersectingelement}></div>
+        <div ref={intersectionRef} className={headercss.intersectingelement}></div>
         <div className={headercss.nav+ " " +(intersection? "" : headercss.navscrolled)}>
 
         {/*Jusos Logo*/}
@@ -184,4 +182,6 @@ React.useEffect(()=>{
 }
 
 export default Header
+
+
 
