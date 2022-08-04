@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react'
 import formcss from '../styles/form.module.scss'
 
-export default function Contact({articlePage}) {
-  const formData= articlePage.data.attributes.form.data[0].attributes
+export default function Contact({data}) {
+  const formData= data.data.attributes.form.data[0].attributes
   const inputs= formData.inputs
   const title= formData.title
   
@@ -19,8 +19,7 @@ export default function Contact({articlePage}) {
       formData[item.name]= e.target[item.name].value;
   
     });
-    console.log(JSON.stringify(formData));
-
+  
 
     fetch('/api/contact',{
       method:"POST",

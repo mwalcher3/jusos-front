@@ -1,24 +1,29 @@
 import React from 'react'
 import {useRouter} from 'next/router'
 import {global} from './_app'
+
+
 import SingleArticles from '../components/Articles/SingleArticles'
 import Layout from '../components/Layout'
 import SimplePage from '../components/Simple-page'
-import Contact from '../components/Contact'
-import Article from '../components/Articles'
+import kontakt from '../components/Contact'
+import artikel from '../components/Articles'
+import aktuelles from '../components/TopicsCurrent'
+import schwerpunkte from '../components/TopicsGeneral'
 
 
 const Slugs = ({ menuData, data, links}) => {
-  console.log(data)
 
     const router= useRouter();
     const {slug = []} = router.query;
 
     const object={
-      artikel: Article,
-      kontakt: Contact
+      artikel: artikel,
+      kontakt: kontakt,
+      aktuelles: aktuelles,
+      schwerpunkte: schwerpunkte,
     }
-    
+
     var ComponentName= object[slug[0]]
 
      if(object[slug[0]]==null){
@@ -40,7 +45,7 @@ const Slugs = ({ menuData, data, links}) => {
 
      return(
         <Layout menuData={menuData} links={links}>
-          <ComponentName articlePage={data}/>
+          <ComponentName data={data}/>
         </Layout>
       )
      }
@@ -176,6 +181,7 @@ export const getStaticProps= async (context)=>{
     rewrite[[`artikel`,`${global.endpointSyntax(item.attributes.Title)}`]]= item;
   })
 
+
   const displayedSlug= context.params.slug;
    const data= rewrite[displayedSlug]
 
@@ -188,7 +194,7 @@ export const getStaticProps= async (context)=>{
      }
    }
 
-   console.log(data)
+
 
   return {
     props: {
