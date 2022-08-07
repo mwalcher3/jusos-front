@@ -64,7 +64,7 @@
 		"scope": "scss, css, sass",
 		"prefix": "border",
 	"body": [
-		"border: 2px solid black;"
+		"border: 2px solid white;"
 	],
 	"description": "make a border in css"
 	},

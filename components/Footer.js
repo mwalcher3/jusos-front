@@ -50,7 +50,7 @@ const Footer = ({menuData, links}) => {
           />
         </div>
 
-        <Link href={"https://jusos.de/"}>
+        <Link href={"https://jusos.de/"} passHref>
         <div className={footercss.logos}>
           <Image
           src={`/Jusos_Logo_4c.svg_.png`}
@@ -62,7 +62,7 @@ const Footer = ({menuData, links}) => {
         </div>
         </Link>
 
-        <Link href={"https://spd.de"}>
+        <Link href={"https://spd.de"} passHref>
         <div className={footercss.logos}>
           <Image
           src={`/Spd_Logo.png`}
@@ -86,11 +86,11 @@ const Footer = ({menuData, links}) => {
 
     <div className={footercss.socialmedialinks}>
 
-        <Link href={"https://www.instagram.com/jusoshd/?hl=en"}>
+        <Link href={"https://www.instagram.com/jusoshd/?hl=en"} passHref>
         <FontAwesomeIcon icon={faInstagram} />
         </Link>
 
-        <Link href={"https://www.facebook.com/jusos.heidelberg/"}>
+        <Link href={"https://www.facebook.com/jusos.heidelberg/"} passHref>
         <FontAwesomeIcon icon={faFacebook} />
         </Link>
     </div>

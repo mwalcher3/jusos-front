@@ -24,7 +24,7 @@ const SideButtons = () => {
 
   return (
     <div className={sidebuttoncss.maincontainer}>
-        <Link href="/">
+        <Link href="/" passHref>
         <button>
           <FontAwesomeIcon icon={faHouse}/>
           </button>
@@ -35,7 +35,7 @@ const SideButtons = () => {
         <FontAwesomeIcon className={sidebuttoncss.iconmoon} icon={faMoon} />
         </button>
 
-        <Link href="/kontakt">
+        <Link href="/kontakt" passHref>
         <button><FontAwesomeIcon icon={faEnvelope} /></button>
         </Link>
     </div>
