@@ -4,7 +4,6 @@ import currentcss from '../styles/topics.current.module.scss'
 
 const TopicsCurrent = ({data}) => {
   const dataAttributes= data.data.attributes
-  console.log(dataAttributes);
   return (
     <div className={currentcss.maincontainer}>
 

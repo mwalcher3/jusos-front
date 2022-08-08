@@ -26,6 +26,7 @@ import headercss from '../styles/header.module.scss'
     observer.observe(intersectionRef.current)
    },[])
 
+
    
 
 
@@ -40,14 +41,32 @@ import headercss from '../styles/header.module.scss'
    //burger Menu 
 
    React.useEffect(()=>{
+
     var body= document.querySelector("#body")
+    function preventDefault(e) {
+        e.preventDefault();
+    }
+
     if(burgerOpen==true){
         body.classList.add('burgeropen')
+        body.addEventListener('pointermove', preventDefault);
     }
     else{
         body.classList.remove('burgeropen')
+        body.removeEventListener('pointermove', preventDefault);
     }
+
+    //syncronyse the height for IOS safari
+    function syncHeight() {
+        document.documentElement.style.setProperty(
+            '--window-inner-height',
+            `${window.innerHeight}px`
+        );
+    }
+    
+    window.addEventListener('resize', syncHeight);
 }, [burgerOpen])
+
 
 
 
