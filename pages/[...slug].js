@@ -2,7 +2,6 @@ import React from 'react'
 import {useRouter} from 'next/router'
 import {global} from './_app'
 
-
 import SingleArticles from '../components/Articles/SingleArticles'
 import Layout from '../components/Layout'
 import SimplePage from '../components/Simple-page'
@@ -42,15 +41,16 @@ const Slugs = ({ menuData, data, links}) => {
           </Layout>
           )
       } 
-
+     if(data){
      return(
         <Layout menuData={menuData} links={links}>
           <ComponentName data={data}/>
         </Layout>
       )
-     }
-     
+     }   
+    }
 }
+
 
 export default Slugs
 
@@ -60,9 +60,7 @@ const slug1=[]
 
 export async function getStaticPaths(){
 
-//fetch all possible enpoints out of the menu to get access to the possible page components
-
-  const menuData= await fetch(`${global.fetchURI}/menus/menu?nested`);
+const menuData= await fetch(`${global.fetchURI}/menus/menu?nested`);
   const menuDataJson = await menuData.json();
   
   JSON.stringify(menuDataJson,(key,value) => 
@@ -125,6 +123,7 @@ export async function getStaticPaths(){
 
 
 
+
 export const getStaticProps= async (context)=>{
   //same code is rewritten, because it is not possible to 
   //pass down data from getStaticPaths to getStaticProps
@@ -160,11 +159,21 @@ export const getStaticProps= async (context)=>{
     else return null
   })
   //create an object of the form {displayedSlugs: data}
+  /* fetch the data for the poups seperately and push it into rewrite["shwerpunkte"]. 
+  cannot be fetched with populate=*, because of relation nesting*/
+
+  const popupData= await fetch (`${global.fetchURI}/pop-ups?populate=*`);
+  const popupJson= await popupData.json()
 
   const rewrite={}
 
   slugs.forEach((item, index)=>{
     rewrite[item] = slug0[index];
+
+    if(item== "schwerpunkte"){
+       rewrite[item]= {...slug0[index], ...popupJson}
+       console.log("data for general page", rewrite[item])
+    }
   })
 
   //{endpointsToFetch: slug}
@@ -193,8 +202,6 @@ export const getStaticProps= async (context)=>{
        notFound: true
      }
    }
-
-
 
   return {
     props: {

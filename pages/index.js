@@ -28,7 +28,7 @@ export const getStaticProps= async ()=>{
   //fetch the different components attributed to the endpoints of the menu
 
   for(let endpoint of endpointsToFetch){
-    const data= await fetch (`${global.fetchURI}${endpoint}?populate=*`);
+    const data= await fetch (`${global.fetchURI}${endpoint}?fields[0]=slug`);
     const json= await data.json()
     slug0.push(json)
   }

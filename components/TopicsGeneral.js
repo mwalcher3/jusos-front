@@ -3,10 +3,10 @@ import PopUp from './PopUp'
 
 const TopicsGeneral = ({data}) => {
     const dataAttributes= data.data.attributes
-    console.log(data);
+
   return (
     <div>
-      <PopUp />
+      <PopUp data={data.popups}/>
        topics general
         </div>
   )

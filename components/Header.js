@@ -11,6 +11,10 @@ import headercss from '../styles/header.module.scss'
     const [subMenuCount, setSubMenuCount] =useState(-1)
     const [hoveringCount, setHoveringCount] = useState(-1)
 
+    //create random numbers
+    const id= React.useId()
+
+
 
    useEffect(()=>{
     const options={
@@ -43,15 +47,19 @@ import headercss from '../styles/header.module.scss'
    React.useEffect(()=>{
 
     var body= document.querySelector("#body")
+    let scrollY
     function preventDefault(e) {
         e.preventDefault();
     }
 
     if(burgerOpen==true){
+        //remember the scrolling
+        scrollY = window.scrollY;
         body.classList.add('burgeropen')
         body.addEventListener('pointermove', preventDefault);
     }
     else{
+        window.scrollTo(0, scrollY);
         body.classList.remove('burgeropen')
         body.removeEventListener('pointermove', preventDefault);
     }
@@ -127,8 +135,8 @@ React.useEffect(()=>{
                     {item.children.map((itemChildren, index)=>{
                         return(
                             <>
-                            <Link href={`./${links[itemChildren.url]}`} passHref>
-                                <div key={index} className={headercss.navsubitems}>
+                            <Link  key={id} href={`./${links[itemChildren.url]}`} passHref>
+                                <div className={headercss.navsubitems}>
                                 {itemChildren.title}
                             </div>
                             </Link>

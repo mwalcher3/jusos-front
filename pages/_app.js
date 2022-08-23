@@ -30,7 +30,7 @@ export default MyApp
 
 
 export const global= {
-  fetchURI: "https://jusos-content.herokuapp.com/api",
+  fetchURI: "https://content.jusoshd.uber.space/api",
   endpointSyntax: (item)=>{
     const chars={
       ' ': '_',
@@ -38,8 +38,19 @@ export const global= {
       'ö': 'oe',
       'ü': 'ue'
     };
-    return item.toLowerCase()
-    //.replaceAll(' ','_' );
+
+    const keys = Object.keys(chars);
+
+    var itemm
+
+  for(let key in keys){
+    itemm = item.split(`${key}`).join(`${chars[key]}`);
+    console.log(itemm);
+};
+
+   console.log(itemm);
+
+    return itemm.toLowerCase()
   },
 
 }
