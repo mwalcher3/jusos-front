@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Link from 'next/link'
 import headercss from '../styles/header.module.scss'
-import Image from 'next/image'
 
 
   const Header = ({menuData, links})  =>{
@@ -102,9 +101,9 @@ React.useEffect(()=>{
 
         {/*Jusos Logo*/}
         <div className={headercss.logodiv}>
-            <Image src="/Jusos_Logo_4c.svg_.png"
+            <img src="/Jusos_Logo_4c.svg_.png"
             alt="Jusos Logo"
-            className={headercss.logo + " " + (intersection==false || burgerOpen? headercss.logoscrolled: "") }></Image> 
+            className={headercss.logo + " " + (intersection==false || burgerOpen? headercss.logoscrolled: "") }></img> 
 
         </div>
         
