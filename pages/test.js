@@ -1,5 +1,5 @@
 import React from 'react'
-import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
+//import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 
 const Test = ({data}) => {
   return (
@@ -17,7 +17,7 @@ const Test = ({data}) => {
 
 export default Test
 
-export const getStaticProps= async()=>{
+/*export const getStaticProps= async()=>{
      const client= new ApolloClient({
        uri: "https://jusos-content.herokuapp.com/graphql",
        cache: new InMemoryCache()
@@ -51,4 +51,4 @@ export const getStaticProps= async()=>{
   
   }
  }
-}
+}*/
