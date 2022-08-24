@@ -34,7 +34,7 @@ const Slugs = ({ menuData, data, links}) => {
      }
      else{
 
-      if(slug[1] && slug[1] == data.attributes.Title){
+      if(slug[1] && slug[1] == global.endpointSyntax(data.attributes.Title)){
        return(
           <Layout menuData={menuData} links={links}>
           <SingleArticles singleArticle={data}/>
@@ -107,7 +107,7 @@ const menuData= await fetch(`${global.fetchURI}/menus/menu?nested`);
   const nestedParams=
     slug1[0].map((item)=>{
       return{
-        params: {slug:[`artikel`, item.attributes.Title]}
+        params: {slug:[`artikel`, `${global.endpointSyntax(item.attributes.Title)}`]}
       }
     })
 
@@ -171,8 +171,7 @@ export const getStaticProps= async (context)=>{
     rewrite[item] = slug0[index];
 
     if(item== "schwerpunkte"){
-       rewrite[item]= {...slug0[index], ...popupJson}
-       console.log("data for general page", rewrite[item])
+       rewrite[item]= {...slug0[index], ...popupJson.data}
     }
   })
 
@@ -187,7 +186,7 @@ export const getStaticProps= async (context)=>{
   //push the data of the nested pages into the rewrite object
 
   slug1[0].forEach((item)=>{
-    rewrite[[`artikel`,item.attributes.Title]]= item;
+    rewrite[[`artikel`,`${global.endpointSyntax(item.attributes.Title)}`]]= item;
   })
 
 

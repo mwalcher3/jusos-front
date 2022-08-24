@@ -31,27 +31,10 @@ export default MyApp
 
 export const global= {
   fetchURI: "https://content.jusoshd.uber.space/api",
-  /*endpointSyntax: (item)=>{
-    const chars={
-      ' ': '_',
-      'ä': 'ae',
-      'ö': 'oe',
-      'ü': 'ue'
-    };
-
-    const keys = Object.keys(chars);
-
-    var itemm
-
-  for(let key in keys){
-    itemm = item.split(`${key}`).join(`${chars[key]}`);
-    console.log(itemm);
-};
-
-   console.log(itemm);
-
-    return itemm.toLowerCase()
-  },*/
+  endpointSyntax: (item)=>{
+  
+    return item.toLowerCase()
+  },
 
 }
 

@@ -66,7 +66,7 @@ const Articles = ({data}) => {
                   />
 
                   </div>
-               {<Link href= {`/artikel/${item.attributes.Title}`} passHref>
+               {<Link href= {`/artikel/${global.endpointSyntax(item.attributes.Title)}`} passHref>
                     <div className={articlecss.articletitle}>
                     {item.attributes.Title}
                     </div>

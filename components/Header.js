@@ -190,7 +190,7 @@ React.useEffect(()=>{
 
                         return (
                         <div key={itemChildren.title}>
-                          <Link href={`./${links[itemChildren.url]}`}>
+                          <Link href={`./${links[itemChildren.url]}`} passHref>
                               <div onClick={()=>{setBurgerOpen(false)}}className={headercss.burgerlinks}>
                           {itemChildren.title}
                           </div>
