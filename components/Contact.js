@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-import formcss from '../styles/form.module.scss'
+import formcss from '../styles/component-modules/form.module.scss'
 
 export default function Contact({data}) {
   const formData= data.data.attributes.form.data[0].attributes

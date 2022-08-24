@@ -1,4 +1,4 @@
-import slidercss from'../styles/slider.module.scss'
+import slidercss from'../styles/component-modules/slider.module.scss'
 import {useState, useEffect} from 'react'
 import useCounter from '../hooks/useCounter'
 

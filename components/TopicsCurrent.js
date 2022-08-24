@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import currentcss from '../styles/topics.current.module.scss'
+import currentcss from '../styles/component-modules/topics.current.module.scss'
 
 const TopicsCurrent = ({data}) => {
   const dataAttributes= data.data.attributes

@@ -32,8 +32,8 @@ export default MyApp
 export const global= {
   fetchURI: "https://content.jusoshd.uber.space/api",
   endpointSyntax: (item)=>{
-  
-    return item.toLowerCase()
+    item= item.toLowerCase()
+    return item
   },
 
 }

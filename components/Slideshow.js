@@ -1,4 +1,4 @@
-import slideshowcss from '../styles/slideshow.module.scss'
+import slideshowcss from '../styles/component-modules/slideshow.module.scss'
 import {useState, useEffect} from 'react'
 import Image from 'next/image'
 import useCounter from '../hooks/useCounter'

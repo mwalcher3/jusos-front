@@ -1,4 +1,4 @@
-import articlecss from "../../styles/article.module.scss"
+import articlecss from "../../styles/component-modules/article.module.scss"
 
 const SingleArticles = ({singleArticle}) => {
 
