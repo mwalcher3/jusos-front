@@ -59,14 +59,12 @@ export const getStaticProps= async ()=>{
 
 export default function Home({ data, menuData, links}) {
 
-
-
   const attributes= data.data.attributes
 
   return (
      <div>
        <Layout menuData={menuData} links={links}>
-       <Slideshow/>
+       <Slideshow data={attributes.slideShowImages}/>
         <Description data={attributes.aboutUs}/>
       {<Slider data={attributes.sliders}/> }
        </Layout>

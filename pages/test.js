@@ -1,7 +1,10 @@
 import React from 'react'
 //import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 
-const Test = ({data}) => {
+const Test = () => {
+
+
+
   return (
     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu augue ut lectus arcu bibendum at varius vel. Nec feugiat in fermentum posuere urna nec. Lacus vestibulum sed arcu non odio euismod lacinia at quis. Mauris augue neque gravida in fermentum. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Sed arcu non odio euismod. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Tortor consequat id porta nibh venenatis cras. Leo in vitae turpis massa sed elementum tempus. Habitant morbi tristique senectus et netus et. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Dictum at tempor commodo ullamcorper a. Quis lectus nulla at volutpat diam ut venenatis. Dignissim suspendisse in est ante in nibh mauris. Tempor orci eu lobortis elementum nibh tellus. Turpis cursus in hac habitasse platea dictumst quisque sagittis purus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper.
 
@@ -17,38 +20,3 @@ const Test = ({data}) => {
 
 export default Test
 
-/*export const getStaticProps= async()=>{
-     const client= new ApolloClient({
-       uri: "https://jusos-content.herokuapp.com/graphql",
-       cache: new InMemoryCache()
-     })
-
-     const array=['articlePage', 'simplePages']
-     const data =[]
-     for(let pageType of array){
-       const dataa=
-      await client.query({
-        query: gql`
-        query {
-         ${pageType} {
-           data {
-             attributes {
-               slug
-             }
-           }
-         }
-       }
-       `
-      })
-
-      data.push(dataa.data)
-
-     } 
-
- return{
-  props:{
-    data: data
-  
-  }
- }
-}*/

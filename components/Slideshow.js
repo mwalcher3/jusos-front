@@ -2,11 +2,11 @@ import slideshowcss from '../styles/component-modules/slideshow.module.scss'
 import {useState, useEffect} from 'react'
 import Image from 'next/image'
 import useCounter from '../hooks/useCounter'
+import {global} from '../pages/_app'
 
-const Slideshow = () => {
+const Slideshow = ({data}) => {
      const dataLength= 3
      const  [handleChange, current, next, previous, reduceBoolean]= useCounter(dataLength);
-     const imageSource=["/image-2.jpg", "/image-1.jpg", "/image-3.jpg"]
 
   useEffect(()=>{
        const timer = setTimeout(() => {
@@ -28,7 +28,7 @@ const Slideshow = () => {
           </button>
           </div>
 
-         {imageSource.map((item, index)=>{
+         {data.data.map((item, index)=>{
               return(      
                <div className={
                     index==current? slideshowcss.current: 
@@ -37,8 +37,8 @@ const Slideshow = () => {
                     slideshowcss.none}  key={index}>
                
                {<Image
-                src={item} 
-                alt="Spaziergang"
+                src={`${global.host}${item.attributes.url}`} 
+                alt={item.attributes.alternativeText}
                 layout="fill"
                 objectFit='cover'
                 priority
@@ -57,7 +57,7 @@ const Slideshow = () => {
          </div>
 
          <div className={slideshowcss.dotcontainer}>
-         {imageSource.map((item, index)=> {return (
+         {data.data.map((item, index)=> {return (
          <div className={slideshowcss.dots+" "+ (index== current? slideshowcss.dotsactive: "")} key={index}></div>)})}
          </div>
 
