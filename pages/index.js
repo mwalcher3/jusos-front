@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {global} from './_app'
 import Description from '../components/Description'
 import Slider from '../components/Slider'
-import Layout from '../components/Layout'
+import Layout from '../components/layout-components/Layout'
 import Slideshow from '../components/Slideshow'
 
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Link from 'next/link'
-import headercss from '../styles/layout-modules/header.module.scss'
+import headercss from '../../styles/layout-modules/header.module.scss'
 
 
   const Header = ({menuData, links})  =>{

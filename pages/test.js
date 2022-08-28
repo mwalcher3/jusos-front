@@ -1,9 +1,23 @@
 import React from 'react'
 //import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 
-const Test = () => {
+export const getStaticProps= async ()=> {
+  const response= await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption&access_token=IGQVJWenJla2tXZAVpCcFQzVGNVRFBBR0lIRVpRek9PeGVJV3llMlNOWFJBRU5lVUgyaWdPS1BwR0prZAU01UXFDMWhuYldlczRBWGNYV0lINVdqdy1YQmhmeGZAxRzlXWXgxcks0V1ZAUZAFpBSHgzN21jZAwZDZD`);
+  const json= await response.json()
 
 
+  return {
+    props: {
+      data: json,
+    },
+  }
+
+}
+
+const Test = ({data}) => {
+  console.log(data);
+
+ 
 
   return (
     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu augue ut lectus arcu bibendum at varius vel. Nec feugiat in fermentum posuere urna nec. Lacus vestibulum sed arcu non odio euismod lacinia at quis. Mauris augue neque gravida in fermentum. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Sed arcu non odio euismod. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Tortor consequat id porta nibh venenatis cras. Leo in vitae turpis massa sed elementum tempus. Habitant morbi tristique senectus et netus et. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Dictum at tempor commodo ullamcorper a. Quis lectus nulla at volutpat diam ut venenatis. Dignissim suspendisse in est ante in nibh mauris. Tempor orci eu lobortis elementum nibh tellus. Turpis cursus in hac habitasse platea dictumst quisque sagittis purus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper.

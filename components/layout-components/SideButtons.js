@@ -1,5 +1,5 @@
 import React from 'react'
-import sidebuttoncss from '../styles/component-modules/sidebutton.module.scss'
+import sidebuttoncss from '../../styles/component-modules/sidebutton.module.scss'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faEnvelope, faSun, faMoon} from '@fortawesome/free-solid-svg-icons'

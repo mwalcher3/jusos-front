@@ -11,7 +11,7 @@ const Slideshow = ({data}) => {
   useEffect(()=>{
        const timer = setTimeout(() => {
           handleChange(1);
-        }, 3000);
+        }, 5000);
         return () => clearTimeout(timer);
      },
      [current])
