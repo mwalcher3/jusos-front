@@ -1,7 +1,8 @@
 import React from 'react'
 
 export const getStaticProps= async ()=> {
-  const response= await fetch("https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=819a2134b339f9bbad2e6b8ab6bd1ab5&access_token=IGQVJVVFJvb2R4OVhCakVJampjZAU1HNzkwM2tGN2NPWmRpVjRMZAkpYdE1VN2RKTjMwX2JvSm1ZAVmxJOVRpc1BaZA3h1ZAk5uckZAIZAUFwYWJ0OTZANSGRWcWl6WTk3NXBkZAy1CYmtBamd5LWx2OGhFeEhQMwZDZD");
+  const response= await fetch("https://api.instagram.com/oauth/authorize?client_id=636661868069032&redirect_uri=https://jusoshd.uber.space/auth/&scope=user_profile,user_media&response_type=code");
+
   const json= await response.json()
   
   return {

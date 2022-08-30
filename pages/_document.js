@@ -8,11 +8,9 @@ export default function Document() {
       <link rel="icon" type="image/png" href="./public/Jusos_Heidelberg_Logo.png"/>
        </Head>
       <body id="body">
-      <div className="wrapper" id="wrapper">
     
           <Main />
         <NextScript />
-        </div>
       </body>
 
     </Html>

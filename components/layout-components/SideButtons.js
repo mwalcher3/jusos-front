@@ -10,15 +10,14 @@ const SideButtons = () => {
 
     const toggleTheme=()=>{
         var colorTheme= localStorage.getItem('color-mode')
-        var wrapper= document.querySelector("#wrapper")
 
         localStorage.setItem('color-mode', colorTheme==='light'? 'dark': 'light')
 
         if(colorTheme== 'light'){
-         wrapper.classList.add('dark');
+         document.body.classList.add('dark');
         }
         else{
-         wrapper.classList.remove('dark')
+         document.body.classList.remove('dark')
         }
     }
 

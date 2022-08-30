@@ -8,8 +8,9 @@ const TopicsCurrent = ({data}) => {
 
   const instagramData= data.instaData
   const dataAttributes= data.data.attributes
+  const imagesWidth="350"
+  const imagesHeight="350"
 
-  
 
   return (
     <div className={currentcss.maincontainer}>
@@ -31,25 +32,39 @@ const TopicsCurrent = ({data}) => {
             automatic: false,
             dataSource: imageSource,
             imageAlt: "instagram image",
-            dots: false
+            dots: false,
+            width: imagesWidth,
+            height: imagesHeight
            }
 
+          
            return(
             <div key={id} className={currentcss.boxes}>
               <div className={currentcss.images}>
-
-  
+                <div className={currentcss.imagecontainer}>
                 {<Carousel carouselData={carouselData}/>}
+                </div>
   
-                {/*<Image
+                </div>
+  
+              <h2>this is a title</h2>
+              <p className={item.caption? currentcss.textboxes: "none"}>
+                {item.caption}</p>
+            </div>
+          )
+        }
+
+        else{
+          return(
+            <div key={id} className={currentcss.boxes}>
+              <div className={currentcss.images}>
+              <Image
                       src={item.media_url} 
                       alt="Spaziergang"
-                      layout="fill"
-                      objectFit='cover'
-                      priority
-           />*/}
-  
-                    </div>
+                      width= {imagesWidth}
+                      height= {imagesHeight}
+                      priority />
+              </div>
   
               <h2>this is a title</h2>
               <p className={item.caption? currentcss.textboxes: "none"}>

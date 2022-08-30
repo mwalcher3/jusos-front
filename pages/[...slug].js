@@ -168,8 +168,8 @@ export const getStaticProps= async (context)=>{
   /**/
 
   /*fetch data from instagram api to push it into rewrite["aktuelles"]*/
-
-  const instagramData= await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=IGQVJVVFJvb2R4OVhCakVJampjZAU1HNzkwM2tGN2NPWmRpVjRMZAkpYdE1VN2RKTjMwX2JvSm1ZAVmxJOVRpc1BaZA3h1ZAk5uckZAIZAUFwYWJ0OTZANSGRWcWl6WTk3NXBkZAy1CYmtBamd5LWx2OGhFeEhQMwZDZD`);
+  const instagramToken= process.env.INSTAGRAM_TOKEN
+  const instagramData= await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=${instagramToken}`);
   const instagramJson= await instagramData.json()
 
   

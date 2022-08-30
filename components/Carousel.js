@@ -11,6 +11,8 @@ import carcss from '../styles/component-modules/carousel.module.scss'
         image source (array)
         image alt (string)
         dots? (boolean)
+        width
+        height
         styles:{
             button-type
             dots
@@ -41,23 +43,29 @@ if(data.automatic!==false){
           </button>
 
          {data.dataSource.map((item, index)=>{
-          if(data.length==2){
+
+          if(data.width && data.height){
             return(      
               <div className={
-                   index==current? carcss.current:  carcss.next2}  key={index}>
+                   index==current? carcss.current: 
+                   index==next? reduceBoolean? carcss.nextreduce: carcss.next: 
+                   index==previous? reduceBoolean? carcss.previousreduce: carcss.previous:
+                   "none"}  key={index}>
               
               {<Image
                src={item} 
                alt={data.imageAlt}
-               layout="fill"
-               objectFit='cover'
+               width={data.width}
+               height= {data.height}
                priority
               />}
          
             </div>
 
              )
+
           }
+          
               return(      
                <div className={
                     index==current? carcss.current: 
