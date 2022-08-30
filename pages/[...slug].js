@@ -169,8 +169,11 @@ export const getStaticProps= async (context)=>{
 
   /*fetch data from instagram api to push it into rewrite["aktuelles"]*/
 
-  const instagramData= await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption&access_token=IGQVJWenJla2tXZAVpCcFQzVGNVRFBBR0lIRVpRek9PeGVJV3llMlNOWFJBRU5lVUgyaWdPS1BwR0prZAU01UXFDMWhuYldlczRBWGNYV0lINVdqdy1YQmhmeGZAxRzlXWXgxcks0V1ZAUZAFpBSHgzN21jZAwZDZD`);
+  const instagramData= await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=IGQVJVVFJvb2R4OVhCakVJampjZAU1HNzkwM2tGN2NPWmRpVjRMZAkpYdE1VN2RKTjMwX2JvSm1ZAVmxJOVRpc1BaZA3h1ZAk5uckZAIZAUFwYWJ0OTZANSGRWcWl6WTk3NXBkZAy1CYmtBamd5LWx2OGhFeEhQMwZDZD`);
   const instagramJson= await instagramData.json()
+
+  
+  const instaData= instagramJson.data
 
 
   const rewrite={}
@@ -182,7 +185,7 @@ export const getStaticProps= async (context)=>{
        rewrite[item]= {...slug0[index], ...popupJson.data}
     }
     else if(item== "aktuelles"){
-      rewrite[item]= {...slug0[index], ...instagramJson}
+      rewrite[item]= {...slug0[index], instaData}
    }
   })
 

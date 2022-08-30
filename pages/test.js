@@ -1,11 +1,9 @@
 import React from 'react'
-//import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
 
 export const getStaticProps= async ()=> {
-  const response= await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption&access_token=IGQVJWenJla2tXZAVpCcFQzVGNVRFBBR0lIRVpRek9PeGVJV3llMlNOWFJBRU5lVUgyaWdPS1BwR0prZAU01UXFDMWhuYldlczRBWGNYV0lINVdqdy1YQmhmeGZAxRzlXWXgxcks0V1ZAUZAFpBSHgzN21jZAwZDZD`);
+  const response= await fetch("https://graph.instagram.com/access_token?grant_type=ig_exchange_token&client_secret=819a2134b339f9bbad2e6b8ab6bd1ab5&access_token=IGQVJVVFJvb2R4OVhCakVJampjZAU1HNzkwM2tGN2NPWmRpVjRMZAkpYdE1VN2RKTjMwX2JvSm1ZAVmxJOVRpc1BaZA3h1ZAk5uckZAIZAUFwYWJ0OTZANSGRWcWl6WTk3NXBkZAy1CYmtBamd5LWx2OGhFeEhQMwZDZD");
   const json= await response.json()
-
-
+  
   return {
     props: {
       data: json,
@@ -20,7 +18,11 @@ const Test = ({data}) => {
  
 
   return (
-    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu augue ut lectus arcu bibendum at varius vel. Nec feugiat in fermentum posuere urna nec. Lacus vestibulum sed arcu non odio euismod lacinia at quis. Mauris augue neque gravida in fermentum. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Sed arcu non odio euismod. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Tortor consequat id porta nibh venenatis cras. Leo in vitae turpis massa sed elementum tempus. Habitant morbi tristique senectus et netus et. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Dictum at tempor commodo ullamcorper a. Quis lectus nulla at volutpat diam ut venenatis. Dignissim suspendisse in est ante in nibh mauris. Tempor orci eu lobortis elementum nibh tellus. Turpis cursus in hac habitasse platea dictumst quisque sagittis purus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper.
+    <div>
+
+      
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu augue ut lectus arcu bibendum at varius vel. Nec feugiat in fermentum posuere urna nec. Lacus vestibulum sed arcu non odio euismod lacinia at quis. Mauris augue neque gravida in fermentum. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Sed arcu non odio euismod. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Tortor consequat id porta nibh venenatis cras. Leo in vitae turpis massa sed elementum tempus. Habitant morbi tristique senectus et netus et. Enim blandit volutpat maecenas volutpat blandit aliquam etiam. Dictum at tempor commodo ullamcorper a. Quis lectus nulla at volutpat diam ut venenatis. Dignissim suspendisse in est ante in nibh mauris. Tempor orci eu lobortis elementum nibh tellus. Turpis cursus in hac habitasse platea dictumst quisque sagittis purus. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper.
 
     Enim nunc faucibus a pellentesque. Tellus in metus vulputate eu scelerisque felis. Tortor at risus viverra adipiscing at in tellus. In eu mi bibendum neque. Tristique et egestas quis ipsum suspendisse ultrices gravida dictum fusce. Lectus quam id leo in vitae turpis. Eget mauris pharetra et ultrices neque ornare aenean euismod elementum. Facilisi nullam vehicula ipsum a. Elementum facilisis leo vel fringilla est ullamcorper eget nulla. Varius duis at consectetur lorem donec massa sapien faucibus. Eleifend quam adipiscing vitae proin sagittis. Nunc eget lorem dolor sed viverra ipsum nunc. Egestas dui id ornare arcu odio ut sem nulla pharetra. Nibh sit amet commodo nulla facilisi nullam vehicula ipsum a. Lobortis elementum nibh tellus molestie nunc non blandit. Ut sem viverra aliquet eget sit amet tellus. Justo donec enim diam vulputate ut pharetra. Vehicula ipsum a arcu cursus vitae congue. Fringilla est ullamcorper eget nulla facilisi etiam dignissim.
     
