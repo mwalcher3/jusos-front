@@ -1,4 +1,4 @@
-@import "../styles/config";
+@import "../../styles/config";
 
 @mixin movingslides($translate){
     position: absolute;
@@ -7,45 +7,30 @@
     transform: translateX($translate);
 }
 
-.maincontainer{
-    margin: 0 (-$horizontalmargin);
-    width: 100vw;
-    overflow: hidden;
-}
-
-
-.imagecontainer{
-    border: 2px var(--red) solid;
-    position: relative;
-    display: grid;
-    grid-auto-flow: column;
-    justify-items: center;
-    align-items: center;
-    grid-column: 1;
-    grid-row: 1;
-    height: 350px;
-}
 
 .current{
     @include movingslides($translate: 0);
-    transition:  0.7s ease-in-out;
+    transition:  0.6s ease-in-out;
 }
 
 .next{
+    @include movingslides($translate: 100vw);
+}
+
+
+.previous{
+    @include movingslides($translate: -100vw);
+    transition: transform 0.6s ease-in-out;
+}
+
+
+.nextreduce{
     @include movingslides($translate: -100vw)
 }
 
-.previous{
-    @include movingslides($translate: 100vw);
-    transition: transform 0.7s ease-in-out;
-}
-.nextreduce{
-    @include movingslides($translate: 100vw)
-}
-
 .previousreduce{
-    @include movingslides($translate: -100vw);
-    transition: transform 0.7s ease-in-out;
+    @include movingslides($translate: 100vw);
+    transition: transform 0.6s ease-in-out;
 
 }
 
@@ -69,6 +54,8 @@
 .button1{
     left: 1vw;
 }
+
+
 
 .button2{
     transform: scaleX(-1);

@@ -12,6 +12,7 @@ body{
   font-family: 'Roboto', sans-serif;
   margin: 0px;
   position: relative;
+  overflow-x: clip;
 }
 
 body.burgeropen{
@@ -20,20 +21,7 @@ body.burgeropen{
 }
 
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.wrapper::-webkit-scrollbar {
-  display: none;
-}
 
-.wrapper {
-  overflow-x: clip;
-  overflow-y: clip;
-  width: 100%;
-  min-height: 100vh;
-  position: absolute;
- -ms-overflow-style: none;  /* Hide scrollbar IE and Edge */
-  scrollbar-width: none;  /*Hide scrollbar Firefox */
-}
 
 .maincontent{
   margin: 0 ($horizontalmargin);

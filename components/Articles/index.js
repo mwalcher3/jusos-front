@@ -1,5 +1,5 @@
 import {global} from '../../pages/_app'
-import articlecss from "../../styles/article.module.scss"
+import articlecss from "../../styles/component-modules/article.module.scss"
 import Image from 'next/image'
 import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'

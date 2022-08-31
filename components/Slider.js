@@ -1,4 +1,4 @@
-import slidercss from'../styles/slider.module.scss'
+import slidercss from'../styles/component-modules/slider.module.scss'
 import {useState, useEffect} from 'react'
 import useCounter from '../hooks/useCounter'
 
@@ -21,7 +21,7 @@ return <div className={slidercss.mainslider}>
             index==current? slidercss.current: 
             index==next? reduceBoolean? slidercss.nextreduce: slidercss.next: 
             index==previous? reduceBoolean? slidercss.previousreduce: slidercss.previous :
-            slidercss.none} 
+            "none"} 
 
               key={item.id}
               >

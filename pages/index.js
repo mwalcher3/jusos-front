@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {global} from './_app'
 import Description from '../components/Description'
 import Slider from '../components/Slider'
-import Layout from '../components/Layout'
+import Layout from '../components/layout-components/Layout'
 import Slideshow from '../components/Slideshow'
 
 
@@ -59,14 +59,12 @@ export const getStaticProps= async ()=>{
 
 export default function Home({ data, menuData, links}) {
 
-
-
   const attributes= data.data.attributes
 
   return (
      <div>
        <Layout menuData={menuData} links={links}>
-       <Slideshow/>
+       <Slideshow data={attributes.slideShowImages}/>
         <Description data={attributes.aboutUs}/>
       {<Slider data={attributes.sliders}/> }
        </Layout>

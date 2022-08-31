@@ -1,5 +1,5 @@
 import React from 'react'
-import sidebuttoncss from '../styles/sidebutton.module.scss'
+import sidebuttoncss from '../../styles/layout-modules/sidebutton.module.scss'
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse, faEnvelope, faSun, faMoon} from '@fortawesome/free-solid-svg-icons'
@@ -10,15 +10,14 @@ const SideButtons = () => {
 
     const toggleTheme=()=>{
         var colorTheme= localStorage.getItem('color-mode')
-        var wrapper= document.querySelector("#wrapper")
 
         localStorage.setItem('color-mode', colorTheme==='light'? 'dark': 'light')
 
         if(colorTheme== 'light'){
-         wrapper.classList.add('dark');
+         document.body.classList.add('dark');
         }
         else{
-         wrapper.classList.remove('dark')
+         document.body.classList.remove('dark')
         }
     }
 

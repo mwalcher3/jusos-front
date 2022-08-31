@@ -3,7 +3,7 @@ import {useRouter} from 'next/router'
 import {global} from './_app'
 
 import SingleArticles from '../components/Articles/SingleArticles'
-import Layout from '../components/Layout'
+import Layout from '../components/layout-components/Layout'
 import SimplePage from '../components/Simple-page'
 import kontakt from '../components/Contact'
 import artikel from '../components/Articles'
@@ -159,11 +159,22 @@ export const getStaticProps= async (context)=>{
     else return null
   })
   //create an object of the form {displayedSlugs: data}
-  /* fetch the data for the poups seperately and push it into rewrite["shwerpunkte"]. 
+  /* fetch the data for the poups seperately to push it into rewrite["shwerpunkte"]. 
   cannot be fetched with populate=*, because of relation nesting*/
 
   const popupData= await fetch (`${global.fetchURI}/pop-ups?populate=*`);
   const popupJson= await popupData.json()
+
+  /**/
+
+  /*fetch data from instagram api to push it into rewrite["aktuelles"]*/
+  const instagramToken= process.env.INSTAGRAM_TOKEN
+  const instagramData= await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=${instagramToken}`);
+  const instagramJson= await instagramData.json()
+
+  
+  const instaData= instagramJson.data
+
 
   const rewrite={}
 
@@ -173,7 +184,12 @@ export const getStaticProps= async (context)=>{
     if(item== "schwerpunkte"){
        rewrite[item]= {...slug0[index], ...popupJson.data}
     }
+    else if(item== "aktuelles"){
+      rewrite[item]= {...slug0[index], instaData}
+   }
   })
+
+
 
   //{endpointsToFetch: slug}
 

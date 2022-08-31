@@ -1,4 +1,4 @@
-.wrapper{
+body{
     background-color: white;
     color: black;
     --shadow: rgba(60,64,67,0.15);
@@ -26,7 +26,7 @@
     --moondisplay: block;
 }
 
-.wrapper.dark{
+body.dark{
     background-color: rgb(0, 0, 0);
     color: var(--darkmode-text-color);
     --darkmode-text-color: rgb(187, 187, 187);

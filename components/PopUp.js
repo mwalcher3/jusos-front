@@ -1,5 +1,5 @@
 import React from 'react'
-import poupcss from "../styles/popup.module.scss"
+import poupcss from "../styles/component-modules/popup.module.scss"
 
 const PopUp = ({data}) => {
   console.log(data)

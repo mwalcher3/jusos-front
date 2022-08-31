@@ -22,12 +22,12 @@
       
       localStorage.setItem('color-mode', colorMode)
       var colorTheme= localStorage.getItem('color-mode')
-      var wrapper = document.querySelector("#wrapper")
+      var body = document.body
 
       if(colorTheme== 'dark'){
-        wrapper.classList.add('dark')
+         body.classList.add('dark')
       }
       else{
-        wrapper.classList.remove('dark')
+        body.classList.remove('dark')
       }
   })()

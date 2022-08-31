@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Link from 'next/link'
-import headercss from '../styles/header.module.scss'
+import headercss from '../../styles/layout-modules/header.module.scss'
 
 
   const Header = ({menuData, links})  =>{
@@ -10,11 +10,6 @@ import headercss from '../styles/header.module.scss'
     const [burgerOpen, setBurgerOpen] = useState(false)
     const [subMenuCount, setSubMenuCount] =useState(-1)
     const [hoveringCount, setHoveringCount] = useState(-1)
-
-    //create random numbers
-    const id= React.useId()
-
-
 
    useEffect(()=>{
     const options={
@@ -135,7 +130,7 @@ React.useEffect(()=>{
                     {item.children.map((itemChildren, index)=>{
                         return(
                             <>
-                            <Link  key={id} href={`./${links[itemChildren.url]}`} passHref>
+                            <Link  key={index} href={`./${links[itemChildren.url]}`} passHref>
                                 <div className={headercss.navsubitems}>
                                 {itemChildren.title}
                             </div>
