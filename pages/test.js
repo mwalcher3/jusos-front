@@ -1,20 +1,7 @@
 import React from 'react'
 
-export const getStaticProps= async ()=> {
-  const response= await fetch("https://api.instagram.com/oauth/authorize?client_id=636661868069032&redirect_uri=https://jusoshd.uber.space/auth/&scope=user_profile,user_media&response_type=code");
-
-  const json= await response.json()
-  
-  return {
-    props: {
-      data: json,
-    },
-  }
-
-}
 
 const Test = ({data}) => {
-  console.log(data);
 
  
 

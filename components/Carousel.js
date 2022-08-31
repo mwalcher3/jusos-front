@@ -24,15 +24,16 @@ const Carousel = ({carouselData}) => {
     
     const  [handleChange, current, next, previous, reduceBoolean]= useCounter(data.length);
 
-if(data.automatic!==false){
-  useEffect(()=>{
+useEffect(()=>{
+  if(data.automatic!==false){
     const timer = setTimeout(() => {
        handleChange(1);
      }, data.delay);
      return () => clearTimeout(timer);
-  },
+  }
+},
   [current])
-}
+
 
 
   return (

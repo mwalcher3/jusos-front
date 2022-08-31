@@ -4,7 +4,6 @@ import currentcss from '../styles/component-modules/topics.current.module.scss'
 import Carousel from "./Carousel"
 
 const TopicsCurrent = ({data}) => {
-  console.log(data)
 
   const instagramData= data.instaData
   const dataAttributes= data.data.attributes
