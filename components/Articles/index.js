@@ -51,7 +51,8 @@ const Articles = ({data}) => {
           data.data.attributes.children.data.map((item, i)=>{
             const image = articleimages[i]
             return(
-            <div key={item.id} 
+              <Link key={item.id} href= {`/artikel/${global.endpointSyntax(item.attributes.Title)}`} passHref>
+            <div  
             className={articlecss.articleboxes}
             ref={el => imageRefs.current[i] = el} >
                 
@@ -66,15 +67,16 @@ const Articles = ({data}) => {
                   />
 
                   </div>
-               {<Link href= {`/artikel/${global.endpointSyntax(item.attributes.Title)}`} passHref>
+
                     <div className={articlecss.articletitle}>
                     {item.attributes.Title}
                     </div>
-            </Link>}
+
                  <div className={articlecss.articledate}>
                    {item.attributes.date}
                  </div>
             </div>
+            </Link>
               )
           })
       }

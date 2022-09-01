@@ -182,7 +182,7 @@ export const getStaticProps= async (context)=>{
     rewrite[item] = slug0[index];
 
     if(item== "schwerpunkte"){
-       rewrite[item]= {...slug0[index], ...popupJson.data}
+       rewrite[item]= {...slug0[index], ...popupJson}
     }
     else if(item== "aktuelles"){
       rewrite[item]= {...slug0[index], instaData}

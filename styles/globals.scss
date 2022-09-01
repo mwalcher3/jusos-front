@@ -1,6 +1,12 @@
 
 @import "../styles/config";
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root{
+  --translation-width: 100vw; //how far elements will move to the right/left with sliders
+  //default is set to 100vw
+}
+
 html,
 
 

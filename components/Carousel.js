@@ -3,49 +3,41 @@ import useCounter from '../hooks/useCounter'
 import Image from 'next/image'
 import carcss from '../styles/component-modules/carousel.module.scss'
 
-/*carouselData:{
-        length (integer)
-        onClick? (boolean)
-        automatic? (boolean)
-        timeout (integer)
-        image source (array)
-        image alt (string)
-        dots? (boolean)
-        width
-        height
-        styles:{
-            button-type
-            dots
-        }
-    } */
-
-const Carousel = ({carouselData}) => {
-    const data= carouselData
+const Carousel = ({settings}) => {
     
-    const  [handleChange, current, next, previous, reduceBoolean]= useCounter(data.length);
+    const  [handleChange, current, next, previous, reduceBoolean]= useCounter(settings.length);
 
 useEffect(()=>{
-  if(data.automatic!==false){
+  if(settings.automatic!==false){
     const timer = setTimeout(() => {
        handleChange(1);
-     }, data.delay);
+     }, settings.delay);
      return () => clearTimeout(timer);
   }
 },
   [current])
 
 
+// set the distance the image will move to the right/left to the size of its container
+//to avoid spacing between the images
+useEffect(()=>{
+  if(settings.boxWidth){
+    var r = document.querySelector(':root');
+    var rs = getComputedStyle(r);
+    r.style.setProperty('--translation-width', `${settings.boxWidth}`);
+  }
+},[])
+
 
   return (
     <>
-          <button onClick={()=>{handleChange(-1+ data.length)}}
-          className={carcss.button1+" "+ data.buttonType}>
+          <button onClick={()=>{handleChange(-1+ settings.length)}}
+          className={carcss.button1+" "+ settings.buttonType}>
           &#60;
           </button>
 
-         {data.dataSource.map((item, index)=>{
+         {settings.dataSource.map((item, index)=>{
 
-          if(data.width && data.height){
             return(      
               <div className={
                    index==current? carcss.current: 
@@ -53,55 +45,39 @@ useEffect(()=>{
                    index==previous? reduceBoolean? carcss.previousreduce: carcss.previous:
                    "none"}  key={index}>
               
-              {<Image
+              {settings.width && settings.height?
+              <Image
                src={item} 
-               alt={data.imageAlt}
-               width={data.width}
-               height= {data.height}
-               priority
+               alt={settings.imageAlt}
+               width={settings.width}
+               height= {settings.height}
+               priority/>: 
+               <Image
+                src={item} 
+                alt={settings.imageAlt}
+                layout="fill"
+                objectFit='cover'
+                priority
               />}
          
             </div>
 
              )
-
-          }
-          
-              return(      
-               <div className={
-                    index==current? carcss.current: 
-                    index==next? reduceBoolean? carcss.nextreduce: carcss.next: 
-                    index==previous? reduceBoolean? carcss.previousreduce: carcss.previous:
-                    "none"}  key={index}>
-               
-               {<Image
-                src={item} 
-                alt={data.imageAlt}
-                layout="fill"
-                objectFit='cover'
-                priority
-               />}
-          
-             </div>
-
-              )
          })}
 
          <button onClick={()=>{handleChange(1)}}
-        className={carcss.button2+ " " + data.buttonType}>
+        className={carcss.button2+ " " + settings.buttonType}>
              &#60;
              </button>
 
          <div className={carcss.dotcontainer}>
-         {data.dataSource.map((item, index)=> {
+         {settings.dataSource.map((item, index)=> {
                 return (
-                <div className={data.dots? carcss.dots+" "+ (index== current? carcss.dotsactive: ""): "none"} 
+                <div className={settings.dots? carcss.dots+" "+ (index== current? carcss.dotsactive: ""): "none"} 
                 key={index}></div>)  
              
              })}
          </div>
-
-
     </>
   )
 }

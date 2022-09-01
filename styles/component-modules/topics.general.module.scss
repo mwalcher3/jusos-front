@@ -1,0 +1,20 @@
+@import "../../styles/config";
+
+.maincontainer{
+    display: grid;
+    gap: 20px;
+
+    h1{
+        text-align: center
+    }
+}
+
+
+.image{
+    position: relative;
+    margin: 0 (-$horizontalmargin);
+    width: 100vw;
+    height: 60vh;
+    overflow-y: hidden;
+}
+

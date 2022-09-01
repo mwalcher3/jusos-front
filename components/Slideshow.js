@@ -3,21 +3,21 @@ import {global} from '../pages/_app'
 import Carousel from "./Carousel"
 
 const Slideshow = ({data}) => {
-    // const dataLength= 3
      const imageSource=[]
      data.data.map((item)=>{
           imageSource.push(`${global.host}${item.attributes.url}`)
      })
 
-     let carouselData= {
-          length: 3,
+     let carouselSettings= {
+          length: data.data.length,
           onClick: true,
           automatic: true,
           delay: 5000,
           dataSource: imageSource,
           imageAlt: "slideshow ",
           dots: true,
-          buttonType: "button-a"
+          buttonType: "button-a",
+          boxWidth: "100vw"
      }
 
 
@@ -25,7 +25,7 @@ const Slideshow = ({data}) => {
      return(
           <div className={slideshowcss.maincontainer}>
              <div className={slideshowcss.imagecontainer}>
-               <Carousel carouselData={carouselData}/>
+               <Carousel settings={carouselSettings}/>
              </div>
           </div>
      )
