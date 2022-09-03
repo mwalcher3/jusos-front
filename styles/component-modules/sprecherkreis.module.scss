@@ -8,21 +8,46 @@
 // @param {Length} $item-size - Single item size
 
 @mixin on-circle($item-count, $circle-size, $item-size) {
+
+    --font-size: 1rem;
+
     position: relative;
+    display: grid;
     width:  $circle-size;
     height: $circle-size;
     padding: 0;
     border-radius: 50%; 
-    list-style: none;       
+    list-style: none;  
     
-    > * {
-      display: block;
-      position: absolute;
-      top:  50%; 
-      left: 50%;
-      width:  $item-size;
-      height: $item-size;
-      margin: -($item-size / 2);
+    
+     > *{
+        display: block;
+        position: absolute;
+        top:  50%; 
+        left: 50%;
+        width:  $item-size;
+        height: calc($item-size + var(--font-size) + 15px);
+        margin: -($item-size / 2);
+        cursor: pointer;
+
+        .roundimages{
+            background-color: white;
+            position: absolute;
+            overflow: hidden;
+            border-radius: 50%;
+            width:  $item-size;
+            height: $item-size;
+        }
+
+        .name{
+            position: absolute;
+            font-size: var(--font-size);
+            color: var(--black-white-switch);
+            bottom: 0;
+            text-align: center;
+            width: 100%
+        }
+
     
       $angle: (360 / $item-count);
       $rot: 0;
@@ -41,8 +66,17 @@
   }
 
 
-  .circle-container{
-    @include on-circle($item-count: 5, $circle-size: 20em, $item-size: 6em); 
+ 
+  .circlecontainer{
+    @include on-circle($item-count: 5, $circle-size: 30em, $item-size: 10em); 
     margin: 5em auto 0;
-    border: solid 5px tomato;
+    margin-bottom: 12em;
+    border: solid 5px var(--red);
+
   }
+
+
+
+
+ 
+

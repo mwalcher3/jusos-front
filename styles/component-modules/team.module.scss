@@ -1,1 +1,29 @@
 @import "../../styles/config";
+
+
+
+
+
+.description{
+    font-size: 1.1rem;
+    border: 2px solid var(--red);
+    padding: 20px
+}
+
+
+.othermembers{
+    display : flex;
+    gap: 40px;
+    margin: auto;
+
+    .squareimages{
+        background-color: white;
+        position: relative;
+        width: 150px;
+        height: 150px;
+    }
+
+    h4{
+        color: var(--black-white-switch)
+    }
+}
