@@ -1,4 +1,4 @@
-
+@import "../styles/config";
 
 .horizontalLine{
     border: 0px;
@@ -14,5 +14,37 @@
 
 .none{
     display: none
+}
+
+.lastupdated::before{
+    content:"letzes mal bearbeitet: ";
+}
+
+.lastupdated{
+    font-size: 0.9rem;
+    margin-left: (-$horizontalmargin);
+    margin-top: 20px;
+    width: fit-content;
+    position: relative;
+    left: 10px;
+}
+
+
+.mainimage{
+    position: relative;
+    margin: 0 (-$horizontalmargin);
+    width: 100vw;
+    height: 60vh;
+    overflow-y: hidden;
+}
+
+
+.container{
+    display: grid;
+    gap: 30px;
+
+    h1{
+        text-align: center
+    }
 }
 

@@ -1,20 +1,16 @@
 @import "../../styles/config";
 
-.maincontainer{
-    display: grid;
-    gap: 20px;
 
-    h1{
-        text-align: center
+
+.topicstext{
+    h2{
+        width: fit-content;
     }
-}
-
-
-.image{
-    position: relative;
-    margin: 0 (-$horizontalmargin);
-    width: 100vw;
-    height: 60vh;
-    overflow-y: hidden;
+    .plus{
+        color:white;
+        background-color: var(--red);
+        width: 10px;
+        height: 10px;
+    }
 }
 

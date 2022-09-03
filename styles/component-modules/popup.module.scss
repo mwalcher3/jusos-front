@@ -7,7 +7,6 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    border: 2px solid blue;
     padding: 15px;
 
     .icons{
@@ -39,10 +38,7 @@
         position: relative;
         top: 20vh;
         padding: 40px;
-        min-width: 300px;
-        width: 500px;
-        max-height: 500px;
-        height: 300px;
+
         margin: auto;
         border: 1px solid #cacaca;
         border-radius: 3px;
@@ -52,9 +48,24 @@
             gap: 7px;
         }
 
-        .close{
+        .closingbutton{
+            font-size: 1.7rem;
             position: absolute;
+            right:15px;
+            top:15px;
+            cursor: pointer;
         }
+    }
+
+}
+
+@media(min-width: $medium){
+
+    .bulletPoints{
+        min-width: 300px;
+        width: 500px;
+        max-height: 500px;
+        height: 300px;
     }
 
 }

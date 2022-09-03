@@ -9,6 +9,7 @@ import kontakt from '../components/Contact'
 import artikel from '../components/Articles'
 import aktuelles from '../components/TopicsCurrent'
 import schwerpunkte from '../components/TopicsGeneral'
+import team from "../components/Team/index"
 
 
 const Slugs = ({ menuData, data, links}) => {
@@ -21,6 +22,7 @@ const Slugs = ({ menuData, data, links}) => {
       kontakt: kontakt,
       aktuelles: aktuelles,
       schwerpunkte: schwerpunkte,
+      team: team,
     }
 
     var ComponentName= object[slug[0]]
@@ -165,6 +167,10 @@ export const getStaticProps= async (context)=>{
   const popupData= await fetch (`${global.fetchURI}/pop-ups?populate=*`);
   const popupJson= await popupData.json()
 
+  const memberData= await fetch (`${global.fetchURI}/teams?populate=*`);
+  const memberJson= await memberData.json()
+  const memData= memberJson.data
+
   /**/
 
   /*fetch data from instagram api to push it into rewrite["aktuelles"]*/
@@ -187,6 +193,9 @@ export const getStaticProps= async (context)=>{
     else if(item== "aktuelles"){
       rewrite[item]= {...slug0[index], instaData}
    }
+   else if(item== "team"){
+    rewrite[item]= {...slug0[index], memData}
+ }
   })
 
 
