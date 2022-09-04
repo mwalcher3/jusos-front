@@ -21,9 +21,9 @@
     content:"letzes mal bearbeitet: ";
 }
 
+
 .lastupdated{
     font-size: 0.9rem;
-    margin-left: (-$horizontalmargin);
     margin-top: 20px;
     width: fit-content;
     position: relative;
@@ -33,7 +33,6 @@
 
 .mainimage{
     position: relative;
-    margin: 0 (-$horizontalmargin);
     width: 100vw;
     height: 60vh;
     overflow-y: hidden;
@@ -42,10 +41,28 @@
 
 .container{
     display: grid;
-    gap: 30px;
+    gap: 50px;
 
     h1{
         text-align: center
     }
+
+    h2{
+        font-size: 1.7rem;
+        margin: 0
+    }
 }
 
+//overwrite margins for different screen sizes which have different default margins
+@each $screensize, $marginwidth in $horizontalmargin{
+    @media(min-width: $screensize){
+        .lastupdated{
+            margin-left: (-$marginwidth);
+            margin-bottom: (-$bottommargin)
+        }
+    
+        .mainimage{
+            margin: 0 (-$marginwidth)
+        }
+      }
+  }

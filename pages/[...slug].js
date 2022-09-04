@@ -2,14 +2,15 @@ import React from 'react'
 import {useRouter} from 'next/router'
 import {global} from './_app'
 
-import SingleArticles from '../components/Articles/SingleArticles'
+import artikel from '../components/Articles'
+import singleArticles from '../components/Articles/SingleArticles'
 import Layout from '../components/layout-components/Layout'
 import SimplePage from '../components/Simple-page'
 import kontakt from '../components/Contact'
-import artikel from '../components/Articles'
 import aktuelles from '../components/TopicsCurrent'
 import schwerpunkte from '../components/TopicsGeneral'
 import team from "../components/Team/index"
+import singleMember from "../components/Team/SingleMember"
 
 
 const Slugs = ({ menuData, data, links}) => {
@@ -25,24 +26,34 @@ const Slugs = ({ menuData, data, links}) => {
       team: team,
     }
 
+    const subPagesObject={
+      team: singleMember,
+      artikel: singleArticles
+    }
+
     var ComponentName= object[slug[0]]
+    var SubComponentName= subPagesObject[slug[0]]
 
      if(object[slug[0]]==null){
+      if(data){
       return(
         <Layout menuData={menuData} links={links}>
           <SimplePage data={data}/>
         </Layout>
         )
+      }
      }
      else{
 
       if(slug[1] && slug[1] == global.endpointSyntax(data.attributes.Title)){
+        if(data){
        return(
           <Layout menuData={menuData} links={links}>
-          <SingleArticles singleArticle={data}/>
+           <SubComponentName data={data}/>
           </Layout>
           )
-      } 
+        } 
+    }
      if(data){
      return(
         <Layout menuData={menuData} links={links}>
@@ -55,6 +66,10 @@ const Slugs = ({ menuData, data, links}) => {
 
 
 export default Slugs
+
+//slugs from pages with corresponding subpages
+const nestedPages= ["/article-page", "/person"]
+
 
 const endpointsToFetch=[]
 const slug0=[]
@@ -72,28 +87,23 @@ const menuData= await fetch(`${global.fetchURI}/menus/menu?nested`);
 
 
   for(let endpoint of endpointsToFetch){
-    const data= await fetch (`${global.fetchURI}${endpoint}?populate=*`);
+    const data= await fetch (`${global.fetchURI}${endpoint}?fields[0]=slug`);
     const json= await data.json()
     slug0.push(json)
   }
+  
+  for(let childrenEndpoint of nestedPages){
+    const data= await fetch (`${global.fetchURI}${childrenEndpoint}?populate[children][fields][0]=Title`);
+    const json= await data.json()
+    slug1.push(json.data.attributes)
+  }
 
   //return the slugs of the data, if they exist
-
-
   let slug0Filtered= slug0.filter((item) => item.data)
-  
-  const slugs= slug0Filtered.map((item)=>{
+  const slugs= slug0Filtered.map((item)=>{return item.data.attributes.slug})
 
-      const attribute= item.data.attributes;
-
-      if(attribute.slug== "artikel"){
-        slug1.push(attribute.children.data)
-      }
-
-      return attribute.slug
-    
-  })
-  
+  //filter sub-routes
+  let slug1Filtered= slug1.filter((item) => item.children)
 
   //return params for the fetched slugs, if they exist
 
@@ -104,25 +114,28 @@ const menuData= await fetch(`${global.fetchURI}/menus/menu?nested`);
       }
   })
 
+  //return the title of the articles/teamMembers as a slug for the nested routes
 
-  //create params for the nested slugs out of the slug1List
-  const nestedParams=
-    slug1[0].map((item)=>{
-      return{
-        params: {slug:[`artikel`, `${global.endpointSyntax(item.attributes.Title)}`]}
-      }
+    const nestedParams=
+    slug1Filtered.map((item)=>{
+      const paramArrays=
+      item.children.data.map((subitem)=>{  
+          return{
+            params: {slug:[`${item.slug}`, `${global.endpointSyntax(subitem.attributes.Title)}`]}
+          }
+      })
+      return(paramArrays)
     })
+    const mergedNestedParams = [].concat.apply([], nestedParams);
 
   return{
     paths: [
      ...params,
-     ...nestedParams
+     ...mergedNestedParams
     ],
       fallback: 'blocking'
   }
 }
-
-
 
 
 
@@ -153,9 +166,11 @@ export const getStaticProps= async (context)=>{
 
       const attribute= item.data.attributes
 
+      //push data for article subpages into slug1 array
       if(attribute.slug== "artikel"){
         slug1.push(attribute.children.data)
       }
+
       return attribute.slug
     }
     else return null
@@ -178,15 +193,14 @@ export const getStaticProps= async (context)=>{
   const instagramData= await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=${instagramToken}`);
   const instagramJson= await instagramData.json()
 
-  
   const instaData= instagramJson.data
-
 
   const rewrite={}
 
   slugs.forEach((item, index)=>{
     rewrite[item] = slug0[index];
 
+    //strapi does not allow populating deap relations, so the deep relation data is being pushed into th json here
     if(item== "schwerpunkte"){
        rewrite[item]= {...slug0[index], ...popupJson}
     }
@@ -195,9 +209,10 @@ export const getStaticProps= async (context)=>{
    }
    else if(item== "team"){
     rewrite[item]= {...slug0[index], memData}
+    //push memData into slug1 for the single member subpages
+    slug1.push(memData)
  }
   })
-
 
 
   //{endpointsToFetch: slug}
@@ -210,13 +225,19 @@ export const getStaticProps= async (context)=>{
   
   //push the data of the nested pages into the rewrite object
 
+  //first array with the article data
   slug1[0].forEach((item)=>{
     rewrite[[`artikel`,`${global.endpointSyntax(item.attributes.Title)}`]]= item;
   })
 
+  //second data with the team data
+  slug1[1].forEach((item)=>{
+    rewrite[[`team`,`${global.endpointSyntax(item.attributes.Title)}`]]= item;
+  })
+
 
   const displayedSlug= context.params.slug;
-   const data= rewrite[displayedSlug]
+  const data= rewrite[displayedSlug];
 
    //return 404 page if the displayedSlug does not refer a any data,
    //this is because fallback is set to 'blocking' in the getStaticPaths function

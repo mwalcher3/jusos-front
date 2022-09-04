@@ -1,12 +1,12 @@
 import articlecss from "../../styles/component-modules/article.module.scss"
 
-const SingleArticles = ({singleArticle}) => {
+const SingleArticles = ({data}) => {
 
     return (
       <>
          <div className={articlecss.content}>
-          <h2>{singleArticle.attributes.Title}</h2>
-          <p>{singleArticle.attributes.article}</p>
+          <h2>{data.attributes.Title}</h2>
+          <p>{data.attributes.article}</p>
     </div>
       </>
     )

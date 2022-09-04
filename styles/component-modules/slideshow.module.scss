@@ -1,8 +1,16 @@
 @import "../../styles/config";
 
 
+//overwrite margins for different screen sizes which have different default margins
+@each $screensize, $marginwidth in $horizontalmargin{
+    @media(min-width: $screensize){
+        .maincontainer{
+            margin: 0 (-$marginwidth);
+          }
+      }
+  }
+
 .maincontainer{
-    margin: 0 (-$horizontalmargin);
     width: 100vw;
     overflow: hidden;
 }

@@ -10,7 +10,6 @@
 html,
 
 
-
 header{
   margin:0;
 }
@@ -27,11 +26,19 @@ body.burgeropen{
 }
 
 
+//asign each screensize width some horizontal margin
+
+@each $screensize, $marginwidth in $horizontalmargin{
+  @media(min-width: $screensize){
+    .maincontent{
+      margin: 0 ($marginwidth);
+    }
+  }
+}
 
 
 .maincontent{
   position: relative;
-  margin: 0 ($horizontalmargin);
   margin-bottom: ($bottommargin)
 }
 

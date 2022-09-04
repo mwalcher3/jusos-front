@@ -37,7 +37,12 @@
             border-radius: 50%;
             width:  $item-size;
             height: $item-size;
+            //transition: 0.3s transform;
         }
+
+        /*.roundimages:hover{
+            transform: scale(1.1)
+        }*/
 
         .name{
             position: absolute;
@@ -70,7 +75,7 @@
   .circlecontainer{
     @include on-circle($item-count: 5, $circle-size: 30em, $item-size: 10em); 
     margin: 5em auto 0;
-    margin-bottom: 12em;
+    margin-bottom: 5em;
     border: solid 5px var(--red);
 
   }

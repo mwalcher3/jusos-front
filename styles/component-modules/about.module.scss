@@ -9,7 +9,7 @@
 
 .spaziergang{
     border: 2px var(--red) solid;
-    margin: 0 (-$horizontalmargin);
+    margin: 0 calc(var(--horizontalmargin) * -1);;
     width: 100vw;
     height: 350px;
     position: relative;

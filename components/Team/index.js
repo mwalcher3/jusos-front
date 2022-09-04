@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Sprecherkreis from '../SprecherKreis'
 
 const Team = ({data}) => {
+  console.log(data);
     const dataAttributes= data.data.attributes
     const alternativeImage= dataAttributes.alternativeImageMembers.data.attributes
 
@@ -34,13 +35,29 @@ const Team = ({data}) => {
       />
         </div>
         <h1>{dataAttributes.title}</h1>
-        <p className={teamcss.description}>{dataAttributes.description}</p>
+
+        <h2>Sprecher*innenkreis</h2>
+        <p className={teamcss.description}>{dataAttributes.sprecherDescription}</p>
 
         <Sprecherkreis data={sprecher} alternativeImage={alternativeImage}/>
 
+        <h2>Zusaezliche Positionen</h2>
+
+        <ul className={teamcss.description}>
+          {dataAttributes.otherRolesDescription.map((item, index)=>{
+            return(
+              <li key={index}>
+                <span>
+                  {item.Title}
+                </span>
+                  {` ${item.Paragraph}`}
+              </li>
+            )
+          })}
+        </ul>
+
         <section className={teamcss.othermembers}>
           {otherMembers.map((item, index)=>{
-            console.log(item);
             const previewImage= item.attributes.previewImage.data;
 
              return(
@@ -53,13 +70,13 @@ const Team = ({data}) => {
                 objectFit="cover"
                 priority
               />}
-         </div>
+          </div>
          <h4>{item.attributes.Name}</h4>
          </div>
           )
           })}
           </section>
-      
+      <div className="lastupdated">{dataAttributes.updatedAt}</div>
     </div>
   )
 }

@@ -9,7 +9,6 @@ const SprecherKreis = ({data, alternativeImage}) => {
         {data.map((item, index)=>{
             const previewImage= item.attributes.previewImage.data;
             return(
-                <>
                 <li className={skcss.memberboxes} key={index}>
 
                     <div className={skcss.roundimages}>
@@ -26,7 +25,6 @@ const SprecherKreis = ({data, alternativeImage}) => {
                     {item.attributes.Name}
                     </div>
                 </li>
-               </>
             )
         })}
     </ul>
