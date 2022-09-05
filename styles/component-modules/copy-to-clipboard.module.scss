@@ -1,0 +1,40 @@
+.clipboard{
+    position: relative;
+    width: max-content;
+    border: 2px solid white;
+    margin: 0;
+    margin-bottom: 100px;
+    padding: 10px;
+
+
+    textarea {
+        border: none;
+         overflow: auto;
+         outline: none;
+         font: inherit;
+         min-width: 250px;
+        // cursor: pointer;
+         color: inherit;
+         height: fit-content;
+     
+         -webkit-box-shadow: none;
+         -moz-box-shadow: none;
+         box-shadow: none;
+         background: none;
+ 
+         resize: none; /*remove the resize handle on the bottom right*/
+     }
+
+
+    svg{
+        position: relative;
+        height: 30px;
+        bottom: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    svg:hover{
+        color: white
+    }
+}

@@ -1,0 +1,30 @@
+@import "../../styles/config";
+
+.maincontainer{
+
+    margin-top: 50px ;
+    margin-bottom: 0px;
+   // display: flow-root;
+
+    .image{
+        position: relative;
+        height: 400px;
+        width: 300px;
+        float: right;
+        margin-left: 30px;
+        margin-bottom: 30px;
+       // margin-top: -40px;
+        //shape-outside: polygon(0 0, 50% 50%, 100% 100%, 100% 100% )
+    }
+
+    .roles{
+        filter: brightness(70%);
+        font-style: italic;
+        font-size: 1.2rem
+    }
+
+    p{
+        margin-top: 50px;
+    }
+
+}

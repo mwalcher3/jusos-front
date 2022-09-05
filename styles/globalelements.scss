@@ -17,6 +17,10 @@
     display: none
 }
 
+.displayBlock{
+    display: block
+}
+
 .lastupdated::before{
     content:"letzes mal bearbeitet: ";
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from "next/image"
+import Link from "next/link"
 import {global} from '../pages/_app'
 import skcss from "../styles/component-modules/sprecherkreis.module.scss"
 
@@ -11,6 +12,7 @@ const SprecherKreis = ({data, alternativeImage}) => {
             return(
                 <li className={skcss.memberboxes} key={index}>
 
+                  <Link href={`/team/${global.endpointSyntax(item.attributes.Title)}`}>
                     <div className={skcss.roundimages}>
                     <Image
                         src={`${global.host}${previewImage!=null? previewImage.attributes.url: alternativeImage.url}`}
@@ -20,6 +22,7 @@ const SprecherKreis = ({data, alternativeImage}) => {
                         priority
                     />
                     </div>
+                    </Link>
 
                     <div className={skcss.name}>
                     {item.attributes.Name}
