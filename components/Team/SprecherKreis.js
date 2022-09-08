@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from "next/image"
 import Link from "next/link"
-import {global} from '../pages/_app'
-import skcss from "../styles/component-modules/sprecherkreis.module.scss"
+import {global} from '../../pages/_app'
+import skcss from "../../styles/component-modules/sprecherkreis.module.scss"
 
 const SprecherKreis = ({data, alternativeImage}) => {
   return (

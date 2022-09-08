@@ -16,9 +16,8 @@
     width:  $circle-size;
     height: $circle-size;
     padding: 0;
-    border-radius: 50%; 
-    list-style: none;  
-    
+    border-radius: 50%;
+
     
      > *{
         display: block;
@@ -31,18 +30,12 @@
         cursor: pointer;
 
         .roundimages{
-            background-color: white;
             position: absolute;
             overflow: hidden;
             border-radius: 50%;
             width:  $item-size;
             height: $item-size;
-            //transition: 0.3s transform;
         }
-
-        /*.roundimages:hover{
-            transform: scale(1.1)
-        }*/
 
         .name{
             position: absolute;
@@ -71,7 +64,24 @@
   }
 
 
+
+.circlecontainer{
+  display: grid;
+  gap: 60px;
+  width: fit-content;
+  align-items: center;
+  list-style: none;  
+  margin-left: 0;
+  .roundimages{
+    background-color: white;
+    position: relative;
+    width: 50vw;
+    height: 40vh;
+  }
+}
  
+
+@media(min-width: $medium){
   .circlecontainer{
     @include on-circle($item-count: 5, $circle-size: 30em, $item-size: 10em); 
     margin: 5em auto 0;
@@ -79,9 +89,7 @@
     border: solid 5px var(--red);
 
   }
-
-
-
-
- 
+  
+}
+  
 

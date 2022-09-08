@@ -1,0 +1,12 @@
+
+
+.container{
+    margin: 10vw;
+    overflow: scroll;
+}
+
+.indivwords{
+    font-size: (var(--pdf2json-fontsize));
+    text-align: (var(--pdf2json-alignment));
+    border: 2px solid white;
+}

@@ -17,7 +17,7 @@ const CopyToClipboard = ({textToCopy}) => {
   return (
     <div>
     <div className={clipboardcss.clipboard}>
-      <textarea  ref={textRef}>{textToCopy} </textarea>
+      <textarea  ref={textRef} value={textToCopy} readOnly></textarea>
       <FontAwesomeIcon onClick={copyToClipboard} icon={faClipboard}/>
     </div></div>
   )

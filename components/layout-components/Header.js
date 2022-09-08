@@ -164,7 +164,6 @@ React.useEffect(()=>{
         <div className={burgerOpen? headercss.burgerMenu: headercss.none}>
             <div className={headercss.burgerMenuContent}>
                 <h2>Menü</h2>
-                <button className={headercss.donationButton}>Spenden</button>
            {menuData.menu.items.map((item, index)=>{
               
                return(

@@ -11,6 +11,7 @@ import aktuelles from '../components/TopicsCurrent'
 import schwerpunkte from '../components/TopicsGeneral'
 import team from "../components/Team/index"
 import singleMember from "../components/Team/SingleMember"
+import kalender from "../components/Calendar"
 
 
 const Slugs = ({ menuData, data, links}) => {
@@ -24,6 +25,7 @@ const Slugs = ({ menuData, data, links}) => {
       aktuelles: aktuelles,
       schwerpunkte: schwerpunkte,
       team: team,
+      kalender: kalender,
     }
 
     const subPagesObject={
@@ -162,7 +164,7 @@ export const getStaticProps= async (context)=>{
   }
 
   const slugs= slug0.map((item)=>{
-    if(item.data!=null){
+    if(item.data!=null && item.data!=undefined){
 
       const attribute= item.data.attributes
 
@@ -257,3 +259,4 @@ export const getStaticProps= async (context)=>{
     revalidate: 30,
   }
 }
+

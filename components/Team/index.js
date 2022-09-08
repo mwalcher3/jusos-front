@@ -3,7 +3,7 @@ import {global} from '../../pages/_app'
 import teamcss from "../../styles/component-modules/team.module.scss"
 import Image from 'next/image'
 import Link from "next/link"
-import Sprecherkreis from '../SprecherKreis'
+import Sprecherkreis from './SprecherKreis'
 
 const Team = ({data}) => {
     const dataAttributes= data.data.attributes
