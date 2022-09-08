@@ -22,7 +22,7 @@ export default function handler(req, res) {
 
 
   if (method === "GET") {
-    return res.status(200).json({ data: data });
+    return res.status(200).json({name: data });
   }
 
 
