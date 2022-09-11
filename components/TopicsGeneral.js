@@ -6,6 +6,7 @@ import generalcss from '../styles/component-modules/topics.general.module.scss'
 
 
 const TopicsGeneral = ({data}) => {
+
   const [textOpen, setTextOpen] = React.useState(-1)
     const dataAttributes= data.data.attributes
 
@@ -23,7 +24,7 @@ const TopicsGeneral = ({data}) => {
       </div>
       <h1>{dataAttributes.title}</h1>
       <p>{dataAttributes.description}</p>
-      <PopUp data={data.popups}/>
+      <PopUp data={dataAttributes.popups.data}/>
 
       <div >
         {dataAttributes.topics.data.map((item, index)=>{

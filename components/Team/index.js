@@ -6,13 +6,14 @@ import Link from "next/link"
 import Sprecherkreis from '../SprecherKreis'
 
 const Team = ({data}) => {
+
     const dataAttributes= data.data.attributes
-    const alternativeImage= dataAttributes.alternativeImageMembers.data.attributes
+    const alternativeImage= dataAttributes.alternativeImage.data.attributes
 
     const sprecher= []
     const otherMembers= []
 
-    data.memData.forEach((item)=>{
+    dataAttributes.members.data.forEach((item)=>{
         if (item.attributes.role=="Sprecher"){
             sprecher.push(item)
         }

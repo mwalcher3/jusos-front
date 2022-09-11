@@ -12,7 +12,7 @@ const SprecherKreis = ({data, alternativeImage}) => {
             return(
                 <li className={skcss.memberboxes} key={index}>
 
-                  <Link href={`/team/${global.endpointSyntax(item.attributes.Title)}`}>
+                  <Link href={`/team/${global.endpointSyntax(item.attributes.name)}`} passHref>
                     <div className={skcss.roundimages}>
                     <Image
                         src={`${global.host}${previewImage!=null? previewImage.attributes.url: alternativeImage.url}`}

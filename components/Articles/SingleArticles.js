@@ -5,7 +5,7 @@ const SingleArticles = ({data}) => {
     return (
       <>
          <div className={articlecss.content}>
-          <h2>{data.attributes.Title}</h2>
+          <h2>{data.attributes.title}</h2>
           <p>{data.attributes.article}</p>
     </div>
       </>

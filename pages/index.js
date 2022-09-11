@@ -1,77 +1,72 @@
-import React, {useState} from 'react'
-import {global} from './_app'
+import React, { useState } from 'react'
+import { global } from './_app'
 import Description from '../components/Description'
 import Slider from '../components/Slider'
 import Layout from '../components/layout-components/Layout'
 import Slideshow from '../components/Slideshow'
 
+import fs from "fs"
+import path from "path"
 
-export const getStaticProps= async ()=>{
 
-  const endpointsToFetch= []
-  const slug0= []
+export const getStaticProps = async () => {
 
-  //fetch data for the home page
-  const response= await fetch(`${global.fetchURI}/home-page?populate=*`)
-  const json= await response.json()
+  // fetch page data proper
+  const endpoint = "/home-page"
+  const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`);
+  const pageJson = await pageData.json()
 
-  //fetch the menu data
+  // there are no deep relations on home-page
+  const pageJsonFull = pageJson
 
-  const menuData= await fetch(`${global.fetchURI}/menus/menu?nested`);
-  const menuDataJson= await menuData.json()
-
-  JSON.stringify(menuDataJson,(key,value) => 
-    {if (key=="url") endpointsToFetch.push(value)
-    return(value)}
-    )
-
-  //fetch the different components attributed to the endpoints of the menu
-
-  for(let endpoint of endpointsToFetch){
-    const data= await fetch (`${global.fetchURI}${endpoint}?fields[0]=slug`);
-    const json= await data.json()
-    slug0.push(json)
-  }
-
-  const slugs= slug0.map((item)=>{
-    if(item.data!=null) return item.data.attributes.slug
-    else return null
+  // we retrieve path to URL lookup table from file generated
+  // by getStaticPaths method of [..slug].js
+  // NOTE: this file is written/updated at build time _before_ the home page
+  const pathsToUrls = JSON.parse(fs.readFileSync(
+    path.join(process.cwd(), 'staticstore/pathsToUrls.db'), (err) => { }
+  ))
+  // and also record its inverse
+  const urlsToPaths = {}
+  JSON.stringify(pathsToUrls, (key, value) => {
+    if (key) { urlsToPaths[value] = key }
+    return value
   })
 
-  //create an object of the form {endpointsToFetch: slug} for the links in the menu
+  // fetch menu data
+  const menuData = await fetch(`${global.fetchURI}/menus/menu?nested`);
+  const menuJson = await menuData.json();
+  // and replace url endpoint with corresponding slug
+  const menuJsonFull = JSON.parse(
+    JSON.stringify(menuJson, (key, value) => {
+      if (key == "url" && value != "") return urlsToPaths[value]
+      return value
+    })
+  )
 
-  const links={}
-
-  slugs.forEach((item, index)=>{
-    links[endpointsToFetch[index]]= item;
-  })
-
-  
   return {
     props: {
-      data: json,
-      menuData: menuDataJson,
-      links: links,
+      menuData: menuJsonFull,
+      pageData: pageJsonFull
     },
     revalidate: 30,
   }
 }
 
-export default function Home({ data, menuData, links}) {
+export default function Home({ menuData, pageData  }) {
 
-  const attributes= data.data.attributes
+  const attributes = pageData.data.attributes
 
   return (
-     <div>
-       <Layout menuData={menuData} links={links}>
-       <Slideshow data={attributes.slideShowImages}/>
-        <Description data={attributes.aboutUs}/>
-      {<Slider data={attributes.sliders}/> }
-       </Layout>
+    <div>
+      <Layout menuData={menuData}>
+        <Slideshow data={attributes.slideShowImages} />
+        <Description data={attributes.aboutUs} />
+        {<Slider data={attributes.sliders} />}
+      </Layout>
 
     </div>
 
   )
- }
+}
 
 

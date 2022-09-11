@@ -1,8 +1,8 @@
 import React from 'react'
-import {useRouter} from 'next/router'
-import {global} from './_app'
+import { useRouter } from 'next/router'
+import { global } from './_app'
 
-import artikel from '../components/Articles'
+import artikel from '../components/Articles/index'
 import singleArticles from '../components/Articles/SingleArticles'
 import Layout from '../components/layout-components/Layout'
 import SimplePage from '../components/Simple-page'
@@ -12,247 +12,258 @@ import schwerpunkte from '../components/TopicsGeneral'
 import team from "../components/Team/index"
 import singleMember from "../components/Team/SingleMember"
 
+import fs from "fs"
+import path from "path"
+import qs from "qs"
 
-const Slugs = ({ menuData, data, links}) => {
+// menuData: main menu
+// data: page props
+// links: footer links
 
-    const router= useRouter();
-    const {slug = []} = router.query;
+const Slugs = ({ menuData, pageData }) => {
 
-    const object={
-      artikel: artikel,
-      kontakt: kontakt,
-      aktuelles: aktuelles,
-      schwerpunkte: schwerpunkte,
-      team: team,
-    }
+  const router = useRouter();
+  const { slug = [] } = router.query;
 
-    const subPagesObject={
-      team: singleMember,
-      artikel: singleArticles
-    }
+  const object = {
+    artikel: artikel,
+    kontakt: kontakt,
+    aktuelles: aktuelles,
+    schwerpunkte: schwerpunkte,
+    team: team,
+    dummy: SimplePage,
+  }
 
-    var ComponentName= object[slug[0]]
-    var SubComponentName= subPagesObject[slug[0]]
+  const subPagesObject = {
+    team: singleMember,
+    artikel: singleArticles
+  }
 
-     if(object[slug[0]]==null){
-      if(data){
-      return(
-        <Layout menuData={menuData} links={links}>
-          <SimplePage data={data}/>
-        </Layout>
-        )
-      }
-     }
-     else{
+  var ComponentName = object[slug[0]]
+  var SubComponentName = subPagesObject[slug[0]]
 
-      if(slug[1] && slug[1] == global.endpointSyntax(data.attributes.Title)){
-        if(data){
-       return(
-          <Layout menuData={menuData} links={links}>
-           <SubComponentName data={data}/>
-          </Layout>
-          )
-        } 
-    }
-     if(data){
-     return(
-        <Layout menuData={menuData} links={links}>
-          <ComponentName data={data}/>
+  if (object[slug[0]] == null) {
+    if (pageData) {
+      return (
+        <Layout menuData={menuData}>
+          <SimplePage data={pageData} />
         </Layout>
       )
-     }   
     }
+  }
+  else {
+
+    if (slug[1]) {
+      if (pageData) {
+        return (
+          <Layout menuData={menuData}>
+            <SubComponentName data={pageData.data} />
+          </Layout>
+        )
+      }
+      else { return { notFound: true } }
+    }
+
+    if (pageData) {
+      return (
+        <Layout menuData={menuData}>
+          <ComponentName data={pageData} />
+        </Layout>
+      )
+    }
+  }
 }
 
 
 export default Slugs
 
-//slugs from pages with corresponding subpages
-const nestedPages= ["/article-page", "/person"]
+export async function getStaticPaths() {
 
+  // the paths (slugs) of pages
+  const paths = []
+  // the rewrite map from paths to URL endpoints
+  const pathsToUrls = {}
 
-const endpointsToFetch=[]
-const slug0=[]
-const slug1=[]
-
-export async function getStaticPaths(){
-
-const menuData= await fetch(`${global.fetchURI}/menus/menu?nested`);
+  // single page types are listed in menu
+  const menuData = await fetch(`${global.fetchURI}/menus/menu?nested`);
   const menuDataJson = await menuData.json();
-  
-  JSON.stringify(menuDataJson,(key,value) => 
-    {if (key=="url") endpointsToFetch.push(value)
-    return(value)}
-    )
 
+  // console.log(JSON.stringify(menuDataJson))
 
-  for(let endpoint of endpointsToFetch){
-    const data= await fetch (`${global.fetchURI}${endpoint}?fields[0]=slug`);
-    const json= await data.json()
-    slug0.push(json)
-  }
-  
-  for(let childrenEndpoint of nestedPages){
-    const data= await fetch (`${global.fetchURI}${childrenEndpoint}?populate[children][fields][0]=Title`);
-    const json= await data.json()
-    slug1.push(json.data.attributes)
-  }
-
-  //return the slugs of the data, if they exist
-  let slug0Filtered= slug0.filter((item) => item.data)
-  const slugs= slug0Filtered.map((item)=>{return item.data.attributes.slug})
-
-  //filter sub-routes
-  let slug1Filtered= slug1.filter((item) => item.children)
-
-  //return params for the fetched slugs, if they exist
-
-  const params=
-   slugs.map((slug)=>{
-      return {
-        params:{slug:[`${slug}`]}
-      }
+  const endpointsToFetch = []
+  JSON.stringify(menuDataJson, (key, value) => {
+    if (key == "url" && value != "" && !endpointsToFetch.includes(value)) endpointsToFetch.push(value)
+    return (value)
   })
 
-  //return the title of the articles/teamMembers as a slug for the nested routes
+  for (let endpoint of endpointsToFetch) {
+    const data = await fetch(`${global.fetchURI}${endpoint}?fields[0]=slug`);
+    const json = await data.json()
+    const slug = [global.endpointSyntax(json.data.attributes.slug)]
+    paths.push(slug)
+    pathsToUrls[slug] = endpoint
+  }
 
-    const nestedParams=
-    slug1Filtered.map((item)=>{
-      const paramArrays=
-      item.children.data.map((subitem)=>{  
-          return{
-            params: {slug:[`${item.slug}`, `${global.endpointSyntax(subitem.attributes.Title)}`]}
-          }
-      })
-      return(paramArrays)
+  // (some) collection content types appear as children on specific pages 
+  // their full props can be fetched via the collection API endpoint
+
+  const collections = [
+    {
+      "parentEndpoint": "/article-page", "childrenField": "articles",
+      "collectionEndpoint": "/articles", "slugField": "title"
+    },
+    {
+      "parentEndpoint": "/team-page", "childrenField": "members",
+      "collectionEndpoint": "/members", "slugField": "name"
+    }
+  ]
+
+  for (let collection of collections) {
+    const query = qs.stringify({
+      fields: [`slug`],
+      populate: {
+        [collection.childrenField]: {
+          fields: [`${collection.slugField}`, `id`]
+        }
+      }
     })
-    const mergedNestedParams = [].concat.apply([], nestedParams);
 
-  return{
+    // const qquery = "fields[0]=slug&populate[articles][fields][0]=title&populate[articles][fields][1]=id"
+
+    const data = await fetch(`${global.fetchURI}${collection.parentEndpoint}?${query}`)
+    const json = await data.json()
+    // console.log(JSON.stringify(json))
+    const slug = json.data.attributes.slug
+    const kids = json.data.attributes[collection.childrenField].data
+    for (let child of kids) {
+      const alias = global.endpointSyntax(child.attributes[collection.slugField])
+      const id = child.id
+      const childSlug = [`${slug}`, `${alias}`]
+      paths.push(childSlug)
+      pathsToUrls[childSlug] = `${collection.collectionEndpoint}/${id}`
+    }
+  }
+
+  // write path to URL lookup table to file cache...
+  fs.writeFile(
+    path.join(process.cwd(), 'staticstore/pathsToUrls.db'),
+    JSON.stringify(pathsToUrls), (err) => { }
+  )
+
+  // ... and return fetched slugs as static paths
+  const params =
+    paths.map((path) => {
+      return {
+        params: { slug: path }
+      }
+    })
+
+  return {
     paths: [
-     ...params,
-     ...mergedNestedParams
+      ...params,
     ],
-      fallback: 'blocking'
+    fallback: 'blocking'
   }
 }
 
+export const getStaticProps = async (context) => {
 
+  //note that it is not possible to pass down data from getStaticPaths to 
+  // getStaticProps or create a global function to fetch the data
 
-export const getStaticProps= async (context)=>{
-  //same code is rewritten, because it is not possible to 
-  //pass down data from getStaticPaths to getStaticProps
-  //or create a global function to fetch the data
+  // we recover the path to URL lookup table from the file
+  const pathsToUrls = JSON.parse(fs.readFileSync(
+    path.join(process.cwd(), 'staticstore/pathsToUrls.db'), (err) => { }
+  ))
+  // and also record its inverse
+  const urlsToPaths = {}
+  JSON.stringify(pathsToUrls, (key, value) => {
+    if (key) { urlsToPaths[value] = key }
+    return value
+  })
 
+  // fetch page data proper
+  const endpoint = pathsToUrls[context.params.slug]
+  const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`);
+  const pageJson = await pageData.json()
 
-  const menuData= await fetch(`${global.fetchURI}/menus/menu?nested`);
-  const menuDataJson = await menuData.json();
+  // fetch data of subsidiary (or "deep") relations, and external sources...
 
-  JSON.stringify(menuDataJson,(key,value) => 
-    {if (key=="url") endpointsToFetch.push(value)
-    return(value)}
-    )
+  // fetch popupData
+  const popupData = await fetch(`${global.fetchURI}/popups?populate=*`);
+  const popupJson = await popupData.json()
 
-  //fetch the different components attributed to the endpoints of the menu
+  // fetch memberData
+  const memberData = await fetch(`${global.fetchURI}/members?populate=*`);
+  const memberJson = await memberData.json()
 
-  for(let endpoint of endpointsToFetch){
-    const data= await fetch (`${global.fetchURI}${endpoint}?populate=*`);
-    const json= await data.json()
-    slug0.push(json)
-  }
+  // fetch data from instagram api
+  const instagramToken = process.env.INSTAGRAM_TOKEN
+  const instagramData = await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=${instagramToken}`);
+  const instagramJson = await instagramData.json()
+  // const instaData = instagramJson.data
 
-  const slugs= slug0.map((item)=>{
-    if(item.data!=null){
+  // ... and rewrite pageJson accordingly
 
-      const attribute= item.data.attributes
-
-      //push data for article subpages into slug1 array
-      if(attribute.slug== "artikel"){
-        slug1.push(attribute.children.data)
+  const pageJsonFull = JSON.parse(
+    JSON.stringify(pageJson, (key, value) => {
+      switch (key) {
+        case "popups": {
+          // const popupData = await fetch(`${global.fetchURI}/popups?populate=*`);
+          // const popupJson = await popupData.json()
+          return popupJson
+        }
+        case "members": return memberJson
+        case "instagramFeed": return instagramJson
+        default: return value
       }
-
-      return attribute.slug
     }
-    else return null
-  })
-  //create an object of the form {displayedSlugs: data}
-  /* fetch the data for the poups seperately to push it into rewrite["shwerpunkte"]. 
-  cannot be fetched with populate=*, because of relation nesting*/
+    ))
 
-  const popupData= await fetch (`${global.fetchURI}/pop-ups?populate=*`);
-  const popupJson= await popupData.json()
+  // fetch menu data
+  const menuData = await fetch(`${global.fetchURI}/menus/menu?nested`);
+  const menuJson = await menuData.json();
+  // and replace url endpoint with corresponding slug
+  const menuJsonFull = JSON.parse(
+    JSON.stringify(menuJson, (key, value) => {
+      if (key == "url" && value != "") return urlsToPaths[value]
+      return value
+    })
+  )
 
-  const memberData= await fetch (`${global.fetchURI}/teams?populate=*`);
-  const memberJson= await memberData.json()
-  const memData= memberJson.data
+  // slugs.forEach((item, index) => {
+  //   links[endpointsToFetch[index]] = item;
+  // })
 
-  /**/
-
-  /*fetch data from instagram api to push it into rewrite["aktuelles"]*/
-  const instagramToken= process.env.INSTAGRAM_TOKEN
-  const instagramData= await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=${instagramToken}`);
-  const instagramJson= await instagramData.json()
-
-  const instaData= instagramJson.data
-
-  const rewrite={}
-
-  slugs.forEach((item, index)=>{
-    rewrite[item] = slug0[index];
-
-    //strapi does not allow populating deap relations, so the deep relation data is being pushed into th json here
-    if(item== "schwerpunkte"){
-       rewrite[item]= {...slug0[index], ...popupJson}
-    }
-    else if(item== "aktuelles"){
-      rewrite[item]= {...slug0[index], instaData}
-   }
-   else if(item== "team"){
-    rewrite[item]= {...slug0[index], memData}
-    //push memData into slug1 for the single member subpages
-    slug1.push(memData)
- }
-  })
-
-
-  //{endpointsToFetch: slug}
-
-  const links={}
-
-  slugs.forEach((item, index)=>{
-    links[endpointsToFetch[index]]= item;
-  })
-  
   //push the data of the nested pages into the rewrite object
 
   //first array with the article data
-  slug1[0].forEach((item)=>{
-    rewrite[[`artikel`,`${global.endpointSyntax(item.attributes.Title)}`]]= item;
-  })
+  // slug1[0].forEach((item) => {
+  //   rewrite[[`artikel`, `${global.endpointSyntax(item.attributes.Title)}`]] = item;
+  // })
 
   //second data with the team data
-  slug1[1].forEach((item)=>{
-    rewrite[[`team`,`${global.endpointSyntax(item.attributes.Title)}`]]= item;
-  })
+  // slug1[1].forEach((item) => {
+  //   rewrite[[`team`, `${global.endpointSyntax(item.attributes.Title)}`]] = item;
+  // })
 
 
-  const displayedSlug= context.params.slug;
-  const data= rewrite[displayedSlug];
+  // const displayedSlug = context.params.slug;
+  // const data = rewrite[displayedSlug];
 
-   //return 404 page if the displayedSlug does not refer a any data,
-   //this is because fallback is set to 'blocking' in the getStaticPaths function
+  //return 404 page if the displayedSlug does not refer a any data,
+  //this is because fallback is set to 'blocking' in the getStaticPaths function
 
-   if (!data){
-     return {
-       notFound: true
-     }
-   }
+  if (!pageData) {
+    return {
+      notFound: true
+    }
+  }
 
   return {
     props: {
-      menuData: menuDataJson,
-      data: data,
-      links: links,
+      menuData: menuJsonFull,
+      pageData: pageJsonFull
     },
     revalidate: 30,
   }

@@ -3,15 +3,15 @@ import Footer from './Footer'
 import SideButtons from './SideButtons'
 
 
-const Layout = ({children, menuData, links}) => {
+const Layout = ({children, menuData }) => {
     return (
         <>
-        <Header menuData={menuData} links={links}/>
+        <Header menuData={menuData}/>
         <SideButtons/>
         <div className="maincontent">
             {children}
         </div>
-        <Footer menuData={menuData} links={links}/>
+        <Footer menuData={menuData}/>
         </>
     )
 }

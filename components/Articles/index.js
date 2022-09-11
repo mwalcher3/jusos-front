@@ -48,10 +48,10 @@ const Articles = ({data}) => {
     <h1 className={articlecss.pagetitle}>Artikel</h1>
 
       {
-          data.data.attributes.children.data.map((item, i)=>{
+          data.data.attributes.articles.data.map((item, i)=>{
             const image = articleimages[i]
             return(
-              <Link key={item.id} href= {`/artikel/${global.endpointSyntax(item.attributes.Title)}`} passHref>
+              <Link key={item.id} href= {`/artikel/${global.endpointSyntax(item.attributes.title)}`} passHref>
             <div  
             className={articlecss.articleboxes}
             ref={el => imageRefs.current[i] = el} >

@@ -5,7 +5,7 @@ import Carousel from "./Carousel"
 
 const TopicsCurrent = ({data}) => {
 
-  const instagramData= data.instaData
+  const instagramData= data.data.attributes.instagramFeed
   const dataAttributes= data.data.attributes
   const imagesWidth="350px"
   const imagesHeight="350px"
@@ -15,7 +15,7 @@ const TopicsCurrent = ({data}) => {
 
       <h1>{dataAttributes.title}</h1>
 
-      {instagramData.map((item, id)=>{
+      {instagramData.data? instagramData.data.map((item, id)=>{
 
         if(item.media_type=="CAROUSEL_ALBUM"){
           const imageSource= [];
@@ -74,7 +74,10 @@ const TopicsCurrent = ({data}) => {
 
 
        
-      })}
+      }) : 
+      instagramData.error? 
+        <><div> Instagram Error {instagramData.error.code} </div>
+        <div> {instagramData.error.message} </div></> : ""}
       </div>
   )
 }

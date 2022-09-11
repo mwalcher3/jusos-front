@@ -15,7 +15,7 @@ useEffect(()=>{
      return () => clearTimeout(timer);
   }
 },
-  [current])
+  [current,handleChange,settings.automatic,settings.delay])
 
 
 // set the distance the image will move to the right/left to the size of its container
@@ -26,7 +26,7 @@ useEffect(()=>{
     var rs = getComputedStyle(r);
     r.style.setProperty('--translation-width', `${settings.boxWidth}`);
   }
-},[])
+},[settings.boxWidth])
 
 
   return (
