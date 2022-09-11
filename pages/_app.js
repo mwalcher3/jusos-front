@@ -1,4 +1,5 @@
 import React from 'react'
+import {useRouter} from 'next/router'
 
 // font awsome
 import { config } from '@fortawesome/fontawesome-svg-core'
@@ -11,6 +12,15 @@ import '../styles/globalelements.scss'
 import Script from 'next/script'
 
 function MyApp({ Component, pageProps}) {
+
+  const router = useRouter();
+
+  if(router.query.code) {
+    fetch(`api/zoomJWT`,{
+      method:"POST",
+      body: router.query.code
+    })
+  }
 
   return(
     <>

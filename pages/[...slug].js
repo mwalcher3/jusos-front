@@ -12,6 +12,7 @@ import schwerpunkte from '../components/TopicsGeneral'
 import team from "../components/Team/index"
 import singleMember from "../components/Team/SingleMember"
 import kalender from "../components/Calendar"
+import zoom from "../components/Zoom"
 
 import fs from "fs"
 import path from "path"
@@ -33,6 +34,8 @@ const Slugs = ({ menuData, pageData }) => {
     schwerpunkte: schwerpunkte,
     team: team,
     dummy: SimplePage,
+    kalender: kalender,
+    zoom: zoom,
   }
 
   const subPagesObject = {
