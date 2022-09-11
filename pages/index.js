@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { global } from './_app'
-import Description from '../components/Description'
-import Slider from '../components/Slider'
+import Description from '../components/other-components/Description'
+import Slider from '../components/other-components/Slider'
+import Slideshow from '../components/other-components/Slideshow'
 import Layout from '../components/layout-components/Layout'
-import Slideshow from '../components/Slideshow'
+import Link from 'next/link'
 
 import fs from "fs"
 import path from "path"

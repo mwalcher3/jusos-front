@@ -1,5 +1,5 @@
-import slideshowcss from '../styles/component-modules/slideshow.module.scss'
-import {global} from '../pages/_app'
+import slideshowcss from '../../styles/component-modules/slideshow.module.scss'
+import {global} from '../../pages/_app'
 import Carousel from "./Carousel"
 
 const Slideshow = ({data}) => {

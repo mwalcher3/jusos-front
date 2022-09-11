@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faClipboard} from '@fortawesome/free-solid-svg-icons'
-import clipboardcss from "../styles/component-modules/copy-to-clipboard.module.scss"
+import clipboardcss from "../../styles/component-modules/copy-to-clipboard.module.scss"
 
 const CopyToClipboard = ({textToCopy}) => {
 

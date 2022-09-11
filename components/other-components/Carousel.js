@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
-import useCounter from '../hooks/useCounter'
+import useCounter from '../../hooks/useCounter'
 import Image from 'next/image'
-import carcss from '../styles/component-modules/carousel.module.scss'
+import carcss from '../../styles/component-modules/carousel.module.scss'
 
 const Carousel = ({settings}) => {
     

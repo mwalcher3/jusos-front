@@ -1,7 +1,7 @@
 import React from 'react'
-import {global} from '../pages/_app'
+import {global} from '../../pages/_app'
 import Image from 'next/image'
-import popupcss from "../styles/component-modules/popup.module.scss"
+import popupcss from "../../styles/component-modules/popup.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleXmark} from '@fortawesome/free-solid-svg-icons'
 

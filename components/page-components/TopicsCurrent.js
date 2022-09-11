@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import currentcss from '../styles/component-modules/topics.current.module.scss'
-import Carousel from "./Carousel"
+import currentcss from '../../styles/component-modules/topics.current.module.scss'
+import Carousel from "../other-components/Carousel"
 
 const TopicsCurrent = ({data}) => {
 

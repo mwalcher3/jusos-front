@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-import smembercss from "../../styles/component-modules/singlemember.module.scss"
+import smembercss from "../../../styles/component-modules/singlemember.module.scss"
 import Image from 'next/image'
-import { global } from '../../pages/_app'
-import CopyToClipboard from '../CopyToClipboard';
+import { global } from '../../../pages/_app'
+import CopyToClipboard from '../../other-components/CopyToClipboard';
 
 const SingleMember = ({ data }) => {
 
@@ -30,7 +30,7 @@ const SingleMember = ({ data }) => {
       <p>{data.attributes.description}</p>
 
       <h2>Kontakt:</h2>
-      {/* <CopyToClipboard textToCopy={data.attributes.email}/> */}
+      <CopyToClipboard textToCopy={data.attributes.email}/>
 
       <div className="lastupdated">{data.attributes.updatedAt}</div>
     </div>

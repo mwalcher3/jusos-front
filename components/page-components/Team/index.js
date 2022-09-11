@@ -1,9 +1,8 @@
 import React from 'react'
-import {global} from '../../pages/_app'
-import teamcss from "../../styles/component-modules/team.module.scss"
+import {global} from '../../../pages/_app'
+import teamcss from "../../../styles/component-modules/team.module.scss"
 import Image from 'next/image'
-import Link from "next/link"
-import Sprecherkreis from './SprecherKreis'
+import Sprecherkreis from '../../other-components/SprecherKreis'
 
 const Team = ({data}) => {
 

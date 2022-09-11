@@ -1,4 +1,4 @@
-import aboutcss from '../styles/component-modules/about.module.scss'
+import aboutcss from '../../styles/component-modules/about.module.scss'
 import React from 'react'
 import Image from 'next/image'
 

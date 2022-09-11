@@ -2,17 +2,17 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { global } from './_app'
 
-import artikel from '../components/Articles/index'
-import singleArticles from '../components/Articles/SingleArticles'
+import artikel from '../components/page-components/Articles/index'
+import singleArticles from '../components/page-components/Articles/SingleArticles'
 import Layout from '../components/layout-components/Layout'
-import SimplePage from '../components/Simple-page'
-import kontakt from '../components/Contact'
-import aktuelles from '../components/TopicsCurrent'
-import schwerpunkte from '../components/TopicsGeneral'
-import team from "../components/Team/index"
-import singleMember from "../components/Team/SingleMember"
-import kalender from "../components/Calendar"
-import zoom from "../components/Zoom"
+import SimplePage from '../components/page-components/Simple-page'
+import kontakt from '../components/page-components/Contact'
+import aktuelles from '../components/page-components/TopicsCurrent'
+import schwerpunkte from '../components/page-components/TopicsGeneral'
+import team from "../components/page-components/Team/index"
+import singleMember from "../components/page-components/Team/SingleMember"
+import kalender from "../components/page-components/Calendar"
+import zoom from "../components/page-components/Zoom"
 
 import fs from "fs"
 import path from "path"

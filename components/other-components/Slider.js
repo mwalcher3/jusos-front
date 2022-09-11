@@ -1,6 +1,6 @@
-import slidercss from'../styles/component-modules/slider.module.scss'
+import slidercss from'../../styles/component-modules/slider.module.scss'
 import {useState, useEffect} from 'react'
-import useCounter from '../hooks/useCounter'
+import useCounter from '../../hooks/useCounter'
 
 const Slider = ({data}) => {  
 
