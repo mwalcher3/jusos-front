@@ -90,7 +90,8 @@ const Header = ({ menuData }) => {
                 <div className={headercss.logodiv}>
                     <img src="/Jusos_Logo_4c.svg_.png"
                         alt="Jusos Logo"
-                        className={headercss.logo + " " + (intersection == false || burgerOpen ? headercss.logoscrolled : "")}></img>
+                        className={headercss.logo + " " + (intersection == false || burgerOpen ? headercss.logoscrolled : "")}>
+                        </img>
                 </div>
 
                 {/*Nav Bar*/}
@@ -187,53 +188,6 @@ const Header = ({ menuData }) => {
                     })}
                 </div>
             </div>
-<<<<<<< HEAD
-=======
-        </div>
-
-
-        </div>
-
-        {/*Burger Menu*/}
-
-        <div className={burgerOpen? headercss.burgerMenu: headercss.none}>
-            <div className={headercss.burgerMenuContent}>
-                <h2>Menü</h2>
-           {menuData.menu.items.map((item, index)=>{
-              
-               return(
-                   <>
-                         <div className="horizontalLine"></div>
-                   <div
-                        key= {index} 
-                        className={headercss.burgerMenuTitles } 
-                        onClick={()=> 
-                        {index == subMenuCount ? setSubMenuCount(-1): setSubMenuCount(index)}}>
-                        {item.title}
-                    </div>
-                
-                  <div 
-                        className={index == subMenuCount ? 
-                        headercss.burgerMenuSubtitles: headercss.burgerMenuSubtitlesHidden}>
-                        {item.children.map((itemChildren)=>{
-
-                        return (
-                        <div key={itemChildren.title}>
-                          <Link href={`./${links[itemChildren.url]}`} passHref>
-                              <div onClick={()=>{setBurgerOpen(false)}}className={headercss.burgerlinks}>
-                          {itemChildren.title}
-                          </div>
-                           </Link>
-                            </div>)
-                        })}  
-                    </div>
-                   
-                   </>
-               )
-                })}
-        </div>
-        </div>
->>>>>>> a4a3ddd6180004979bcdd5bf226516d572f18274
         </>
     )
 }

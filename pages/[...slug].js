@@ -23,19 +23,8 @@ import qs from "qs"
 
 const Slugs = ({ menuData, pageData }) => {
 
-<<<<<<< HEAD
   const router = useRouter();
   const { slug = [] } = router.query;
-=======
-    const object={
-      artikel: artikel,
-      kontakt: kontakt,
-      aktuelles: aktuelles,
-      schwerpunkte: schwerpunkte,
-      team: team,
-      kalender: kalender,
-    }
->>>>>>> a4a3ddd6180004979bcdd5bf226516d572f18274
 
   const object = {
     artikel: artikel,
@@ -215,12 +204,7 @@ export const getStaticProps = async (context) => {
   const instagramJson = await instagramData.json()
   // const instaData = instagramJson.data
 
-<<<<<<< HEAD
   // ... and rewrite pageJson accordingly
-=======
-  const slugs= slug0.map((item)=>{
-    if(item.data!=null && item.data!=undefined){
->>>>>>> a4a3ddd6180004979bcdd5bf226516d572f18274
 
   const pageJsonFull = JSON.parse(
     JSON.stringify(pageJson, (key, value) => {
