@@ -996,6 +996,11 @@ ajv@^6.10.0, ajv@^6.12.4:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+amdefine@>=0.0.4:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
+  integrity sha512-S2Hw0TtNkMJhIabBwIojKL9YHO5T0n5eNqWJ7Lrlel/zDbftQpxpapi8tZs3X1HWa+u+QeydGmzzNU0m09+Rcg==
+
 ansi-colors@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/ansi-colors/-/ansi-colors-4.1.1.tgz"
@@ -1098,6 +1103,11 @@ ast-types-flow@^0.0.7:
   version "0.0.7"
   resolved "https://registry.npmjs.org/ast-types-flow/-/ast-types-flow-0.0.7.tgz"
   integrity sha1-9wtzXGvKGlycItmCw+Oef+ujva0=
+
+async@~0.2.6:
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/async/-/async-0.2.10.tgz#b6bbe0b0674b9d719708ca38de8c237cb526c3d1"
+  integrity sha512-eAkdoKxU6/LkKDBzLpT+t6Ff5EtfSF4wx1WfJiPEEV7WNLnDaRXk0oVysiEPm262roaachGexwUv94WhSgN5TQ==
 
 axe-core@^4.3.5:
   version "4.3.5"
@@ -2876,6 +2886,11 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
+lib@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/lib/-/lib-4.3.3.tgz#a92c85b27610e1f1361cc54110a3653abce35b5f"
+  integrity sha512-5ZIjwJvbfVJjbu0BTpfkqJrQ2ykXzo+XRFkHkTPHGpAPNS9vWwhLn1caQsedTKXmQ2U9gKYFSAlfjAXdXuWBjA==
+
 lines-and-columns@^1.1.6:
   version "1.2.4"
   resolved "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.2.4.tgz"
@@ -3161,6 +3176,13 @@ optimism@^0.16.1:
     "@wry/context" "^0.6.0"
     "@wry/trie" "^0.3.0"
 
+optimist@~0.3.5:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.3.7.tgz#c90941ad59e4273328923074d2cf2e7cbc6ec0d9"
+  integrity sha512-TCx0dXQzVtSCg2OgY/bO9hjM9cV4XYx09TVK+s3+FhkjT6LovsLe+pPMzpWf+6yXK/hUizs2gUoTw3jHM0VaTQ==
+  dependencies:
+    wordwrap "~0.0.2"
+
 optionator@^0.9.1:
   version "0.9.1"
   resolved "https://registry.npmjs.org/optionator/-/optionator-0.9.1.tgz"
@@ -3267,7 +3289,7 @@ path-type@^4.0.0:
 
 pdf2json@^2.0.1:
   version "2.0.1"
-  resolved "https://registry.npmjs.org/pdf2json/-/pdf2json-2.0.1.tgz"
+  resolved "https://registry.yarnpkg.com/pdf2json/-/pdf2json-2.0.1.tgz#72e691e0eacb5fe54d2f77d929097a3cf5974f89"
   integrity sha512-gj1kZOV2cA+bHyyZiwNU8AVduT4L+7dQODtJZRev7/23TZ0Mz5ILVLsaCLX2p7A8cdBYyDq6zXEBUBvtXgpIZg==
   dependencies:
     "@xmldom/xmldom" "^0.7.5"
@@ -3448,6 +3470,14 @@ require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/require-directory/-/require-directory-2.1.1.tgz"
   integrity sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==
+
+require@^2.4.20:
+  version "2.4.20"
+  resolved "https://registry.yarnpkg.com/require/-/require-2.4.20.tgz#66cb6baaabb65de8a71d793f5c65fd184f3798b6"
+  integrity sha512-7eop5rvh38qhQQQOoUyf68meVIcxT2yFySNywTbxoEECgkX4KDqqDRaEszfvFnuB3fuZVjDdJZ1TI/Esr16RRA==
+  dependencies:
+    std "0.1.40"
+    uglify-js "2.3.0"
 
 resolve-cwd@^3.0.0:
   version "3.0.0"
@@ -3645,6 +3675,13 @@ source-map@^0.6.0, source-map@^0.6.1:
   resolved "https://registry.npmjs.org/source-map/-/source-map-0.6.1.tgz"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
+source-map@~0.1.7:
+  version "0.1.43"
+  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.1.43.tgz#c24bc146ca517c1471f5dacbe2571b2b7f9e3346"
+  integrity sha512-VtCvB9SIQhk3aF6h+N85EaqIaBFIAfZ9Cu+NJHHVvc8BbEcnvDcFw6sqQ2dQrT6SlOrZq3tIvyD9+EGq/lJryQ==
+  dependencies:
+    amdefine ">=0.0.4"
+
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz"
@@ -3656,6 +3693,11 @@ stack-utils@^2.0.3:
   integrity sha512-xrQcmYhOsn/1kX+Vraq+7j4oE2j/6BFscZ0etmYg81xuM8Gq0022Pxb8+IqgOFUIaxHs0KaSb7T1+OegiNrNFA==
   dependencies:
     escape-string-regexp "^2.0.0"
+
+std@0.1.40:
+  version "0.1.40"
+  resolved "https://registry.yarnpkg.com/std/-/std-0.1.40.tgz#3678a5f65094d9e1b6b5e26edbfc0212b8342b71"
+  integrity sha512-wUf57hkDGCoVShrhPA8Q7lAg2Qosk+FaMlECmAsr1A4/rL2NRXFHQGBcgMUFKVkPEemJFW9gzjCQisRty14ohg==
 
 string-length@^4.0.1:
   version "4.0.2"
@@ -3915,6 +3957,15 @@ typed-function@^2.1.0:
   resolved "https://registry.npmjs.org/typed-function/-/typed-function-2.1.0.tgz"
   integrity sha512-bctQIOqx2iVbWGDGPWwIm18QScpu2XRmkC19D8rQGFsjKSgteq/o1hTZvIG/wuDq8fanpBDrLkLq+aEN/6y5XQ==
 
+uglify-js@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.3.0.tgz#2cdec16d378a8a2b6ecfb6989784cf8b7ae5491f"
+  integrity sha512-AQvbxRKdaQeYADywQaao0k8Tj+7NGEVTne6xwgX1yQpv/G8b0CKdIw70HkCptwfvNGDsVe+0Bng3U9hfWbxxfg==
+  dependencies:
+    async "~0.2.6"
+    optimist "~0.3.5"
+    source-map "~0.1.7"
+
 unbox-primitive@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/unbox-primitive/-/unbox-primitive-1.0.1.tgz"
@@ -3993,6 +4044,11 @@ word-wrap@^1.2.3:
   version "1.2.3"
   resolved "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.3.tgz"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
+
+wordwrap@~0.0.2:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
+  integrity sha512-1tMA907+V4QmxV7dbRvb4/8MaRALK6q9Abid3ndMYnbyo8piisCmeONVqVSXqQA3KaP4SLt5b7ud6E2sqP8TFw==
 
 wrap-ansi@^7.0.0:
   version "7.0.0"

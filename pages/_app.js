@@ -10,14 +10,14 @@ import '../styles/color.mode.scss'
 import '../styles/globalelements.scss'
 import Script from 'next/script'
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps}) {
 
-  return (
+  return(
     <>
-      <Script src="/javascript/initialColorMode.js" strategy="beforeInteractive" />
-      <Component {...pageProps} />
-    </>
-
+  <Script src="/javascript/initialColorMode.js" strategy="beforeInteractive" />
+  <Component {...pageProps} />
+  </>
+  
   )
 }
 
@@ -29,11 +29,11 @@ export default MyApp
 // variables and functions used globaly
 
 
-export const global = {
+export const global= {
   fetchURI: "https://content.jusoshd.uber.space/api",
-  host: "https://content.jusoshd.uber.space",
-  endpointSyntax: (item) => {
-    item = item ? item.toLowerCase() : item
+  host:"https://content.jusoshd.uber.space",
+  endpointSyntax: (item)=>{
+   // item= item.toLowerCase()
     return item
   },
 

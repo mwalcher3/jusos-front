@@ -44,8 +44,9 @@
 
 
 .container{
-    display: grid;
-    gap: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 
     h1{
         text-align: center

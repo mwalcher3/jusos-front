@@ -19,7 +19,6 @@ export default function Contact({data}) {
       formData[item.name]= e.target[item.name].value;
   
     });
-  
 
     fetch('/api/contact',{
       method:"POST",
