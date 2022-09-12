@@ -8,10 +8,8 @@ import {useRouter} from 'next/router'
 
 export const getStaticProps= async ()=>{
 
-    // const data=await fetch("http://localhost:3000/api/zoomJWT");
-    // const json= await data.json()
-
-    const json ={}
+     const data=await fetch("http://localhost:3000/api/zoomJWT");
+     const json= await data.json()
   
     return {
       props: {
@@ -22,8 +20,7 @@ export const getStaticProps= async ()=>{
   
 
 const Zoom = ({data}) => {
-
-  return <div>no data</div>
+  console.log(data);
   
     const meetingSDKElement= React.useRef()
 
@@ -61,11 +58,11 @@ const Zoom = ({data}) => {
         });
 
         client.join({
-          apiKey: 'lMwMhrMcB0xGf902dO3qWUX23FF0vbuKeA8a',
+          sdkKey: 'lMwMhrMcB0xGf902dO3qWUX23FF0vbuKeA8a',
           signature: data.signature,
-          meetingNumber: 86374621298,
-          password: 'v64RaZ',
-          userName: "melisande.walcher@gmail.com"
+          meetingNumber: 83246480647,
+          password: 'gyRp6P',
+          userName: "Melisande Walcher"
       })
 
     },[])
@@ -73,17 +70,6 @@ const Zoom = ({data}) => {
   
   return (
     <>
-
-   {/* <link
-          type="text/css"
-          rel="stylesheet"
-          href="https://source.zoom.us/2.2.0/css/bootstrap.css"
-        /> 
-        <link
-          type="text/css"
-          rel="stylesheet"
-          href="https://source.zoom.us/2.2.0/css/react-select.css"
-  />*/}
           <Script src="https://source.zoom.us/2.2.0/lib/vendor/react.min.js" strategy="beforeInteractive" /> 
       <Script src="https://source.zoom.us/2.2.0/lib/vendor/react-dom.min.js" strategy="beforeInteractive" />
       <Script src="https://source.zoom.us/2.2.0/lib/vendor/redux.min.js" strategy="beforeInteractive" />

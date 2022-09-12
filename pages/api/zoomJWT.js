@@ -29,23 +29,27 @@ function generateSignature(sdkKey, sdkSecret, meetingNumber, role) {
   return sdkJWT
 }
 
-const generatedSignature= generateSignature(process.env.ZOOM_SDK_KEY, process.env.ZOOM_SDK_SECRET, 86374621298, 0)
+const generatedSignature= generateSignature(process.env.ZOOM_SDK_KEY, process.env.ZOOM_SDK_SECRET, 83246480647, 0)
 
 
 export default function handler(req, res) {
   var authorization_code= req.body
 
-  var auth = "Basic emJCQzV2S1RRajIyeU5TcXc2N0RBOnZ5aWFJeVVWTHZlU0NEbnFwTE1LQTNGc1lneXprRDVI"
-        var header = {"Host":"zoom.us", "Authorization" :auth, 'Content-Type': 'application/x-www-form-urlencoded'}
-        var url = `https://zoom.us/oauth/token?grant_type=authorization_code&code=${authorization_code}&redirect_uri=http://localhost:3000`
-        axios.post(url,{},header).then(result => {
+  var auth = `Basic ${Buffer.from(`${process.env.ZOOM_CLIENT_ID}:${process.env.ZOOM_CLIENT_SECRET}`).toString('base64')}`
+
+        var header = {"Host":"zoom.us", "Authorization" :auth, "ContentType": 'application/x-www-form-urlencoded'}
+        var url = `https://zoom.us/oauth/token?grant_type=authorization_code&code=${authorization_code}&redirect_uri=${process.env.ZOOM_REDIRECT_URL}`
+        console.log("this is the header", header);
+        
+        axios.post(url, {} ,header).then(result => {
             console.log(result.response)
         }).catch(e => {
             console.log(e)
-            console.log("an error has been catched!!")})
-  if(authorization_code!=undefined){
-    console.log("this is the code", authorization_code)
-  }
+            console.log("an error has been caught!!")})
+
+    if(authorization_code!=undefined){
+      console.log("this is the code", authorization_code)
+    }
 
     res.status(200).json({ signature: generatedSignature})
    // console.log(generateSignature(process.env.ZOOM_SDK_KEY, process.env.ZOOM_SDK_SECRET, 83248533497, 0))

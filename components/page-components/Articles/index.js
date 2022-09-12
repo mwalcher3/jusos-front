@@ -69,7 +69,7 @@ const Articles = ({data}) => {
                   </div>
 
                     <div className={articlecss.articletitle}>
-                    {item.attributes.Title}
+                    {item.attributes.title}
                     </div>
 
                  <div className={articlecss.articledate}>

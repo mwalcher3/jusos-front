@@ -28,7 +28,7 @@ return <div className={slidercss.mainslider}>
                   <div className={slidercss.sliderboxes}>
                   <h3>{item.attributes.title}</h3>
                <p>{index}</p>
-               <p>{item.attributes.textboxes}</p>
+               <p>{item.attributes.textBoxes}</p>
                </div>
             
            </div>)
