@@ -29,7 +29,7 @@ function generateSignature(sdkKey, sdkSecret, meetingNumber, role) {
   return sdkJWT
 }
 
-const generatedSignature= generateSignature(process.env.ZOOM_SDK_KEY, process.env.ZOOM_SDK_SECRET, 83246480647, 0)
+const generatedSignature= generateSignature(process.env.ZOOM_SDK_KEY, process.env.ZOOM_SDK_SECRET, 5011974152, 0)
 
 
 export default function handler(req, res) {
