@@ -1,16 +1,57 @@
 @import "../../styles/config";
 
-
-
-.topicstext{
-    h2{
-        width: fit-content;
-    }
-    .plus{
-        color:white;
-        background-color: var(--red);
-        width: 10px;
-        height: 10px;
-    }
+@mixin plus2minus($rotation){
+    content: "";
+    background-color: var(--red);
+    height:  5px;
+    width: 30px;
+    transform:  rotate($rotation);
 }
 
+
+.accordioncontainer{
+    display: grid;
+    gap: 20px;
+    align-items: center;
+
+        .accordionbanner{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .title{
+                width: fit-content;
+            }
+
+            .more{
+                display: flex;
+                cursor: pointer;
+                margin-right: 5px;
+
+                .plusvertical{
+                    @include plus2minus(-90deg);
+                    position: absolute;
+                }
+
+                .plushorizontal{
+                    @include plus2minus(0deg);
+                }
+            }
+        }
+        p{
+            margin: 10px;
+        }
+
+        .paragraphs{
+            line-height: 1.4rem;
+            opacity: 1;
+            transition: 0.2s ;
+        }
+
+        .paragraphsclosed{
+            line-height: 1.4rem;
+            opacity: 0;
+            position: absolute;
+            transition: 0.2s;
+        }
+}

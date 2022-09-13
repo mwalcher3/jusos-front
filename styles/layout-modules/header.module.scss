@@ -188,13 +188,13 @@ $navheightmedium: 75px;
 
 .burgerMenuSubtitles{
     @include burgerMenuSubtitles(200px);
-    transition: 0.75s max-height;
+    transition: max-height 0.75s;
 
 }
 
 .burgerMenuSubtitlesHidden{
     @include burgerMenuSubtitles(0);
-    transition: 0.75s max-height  ;
+    transition:  max-height  0.75s;
 
 }
 
@@ -222,10 +222,9 @@ $navheightmedium: 75px;
     width: 100px;
     gap: 10px;
     bottom: 30px;
-    margin-top: 40px
+    margin-top: 40px;
 
     svg{
-        font-size: 2rem;
         cursor: pointer;
     }
    

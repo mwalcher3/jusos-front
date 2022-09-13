@@ -17,6 +17,7 @@ import zoom from "../components/page-components/Zoom"
 import fs from "fs"
 import path from "path"
 import qs from "qs"
+import KJUR from 'jsrsasign'
 
 // menuData: main menu
 // data: page props
@@ -207,6 +208,38 @@ export const getStaticProps = async (context) => {
   const instagramJson = await instagramData.json()
   // const instaData = instagramJson.data
 
+
+  //generate json web token for zoom sdk
+   // https://www.npmjs.com/package/jsrsasign
+   function generateSignature(sdkKey, sdkSecret, meetingNumber, role) {
+
+    const iat = Math.round((new Date().getTime() - 30000) / 1000)
+    const exp = iat + 60 * 60 * 2
+    const oHeader = { alg: 'HS256', typ: 'JWT' }
+
+    const oPayload = {
+      sdkKey: sdkKey,
+      mn: meetingNumber,
+      role: role,
+      iat: iat,
+      exp: exp,
+      appKey: sdkKey,
+      tokenExp: iat + 60 * 60 * 2
+    }
+
+    ///users/{userId}/meetings
+
+    const sHeader = JSON.stringify(oHeader)
+    const sPayload = JSON.stringify(oPayload)
+    const sdkJWT = KJUR.jws.JWS.sign('HS256', sHeader, sPayload, sdkSecret)
+    return sdkJWT
+  }
+  const meetingId=  5011974152
+
+  const generatedSignature = generateSignature(process.env.ZOOM_SDK_KEY, process.env.ZOOM_SDK_SECRET, meetingId, 0)
+  const zoomJson = { signature : generatedSignature } 
+
+
   // ... and rewrite pageJson accordingly
 
   const pageJsonFull = JSON.parse(
@@ -219,6 +252,7 @@ export const getStaticProps = async (context) => {
         }
         case "members": return memberJson
         case "instagramFeed": return instagramJson
+        case "zoomMeeting": return  zoomJson 
         default: return value
       }
     }
@@ -235,28 +269,7 @@ export const getStaticProps = async (context) => {
     })
   )
 
-  // slugs.forEach((item, index) => {
-  //   links[endpointsToFetch[index]] = item;
-  // })
 
-  //push the data of the nested pages into the rewrite object
-
-  //first array with the article data
-  // slug1[0].forEach((item) => {
-  //   rewrite[[`artikel`, `${global.endpointSyntax(item.attributes.Title)}`]] = item;
-  // })
-
-  //second data with the team data
-  // slug1[1].forEach((item) => {
-  //   rewrite[[`team`, `${global.endpointSyntax(item.attributes.Title)}`]] = item;
-  // })
-
-
-  // const displayedSlug = context.params.slug;
-  // const data = rewrite[displayedSlug];
-
-  //return 404 page if the displayedSlug does not refer a any data,
-  //this is because fallback is set to 'blocking' in the getStaticPaths function
 
   if (!pageData) {
     return {

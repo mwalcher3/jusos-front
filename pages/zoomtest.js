@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
-//import ZoomMtgEmbedded from '@zoomus/websdk/embedded'
-import dynamic from 'next/dynamic'
-//const ZoomMtgEmbedded= dynamic(()=>{return import('@zoomus/websdk/embedded')}, {ssr:false})
 import Script from 'next/script'
 import Link from 'next/link'
-import Head from "next/head"
-import { useRouter } from 'next/router'
 import KJUR from 'jsrsasign'
+import zoomcss from "../styles/component-modules/zoom.module.scss"
 
 
+const meetingId=  5011974152
 export const getStaticProps = async () => {
 
   // https://www.npmjs.com/package/jsrsasign
@@ -36,7 +33,7 @@ export const getStaticProps = async () => {
     return sdkJWT
   }
 
-  const generatedSignature = generateSignature(process.env.ZOOM_SDK_KEY, process.env.ZOOM_SDK_SECRET, 5011974152, 0)
+  const generatedSignature = generateSignature(process.env.ZOOM_SDK_KEY, process.env.ZOOM_SDK_SECRET, meetingId, 0)
 
   const json = { signature: generatedSignature }
 
@@ -59,8 +56,34 @@ const Zoom = ({ data }) => {
     client.init({
       debug: true,
       zoomAppRoot: meetingSDKElement.current,
-      language: 'en-US',
+      language: 'de-DE',
       customize: {
+        video: {
+          popper: {
+            disableDraggable: true
+          },
+          isResizable: true,
+          viewSizes: {
+            default: {
+              width: 500,
+              height: 500
+            },
+          },
+        },
+    
+     /* customize: {
+        video: {
+          popper: {
+            disableDraggable: true
+          },
+          isResizable: true,
+          viewSizes: {
+            default: {
+              width: 500,
+              height: 500
+            },
+          }
+        },
         meetingInfo: [
           'topic',
           'host',
@@ -71,25 +94,14 @@ const Zoom = ({ data }) => {
           'participant',
           'dc',
           'enctype',
-        ],
-        toolbar: {
-          buttons: [
-            {
-              text: 'Custom Button',
-              className: 'CustomButton',
-              onClick: () => {
-                console.log('custom button')
-              }
-            }
-          ]
-        }
+        ],*/
       }
     });
 
     client.join({
       sdkKey: 'lMwMhrMcB0xGf902dO3qWUX23FF0vbuKeA8a',
       signature: data.signature,
-      meetingNumber: 5011974152,
+      meetingNumber: meetingId,
       password: '8BDfms',
       userName: `${process.env.USER}`
     })
@@ -103,16 +115,16 @@ const Zoom = ({ data }) => {
       <Script src="https://source.zoom.us/2.7.0/lib/vendor/redux.min.js" strategy="beforeInteractive" />
       <Script src="https://source.zoom.us/2.7.0/lib/vendor/redux-thunk.min.js" strategy="beforeInteractive" />
       <Script src="https://source.zoom.us/2.7.0/lib/vendor/lodash.min.js" strategy="beforeInteractive" />
-      <Script src="https://source.zoom.us/2.7.0/zoom-meeting-embedded-2.7.0.min.js" strategy="beforeInteractive" />
+     <Script src="https://source.zoom.us/2.7.0/zoom-meeting-embedded-2.7.0.min.js" strategy="beforeInteractive"/>
 
-      <div ref={meetingSDKElement}></div>
+      <div ref={meetingSDKElement} className={zoomcss.meetingSDKElement}></div>
 
 
-      <button>
+      {/*<button>
         <Link href={`https://zoom.us/oauth/authorize?response_type=code&client_id=zbBC5vKTQj22yNSqw67DA&redirect_uri=http://localhost:3000`}>
           authorize access to your zoom account
         </Link>
-      </button>
+  </button>*/}
     </>
   )
 }

@@ -7,12 +7,12 @@ import generalcss from '../../styles/component-modules/topics.general.module.scs
 
 const TopicsGeneral = ({data}) => {
 
-  const [textOpen, setTextOpen] = React.useState(-1)
+  const [accordionCount, setAccordionCount] = React.useState(-1)
     const dataAttributes= data.data.attributes
 
   return (
     <div className="container">
-      <div className="mainimage">
+      <section className="mainimage">
         <Image
           src={`${global.host}${dataAttributes.mainImage.data.attributes.url}`}
           alt={dataAttributes.mainImage.data.attributes.alternativeText}
@@ -21,23 +21,31 @@ const TopicsGeneral = ({data}) => {
           objectPosition="50% left"
           priority
       />
-      </div>
+      </section>
       <h1>{dataAttributes.title}</h1>
       <p>{dataAttributes.description}</p>
       <PopUp data={dataAttributes.popups.data}/>
 
-      <div >
+      <section className={generalcss.accordioncontainer}>
         {dataAttributes.topics.data.map((item, index)=>{
           return(
-            <div key={index} className={generalcss.topicstext}>
-              <h2>{item.attributes.title}</h2>
-              <span className={generalcss.plus}></span>
-              <p className={textOpen==index? generalcss.paragraphs: "none"}>{item.attributes.text}</p>
+            <div key={index}>
+              <div className={generalcss.accordionbanner}>
+                <h2>{item.attributes.title}</h2>
+
+                <span onClick={()=> {index==accordionCount? setAccordionCount(-1): setAccordionCount(index)}} className={generalcss.more}>
+                    <div className={generalcss.plushorizontal}></div>
+                    <div className={accordionCount==index? generalcss.horizontal: generalcss.plusvertical}></div>
+                </span>
+              </div>
+
+              <p className={accordionCount==index? generalcss.paragraphs: generalcss.paragraphsclosed}>{item.attributes.text}</p>
               <div className="horizontalLine"></div>
               </div>
           )
         })}
-      </div>
+      </section>
+
       <p className="lastupdated">{dataAttributes.updatedAt}</p> 
     </div>
   )
