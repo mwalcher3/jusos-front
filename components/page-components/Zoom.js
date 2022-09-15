@@ -5,9 +5,13 @@ import zoomcss from "../../styles/component-modules/zoom.module.scss"
 const Zoom = ({ data }) => {
   console.log(data);
   const meetingId=  5011974152
-  const meetingSDKElement = React.useRef()
+  const meetingSDKElement = React.useRef();
+
+
+
 
   useEffect(() => {
+    
     const client = ZoomMtgEmbedded.createClient()
 
     client.init({
@@ -16,19 +20,32 @@ const Zoom = ({ data }) => {
       language: 'de-DE',
       customize: {
         video: {
-          popper: {
-            disableDraggable: true
-          },
           isResizable: true,
           viewSizes: {
             default: {
-              width: 500,
-              height: 500
+              width: 1000,
+              height: 600
             },
-          },
+            ribbon: {
+              width: 300,
+              height: 700
+            }
+          }
         },
-    
-      }
+
+        toolbar: {
+          buttons: [
+            {
+              text: 'Custom Button',
+              className: 'CustomButton',
+              onClick: () => {
+                console.log('custom button');
+              }
+            }
+          ]
+        }
+      },
+
     });
 
     client.join({
@@ -50,7 +67,11 @@ const Zoom = ({ data }) => {
       <Script src="https://source.zoom.us/2.7.0/lib/vendor/lodash.min.js" strategy="beforeInteractive" />
      <Script src="https://source.zoom.us/2.7.0/zoom-meeting-embedded-2.7.0.min.js" strategy="beforeInteractive"/>
 
-      <div ref={meetingSDKElement} className={zoomcss.meetingSDKElement}></div>
+     <div className="container">
+      <h1>{data.data.attributes.title}</h1>
+      <p>{data.data.attributes.description}</p>
+        <div ref={meetingSDKElement}  className={zoomcss.meetingSDKElement}></div>
+      </div>
 
 
       {/*<button>

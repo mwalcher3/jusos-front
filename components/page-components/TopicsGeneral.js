@@ -23,7 +23,6 @@ const TopicsGeneral = ({data}) => {
       />
       </section>
       <h1>{dataAttributes.title}</h1>
-      <p>{dataAttributes.description}</p>
       <PopUp data={dataAttributes.popups.data}/>
 
       <section className={generalcss.accordioncontainer}>
@@ -35,7 +34,7 @@ const TopicsGeneral = ({data}) => {
 
                 <span onClick={()=> {index==accordionCount? setAccordionCount(-1): setAccordionCount(index)}} className={generalcss.more}>
                     <div className={generalcss.plushorizontal}></div>
-                    <div className={accordionCount==index? generalcss.horizontal: generalcss.plusvertical}></div>
+                    <div className={accordionCount==index? generalcss.minus: generalcss.plusvertical}></div>
                 </span>
               </div>
 
@@ -46,7 +45,7 @@ const TopicsGeneral = ({data}) => {
         })}
       </section>
 
-      <p className="lastupdated">{dataAttributes.updatedAt}</p> 
+      <div className="lastupdated">{dataAttributes.updatedAt}</div> 
     </div>
   )
 }

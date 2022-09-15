@@ -56,6 +56,11 @@
         font-size: 1.7rem;
         margin: 0
     }
+
+    p{
+        border: 2px solid var(--red);
+        padding: 15px;
+    }
 }
 
 //overwrite margins for different screen sizes which have different default margins

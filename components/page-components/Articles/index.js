@@ -6,13 +6,6 @@ import {useRef, useState, useEffect} from 'react'
 
 const Articles = ({data}) => {
 
-  const articleimages= [
-    {url:'Feierbad21.jpg', id: 5}, 
-    {url:'Landesparteitag21Menstruationsfreistellung.jpeg', id:1},
-    {url:'OBWahlen_Semesterferien.jpg', id: 2},
-    {url:'Sharepic_HD_solidarisch_VOL2.png', id: 4},
-    {url:'SemesterOpening.jpg', id: 3}]
-
   const imageRefs= useRef([]);
   const scrollContainer= useRef();
   const [scroll, setScroll]= useState(scrollContainer.current)
@@ -49,22 +42,21 @@ const Articles = ({data}) => {
 
       {
           data.data.attributes.articles.data.map((item, i)=>{
-            const image = articleimages[i]
+            console.log(item);
             return(
-              <Link key={item.id} href= {`/artikel/${global.endpointSyntax(item.attributes.title)}`} passHref>
+          <Link key={item.id} href={`./artikel/${global.endpointSyntax(item.attributes.title)}`} passHref>
             <div  
             className={articlecss.articleboxes}
             ref={el => imageRefs.current[i] = el} >
                 
               <div className={articlecss.images}>
-                  <Image
-                    src={`/articles/${image.url}`}
-                    alt="article image"
-                    key={image.id}
+                <Image
+                    src={`${global.host}${item.attributes.image.data.attributes.url}`}
+                    alt={`${global.host}${item.attributes.image.data.attributes.alternativeText}`}
                     layout='fill'
                     objectFit= 'cover'
                     priority
-                  />
+              />
 
                   </div>
 

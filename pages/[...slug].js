@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { global } from './_app'
 
@@ -202,6 +202,11 @@ export const getStaticProps = async (context) => {
   const memberData = await fetch(`${global.fetchURI}/members?populate=*`);
   const memberJson = await memberData.json()
 
+  // fetch articleData
+  const articleData = await fetch(`${global.fetchURI}/articles?populate=*`);
+  const articleJson = await articleData.json()
+
+
   // fetch data from instagram api
   const instagramToken = process.env.INSTAGRAM_TOKEN
   const instagramData = await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=${instagramToken}`);
@@ -211,6 +216,9 @@ export const getStaticProps = async (context) => {
 
   //generate json web token for zoom sdk
    // https://www.npmjs.com/package/jsrsasign
+
+   
+
    function generateSignature(sdkKey, sdkSecret, meetingNumber, role) {
 
     const iat = Math.round((new Date().getTime() - 30000) / 1000)
@@ -252,7 +260,8 @@ export const getStaticProps = async (context) => {
         }
         case "members": return memberJson
         case "instagramFeed": return instagramJson
-        case "zoomMeeting": return  zoomJson 
+        case "zoomMeeting": return  zoomJson
+        case "articles": return articleJson
         default: return value
       }
     }
@@ -285,4 +294,3 @@ export const getStaticProps = async (context) => {
     revalidate: 30,
   }
 }
-
