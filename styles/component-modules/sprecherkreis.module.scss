@@ -70,12 +70,14 @@
   gap: 60px;
   width: fit-content;
   align-items: center;
+  justify-items: center;
   list-style: none;  
   margin-left: 0;
+  padding: 0;
   .roundimages{
     background-color: white;
     position: relative;
-    width: 50vw;
+    width: 80vw;
     height: 40vh;
   }
 }

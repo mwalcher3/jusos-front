@@ -62,6 +62,6 @@
         }
 
         .paragraphsclosed{
-            @include paragraphs(0, absolute)
+            display: none
         }
 }

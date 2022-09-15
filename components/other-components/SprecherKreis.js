@@ -25,7 +25,7 @@ const SprecherKreis = ({data, alternativeImage}) => {
                     </Link>
 
                     <div className={skcss.name}>
-                    {item.attributes.Name}
+                    {item.attributes.name}
                     </div>
                 </li>
             )

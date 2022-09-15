@@ -19,7 +19,7 @@ const SingleMember = ({ data }) => {
           priority
         />
       </div>
-      <h1>{data.attributes.Title}</h1>
+      <h1>{data.attributes.name}</h1>
 
       <section className={smembercss.roles}>
         <div className={data.attributes.role == "Sprecher" ? "displayBlock" : "none"}>{data.attributes.role}</div>
