@@ -74,7 +74,8 @@ const Articles = ({data}) => {
       }
 
 
-      </div>
+        </div>
+        <div className="lastupdated">{data.data.attributes.updatedAt}</div>
       </div>
     )
 }

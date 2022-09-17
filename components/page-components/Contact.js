@@ -1,5 +1,6 @@
-import {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import formcss from '../../styles/component-modules/form.module.scss'
+import gsap from "gsap"
 
 export default function Contact({data}) {
   const formData= data.data.attributes.form.data[0].attributes
@@ -26,6 +27,37 @@ export default function Contact({data}) {
     })
   }
 
+React.useEffect(()=>{
+  document.querySelectorAll('.button').forEach(element => {
+
+    let path = element.querySelector('.btn-layer path'),
+        tl = gsap.timeline();
+  
+    element.addEventListener('click', e => {
+      e.preventDefault()
+      if(element.classList.contains('active')) {
+        return
+      }
+      element.classList.add('active')
+  
+      tl.to(path, {
+        morphSVG: 'M136,77.5h-1H4.8H4c-2.2,0-4-1.8-4-4v-47c0-2.2,1.8-4,4-4c0,0,0.6,0,0.9,0C44,22.5,66,10,66,10  s3,12.5,69.1,12.5c0.2,0,0.9,0,0.9,0c2.2,0,4,1.8,4,4v47C140,75.7,138.2,77.5,136,77.5z', 
+        duration: .3,
+        delay: .3
+      }).to(path, {
+        morphSVG: 'M136,77.5c0,0-11.7,0-12,0c-90,0-94.2,0-94.2,0s-10.8,0-25.1,0c-0.2,0-0.8,0-0.8,0c-2.2,0-4-1.8-4-4v-47  c0-2.2,1.8-4,4-4c0,0,0.6,0,0.9,0c39.1,0,61.1,0,61.1,0s3,0,69.1,0c0.2,0,0.9,0,0.9,0c2.2,0,4,1.8,4,4v47  C140,75.7,138.2,77.5,136,77.5z', 
+        duration: 1.7, 
+        ease: 'elastic.out(1, .15)',
+        onComplete() {
+          element.classList.remove('active')
+        }
+      })
+    })
+  })
+
+},[])
+
+
     return (
       <>
 		<form onSubmit={handleSubmit} className={formcss.container}>
@@ -44,9 +76,6 @@ export default function Contact({data}) {
                 className={formcss.textarea}
                 name= {label}
                 id={label}
-               /* value= {state[label].val}
-                onChange={(e) => {
-                  state[label].func(e.target.value)}}*/
                 >
               </textarea>
               </div>
@@ -63,21 +92,41 @@ export default function Contact({data}) {
                 name= {label}
                 id={label}
                 className={formcss.inputs}
-                /*value= {state[label].val}
-                onChange={(e) => {
-                  state[label].func(e.target.value)}}*/
                 >
               </input>
             </div>
             )}
           })}
           </div>
+
+          <button className="button" type="submit">
+            <svg className="btn-layer">
+              <path d="M136,77.5c0,0-11.7,0-12,0c-90,0-94.2,0-94.2,0s-10.8,0-25.1,0c-0.2,0-0.8,0-0.8,0c-2.2,0-4-1.8-4-4v-47  c0-2.2,1.8-4,4-4c0,0,0.6,0,0.9,0c39.1,0,61.1,0,61.1,0s3,0,69.1,0c0.2,0,0.9,0,0.9,0c2.2,0,4,1.8,4,4v47  C140,75.7,138.2,77.5,136,77.5z"/>
+            </svg>
+            <svg className="plane">
+              <use xlinkHref="#plane" ></use>
+            </svg>
+            <ul>
+              <li>Versenden</li>
+              <li>Danke!</li>
+            </ul>
+          </button>
+
+
+          {/* SVG*/}
+          <svg xmlns="http://www.w3.org/2000/svg" style={{display: 'none'}}>
+            <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 100" id="btn-layer" preserveAspectRatio="none">
+              <path d="M133,77.5H7c-3.9,0-7-3.1-7-7v-41c0-3.9,3.1-7,7-7h126c3.9,0,7,3.1,7,7v41C140,74.4,136.9,77.5,133,77.5z"/>
+            </symbol>
+            <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 26" id="plane" preserveAspectRatio="none">
+              <path d="M5.25,15.24,18.42,3.88,7.82,17l0,4.28a.77.77,0,0,0,1.36.49l3-3.68,5.65,2.25a.76.76,0,0,0,1-.58L22,.89A.77.77,0,0,0,20.85.1L.38,11.88a.76.76,0,0,0,.09,1.36Z" />
+            </symbol>
+          </svg>
+
         
-            <button type="submit" className={formcss.submit}>
-              Submit
-            </button>
+        
         </form>
-        
+        <div className="lastupdated">{data.data.attributes.updatedAt}</div>
         </>
 	)
 }

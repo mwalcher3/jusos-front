@@ -4,41 +4,41 @@
     border: 2px solid var(--red);
     display: grid;
     margin: 5vh auto 0% auto;
-    width: fit-content;
+    justify-items: center;
     padding: 3vw;
     margin-bottom: 3vh;
     gap: 4vh;
+    background-color: var(--form-background);
+    min-width: fit-content;
 }
 
 
 .textarea{
     height: 100px;
-    resize: none;
 }
 
 .textarea, .inputs{
-    border: 2px solid var(--inputborder);
+    border: 1px solid var(--inputborder);
     border-radius: 3px;
+    font: inherit;
+    font-size: 1.1rem;
+    min-width: 250px;
 }
 
-
-.submit{
-    color: var(--lightblack);
-    font-weight:bold;
-    padding: 10px;
-    text-decoration: none;
-    background-color: var(--red);
-    cursor:pointer;
-}
 
 @media(min-width: $medium){
     .inputcontainer{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 15px;
+        gap: 35px;
     }
 
-    .title, .submit{
+    .textarea, .inputs{
+        min-width: 300px;
+    }
+    
+
+    .title{
         grid-column: 1/-1;
         text-align: center;
         justify-self: center;

@@ -63,6 +63,8 @@
     }
 }
 
+
+
 //overwrite margins for different screen sizes which have different default margins
 @each $screensize, $marginwidth in $horizontalmargin{
     @media(min-width: $screensize){
