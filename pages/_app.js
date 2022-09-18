@@ -9,7 +9,6 @@ config.autoAddCss = false
 import '../styles/globals.scss'
 import '../styles/color.mode.scss'
 import '../styles/globalelements.scss'
-import '../styles/planeanimation.scss'
 import Script from 'next/script'
 
 function MyApp({ Component, pageProps}) {
