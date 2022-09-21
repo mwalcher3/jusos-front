@@ -48,7 +48,7 @@ const Slugs = ({ menuData, pageData }) => {
   var SubComponentName = subPagesObject[slug[0]]
 
   if (object[slug[0]] == null) {
-    if (pageData) {
+    if(pageData){
       return (
         <Layout menuData={menuData}>
           <SimplePage data={pageData} />
@@ -57,19 +57,17 @@ const Slugs = ({ menuData, pageData }) => {
     }
   }
   else {
-
     if (slug[1]) {
-      if (pageData) {
+      if(pageData){
         return (
           <Layout menuData={menuData}>
             <SubComponentName data={pageData.data} />
           </Layout>
         )
       }
-      else { return { notFound: true } }
     }
 
-    if (pageData) {
+    if(pageData){
       return (
         <Layout menuData={menuData}>
           <ComponentName data={pageData} />
@@ -258,6 +256,8 @@ export const getStaticProps = async (context) => {
           // const popupJson = await popupData.json()
           return popupJson
         }
+
+        /* case "field name in stratpi in wich the json will be pushedd" :return extra json fetched */
         case "members": return memberJson
         case "instagramFeed": return instagramJson
         case "zoomMeeting": return  zoomJson

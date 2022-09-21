@@ -2,12 +2,16 @@
 @import "../styles/config";
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+
+//css variables chaged in javascript
 :root{
   --translation-width: 100vw; //how far elements will move to the right/left with sliders
   //default is set to 100vw
 
   --pdf2json-fontsize: 40px;
   --pdf2json-alignment: center;
+
+  --speech-bubble-delay: 0;
 }
 
 html,
@@ -23,6 +27,11 @@ button{
 
 button:hover{
   cursor: pointer
+}
+
+a{
+  color: inherit;
+  text-decoration: none;
 }
 
 header{

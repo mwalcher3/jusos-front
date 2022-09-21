@@ -1,0 +1,59 @@
+@import "../../styles/config";
+
+
+.container{
+    .mainheader{
+        margin: 40px 0;
+        font-weight: 900;
+        h1{
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2rem;
+        }
+
+        .horizontalline{
+            @include horizontalLine(2px)
+        }
+    }
+    h2{
+        font-size: 1.9rem;
+        margin: 0px 0 50px 0;
+    }
+
+    h3{
+        font-size: 1.5rem;
+
+    }
+
+    .paragraphBorder{
+        border: 1px solid var(--red);
+        width: fit-content;
+        padding: 10px;
+    }
+
+    .externalLinks{
+        color: white;
+        font-size: 1.2rem;
+        background-color: rgb(52, 52, 52);
+        padding: 10px;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        transition: .2s;
+
+        svg{
+            transition: .2s;
+        }
+    }
+
+    .externalLinks:hover{
+        background-color: rgb(163, 22, 22);
+        svg{
+            transform: rotate(-45deg);
+        }
+    }
+
+}
+

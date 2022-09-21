@@ -34,7 +34,12 @@ $horizontalmargin:(
     transition: width 0.25s ease-out;
 }
 
-
+@mixin horizontalLine($height){
+    border: 0px;
+    height: $height;
+    width: 100%;
+    background: rgb(77, 77, 77);
+}
 
 
 
