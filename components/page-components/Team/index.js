@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Sprecherkreis from '../../other-components/SprecherKreis'
 
 const Team = ({data}) => {
+  console.log(data);
 
     const dataAttributes= data.data.attributes
     const alternativeImage= dataAttributes.alternativeImage.data.attributes
@@ -48,9 +49,9 @@ const Team = ({data}) => {
             return(
               <li key={index}>
                 <span>
-                  {item.Title}
+                  {item.title}
                 </span>
-                  {` ${item.Paragraph}`}
+                  {` ${item.paragraph}`}
               </li>
             )
           })}

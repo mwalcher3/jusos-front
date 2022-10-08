@@ -16,8 +16,8 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
       <html lang="en">
       
       <body>
-              <h3>You've got a new mail from ${body.Name}, their email is: ✉️${body.Email} </h3>
-              <p>Message:</p>
+              <h3>Sie haben eine neue Nachricht von ${body.Name}, ihre email ist: ✉️${body.Email} </h3>
+              <p>Nachricht:</p>
               <p>${body.Nachricht}</p>
       </body>
       </html>`,

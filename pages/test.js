@@ -1,4 +1,14 @@
 import React from 'react'
+
+const test = () => {
+  return (
+    <div>test</div>
+  )
+}
+
+export default test
+
+/*import React from 'react'
 import pdf2jsoncss from '../styles/component-modules/pdf2json.module.scss'
 
 
@@ -46,17 +56,17 @@ const cssVariableValues= {
      }
    },[])*/
 
-  const lockUp= {
+  /*const lockUp= {
     "%20": "ä",
     "%C3%A4": 'ä',
     "%C3%BC" : "ü",
     "%C3%9F" : "ß" 
-  }
+  }*/
 
   /*for(const key in lockUp){
     var itemm = item.R[0].T.split(key).join(lockUp[key])
   }*/
-  var itemm= item.R[0].T.split("%20").join(" ")
+ /* var itemm= item.R[0].T.split("%20").join(" ")
                           .split("%C3%A4").join("ä")
                           .split("%C3%BC").join("ü")
                           .split("%C3%B6").join("ö")
@@ -79,5 +89,5 @@ const cssVariableValues= {
   )
 }
 
-export default Test
+export default Test*/
 
