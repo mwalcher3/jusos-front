@@ -4,9 +4,9 @@ import pdf2jsoncss from '../styles/component-modules/pdf2json.module.scss'
 
 export const getStaticProps= async ()=>{
 
-  // const data=await fetch("https://localhost:3000/api/pdfparser");
-  // const json= await data.json()
-  const json = {}
+   const data=await fetch("https://jusoshd.uber.space/api/pdfparser");
+   const json= await data.json()
+
 
   return {
     props: {
@@ -17,8 +17,6 @@ export const getStaticProps= async ()=>{
 
 
 const Test = ({data}) => {
-
-  return <div>no content</div>
 
   const text= []
 
@@ -31,6 +29,7 @@ const Test = ({data}) => {
   return (
     <div className={pdf2jsoncss.container}>
 
+
  {text.map((item, index)=>{
 
   console.log(item.R[0].S);
@@ -40,12 +39,12 @@ const cssVariableValues= {
   "--pdf2json-alignment": item.A,
 }
 
-  // React.useEffect(()=>{
-  //   var root =  document.querySelector(':root');
-  //   for(const key in cssVariableValues){
-  //     root.style.setProperty(key,  cssVariableValues[key])
-  //   }
-  // },[])
+ /*  React.useEffect(()=>{
+     var root =  document.querySelector(':root');
+     for(const key in cssVariableValues){
+       root.style.setProperty(key,  cssVariableValues[key])
+     }
+   },[])*/
 
   const lockUp= {
     "%20": "ä",
@@ -69,9 +68,9 @@ const cssVariableValues= {
 
 
   return(
-    <div className={pdf2jsoncss.indivwords} key={index}>
+    <span className={pdf2jsoncss.indivwords} key={index}>
       {itemm}
-    </div>
+    </span>
   )
  })}
 

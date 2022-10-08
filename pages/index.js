@@ -4,7 +4,6 @@ import Description from '../components/other-components/Description'
 import Slider from '../components/other-components/Slider'
 import Slideshow from '../components/other-components/Slideshow'
 import Layout from '../components/layout-components/Layout'
-import Link from 'next/link'
 
 import fs from "fs"
 import path from "path"

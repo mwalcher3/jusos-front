@@ -1,7 +1,24 @@
 @import "../../styles/config";
 
+@mixin links(){
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgb(52, 52, 52);
+   // padding: 10px;
+    border-radius: 3px;
+    width: fit-content;
+    transition: .3s;
+    
+    svg{
+        transition: .2s;
+    }
+}
+
 
 .container{
+    display: grid;
+    gap: 20px;
     .mainheader{
         margin: 40px 0;
         font-weight: 900;
@@ -17,43 +34,78 @@
     }
     h2{
         font-size: 1.9rem;
-        margin: 0px 0 50px 0;
+        margin: 0px 0 10px 0;
     }
 
     h3{
         font-size: 1.5rem;
+        margin-bottom: 15px;
 
     }
 
+    ul{
+        line-height: 1.5rem;
+        list-style-type: square;
+    }
+
+    .pimage{
+        height: 250px;
+        width: 250px;
+        float: right;
+        position: relative;
+        display: inline;
+        margin: 10px;
+        vertical-align: -50px;
+    }
+    
     .paragraphBorder{
         border: 1px solid var(--red);
         width: fit-content;
         padding: 10px;
+        vertical-align: -50px;
+        overflow-y: hidden;
+
     }
 
     .externalLinks{
-        color: white;
-        font-size: 1.2rem;
-        background-color: rgb(52, 52, 52);
-        padding: 10px;
-        border-radius: 3px;
+        @include links();
         display: flex;
         align-items: center;
         gap: 10px;
-        width: fit-content;
-        transition: .2s;
-
-        svg{
-            transition: .2s;
-        }
+        padding: 10px;
     }
 
     .externalLinks:hover{
-        background-color: rgb(163, 22, 22);
-        svg{
-            transform: rotate(-45deg);
+        background-color: var(--link-box-hover);
+    }
+
+    .internalLinkBox{
+        @include links();
+        min-height: fit-content;
+        width: 250px;
+        position: relative;
+        padding: 10px 5px;
+
+        .images{
+            height: 200px;
+            width: 100%;
+            position: relative
+        }
+
+        .textarrow{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 15px 15px 0;
+
+            h4{
+                margin:0;
+            }
         }
     }
 
+    .internalLinkBox:hover{
+        background-color: var(--link-box-hover);
+    }
 }
 

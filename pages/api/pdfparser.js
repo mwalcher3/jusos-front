@@ -27,7 +27,7 @@ export default function handler(req, res) {
 
 });
 
-pdfParser.loadPDF("./public/Satzung.pdf");
+pdfParser.loadPDF("./public/SebastianOBWahl.pdf");
 
 
 }

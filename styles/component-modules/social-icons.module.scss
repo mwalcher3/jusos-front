@@ -1,0 +1,20 @@
+@import "../../styles/config";
+
+.maincontainer{
+    display: grid;
+    grid-auto-flow: column;
+    width: fit-content;
+    gap: 5px;
+
+    svg{
+        padding: 10px;
+        height: 25px;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    svg:hover{
+        color: var(--red);
+        transform: scale(1.04);
+    }
+}

@@ -28,7 +28,7 @@ const CopyToClipboard = ({textToCopy}) => {
         var r = document.querySelector(':root');
         r.style.setProperty('--speech-bubble-delay',  speechBubbleValue=="kopieren"? "0s" : "2s") ;
         console.log(speechBubbleValue, hover);
-      },[hover,speechBubbleValue])
+      },[hover])
 
 
   return (
@@ -36,18 +36,19 @@ const CopyToClipboard = ({textToCopy}) => {
     <div className={clipboardcss.clipboard}>
       <textarea  ref={textRef} value={textToCopy} readOnly></textarea>
       {/*make speech bubble visible when hovering over the clipboard icon */}
-      <div className={hover? clipboardcss.speechbubble: clipboardcss.speechbubbleclosed}>{speechBubbleValue}</div>
       <div 
-      onMouseOver={()=>{setHover(true)}} 
-      onMouseOut={()=>{
-        {/*set state to copy again 2s after the user copied it */}
-     //setTimeout(()=>{setSpeechBubbleValue("kopieren")}, 2000)
-      setHover(false)
-      setTimeout(()=> setSpeechBubbleValue("kopieren"))
-      }} 
-      onClick={copyToClipboard} 
       className={clipboardcss.svgwrapper}>
-          <FontAwesomeIcon icon={faClipboard}/>
+         <div className={hover? clipboardcss.speechbubble: clipboardcss.speechbubbleclosed}>{speechBubbleValue}</div>
+          <FontAwesomeIcon
+           onClick={copyToClipboard} 
+           onMouseOver={()=>{setHover(true)}} 
+           onMouseOut={()=>{
+             {/*set state to copy again 2s after the user copied it */}
+           setHover(false)
+           setTimeout(()=> setSpeechBubbleValue("kopieren"),2000)
+           }} 
+
+           icon={faClipboard}/>
       </div>
     </div></div>
   )

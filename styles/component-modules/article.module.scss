@@ -77,12 +77,24 @@
     display:flex;
     flex-direction:column; 
 
+    .moreArticles{
+        color: var(--black-white-switch);
+        background-color: var(--red);
+        padding: 10px;
+        width: fit-content;
+        margin: auto;
+        border-radius: 10px;
+        transition: .2s;
+    }
+    .moreArticles:hover{
+        transform: scale(1.05)
+    }
 
+    .socialMedia{
+        margin: auto;
+        width: fit-content;
+    }
 }
-
-
-
-
 
 
 

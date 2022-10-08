@@ -48,7 +48,7 @@ const Slugs = ({ menuData, pageData }) => {
   var SubComponentName = subPagesObject[slug[0]]
 
   if (object[slug[0]] == null) {
-    if(pageData){
+    if(pageData.data!= null){
       return (
         <Layout menuData={menuData}>
           <SimplePage data={pageData} />

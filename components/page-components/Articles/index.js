@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'
 
 const Articles = ({data}) => {
+  console.log(data);
 
   const imageRefs= useRef([]);
   const scrollContainer= useRef();
