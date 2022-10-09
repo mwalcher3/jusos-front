@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 const counter = (length) => {
     const [current, setCurrent]= useState(0);
     const [next, setNext]= useState(1);
-    const [previous, setPrevious]= useState()
+    const [previous, setPrevious]= useState(length-1)
     const [reduceBoolean, setReduceBoolean]= useState(false);
 
      
