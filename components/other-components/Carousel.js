@@ -31,7 +31,6 @@ const Carousel = ({ settings }) => {
 
   return (
     <>
-      {previous} {current} {next}
       <button onClick={() => { handleChange(-1 + settings.length) }}
         className={carcss.button1 + " " + settings.buttonType}>
         &#60;
