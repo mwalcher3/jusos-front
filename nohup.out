@@ -4526,3 +4526,168 @@ Failed to update prerender cache for /public/Jusos_Heidelberg_Logo.png [Error: E
   path: '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/public/Jusos_Heidelberg_Logo.png.html'
 }
 Done in 429370.83s.
+yarn run v1.22.19
+warning ../../package.json: No license field
+$ next start
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+info  - Loaded env from /home/jusoshd/frontEnd/jusos-front/.env.local
+Failed to update prerender cache for /public/Jusos_Heidelberg_Logo.png [Error: ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/public/Jusos_Heidelberg_Logo.png.html'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/public/Jusos_Heidelberg_Logo.png.html'
+}
+MissingStaticPage [Error]: Failed to load static file for page: /404 ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/404.html'
+    at /home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/require.js:58:19
+    at async Promise.all (index 2)
+    at async Object.loadComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/load-components.js:53:49)
+    at async NextNodeServer.findPageComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/next-server.js:428:36)
+    at async NextNodeServer.renderErrorToResponse (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1254:26)
+    at async pipe.req.req (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1231:30)
+    at async NextNodeServer.pipe (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:643:25)
+    at async Object.fn (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:382:25)
+    at async Router.execute (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/router.js:213:36)
+    at async NextNodeServer.run (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:621:29)
+MissingStaticPage [Error]: Failed to load static file for page: /404 ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/404.html'
+    at /home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/require.js:58:19
+    at async Promise.all (index 2)
+    at async Object.loadComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/load-components.js:53:49)
+    at async NextNodeServer.findPageComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/next-server.js:428:36)
+    at async NextNodeServer.renderErrorToResponse (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1254:26)
+    at async pipe.req.req (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1231:30)
+    at async NextNodeServer.pipe (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:643:25)
+    at async Object.fn (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:382:25)
+    at async Router.execute (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/router.js:213:36)
+    at async NextNodeServer.run (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:621:29)
+MissingStaticPage [Error]: Failed to load static file for page: /404 ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/404.html'
+    at /home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/require.js:58:19
+    at async Promise.all (index 2)
+    at async Object.loadComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/load-components.js:53:49)
+    at async NextNodeServer.findPageComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/next-server.js:428:36)
+    at async NextNodeServer.renderErrorToResponse (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1254:26)
+    at async pipe.req.req (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1231:30)
+    at async NextNodeServer.pipe (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:643:25)
+    at async Object.fn (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:382:25)
+    at async Router.execute (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/router.js:213:36)
+    at async NextNodeServer.run (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:621:29)
+MissingStaticPage [Error]: Failed to load static file for page: /404 ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/404.html'
+    at /home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/require.js:58:19
+    at async Promise.all (index 2)
+    at async Object.loadComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/load-components.js:53:49)
+    at async NextNodeServer.findPageComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/next-server.js:428:36)
+    at async NextNodeServer.renderErrorToResponse (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1254:26)
+    at async pipe.req.req (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1231:30)
+    at async NextNodeServer.pipe (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:643:25)
+    at async Object.fn (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:382:25)
+    at async Router.execute (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/router.js:213:36)
+    at async NextNodeServer.run (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:621:29)
+MissingStaticPage [Error]: Failed to load static file for page: /404 ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/404.html'
+    at /home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/require.js:58:19
+    at async Promise.all (index 2)
+    at async Object.loadComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/load-components.js:53:49)
+    at async NextNodeServer.findPageComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/next-server.js:428:36)
+    at async NextNodeServer.renderErrorToResponse (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1254:26)
+    at async pipe.req.req (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1231:30)
+    at async NextNodeServer.pipe (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:643:25)
+    at async Object.fn (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:382:25)
+    at async Router.execute (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/router.js:213:36)
+    at async NextNodeServer.run (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:621:29)
+MissingStaticPage [Error]: Failed to load static file for page: /404 ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/404.html'
+    at /home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/require.js:58:19
+    at async Promise.all (index 2)
+    at async Object.loadComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/load-components.js:53:49)
+    at async NextNodeServer.findPageComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/next-server.js:428:36)
+    at async NextNodeServer.renderErrorToResponse (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1254:26)
+    at async pipe.req.req (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1231:30)
+    at async NextNodeServer.pipe (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:643:25)
+    at async Object.fn (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:382:25)
+    at async Router.execute (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/router.js:213:36)
+    at async NextNodeServer.run (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:621:29)
+MissingStaticPage [Error]: Failed to load static file for page: /404 ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/404.html'
+    at /home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/require.js:58:19
+    at async Promise.all (index 2)
+    at async Object.loadComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/load-components.js:53:49)
+    at async NextNodeServer.findPageComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/next-server.js:428:36)
+    at async NextNodeServer.renderErrorToResponse (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1254:26)
+    at async pipe.req.req (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1231:30)
+    at async NextNodeServer.pipe (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:643:25)
+    at async Object.fn (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:382:25)
+    at async Router.execute (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/router.js:213:36)
+    at async NextNodeServer.run (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:621:29)
+MissingStaticPage [Error]: Failed to load static file for page: /404 ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/404.html'
+    at /home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/require.js:58:19
+    at async Promise.all (index 2)
+    at async Object.loadComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/load-components.js:53:49)
+    at async NextNodeServer.findPageComponents (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/next-server.js:428:36)
+    at async NextNodeServer.renderErrorToResponse (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1254:26)
+    at async pipe.req.req (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:1231:30)
+    at async NextNodeServer.pipe (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:643:25)
+    at async Object.fn (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:382:25)
+    at async Router.execute (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/router.js:213:36)
+    at async NextNodeServer.run (/home/jusoshd/frontEnd/jusos-front/node_modules/next/dist/server/base-server.js:621:29)
+yarn run v1.22.19
+warning ../../package.json: No license field
+$ next start
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3000
+    at Server.setupListenHandle [as _listen2] (node:net:1432:16)
+    at listenInCluster (node:net:1480:12)
+    at doListen (node:net:1629:7)
+    at processTicksAndRejections (node:internal/process/task_queues:84:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3000
+}
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+Failed to update prerender cache for /public/Jusos_Heidelberg_Logo.png [Error: ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/public/Jusos_Heidelberg_Logo.png.html'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/public/Jusos_Heidelberg_Logo.png.html'
+}
+yarn run v1.22.19
+warning ../../package.json: No license field
+$ next dev
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+info  - Loaded env from /home/jusoshd/frontEnd/jusos-front/.env.local
+> [PWA] Compile client (static)
+> [PWA] Auto register service worker with: /home/jusoshd/frontEnd/jusos-front/node_modules/next-pwa/register.js
+> [PWA] Service worker: /home/jusoshd/frontEnd/jusos-front/public/sw.js
+> [PWA]   url: /sw.js
+> [PWA]   scope: /
+> [PWA] Build in develop mode, cache and precache are mostly disabled. This means offline support is disabled, but you can continue developing other functions in service worker.
+> [PWA] Compile server
+> [PWA] Compile server
+event - compiled client and server successfully in 3.7s (191 modules)
+yarn run v1.22.19
+warning ../../package.json: No license field
+$ next dev
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+info  - Loaded env from /home/jusoshd/frontEnd/jusos-front/.env.local
+> [PWA] Compile server
+> [PWA] Compile client (static)
+> [PWA] Auto register service worker with: /home/jusoshd/frontEnd/jusos-front/node_modules/next-pwa/register.js
+> [PWA] Service worker: /home/jusoshd/frontEnd/jusos-front/public/sw.js
+> [PWA]   url: /sw.js
+> [PWA]   scope: /
+> [PWA] Build in develop mode, cache and precache are mostly disabled. This means offline support is disabled, but you can continue developing other functions in service worker.
+> [PWA] Compile server
+yarn run v1.22.19
+warning ../../package.json: No license field
+$ next start
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+info  - Loaded env from /home/jusoshd/frontEnd/jusos-front/.env.local
+Failed to update prerender cache for /public/Jusos_Heidelberg_Logo.png [Error: ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/public/Jusos_Heidelberg_Logo.png.html'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/public/Jusos_Heidelberg_Logo.png.html'
+}
+Failed to update prerender cache for /public/Jusos_Heidelberg_Logo.png [Error: ENOENT: no such file or directory, open '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/public/Jusos_Heidelberg_Logo.png.html'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/jusoshd/frontEnd/jusos-front/.next/server/pages/public/Jusos_Heidelberg_Logo.png.html'
+}
