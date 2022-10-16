@@ -14,7 +14,7 @@ const InternalLinks = ({data}) => {
 
             return(
               <section key={index} className={intcss.internalLinks}>
-            <Link  href={item.URL}>
+            <Link  href={item.URL} passHref>
               <div>
                 <div className={intcss.images}>
                 {<Image
