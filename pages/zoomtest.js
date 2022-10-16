@@ -46,7 +46,6 @@ export const getStaticProps = async () => {
 
 
 const Zoom = ({ data }) => {
-  console.log(data);
 
   const meetingSDKElement = React.useRef()
 

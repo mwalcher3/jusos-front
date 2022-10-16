@@ -5,7 +5,6 @@ import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'
 
 const Articles = ({data}) => {
-  console.log(data);
 
   const imageRefs= useRef([]);
   const scrollContainer= useRef();
@@ -43,7 +42,6 @@ const Articles = ({data}) => {
 
       {
           data.data.attributes.articles.data.map((item, i)=>{
-            console.log(item);
             return(
           <Link key={item.id} href={`./artikel/${global.endpointSyntax(item.attributes.title)}`} passHref>
             <div  

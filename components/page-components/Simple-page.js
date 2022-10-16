@@ -6,6 +6,7 @@ import simplecss from "../../styles/component-modules/simple-page.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import SocialMediaIcons from "../other-components/SocialMediaIcons"
+import InternalLinks from "../other-components/InternalLinks"
 
 
 const SimplePage = ({data}) => {
@@ -71,31 +72,8 @@ const SimplePage = ({data}) => {
                     </Link>
                 )
 
-                case "component.internal-links": 
-                const image= item.image.image.data[0].attributes
-
-
-                return(
-                  <section key={index} className={simplecss.internalLinkBox}>
-                  <Link  href={item.URL}>
-                    <div>
-                      <div className={simplecss.images}>
-                      {<Image
-                            src={`${global.host}${image.url}`}
-                            alt={image.alternativeText}
-                            layout="fill"
-                            objectFit="cover"
-                            priority
-                      />}
-                    </div>
-                    <div className={simplecss.textarrow}>
-                    <h4>{item.displayedText}</h4>
-                    <FontAwesomeIcon icon={faArrowRight} />
-                      </div>
-                      </div>
-                   </Link>
-                   </section>
-                )
+                case "component.internal-link-box": 
+                return(<InternalLinks data={item.internalLinks}/>)
     
 
                 case "component.list":
