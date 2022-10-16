@@ -3,10 +3,12 @@ import { global } from './_app'
 import Description from '../components/other-components/Description'
 import Slider from '../components/other-components/Slider'
 import Slideshow from '../components/other-components/Slideshow'
+import internalLinks from "../components/other-components/InternalLinks"
 import Layout from '../components/layout-components/Layout'
 
 import fs from "fs"
 import path from "path"
+import InternalLinks from '../components/other-components/InternalLinks'
 
 
 export const getStaticProps = async () => {
@@ -16,8 +18,22 @@ export const getStaticProps = async () => {
   const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`);
   const pageJson = await pageData.json()
 
-  // there are no deep relations on home-page
-  const pageJsonFull = pageJson
+  // fetch internalLinks Data
+  const internalLinksData = await fetch(`${global.fetchURI}/home-page?populate[internalLinks][populate][0]=image`);
+  const internalLinksJson = await internalLinksData.json()
+
+
+  // there is only one deep relation on home-page
+  const pageJsonFull = JSON.parse(
+    JSON.stringify(pageJson, (key, value) => {
+      switch (key) {
+        case "internalLinks": return internalLinksJson.data.attributes.internalLinks
+        default: return value
+      }
+    }
+    ))
+
+
 
   // we retrieve path to URL lookup table from file generated
   // by getStaticPaths method of [..slug].js
@@ -52,7 +68,7 @@ export const getStaticProps = async () => {
   }
 }
 
-export default function Home({ menuData, pageData  }) {
+export default function Home({ menuData, pageData }) {
 
   const attributes = pageData.data.attributes
 
@@ -62,6 +78,7 @@ export default function Home({ menuData, pageData  }) {
         <Slideshow data={attributes.slideShowImages} />
         <Description data={attributes.aboutUs} />
         {<Slider data={attributes.sliders} />}
+        <InternalLinks data={attributes.internalLinks}/>
       </Layout>
 
     </div>

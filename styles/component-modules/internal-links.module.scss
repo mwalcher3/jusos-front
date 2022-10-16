@@ -1,0 +1,54 @@
+@import "../../styles/config";
+
+@mixin links(){
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgb(52, 52, 52);
+   // padding: 10px;
+    border-radius: 3px;
+    width: fit-content;
+    transition: .3s;
+    
+    svg{
+        transition: .2s;
+    }
+}
+
+
+
+.internalLinkBox{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 30px;
+
+    .internalLinks{
+        @include links();
+        min-height: fit-content;
+        width: 250px;
+        position: relative;
+        padding: 10px 5px;
+
+        .images{
+            height: 200px;
+            width: 100%;
+            position: relative
+        }
+
+        .textarrow{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 15px 15px 0;
+
+            h4{
+                margin:0;
+            }
+        }
+    }
+    .internalLinks:hover{
+        background-color: var(--link-box-hover);
+    }
+}

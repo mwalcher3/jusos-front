@@ -203,6 +203,7 @@ export const getStaticProps = async (context) => {
   // fetch articleData
   const articleData = await fetch(`${global.fetchURI}/articles?populate=*`);
   const articleJson = await articleData.json()
+  
 
 
   // fetch data from instagram api

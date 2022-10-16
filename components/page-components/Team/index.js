@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Sprecherkreis from '../../other-components/SprecherKreis'
 
 const Team = ({data}) => {
-  console.log(data);
 
     const dataAttributes= data.data.attributes
     const alternativeImage= dataAttributes.alternativeImage.data.attributes
