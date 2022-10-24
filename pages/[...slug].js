@@ -24,6 +24,7 @@ import KJUR from 'jsrsasign'
 // links: footer links
 
 const Slugs = ({ menuData, pageData }) => {
+  console.log(pageData)
 
   const router = useRouter();
   const { slug = [] } = router.query;
