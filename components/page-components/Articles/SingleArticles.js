@@ -3,7 +3,9 @@ import SocialMediaIcons from "../../other-components/SocialMediaIcons"
 import articlecss from "../../../styles/component-modules/article.module.scss"
 
 const SingleArticles = ({data}) => {
+  console.log(data);
 
+  if(data!=null){
     return (
       <>
          <div className={articlecss.content}>
@@ -20,5 +22,6 @@ const SingleArticles = ({data}) => {
       </>
     )
   }
+}
   
   export default SingleArticles

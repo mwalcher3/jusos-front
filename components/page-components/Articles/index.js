@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'
 
 const Articles = ({data}) => {
+  console.log(data);
 
   const imageRefs= useRef([]);
   const scrollContainer= useRef();
@@ -42,33 +43,37 @@ const Articles = ({data}) => {
 
       {
           data.data.attributes.articles.data.map((item, i)=>{
-            return(
-          <Link key={item.id} href={`./artikel/${global.endpointSyntax(item.attributes.title)}`} passHref>
-            <div  
-            className={articlecss.articleboxes}
-            ref={el => imageRefs.current[i] = el} >
-                
-              <div className={articlecss.images}>
-                <Image
-                    src={`${global.host}${item.attributes.image.data.attributes.url}`}
-                    alt={`${global.host}${item.attributes.image.data.attributes.alternativeText}`}
-                    layout='fill'
-                    objectFit= 'cover'
-                    priority
-              />
-
+            if(item.attributes.image.data!=null){
+              return(
+                <Link key={item.id} href={`./artikel/${global.endpointSyntax(item.attributes.title)}`} passHref>
+                  <div  
+                  className={articlecss.articleboxes}
+                  ref={el => imageRefs.current[i] = el} >
+                      
+                    {<div className={articlecss.images}>
+                      <Image
+                          src={`${global.host}${item.attributes.image.data.attributes.url}`}
+                          alt={`${global.host}${item.attributes.image.data.attributes.alternativeText}`}
+                          layout='fill'
+                          objectFit= 'cover'
+                          priority
+                  />
+      
+                  </div>}
+      
+                          <div className={articlecss.articletitle}>
+                          {item.attributes.title}
+                          </div>
+      
+                       <div className={articlecss.articledate}>
+                         {item.attributes.date}
+                       </div>
                   </div>
-
-                    <div className={articlecss.articletitle}>
-                    {item.attributes.title}
-                    </div>
-
-                 <div className={articlecss.articledate}>
-                   {item.attributes.date}
-                 </div>
-            </div>
-            </Link>
-              )
+                  </Link>
+                    )
+              
+            }
+           
           })
       }
 
