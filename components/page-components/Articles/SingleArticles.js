@@ -22,6 +22,7 @@ const SingleArticles = ({data}) => {
       </>
     )
   }
+
 }
   
   export default SingleArticles

@@ -38,25 +38,25 @@ const PopUp = ({data}) => {
         />
           </div>
 
-          <div onClick={()=>{if(bulletPCount!=-1){setBulletPCount(-1)}}} className={index==bulletPCount? popupcss.overlay: "none"}>
-          <div 
-          onClick={(event)=>event.stopPropagation()}
-          className={index==bulletPCount? popupcss.bulletPoints: "none"}>
-            <FontAwesomeIcon 
-            className={popupcss.closingbutton} 
-            onClick={()=>{if(bulletPCount!=-1){setBulletPCount(-1)}}}
-            icon={faCircleXmark} />
-            <h2>{item.attributes.title}</h2>
-            <ul>
-              {item.attributes.bulletPoints.map((item,index)=>{
-                return(
-                    <li key={index}>
-                    {item.bulletPoint}
-                    </li>
-                )
-              })}
-              </ul>
-            </div>
+          <div onClick={()=>{if(bulletPCount!=-1){setBulletPCount(-1)}}} className={index==bulletPCount? "overlay": "none"}>
+            <div 
+            onClick={(event)=>event.stopPropagation()}
+            className={index==bulletPCount? popupcss.bulletPoints: "none"}>
+              <FontAwesomeIcon 
+              className={popupcss.closingbutton} 
+              onClick={()=>{if(bulletPCount!=-1){setBulletPCount(-1)}}}
+              icon={faCircleXmark} />
+              <h2>{item.attributes.title}</h2>
+              <ul>
+                {item.attributes.bulletPoints.map((item,index)=>{
+                  return(
+                      <li key={index}>
+                      {item.bulletPoint}
+                      </li>
+                  )
+                })}
+                </ul>
+              </div>
           </div>         
         </div>
         )

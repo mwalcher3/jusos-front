@@ -118,6 +118,7 @@ const Header = ({ menuData }) => {
                                     onMouseOut={() => { setHoveringCount(-1) }}
                                     className={hoveringCount == index ? headercss.navsublabel : headercss.navsubclosed} >
                                     {item.children.map((itemChildren, index) => {
+                                        if(itemChildren.hide_from_header!=true){
                                         return (
                                             <>
                                                 <Link key={index} href={`/${itemChildren.url}`} passHref>
@@ -128,6 +129,7 @@ const Header = ({ menuData }) => {
                                                 <div className='horizontalLine'></div>
                                             </>
                                         )
+                                        }
                                     })}
                                 </div>
                             </div>
@@ -170,7 +172,7 @@ const Header = ({ menuData }) => {
                                     className={index == subMenuCount ?
                                         headercss.burgerMenuSubtitles : headercss.burgerMenuSubtitlesHidden}>
                                     {item.children.map((itemChildren) => {
-
+                                        if(itemChildren.hide_from_header!=true){
                                         return (
                                             <div key={itemChildren.title}>
                                                 <Link href={`/${itemChildren.url}`} passHref>
@@ -179,6 +181,7 @@ const Header = ({ menuData }) => {
                                                     </div>
                                                 </Link>
                                             </div>)
+                                        }
                                     })}
                                 </div>
 

@@ -1,0 +1,59 @@
+@import "../../styles/config";
+
+@mixin maps($opacity, $scale){
+    opacity: $opacity;
+    transform: $scale;
+    position: absolute;
+    top: 20vh;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+}
+
+.entryContainer{
+    display: grid;
+
+    .entryBox{
+        display: grid;
+
+        .titleAndDate{
+            background-color: var(--red);
+            padding: 10px;
+            color: white;
+            border-radius: 3px
+        }
+    
+        p{
+            border: none;
+            padding: 0px;
+        }
+
+        svg{
+            height: 35px;
+        }
+
+        .googleMapsClosed{
+            @include maps(0, scale(0.8))
+        }
+
+        .googleMaps{
+            @include maps(1, scale(1))
+        }
+    }
+}
+
+@media(min-width: $medium){
+    .entryContainer{
+         gap: 20px;
+        .entryBox{
+            grid-auto-flow: column;
+            gap: 20px;
+            .titleAndDate{
+                width: 22vw;
+            }
+        }
+    }
+}               

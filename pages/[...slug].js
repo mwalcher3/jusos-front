@@ -204,6 +204,10 @@ export const getStaticProps = async (context) => {
   // fetch articleData
   const articleData = await fetch(`${global.fetchURI}/articles?populate=*`);
   const articleJson = await articleData.json()
+
+   // fetch calendar entries data
+   const calendarData = await fetch(`${global.fetchURI}/calendar-entries?populate=*`);
+   const calendarJson = await calendarData.json()
   
 
 
@@ -264,6 +268,7 @@ export const getStaticProps = async (context) => {
         case "instagramFeed": return instagramJson
         case "zoomMeeting": return  zoomJson
         case "articles": return articleJson
+        case "calendar_entries" : return calendarJson
         default: return value
       }
     }

@@ -40,6 +40,7 @@
         .name{
             position: absolute;
             font-size: var(--font-size);
+           // font-size: 1.5rem;
             color: var(--black-white-switch);
             bottom: 0;
             text-align: center;
@@ -80,6 +81,10 @@
     width: 80vw;
     height: 40vh;
   }
+  .name{
+    padding-top: 5px;
+    font-size: 1.2rem;
+  }
 }
  
 
@@ -89,6 +94,10 @@
     margin: 5em auto 0;
     margin-bottom: 5em;
     border: solid 5px var(--red);
+
+    .name{
+      font-size: var(--font-size);
+    }
 
   }
   

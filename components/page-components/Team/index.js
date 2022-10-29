@@ -71,7 +71,8 @@ const Team = ({data}) => {
                 priority
               />}
           </div>
-         <h4>{item.attributes.Name}</h4>
+         <h4>{item.attributes.name}</h4>
+         <h4>{item.attributes.otherRoles}</h4>
          </div>
           )
           })}

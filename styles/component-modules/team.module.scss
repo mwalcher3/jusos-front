@@ -31,15 +31,17 @@
         height: 40vh;
     }
 
-    h4{
-        color: var(--black-white-switch)
-    }
+   h4{
+    margin: 0;
+    padding-top: 5px;
+    font-size: 1.2rem;
+   }
 }
 
 @media(min-width: $medium){
     .othermembers{
         .squareimages{
-            width: 15vw;
+            width: 17vw;
             height: 30vh
         }
     }

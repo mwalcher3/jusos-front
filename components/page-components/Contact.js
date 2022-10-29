@@ -2,6 +2,7 @@ import React from 'react'
 import formcss from '../../styles/component-modules/form.module.scss'
 
 export default function Contact({data}) {
+  console.log(data);
   const formData= data.data.attributes.form.data[0].attributes
   const inputs= formData.inputs
   const title= formData.title
