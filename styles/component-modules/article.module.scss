@@ -12,7 +12,7 @@
     display: grid;
     grid-template-columns: 80vw;
     grid-template-rows: 15vh;
-    grid-auto-rows: 50vh;
+    grid-auto-rows: minmax(50vh, 60vh);
     grid-gap: 2rem;
     justify-content: center;
     padding-bottom: 5%;
@@ -39,6 +39,11 @@
     padding: 5%;
 }
 
+.articletitlenoimage{
+    position: absolute;
+    top: 30%;
+}
+
 .articletitle::after{
     content: "";
     background-color: var(--lightblack);
@@ -59,7 +64,7 @@
 
 .images{
     width: 100%;
-    height: 70%;
+    height: 65%;
     position: relative;
 }
 
@@ -112,13 +117,13 @@
     .grid{
         font-size: 1.2rem;
         grid-template-columns: 20vw 20vw 20vw;
-        grid-auto-rows: 45vh;
+        grid-auto-rows: minmax(40vh, 50vh);
     }
     .pagetitle{
         grid-column: 1/4;
     }
     .images{
-        height: 60%;
+        height: 55%;
     }
 }
 

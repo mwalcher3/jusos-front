@@ -1,0 +1,13 @@
+@import "../../styles/config";
+
+.externalLinks{
+    @include links();
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.externalLinks:hover{
+    background-color: var(--link-box-hover);
+}

@@ -1,12 +1,10 @@
 import React from 'react'
-import Link from "next/link"
 import Image from "next/image"
 import {global} from '../../pages/_app'
 import simplecss from "../../styles/component-modules/simple-page.module.scss"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import SocialMediaIcons from "../other-components/SocialMediaIcons"
 import InternalLinks from "../other-components/InternalLinks"
+import ExternalLinks from "../other-components/ExternalLinks"
 
 
 const SimplePage = ({data}) => {
@@ -63,14 +61,7 @@ const SimplePage = ({data}) => {
 
 
                 case "component.links": 
-                return(
-                  <Link key={index} href={item.URL}>
-                    <a target="_blank" className={simplecss.externalLinks}>
-                      {item.displayedTitle}
-                      <FontAwesomeIcon icon={faArrowRight} />
-                      </a>
-                    </Link>
-                )
+                return( <div key={index}><ExternalLinks data={item}/></div>)
 
                 case "component.internal-link-box": 
                 return(<InternalLinks data={item.internalLinks}/>)

@@ -41,7 +41,19 @@ $horizontalmargin:(
     background: rgb(77, 77, 77);
 }
 
-
+@mixin links(){
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    background-color: rgb(52, 52, 52);
+    border-radius: 3px;
+    width: fit-content;
+    transition: .3s;
+    
+    svg{
+        transition: .2s;
+    }
+}
 
 
 

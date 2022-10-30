@@ -16,6 +16,10 @@
 .entryContainer{
     display: grid;
 
+    h2{
+        font-size: 1.5rem;
+    }
+
     .entryBox{
         display: grid;
 
@@ -25,13 +29,21 @@
             color: white;
             border-radius: 3px
         }
-    
-        p{
-            border: none;
-            padding: 0px;
+
+        .subtitleAndText{
+            padding: 5px;
+            p{
+                border: none;
+                padding: 0;
+            }
+
+            h3{
+                font-size: 1.3rem;
+            }
         }
 
-        svg{
+
+        .locationDot{
             height: 35px;
         }
 

@@ -1,5 +1,7 @@
 import {global} from '../../../pages/_app'
 import articlecss from "../../../styles/component-modules/article.module.scss"
+import moment from 'moment';
+import 'moment/locale/de';
 import Image from 'next/image'
 import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'
@@ -34,7 +36,10 @@ const Articles = ({data}) => {
      imageRefs.current.map((image,i) => {
         observer.observe(imageRefs.current[i])
       })
-    },)  
+    },) 
+    
+    const sortedArticles  =  data.data.attributes.articles.data.sort((a,b) => new moment(b.attributes.date).format('YYYYMMDD') - new moment(a.attributes.date).format('YYYYMMDD') )
+    console.log(sortedArticles)
      
     return (
       <div>
@@ -42,15 +47,19 @@ const Articles = ({data}) => {
     <h1 className={articlecss.pagetitle}>Artikel</h1>
 
       {
-          data.data.attributes.articles.data.map((item, i)=>{
-            if(item.attributes.image.data!=null){
+          sortedArticles.map((item, i)=>{
+              moment.locale('de')
+              let m= moment(item.attributes.date, moment.ISO_8601)
+              let formatedDate= m.format("DD MMMM YYYY") 
+
               return(
                 <Link key={item.id} href={`./artikel/${global.endpointSyntax(item.attributes.title)}`} passHref>
                   <div  
                   className={articlecss.articleboxes}
                   ref={el => imageRefs.current[i] = el} >
                       
-                    {<div className={articlecss.images}>
+                    {item.attributes.image.data!=null? 
+                      <div className={articlecss.images}>
                       <Image
                           src={`${global.host}${item.attributes.image.data.attributes.url}`}
                           alt={`${global.host}${item.attributes.image.data.attributes.alternativeText}`}
@@ -59,20 +68,19 @@ const Articles = ({data}) => {
                           priority
                   />
       
-                  </div>}
-      
-                          <div className={articlecss.articletitle}>
+                  </div>
+                  :<div></div>
+                  }
+                          <div className={articlecss.articletitle + " " + (item.attributes.image.data!=null? " " : articlecss.articletitlenoimage)}>
                           {item.attributes.title}
                           </div>
       
                        <div className={articlecss.articledate}>
-                         {item.attributes.date}
+                         {formatedDate}
                        </div>
                   </div>
                   </Link>
                     )
-              
-            }
            
           })
       }
