@@ -80,6 +80,17 @@ const Calendar = ({data}) => {
 
     })}
     </section>
+
+    <section className={calcss.links}>
+      <h2>{data.data.attributes.linkBoxTitle}</h2>
+      <div className={calcss.linkBox}>
+      {data.data.attributes.links.map((item, index)=>{
+        return(
+          <ExternalLinks key={index} data={item}/>
+        )
+      })}
+      </div>
+    </section>
       <div className="lastupdated">{data.data.attributes.updatedAt}</div>
       
     </div>

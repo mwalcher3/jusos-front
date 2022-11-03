@@ -212,8 +212,8 @@ export const getStaticProps = async (context) => {
 
 
   // fetch data from instagram api
-  const instagramToken = process.env.INSTAGRAM_TOKEN
-  const instagramData = await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=${instagramToken}`);
+  const token= process.env.INSTAGRAM_TOKEN
+  const instagramData = await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=${token}`);
   const instagramJson = await instagramData.json()
   // const instaData = instagramJson.data
 

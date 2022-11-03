@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import Script from 'next/script'
 import Link from 'next/link'
 import KJUR from 'jsrsasign'
-import zoomcss from "../styles/component-modules/zoom.module.scss"
+import zoomcss from "../styles/page-modules/zoom.module.scss"
 
 
 const meetingId=  5011974152

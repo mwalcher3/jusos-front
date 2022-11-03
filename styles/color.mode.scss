@@ -19,6 +19,8 @@ body{
     --burger-links: rgb(191, 191, 191);
     --nav-sublabel-border: rgb(107, 107, 107);
 
+    --calender-link-box: rgb(179, 179, 179);
+
     --form-background: rgb(238, 238, 238);
     --inputborder: var(--lightblack);
 
@@ -46,6 +48,8 @@ body.dark{
     --burger-titles: var(--darkmode-text-color);
     --burger-links: rgb(191, 191, 191);
     --nav-sublabel-border: black;
+
+    --calender-link-box: rgb(106, 106, 106);
 
     --form-background: rgb(3, 3, 3);
     --inputborder: var(--red);

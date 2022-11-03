@@ -57,6 +57,21 @@
     }
 }
 
+.links{
+    color: var(--black-white-switch);
+    background-color: var(--calender-link-box);
+    display: grid;
+    gap: 50px;
+    margin-top: 50px;
+    padding: 30px;
+    .linkBox{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+}
+
+
 @media(min-width: $medium){
     .entryContainer{
          gap: 40px;
