@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import SocialMediaIcons from "../../other-components/SocialMediaIcons"
-import articlecss from "../../../styles/component-modules/article.module.scss"
+import articlecss from "../../../styles/page-modules/article.module.scss"
 
 const SingleArticles = ({data}) => {
   console.log(data);

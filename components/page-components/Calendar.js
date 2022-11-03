@@ -1,5 +1,5 @@
 import React from 'react'
-import calcss from '../../styles/component-modules/calendar.module.scss'
+import calcss from '../../styles/page-modules/calendar.module.scss'
 import moment from 'moment';
 import 'moment/locale/de';
 import ExternalLinks from '../other-components/ExternalLinks';

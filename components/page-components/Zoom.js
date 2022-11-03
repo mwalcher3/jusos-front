@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Script from 'next/script'
-import zoomcss from "../../styles/component-modules/zoom.module.scss"
+import zoomcss from "../../styles/page-modules/zoom.module.scss"
 
 const Zoom = ({ data }) => {
   console.log(data);

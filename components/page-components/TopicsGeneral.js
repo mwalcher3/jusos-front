@@ -2,7 +2,7 @@ import React from 'react'
 import {global} from '../../pages/_app'
 import Image from 'next/image'
 import PopUp from '../other-components/PopUp'
-import generalcss from '../../styles/component-modules/topics.general.module.scss'
+import generalcss from '../../styles/page-modules/topics.general.module.scss'
 
 
 const TopicsGeneral = ({data}) => {

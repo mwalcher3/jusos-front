@@ -1,6 +1,6 @@
 import React from 'react'
 import {global} from '../../../pages/_app'
-import teamcss from "../../../styles/component-modules/team.module.scss"
+import teamcss from "../../../styles/page-modules/team.module.scss"
 import Image from 'next/image'
 import Sprecherkreis from '../../other-components/SprecherKreis'
 

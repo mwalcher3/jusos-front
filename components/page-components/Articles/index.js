@@ -1,5 +1,5 @@
 import {global} from '../../../pages/_app'
-import articlecss from "../../../styles/component-modules/article.module.scss"
+import articlecss from "../../../styles/page-modules/article.module.scss"
 import moment from 'moment';
 import 'moment/locale/de';
 import Image from 'next/image'

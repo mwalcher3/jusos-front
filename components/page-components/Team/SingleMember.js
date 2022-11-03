@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import smembercss from "../../../styles/component-modules/singlemember.module.scss"
+import React from 'react';
+import smembercss from "../../../styles/page-modules/singlemember.module.scss"
 import Image from 'next/image'
 import { global } from '../../../pages/_app'
 import CopyToClipboard from '../../other-components/CopyToClipboard';

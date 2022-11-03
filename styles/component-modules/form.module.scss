@@ -7,9 +7,17 @@
     justify-items: center;
     padding: 3vw;
     margin-bottom: 3vh;
-    gap: 4vh;
+    gap: 1vh;
     background-color: var(--form-background);
     min-width: fit-content;
+
+    .description{
+      font-size: 1.1rem;
+    }
+
+    .title{
+      text-align: center;
+    }
 }
 
 
@@ -22,7 +30,7 @@
     border-radius: 3px;
     font: inherit;
     font-size: 1.1rem;
-    min-width: 250px;
+    min-width: 280px;
 }
 
 .submitButton {
@@ -34,6 +42,7 @@
     height: 60px;
     color: var(--lightblack);
     margin: auto;
+    margin-top: 20px;
     cursor: pointer;
     transition: .2s;
     
@@ -146,19 +155,14 @@
     .inputcontainer{
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 35px;
+        justify-items: center;
+        gap: 50px;
     }
 
     .textarea, .inputs{
         min-width: 300px;
     }
-    
 
-    .title{
-        grid-column: 1/-1;
-        text-align: center;
-        justify-self: center;
-    }
 
     .submit{
         border-radius: 100px;

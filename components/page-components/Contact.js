@@ -6,6 +6,7 @@ export default function Contact({data}) {
   const formData= data.data.attributes.form.data[0].attributes
   const inputs= formData.inputs
   const title= formData.title
+  const description= data.data.attributes.description
   const [submitActive, setSubmitActive] = React.useState(false)
   
   
@@ -33,9 +34,11 @@ export default function Contact({data}) {
     return (
       <>
 		<form onSubmit={handleSubmit} className={formcss.container}>
+    <h1 className={formcss.title}>{title}</h1>
+    <p className={formcss.description}>{description}</p>
     
     <div className={formcss.inputcontainer}>
-    <h1 className={formcss.title}>{title}</h1>
+  
         {inputs.map((item)=>{
           const {label, type, id}= item
 
