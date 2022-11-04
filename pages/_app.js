@@ -44,7 +44,10 @@ export const global= {
   host:"https://content.jusoshd.uber.space",
   endpointSyntax: (item)=>{
     item= item.toLowerCase()
-    return item
+    const pattern= / /g
+    const itemm= item.replace(pattern, "_")
+    console.log(":)", itemm)
+    return itemm
   },
 
 }

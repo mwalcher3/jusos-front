@@ -2,14 +2,15 @@ import React from 'react';
 import smembercss from "../../../styles/page-modules/singlemember.module.scss"
 import Image from 'next/image'
 import { global } from '../../../pages/_app'
-import CopyToClipboard from '../../other-components/CopyToClipboard';
 
 const SingleMember = ({ data }) => {
 
+  if(data!=null){
   return (
+  
     <div className={smembercss.maincontainer}>
 
-      <div className={smembercss.image}>
+       <div className={smembercss.image}>
         <Image
           src={`${global.host}${data.attributes.previewImage.data.attributes.url}`}
           alt={`${global.host}${data.attributes.previewImage.data.alternativeText}`}
@@ -29,12 +30,15 @@ const SingleMember = ({ data }) => {
 
       <p>{data.attributes.description}</p>
 
-      <h2>Kontakt:</h2>
-      <CopyToClipboard textToCopy={data.attributes.email}/>
-
       <div className="lastupdated">{data.attributes.updatedAt}</div>
     </div>
   )
+  }
+  else{
+    return(
+      <h1>hello</h1>
+    )
+  }
 }
 
 export default SingleMember

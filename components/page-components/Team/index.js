@@ -2,6 +2,7 @@ import React from 'react'
 import {global} from '../../../pages/_app'
 import teamcss from "../../../styles/page-modules/team.module.scss"
 import Image from 'next/image'
+import Link from 'next/link'
 import Sprecherkreis from '../../other-components/SprecherKreis'
 
 const Team = ({data}) => {
@@ -62,17 +63,19 @@ const Team = ({data}) => {
 
              return(
               <div key={index}>
-            <div className={teamcss.squareimages}>
-                {<Image
-                src={`${global.host}${previewImage!=null?previewImage.attributes.url : alternativeImage.url}`}
-                alt={`image of a person`}
-                layout="fill"
-                objectFit="cover"
-                priority
-              />}
-          </div>
-         <h4>{item.attributes.name}</h4>
-         <h4>{item.attributes.otherRoles}</h4>
+                <Link href={`/team/${global.endpointSyntax(item.attributes.name)}`} passHref>
+              <div className={teamcss.squareimages}>
+                  {<Image
+                  src={`${global.host}${previewImage!=null?previewImage.attributes.url : alternativeImage.url}`}
+                  alt={`image of a person`}
+                  layout="fill"
+                  objectFit="cover"
+                  priority
+                />}
+            </div>
+            </Link>
+          <h4>{item.attributes.name}</h4>
+          <h4>{item.attributes.otherRoles}</h4>
          </div>
           )
           })}

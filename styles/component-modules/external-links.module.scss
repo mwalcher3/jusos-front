@@ -5,9 +5,18 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px;
+    padding: 0 10px;
+
+    a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    width: fit-content;
+    padding: 13px 0;
+    }
 }
 
-.externalLinks:hover{
+.externalLinksHover{
     background-color: var(--link-box-hover);
 }

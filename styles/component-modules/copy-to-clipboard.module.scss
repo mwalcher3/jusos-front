@@ -1,35 +1,21 @@
 .clipboard{
     position: relative;
     width: max-content;
-    border: 2px solid white;
     margin: 0;
-    margin-bottom: 100px;
-    padding: 10px;
     display: flex;
     align-items: flex-end;
 
     textarea {
-        border: none;
-         overflow: auto;
-         outline: none;
-         font: inherit;
-         min-width: 250px;
-         color: inherit;
-         height: fit-content;
-     
-         -webkit-box-shadow: none;
-         -moz-box-shadow: none;
-         box-shadow: none;
-         background: none;
- 
-         resize: none; /*remove the resize handle on the bottom right*/
+        position: absolute;
+        opacity: 0;
+        width:0px;
      }
 
     .svgwrapper{
 
         svg{
             position: relative;
-            height: 30px;
+            height: 25px;
             cursor: pointer;
             transition: 0.2s;
         }
@@ -39,10 +25,13 @@
         }
 
         .speechbubble{
-            position: absolute;
-            top: -20px;
-            color: black;
+            font-size: 0.9rem;
             opacity: 0;
+            position: absolute;
+            bottom: 37px;
+            margin: auto;
+            white-space: nowrap;
+            color: black;
             transition: 0.2s;
             background-color: var(--red);
             width: fit-content;

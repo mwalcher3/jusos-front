@@ -5,7 +5,7 @@ import clipboardcss from "../../styles/component-modules/copy-to-clipboard.modul
 
 const CopyToClipboard = ({ textToCopy }) => {
   /*State for wether you just copied it */
-  const [speechBubbleValue, setSpeechBubbleValue] = React.useState("kopieren")
+  const [speechBubbleValue, setSpeechBubbleValue] = React.useState("link kopieren")
   /*state for if it is currently hovered on */
   const [hover, setHover] = React.useState(false)
 
@@ -26,7 +26,7 @@ const CopyToClipboard = ({ textToCopy }) => {
    */
   useEffect(() => {
     var r = document.querySelector(':root');
-    r.style.setProperty('--speech-bubble-delay', speechBubbleValue == "kopieren" ? "0s" : "2s");
+    r.style.setProperty('--speech-bubble-delay', speechBubbleValue == "link kopieren" ? "0s" : "2s");
     // console.log(speechBubbleValue, hover);
   }, [hover])
 
@@ -46,7 +46,7 @@ const CopyToClipboard = ({ textToCopy }) => {
             onMouseLeave={() => {
               {/*set state to copy again 2s after the user copied it */ }
               setHover(false)
-              setTimeout(() => setSpeechBubbleValue("kopieren"), 2100)
+              setTimeout(() => setSpeechBubbleValue("link kopieren"), 2100)
             }}
             icon={faClipboard} />
         </div>
