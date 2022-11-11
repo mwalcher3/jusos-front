@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight} from '@fortawesome/free-solid-svg-icons'
 import {global} from '../../pages/_app'
 import intcss from "../../styles/component-modules/internal-links.module.scss"
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
+
 
 const InternalLinks = ({data}) => {
   return (
@@ -29,7 +32,7 @@ const InternalLinks = ({data}) => {
               <h4>{item.displayedText}</h4>
               <FontAwesomeIcon icon={faArrowRight} />
                 </div>
-                <p>{item.description}</p>
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.description}</ReactMarkdown>
                 </div>
               </Link>
                 </section>

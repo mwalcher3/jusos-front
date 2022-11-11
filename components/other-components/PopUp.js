@@ -4,6 +4,8 @@ import Image from 'next/image'
 import popupcss from "../../styles/component-modules/popup.module.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleXmark} from '@fortawesome/free-solid-svg-icons'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
 
 const PopUp = ({data}) => {
 
@@ -51,7 +53,7 @@ const PopUp = ({data}) => {
                 {item.attributes.bulletPoints.map((item,index)=>{
                   return(
                       <li key={index}>
-                      {item.bulletPoint}
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.bulletPoint}</ReactMarkdown>
                       </li>
                   )
                 })}

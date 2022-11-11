@@ -1,6 +1,8 @@
+import React from 'react'
 import slidercss from'../../styles/component-modules/slider.module.scss'
-import {useState, useEffect} from 'react'
 import useCounter from '../../hooks/useCounter'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
 
 const Slider = ({data}) => {  
 
@@ -26,9 +28,9 @@ return <div className={slidercss.mainslider}>
               key={item.id}
               >
                   <div className={slidercss.sliderboxes}>
-                  <h3>{item.attributes.title}</h3>
+                  <h3><ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.title}</ReactMarkdown></h3>
                <p>{index}</p>
-               <p>{item.attributes.textBoxes}</p>
+               <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.textBoxes}</ReactMarkdown>
                </div>
             
            </div>)

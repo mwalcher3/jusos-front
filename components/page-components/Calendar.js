@@ -5,6 +5,8 @@ import 'moment/locale/de';
 import ExternalLinks from '../other-components/ExternalLinks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
 
 const Calendar = ({data}) => {
   console.log(data);
@@ -22,7 +24,7 @@ const Calendar = ({data}) => {
   return (
     <div className="container">
       <h1>{dataAttributes.title}</h1>
-      <p>{dataAttributes.description}</p>
+      <ReactMarkdown className="paragraph"rehypePlugins={[rehypeRaw]}>{dataAttributes.description}</ReactMarkdown>
       <section className={calcss.entryContainer}>
         {dataAttributes.calendar_entries.data.map((item, index)=>{
           var filteredUrl
@@ -57,7 +59,8 @@ const Calendar = ({data}) => {
 
               <div className={calcss.subtitleAndText}>
                 {item.attributes.subtitle!=null? <h3>{item.attributes.subtitle}</h3>: <div></div>}
-                 <p>{item.attributes.description}</p>
+
+                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.description}</ReactMarkdown>
                  {item.attributes.links.map((item, index)=>{ return(<ExternalLinks key={index} data={item}/>)})}
               </div>
 

@@ -5,6 +5,9 @@ import simplecss from "../../styles/page-modules/simple-page.module.scss"
 import SocialMediaIcons from "../other-components/SocialMediaIcons"
 import InternalLinks from "../other-components/InternalLinks"
 import ExternalLinks from "../other-components/ExternalLinks"
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
+
 
 
 const SimplePage = ({data}) => {
@@ -39,22 +42,22 @@ const SimplePage = ({data}) => {
                 )
 
               case 'component.text-block':
+                console.log(item.image);
                   return(
                     <div key={index}>
                     <h3>{item.title}</h3>
                     <div className={item.border==true? simplecss.paragraphBorder: ""}>
                       <div className={item.image? simplecss.pimage: "none"}>
-                      { item.image? <Image
+                      {item.image ==null ? <div></div>: 
+                       <Image
                             src={`${global.host}${item.image.image.data[0].attributes.url}`}
                             alt={item.image.image.data[0].attributes.alternativeText}
                             layout="fill"
                             objectFit="cover"
                             priority
-                    />: ""}
+                       />}
                       </div>
-                      <p>
-                      {item.paragraph}
-                      </p>
+                      <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.paragraph}</ReactMarkdown>
                       </div>
                     </div>
                   )
@@ -73,7 +76,7 @@ const SimplePage = ({data}) => {
                     {
                       item.bulletPoints.map((item, index)=>{
                         return(
-                          <li key={index}>{item.bulletPoint}</li>
+                          <li key={index}><ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.bulletPoint}</ReactMarkdown></li>
                         )
                       })
                     }

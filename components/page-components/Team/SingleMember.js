@@ -2,6 +2,9 @@ import React from 'react';
 import smembercss from "../../../styles/page-modules/singlemember.module.scss"
 import Image from 'next/image'
 import { global } from '../../../pages/_app'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
+
 
 const SingleMember = ({ data }) => {
 
@@ -28,7 +31,7 @@ const SingleMember = ({ data }) => {
       </section>
 
 
-      <p>{data.attributes.description}</p>
+      <ReactMarkdown className="paragraph" rehypePlugins={[rehypeRaw]}>{data.attributes.description}</ReactMarkdown>
 
       <div className="lastupdated">{data.attributes.updatedAt}</div>
     </div>

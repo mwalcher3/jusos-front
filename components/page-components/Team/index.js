@@ -4,6 +4,8 @@ import teamcss from "../../../styles/page-modules/team.module.scss"
 import Image from 'next/image'
 import Link from 'next/link'
 import Sprecherkreis from '../../other-components/SprecherKreis'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
 
 const Team = ({data}) => {
 
@@ -38,7 +40,8 @@ const Team = ({data}) => {
         <h1>{dataAttributes.title}</h1>
 
         <h2>Sprecher*innenkreis</h2>
-        <p className={teamcss.description}>{dataAttributes.sprecherDescription}</p>
+        
+        <ReactMarkdown className={teamcss.description} rehypePlugins={[rehypeRaw]}>{dataAttributes.sprecherDescription}</ReactMarkdown>
 
         <Sprecherkreis data={sprecher} alternativeImage={alternativeImage}/>
 
@@ -49,9 +52,9 @@ const Team = ({data}) => {
             return(
               <li key={index}>
                 <span>
-                  {item.title}
+                  {`${item.title} `}
                 </span>
-                  {` ${item.paragraph}`}
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.paragraph}</ReactMarkdown>
               </li>
             )
           })}

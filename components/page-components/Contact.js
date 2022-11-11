@@ -1,5 +1,8 @@
 import React from 'react'
 import formcss from '../../styles/component-modules/form.module.scss'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
+
 
 export default function Contact({data}) {
   console.log(data);
@@ -35,7 +38,7 @@ export default function Contact({data}) {
       <>
 		<form onSubmit={handleSubmit} className={formcss.container}>
     <h1 className={formcss.title}>{title}</h1>
-    <p className={formcss.description}>{description}</p>
+    <ReactMarkdown className={formcss.description} rehypePlugins={[rehypeRaw]}>{description}</ReactMarkdown>
     
     <div className={formcss.inputcontainer}>
   

@@ -15,6 +15,7 @@
         height: 100px;
         width: 100px;
         border: 2px solid white;
+        margin: 10px;
         cursor: pointer;
 
     }
@@ -26,7 +27,7 @@
     color: white;
     font-size: 1.1rem;
     position: relative;
-    top: 20vh;
+    top: 15vh;
     padding: 40px;
 
     margin: auto;
@@ -36,6 +37,10 @@
     ul{
         display: grid;
         gap: 7px;
+    }
+
+    p{
+        margin: 0
     }
 
     .closingbutton{
@@ -54,7 +59,7 @@
         min-width: 300px;
         width: 500px;
         max-height: 500px;
-        height: 300px;
+        min-height: 300px;
     }
 
 }

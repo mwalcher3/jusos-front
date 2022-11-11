@@ -46,7 +46,6 @@ export const global= {
     item= item.toLowerCase()
     const pattern= / /g
     const itemm= item.replace(pattern, "_")
-    console.log(":)", itemm)
     return itemm
   },
 
