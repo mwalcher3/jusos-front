@@ -18,14 +18,15 @@
 
 .internalLinkBox{
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
     padding: 30px;
 
     .internalLinks{
         @include links();
         min-height: fit-content;
-        width: 250px;
+        width: 80%;
         position: relative;
         padding: 10px 15px;
 
@@ -53,4 +54,13 @@
     .internalLinks:hover{
         background-color: var(--link-box-hover);
     }
+}
+
+@media(min-width: $medium){
+    .internalLinkBox{
+        .internalLinks{
+            width: 250px;
+        }
+    }
+  
 }

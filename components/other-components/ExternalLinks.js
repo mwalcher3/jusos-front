@@ -19,7 +19,7 @@ const ExternalLinks = ({data}) => {
     onMouseOut={() => { setHover(false) }}
     >
       {data.displayedTitle}
-      <FontAwesomeIcon icon={faArrowRight} />
+     {/* <FontAwesomeIcon icon={faArrowRight} />*/}
       </a>
     </Link>
     </div>

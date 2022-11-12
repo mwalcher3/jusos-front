@@ -3,12 +3,13 @@ import { global } from './_app'
 import Description from '../components/other-components/Description'
 import Slider from '../components/other-components/Slider'
 import Slideshow from '../components/other-components/Slideshow'
-import internalLinks from "../components/other-components/InternalLinks"
+import ExternalLinks from '../components/other-components/ExternalLinks'
+import InternalLinks from '../components/other-components/InternalLinks'
 import Layout from '../components/layout-components/Layout'
 
 import fs from "fs"
 import path from "path"
-import InternalLinks from '../components/other-components/InternalLinks'
+
 
 
 export const getStaticProps = async () => {
@@ -69,7 +70,7 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ menuData, pageData }) {
-
+  console.log(pageData);
   const attributes = pageData.data.attributes
 
   return (
@@ -79,6 +80,14 @@ export default function Home({ menuData, pageData }) {
         <Description data={attributes.aboutUs} />
         {<Slider data={attributes.sliders} />}
         <InternalLinks data={attributes.internalLinks}/>
+        <section className="externalLinksBox">
+          {attributes.Links.map((item, index)=>{
+            return(
+              <ExternalLinks key={index} data={item}/>
+            )
+          })}
+        </section>
+       
       </Layout>
 
     </div>

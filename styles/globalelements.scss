@@ -57,9 +57,17 @@
 
     .paragraph{
         border: 2px solid var(--red);
-        padding: 15px;
+        padding: 0 15px;
     }
 
+}
+
+.externalLinksBox{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+   gap: 30px;
 }
 
 .overlay{
