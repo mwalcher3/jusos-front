@@ -9,7 +9,6 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
 const Calendar = ({data}) => {
-  console.log(data);
   const dataAttributes= data.data.attributes
   const[mapsCount, setMapsCount] = React.useState(-2)
 
@@ -20,28 +19,42 @@ const Calendar = ({data}) => {
     mapsCount!=-2? 
     body.classList.add('burgeropen'):body.classList.remove('burgeropen')
   },[mapsCount])
+
+  const sortedEvents  =  dataAttributes.calendar_entries.data.sort((a,b) => new moment(b.attributes.date).format('YYYYMMDD') - new moment(a.attributes.date).format('YYYYMMDD') )
  
   return (
     <div className="container">
       <h1>{dataAttributes.title}</h1>
       <ReactMarkdown className="paragraph"rehypePlugins={[rehypeRaw]}>{dataAttributes.description}</ReactMarkdown>
       <section className={calcss.entryContainer}>
-        {dataAttributes.calendar_entries.data.map((item, index)=>{
+        {sortedEvents.map((item, index)=>{
           var filteredUrl
           const pattern= /(https.*?")/
           {item.attributes.googleMaps!=null? filteredUrl= item.attributes.googleMaps.match(pattern): ""}
 
           moment.locale('de')
 
-          let m= moment(item.attributes.date, moment.ISO_8601)
-          let formatedDate= m.format("dddd, DD MMMM YYYY, h.mm A") 
+          const date= item.attributes.date
+          const expireAfter= item.attributes.expireAfterEventInDays
+          let event= moment(date, moment.ISO_8601)
+          let expiresAt= event.clone()
+          expiresAt.add(expireAfter!=null? expireAfter: 2, 'days')
+          
+          var todayDate = moment(moment().format('H-DD-MM-YYYY'), 'H-DD-MM-YYYY');
+          var expiredDate = moment(expiresAt.format('H-DD-MM-YYYY'), `H-DD-MM-YYYY`);
+          var eventDate = moment(event.format('H-DD-MM-YYYY'), `H-DD-MM-YYYY`);
+        
+          var diffTodayExpired = todayDate.diff(expiredDate);
+          var diffTodayEvent= todayDate.diff(eventDate);
+        
+          let displayedDate= event.format("dddd, DD MMMM YYYY, h.mm A") 
 
           return(
-            <div key={index} className={calcss.entryBox} >
+            <div key={index} className={diffTodayExpired >0? "none": calcss.entryBox} >
 
-              <div className={calcss.titleAndDate}>
+              <div className={ calcss.titleAndDate + " "+ (diffTodayEvent>0? calcss.titleAndDateLight: "")}>
                 <h2 className={calcss.entryTitle}>{item.attributes.title}</h2>
-                <h3 className={calcss.date}>{formatedDate}</h3>
+                <h3 className={calcss.date}>{displayedDate}</h3>
 
                 {item.attributes.location!=null ?
                 <h3>Treffpunkt: {item.attributes.location}</h3>

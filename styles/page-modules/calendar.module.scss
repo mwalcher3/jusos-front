@@ -24,10 +24,15 @@
         display: grid;
 
         .titleAndDate{
+            align-self: center;
             background-color: var(--red);
             padding: 10px;
             color: white;
             border-radius: 3px
+        }
+
+        .titleAndDateLight{
+            background-color: var(--red-lighter);
         }
 
         .subtitleAndText{
@@ -71,12 +76,12 @@
 
 @media(min-width: $medium){
     .entryContainer{
-         gap: 40px;
         .entryBox{
             grid-auto-flow: column;
             gap: 20px;
             .titleAndDate{
                 width: 22vw;
+                height: 80%;
             }
         }
     }
