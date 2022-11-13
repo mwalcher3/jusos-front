@@ -42,13 +42,13 @@ const Team = ({data}) => {
 
         <h2>Sprecher*innenkreis</h2>
         
-        <ReactMarkdown className={teamcss.description} rehypePlugins={[rehypeRaw]}>{dataAttributes.sprecherDescription}</ReactMarkdown>
+        <ReactMarkdown className="paragraph" rehypePlugins={[rehypeRaw]}>{dataAttributes.sprecherDescription}</ReactMarkdown>
 
         <Sprecherkreis data={sprecher} alternativeImage={alternativeImage}/>
 
         <h2>Zusaezliche Positionen</h2>
 
-        <ul className={teamcss.description}>
+        <ul className="paragraph">
           {dataAttributes.otherRolesDescription.map((item, index)=>{
             return(
               <li key={index}>
@@ -78,8 +78,10 @@ const Team = ({data}) => {
                 />}
             </div>
             </Link>
-          <h4>{item.attributes.name}</h4>
-          <h4>{item.attributes.otherRoles}</h4>
+            <section className={teamcss.name}>
+              <h4>{item.attributes.name}</h4>
+              <h4>{item.attributes.otherRoles}</h4>
+          </section>
          </div>
           )
           })}
