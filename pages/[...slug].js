@@ -25,7 +25,6 @@ import KJUR from 'jsrsasign'
 // links: footer links
 
 const Slugs = ({ menuData, pageData }) => {
-  console.log(pageData)
 
   const router = useRouter();
   const { slug = [] } = router.query;
@@ -94,8 +93,6 @@ export async function getStaticPaths() {
   const menuData = await fetch(`${global.fetchURI}/menus/menu?nested`);
   const menuDataJson = await menuData.json();
 
-  // console.log(JSON.stringify(menuDataJson))
-
   const endpointsToFetch = []
   JSON.stringify(menuDataJson, (key, value) => {
     if (key == "url" && value != "" && !endpointsToFetch.includes(value)) endpointsToFetch.push(value)
@@ -138,7 +135,6 @@ export async function getStaticPaths() {
 
     const data = await fetch(`${global.fetchURI}${collection.parentEndpoint}?${query}`)
     const json = await data.json()
-    // console.log(JSON.stringify(json))
     const slug = json.data.attributes.slug
     const kids = json.data.attributes[collection.childrenField].data
     for (let child of kids) {
@@ -211,8 +207,6 @@ export const getStaticProps = async (context) => {
    const calendarData = await fetch(`${global.fetchURI}/calendar-entries?populate=*`);
    const calendarJson = await calendarData.json()
   
-
-
   // fetch data from instagram api
   const token= process.env.INSTAGRAM_TOKEN
   const instagramData = await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,username,timestamp,caption,children{media_url}&access_token=${token}`);
@@ -252,7 +246,6 @@ export const getStaticProps = async (context) => {
 
   const generatedSignature = generateSignature(process.env.ZOOM_SDK_KEY, process.env.ZOOM_SDK_SECRET, meetingId, 0)
   const zoomJson = { signature : generatedSignature } 
-
 
   // ... and rewrite pageJson accordingly
 

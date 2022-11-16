@@ -70,7 +70,6 @@ export const getStaticProps = async () => {
 }
 
 export default function Home({ menuData, pageData }) {
-  console.log(pageData);
   const attributes = pageData.data.attributes
 
   return (

@@ -11,7 +11,6 @@ import rehypeRaw from "rehype-raw";
 
 
 const SimplePage = ({data}) => {
-  console.log(data);
   const dataAttributes= data.data.attributes
 
   return (
@@ -42,7 +41,6 @@ const SimplePage = ({data}) => {
                 )
 
               case 'component.text-block':
-                console.log(item.image);
                   return(
                     <div key={index}>
                     <h3>{item.title}</h3>

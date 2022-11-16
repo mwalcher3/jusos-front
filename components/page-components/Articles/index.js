@@ -7,8 +7,6 @@ import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'
 
 const Articles = ({data}) => {
-  console.log(data);
-
   const imageRefs= useRef([]);
   const scrollContainer= useRef();
   const [scroll, setScroll]= useState(scrollContainer.current)
@@ -39,8 +37,7 @@ const Articles = ({data}) => {
     },) 
     
     const sortedArticles  =  data.data.attributes.articles.data.sort((a,b) => new moment(b.attributes.date).format('YYYYMMDD') - new moment(a.attributes.date).format('YYYYMMDD') )
-    console.log(sortedArticles)
-     
+
     return (
       <div>
     <div className={articlecss.grid}  ref={scrollContainer}>
