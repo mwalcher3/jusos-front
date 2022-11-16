@@ -51,7 +51,7 @@ const Zoom = ({ data }) => {
       userName: `${process.env.USER}`
     })
 
-  }, [])
+  }, [data.data.attributes.zoomMeeting.signature])
 
   return (
     <>
