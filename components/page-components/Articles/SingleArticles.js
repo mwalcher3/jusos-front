@@ -5,8 +5,6 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
 const SingleArticles = ({data}) => {
-  console.log(data);
-
   if(data!=null){
     return (
       <>

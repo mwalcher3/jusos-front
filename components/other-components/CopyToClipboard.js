@@ -27,8 +27,7 @@ const CopyToClipboard = ({ textToCopy }) => {
   useEffect(() => {
     var r = document.querySelector(':root');
     r.style.setProperty('--speech-bubble-delay', speechBubbleValue == "link kopieren" ? "0s" : "2s");
-    // console.log(speechBubbleValue, hover);
-  }, [hover])
+  }, [hover,speechBubbleValue])
 
 
   return (

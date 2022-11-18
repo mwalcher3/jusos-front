@@ -105,7 +105,7 @@ const Zoom = ({ data }) => {
       userName: `${process.env.USER}`
     })
 
-  }, [])
+  }, [data.signature])
 
   return (
     <>

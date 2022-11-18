@@ -1,5 +1,6 @@
 {
   "name": "jusos-next",
+  "license": "UNLICENSED",
   "private": true,
   "scripts": {
     "dev": "next dev",

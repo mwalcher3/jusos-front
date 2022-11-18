@@ -3,12 +3,8 @@ import Script from 'next/script'
 import zoomcss from "../../styles/page-modules/zoom.module.scss"
 
 const Zoom = ({ data }) => {
-  console.log(data);
   const meetingId=  5011974152
   const meetingSDKElement = React.useRef();
-
-
-
 
   useEffect(() => {
     
@@ -39,7 +35,6 @@ const Zoom = ({ data }) => {
               text: 'Custom Button',
               className: 'CustomButton',
               onClick: () => {
-                console.log('custom button');
               }
             }
           ]
@@ -56,7 +51,7 @@ const Zoom = ({ data }) => {
       userName: `${process.env.USER}`
     })
 
-  }, [])
+  }, [data.data.attributes.zoomMeeting.signature])
 
   return (
     <>
