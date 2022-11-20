@@ -13,14 +13,15 @@ const ExternalLinks = ({data}) => {
     <div className={extcss.externalLinks + " " + (hover==false? "" :extcss.externalLinksHover)}>
     
       {data.copyToClipboard!=false? <CopyToClipboard textToCopy={data.URL}/>: <div></div>}
-    <Link href={data.URL}>
-    <a target="_blank" 
-    onMouseOver={() => { setHover(true) }}
-    onMouseOut={() => { setHover(false) }}
-    >
+    <Link 
+          href={data.URL}
+          target="_blank" 
+          onMouseOver={() => { setHover(true) }}
+          onMouseOut={() => { setHover(false) }}
+      >
+
       {data.displayedTitle}
      {/* <FontAwesomeIcon icon={faArrowRight} />*/}
-      </a>
     </Link>
     </div>
   )

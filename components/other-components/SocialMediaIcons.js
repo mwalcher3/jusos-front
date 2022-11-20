@@ -20,10 +20,8 @@ const SocialMediaIcons = ({data}) => {
 
             return(
                 <div  key={index}>
-                    <Link href={item.URL} passHref>
-                    <a target="_blank" >
+                    <Link href={item.URL} passHref target="_blank">
                         <FontAwesomeIcon icon={lookUp[item.type]} />
-                      </a>
                      </Link>
                 </div>
             )

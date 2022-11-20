@@ -14,8 +14,8 @@ const Motions = ({data}) => {
         <ReactMarkdown className="paragraph" rehypePlugins={[rehypeRaw]}>{dataAttributes.description}</ReactMarkdown>
         {dataAttributes.documents.data.map((item,index)=>{
             return(
-                <Link key={index} href={`${global.host}${item.attributes.url}`} >
-                <a target="_blank">download hear</a>
+                <Link key={index} href={`${global.host}${item.attributes.url}`}  target="_blank">
+                  download hear
                 </Link>
             )
         })

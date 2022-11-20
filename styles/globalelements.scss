@@ -82,6 +82,11 @@
     transition: 2s ease-in-out;
 }
 
+.image{
+    object-fit: cover;
+    width: 40px;
+}
+
 
 
 //overwrite margins for different screen sizes which have different default margins

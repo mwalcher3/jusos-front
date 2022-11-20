@@ -66,7 +66,7 @@ const Team = ({ data }) => {
           return (
             <div key={index}>
               <Link href={`/team/${global.endpointSyntax(item.attributes.name)}`} passHref>
-                <div className={teamcss.squareimages}>
+                <span className={teamcss.squareimages}>
                   {<Image
                     src={`${global.host}${previewImage != null ? previewImage.attributes.url : alternativeImage.url}`}
                     alt={`image of a person`}
@@ -74,7 +74,7 @@ const Team = ({ data }) => {
                     objectFit="cover"
                     priority
                   />}
-                </div>
+                </span>
               </Link>
               <section className={teamcss.name}>
                 <h4>{item.attributes.name}</h4>
