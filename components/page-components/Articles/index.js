@@ -2,7 +2,7 @@ import {global} from '../../../pages/_app'
 import articlecss from "../../../styles/page-modules/article.module.scss"
 import moment from 'moment';
 import 'moment/locale/de';
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import {useRef, useState, useEffect} from 'react'
 
@@ -54,18 +54,18 @@ const Articles = ({data}) => {
                   <div  
                   className={articlecss.articleboxes}
                   ref={el => imageRefs.current[i] = el} >
-                      
                     {item.attributes.image.data!=null? 
-                      <span className={articlecss.images}>
-                      <Image
+                      <div className={articlecss.images}> 
+                    <Image
                           src={`${global.host}${item.attributes.image.data.attributes.url}`}
                           alt={`${global.host}${item.attributes.image.data.attributes.alternativeText}`}
-                          layout={'fill'}
-                          objectFit= {'cover'}
-                          priority
+                         objectFit= {'cover'}
+                        fill
+                        priority
                   />
+                    
       
-                  </span>
+                  </div>
                   :<div></div>
                   }
                           <div className={articlecss.articletitle + " " + (item.attributes.image.data!=null? " " : articlecss.articletitlenoimage)}>
