@@ -23,8 +23,8 @@ const InternalLinks = ({data}) => {
                 {<Image
                       src={`${global.host}${image.url}`}
                       alt={image.alternativeText}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      className="imageCover"
                       priority
                 />}
               </div>

@@ -20,9 +20,8 @@ const SimplePage = ({data}) => {
         <Image
           src={`${global.host}${dataAttributes.mainImage.data.attributes.url}`}
           alt={dataAttributes.mainImage.data.attributes.alternativeText}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="50% left"
+          fill
+          className="imageCover"
           priority
       />
       </section> : <div></div>}
@@ -50,8 +49,8 @@ const SimplePage = ({data}) => {
                        <Image
                             src={`${global.host}${item.image.image.data[0].attributes.url}`}
                             alt={item.image.image.data[0].attributes.alternativeText}
-                            layout="fill"
-                            objectFit="cover"
+                            fill
+                            className="imageCover"
                             priority
                        />}
                       </div>

@@ -192,8 +192,8 @@ export const getStaticProps = async (context) => {
   // fetch data of subsidiary (or "deep") relations, and external sources...
 
   // fetch popupData
-  const popupData = await fetch(`${global.fetchURI}/popups?populate=*`);
-  const popupJson = await popupData.json()
+  const meetingTypesData = await fetch(`${global.fetchURI}/meeting-types?populate=*`);
+  const meetingTypesJson = await meetingTypesData.json()
 
   // fetch memberData
   const memberData = await fetch(`${global.fetchURI}/members?populate=*`);
@@ -252,10 +252,10 @@ export const getStaticProps = async (context) => {
   const pageJsonFull = JSON.parse(
     JSON.stringify(pageJson, (key, value) => {
       switch (key) {
-        case "popups": {
+        case "meetingTypes": {
           // const popupData = await fetch(`${global.fetchURI}/popups?populate=*`);
           // const popupJson = await popupData.json()
-          return popupJson
+          return meetingTypesJson
         }
 
         /* case "field name in stratpi in wich the json will be pushedd" :return extra json fetched */

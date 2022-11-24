@@ -2,17 +2,19 @@ body{
     background-color: white;
     color: black;
     --shadow: rgba(60,64,67,0.15);
+    --shadow-darker: rgba(48, 51, 53, 0.232);
 
     --black-white-switch: black;
 
     --red: rgb(204, 0, 0);
     --red-lighter: rgb(204, 100, 100);
-    --red-slider-button: rgb(151, 67, 67);
+    --red-slider-button: rgb(228, 96, 96);
     --link-box-hover: rgb(163, 22, 22);
 
     
     --lightblack: rgb(43, 43, 43);
     --lightblacktrans: rgba(27, 27, 27, 0.774);
+    --greytrans: rgba(138, 138, 138, 0.738);
     --articleborders: rgb(125, 125, 125);
 
     --burger-menu-background: rgb(0, 0, 0);
@@ -37,7 +39,9 @@ body.dark{
     color: var(--darkmode-text-color);
     --darkmode-text-color: rgb(187, 187, 187);
     --shadow: rgba(204,0,0 , 0.15);
-
+    //--shadow-darker: rgba(165, 165, 165, 0.232);
+    --greytrans: rgba(86, 86, 86, 0.779);
+    
     --black-white-switch: white;
 
     --red-slider-button: rgb(170, 10, 10);

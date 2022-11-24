@@ -17,8 +17,8 @@ const SprecherKreis = ({data, alternativeImage}) => {
                     <Image
                         src={`${global.host}${previewImage!=null? previewImage.attributes.url: alternativeImage.url}`}
                         alt={`${global.host}${previewImage!=null? previewImage.attributes.alternativeText: alternativeImage.alternativeText}`}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        className="imageCover"
                         priority
                     />
                     </div>

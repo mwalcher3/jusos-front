@@ -17,9 +17,8 @@ const SingleMember = ({ data }) => {
         <Image
           src={`${global.host}${data.attributes.previewImage.data.attributes.url}`}
           alt={`${global.host}${data.attributes.previewImage.data.alternativeText}`}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="50% 5%"
+          fill
+          className="imageCover"
           priority
         />
       </div>

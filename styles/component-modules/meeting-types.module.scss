@@ -1,0 +1,94 @@
+@import "../../styles/config";
+
+
+
+.popupscontainer{
+    display: grid;
+    justify-content: center;
+    gap: 40px;
+
+    .imageBox{
+        cursor: pointer;
+
+        h2{
+            color: var(--black-white-switch);
+            background-color: var(--greytrans);
+            font-size: 1.4rem;
+            font-weight: normal;
+            margin: auto;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: -30px;
+            width: fit-content;
+            transition: .2s ease-in-out;
+        }
+        .images{
+            background-color: white;
+            position: relative;
+            height: 200px;
+            width: 300px;
+            margin: 10px;
+            z-index: -1;
+            box-shadow: 7px 7px 7px var(--shadow-darker);
+        }
+        transition: .2s ease-in-out;
+
+    }
+
+    .imageBox:hover{
+
+        transform: scale(1.01);
+        transition: .2s ease-in-out;
+        h2{
+            
+            transition: .2s ease-in-out;
+        }
+    
+        
+    }
+
+    .textcontainer{
+        background-color: var(--red);
+        color: white;
+        font-size: 1.1rem;
+        position: relative;
+        top: 15vh;
+        padding: 40px;
+    
+        margin: auto;
+        border: 1px solid #cacaca;
+        border-radius: 3px;
+    
+        .description{
+            margin-top: 10px;
+        }
+    
+        .closingbutton{
+            font-size: 2rem;
+            position: absolute;
+            right:15px;
+            top:15px;
+            cursor: pointer;
+        }
+    }
+}
+
+
+
+
+@media(min-width: $medium){
+
+    .popupscontainer{
+        grid-template-columns: 1fr 1fr 1fr;
+        padding: 15px;
+
+        .textcontainer{
+            min-width: 300px;
+            width: 500px;
+            max-height: 500px;
+            min-height: 300px;
+        }
+    }
+
+
+}

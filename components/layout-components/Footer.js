@@ -44,8 +44,8 @@ const Footer = ({ menuData }) => {
               <Image
                 src={`/Jusos_Heidelberg_Logo.png`}
                 alt="jusos Heidelberg logo"
-                layout='fill'
-                //objectFit= 'cover'
+                fill
+                className="imageContain"
                 priority
               />
             </div>
@@ -55,8 +55,8 @@ const Footer = ({ menuData }) => {
                 <Image
                   src={`/Jusos_Logo_4c.svg_.png`}
                   alt="jusos logo"
-                  layout='fill'
-                  objectFit='contain'
+                  fill
+                  className="imageContain"
                   priority
                 />
               </div>
@@ -67,8 +67,8 @@ const Footer = ({ menuData }) => {
                 <Image
                   src={`/Spd_Logo.png`}
                   alt="spd logo"
-                  layout='fill'
-                  objectFit='contain'
+                  fill
+                  className="imageCover"
                   priority
                 />
               </div>

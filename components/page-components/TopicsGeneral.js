@@ -1,7 +1,8 @@
 import React from 'react'
 import {global} from '../../pages/_app'
 import Image from 'next/image'
-import PopUp from '../other-components/PopUp'
+import Link from 'next/link'
+import MeetingTypes from '../other-components/MeetingTypes'
 import generalcss from '../../styles/page-modules/topics.general.module.scss'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
@@ -10,7 +11,7 @@ import rehypeRaw from "rehype-raw";
 const TopicsGeneral = ({data}) => {
 
   const [accordionCount, setAccordionCount] = React.useState(-1)
-    const dataAttributes= data.data.attributes
+  const dataAttributes= data.data.attributes
 
   return (
     <div className="container">
@@ -18,14 +19,13 @@ const TopicsGeneral = ({data}) => {
         <Image
           src={`${global.host}${dataAttributes.mainImage.data.attributes.url}`}
           alt={dataAttributes.mainImage.data.attributes.alternativeText}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="50% left"
+          className="imageCover"
+          fill
           priority
       />
       </section>
       <h1>{dataAttributes.title}</h1>
-      <PopUp data={dataAttributes.popups.data}/>
+     {/* <PopUp data={dataAttributes.popups.data}/>*/}
 
       <section className={generalcss.accordioncontainer}>
         {dataAttributes.topics.data.map((item, index)=>{
@@ -46,6 +46,13 @@ const TopicsGeneral = ({data}) => {
           )
         })}
       </section>
+      {<Link href={`${global.host}${dataAttributes.schweringerManifest.data.attributes.url}`}  target="_blank">
+                  download hear
+      </Link>}
+
+      <h1>Unsere Formate</h1>
+
+      <MeetingTypes data={dataAttributes.meetingTypes.data} />
 
       <div className="lastupdated">{dataAttributes.updatedAt}</div> 
     </div>

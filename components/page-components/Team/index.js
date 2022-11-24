@@ -30,8 +30,8 @@ const Team = ({ data }) => {
         <Image
           src={`${global.host}${dataAttributes.image.data.attributes.formats.large.url}`}
           alt={`${global.host}${dataAttributes.image.data.attributes.alternativeText}`}
-          layout="fill"
-          objectFit="cover"
+          fill
+          className="imageCover"
           objectPosition="50% 5%"
           priority
         />
@@ -70,8 +70,8 @@ const Team = ({ data }) => {
                   {<Image
                     src={`${global.host}${previewImage != null ? previewImage.attributes.url : alternativeImage.url}`}
                     alt={`image of a person`}
-                    layout="fill"
-                    objectFit="cover"
+                   fill
+                    className="imageCover"
                     priority
                   />}
                 </span>

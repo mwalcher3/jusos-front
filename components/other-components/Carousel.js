@@ -56,8 +56,8 @@ const Carousel = ({ settings }) => {
               <Image
                 src={item}
                 alt={settings.imageAlt}
-                layout="fill"
-                objectFit='cover'
+                fill
+                className="imageCover"
                 priority
               />}
           </div>

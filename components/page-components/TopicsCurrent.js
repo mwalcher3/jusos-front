@@ -1,9 +1,10 @@
 import React from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import currentcss from '../../styles/page-modules/topics.current.module.scss'
 import Carousel from "../other-components/Carousel"
 
 const TopicsCurrent = ({ data }) => {
+  console.log(data);
   const instagramData = data.data.attributes.instagramFeed
   const dataAttributes = data.data.attributes
   const imagesWidth = "350px"
@@ -47,9 +48,10 @@ const TopicsCurrent = ({ data }) => {
           return (
             <div key={id} className={currentcss.boxes}>
               <div className={currentcss.images}>
+                {/*
                 <div className={currentcss.imagecontainer}>
                   <Carousel settings={carouselSettings} />
-                </div>
+          </div>*/}
 
               </div>
 
