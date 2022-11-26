@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import footercss from '../../styles/layout-modules/footer.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -44,8 +44,8 @@ const Footer = ({ menuData }) => {
               <Image
                 src={`/Jusos_Heidelberg_Logo.png`}
                 alt="jusos Heidelberg logo"
-                fill
-                className="imageContain"
+                layout= "fill"
+                objectfit= "cover"
                 priority
               />
             </div>
@@ -55,8 +55,8 @@ const Footer = ({ menuData }) => {
                 <Image
                   src={`/Jusos_Logo_4c.svg_.png`}
                   alt="jusos logo"
-                  fill
-                  className="imageContain"
+                  layout= "fill"
+                  objectfit= "cover"
                   priority
                 />
               </div>
@@ -67,8 +67,8 @@ const Footer = ({ menuData }) => {
                 <Image
                   src={`/Spd_Logo.png`}
                   alt="spd logo"
-                  fill
-                  className="imageCover"
+                  layout= "fill"
+                  objectfit= "cover"
                   priority
                 />
               </div>

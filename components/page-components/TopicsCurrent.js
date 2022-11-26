@@ -7,8 +7,8 @@ const TopicsCurrent = ({ data }) => {
   console.log(data);
   const instagramData = data.data.attributes.instagramFeed
   const dataAttributes = data.data.attributes
-  const imagesWidth = "350px"
-  const imagesHeight = "350px"
+  const imagesWidth = "350"
+  const imagesHeight = "350"
 
   return (
     <div className={currentcss.maincontainer}>
@@ -32,6 +32,7 @@ const TopicsCurrent = ({ data }) => {
             imageSource.push(...imageSource)
           }
 
+
           let carouselSettings = {
             length: imageSource.length,
             onClick: true,
@@ -41,17 +42,17 @@ const TopicsCurrent = ({ data }) => {
             width: imagesWidth,
             height: imagesHeight,
             dots: false,
-            boxWidth: imagesWidth
+            boxWidth: `${imagesWidth}px`
           }
 
 
           return (
             <div key={id} className={currentcss.boxes}>
               <div className={currentcss.images}>
-                {/*
+                {
                 <div className={currentcss.imagecontainer}>
                   <Carousel settings={carouselSettings} />
-          </div>*/}
+          </div>}
 
               </div>
 

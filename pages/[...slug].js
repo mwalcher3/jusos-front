@@ -111,10 +111,12 @@ export async function getStaticPaths() {
   // their full props can be fetched via the collection API endpoint
 
   const collections = [
+    /*
     {
       "parentEndpoint": "/article-page", "childrenField": "articles",
       "collectionEndpoint": "/articles", "slugField": "title"
-    },
+    },*/
+
     {
       "parentEndpoint": "/team-page", "childrenField": "members",
       "collectionEndpoint": "/members", "slugField": "name"
