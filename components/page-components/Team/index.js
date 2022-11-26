@@ -8,7 +8,6 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
 const Team = ({ data }) => {
-  console.log(data);
   const dataAttributes = data.data.attributes
   const alternativeImage = dataAttributes.alternativeImage.data.attributes
 

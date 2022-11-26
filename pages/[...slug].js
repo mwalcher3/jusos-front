@@ -111,11 +111,11 @@ export async function getStaticPaths() {
   // their full props can be fetched via the collection API endpoint
 
   const collections = [
-    /*
+
     {
       "parentEndpoint": "/article-page", "childrenField": "articles",
       "collectionEndpoint": "/articles", "slugField": "title"
-    },*/
+    },
 
     {
       "parentEndpoint": "/team-page", "childrenField": "members",
@@ -208,6 +208,10 @@ export const getStaticProps = async (context) => {
    // fetch calendar entries data
    const calendarData = await fetch(`${global.fetchURI}/calendar-entries?populate=*`);
    const calendarJson = await calendarData.json()
+
+   // fetch motion data
+   const motionData = await fetch(`${global.fetchURI}/motion-types?populate[motion][populate][0]=document`);
+   const motionJson = await motionData.json()
   
   // fetch data from instagram api
   const token= process.env.INSTAGRAM_TOKEN
@@ -266,6 +270,7 @@ export const getStaticProps = async (context) => {
         case "zoomMeeting": return  zoomJson
         case "articles": return articleJson
         case "calendar_entries" : return calendarJson
+        case "motion_types": return motionJson
         default: return value
       }
     }

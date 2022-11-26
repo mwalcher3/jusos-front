@@ -45,8 +45,10 @@ export const global= {
   endpointSyntax: (item)=>{
     item= item.toLowerCase()
     const pattern= / /g
-    const itemm= item.replace(pattern, "_")
-    return itemm
+    const pattern2= /\*/g
+    const endpointAltered= item.replace(pattern, "_").replace(pattern2, "")
+
+    return endpointAltered
   },
 
 }
