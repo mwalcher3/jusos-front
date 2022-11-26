@@ -21,6 +21,7 @@ const TopicsGeneral = ({data}) => {
           alt={dataAttributes.mainImage.data.attributes.alternativeText}
           className="imageCover"
           fill
+          quality={100}
           priority
       />
       </section>

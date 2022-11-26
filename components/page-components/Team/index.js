@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
 const Team = ({ data }) => {
+  console.log(data);
   const dataAttributes = data.data.attributes
   const alternativeImage = dataAttributes.alternativeImage.data.attributes
 
@@ -28,10 +29,12 @@ const Team = ({ data }) => {
     <div className="container">
       <div className="mainimage">
         <Image
-          src={`${global.host}${dataAttributes.image.data.attributes.formats.large.url}`}
+          src={`${global.host}${dataAttributes.image.data.attributes.url}`}
           alt={`${global.host}${dataAttributes.image.data.attributes.alternativeText}`}
           fill
           className="imageCover"
+          style={{objectPosition: '50% 25%'}}
+          quality={100}
           priority
         />
       </div>
@@ -70,7 +73,6 @@ const Team = ({ data }) => {
                     src={`${global.host}${previewImage != null ? previewImage.attributes.url : alternativeImage.url}`}
                     alt={`image of a person`}
                     fill
-                    style={{objectPosition: '50% 5%'}}
                     className="imageCover"
                     priority
                   />}

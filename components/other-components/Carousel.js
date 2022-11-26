@@ -52,12 +52,14 @@ const Carousel = ({ settings }) => {
                 alt={settings.imageAlt}
                 width={settings.width}
                 height={settings.height}
+                quality={100}
                 priority /> :
               <Image
                 src={item}
                 alt={settings.imageAlt}
                 fill
                 className="imageCover"
+                quality={100}
                 priority
               />}
           </div>

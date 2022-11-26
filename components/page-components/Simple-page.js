@@ -22,6 +22,7 @@ const SimplePage = ({data}) => {
           alt={dataAttributes.mainImage.data.attributes.alternativeText}
           fill
           className="imageCover"
+          quality={100}
           priority
       />
       </section> : <div></div>}
