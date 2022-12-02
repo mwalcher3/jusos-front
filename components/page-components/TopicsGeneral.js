@@ -6,6 +6,8 @@ import MeetingTypes from '../other-components/MeetingTypes'
 import generalcss from '../../styles/page-modules/topics.general.module.scss'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFile} from '@fortawesome/free-solid-svg-icons'
 
 
 const TopicsGeneral = ({data}) => {
@@ -25,8 +27,7 @@ const TopicsGeneral = ({data}) => {
           priority
       />
       </section>
-      <h1>{dataAttributes.title}</h1>
-     {/* <PopUp data={dataAttributes.popups.data}/>*/}
+      <h1>{dataAttributes.titleTopics}</h1>
 
       <section className={generalcss.accordioncontainer}>
         {dataAttributes.topics.data.map((item, index)=>{
@@ -47,11 +48,12 @@ const TopicsGeneral = ({data}) => {
           )
         })}
       </section>
-      {<Link href={`${global.host}${dataAttributes.schweringerManifest.data.attributes.url}`}  target="_blank">
-                  download hear
+      {<Link className={generalcss.schweringerManifest} href={`${global.host}${dataAttributes.schweringerManifest.data.attributes.url}`}  target="_blank">
+                  <h3>Schweringer Manifest</h3>
+                  <FontAwesomeIcon icon={faFile} />
       </Link>}
 
-      <h1>Unsere Formate</h1>
+      <h1>{dataAttributes.titleMeetingTypes}</h1>
 
       <MeetingTypes data={dataAttributes.meetingTypes.data} />
 

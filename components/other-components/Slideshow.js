@@ -12,7 +12,7 @@ const Slideshow = ({data}) => {
           length: data.data.length,
           onClick: true,
           automatic: true,
-          delay: 5000,
+          delay: 7000,
           dataSource: imageSource,
           imageAlt: "slideshow ",
           dots: true,

@@ -4,6 +4,7 @@ import currentcss from '../../styles/page-modules/topics.current.module.scss'
 import Carousel from "../other-components/Carousel"
 
 const TopicsCurrent = ({ data }) => {
+  console.log(data);
   const instagramData = data.data.attributes.instagramFeed
   const dataAttributes = data.data.attributes
   const imagesWidth = "350"
@@ -41,8 +42,10 @@ const TopicsCurrent = ({ data }) => {
             width: imagesWidth,
             height: imagesHeight,
             dots: false,
-            boxWidth: `${imagesWidth}px`
+            boxWidth: `${imagesWidth}px`,
+            translationTime: '0.3s',
           }
+      
 
 
           return (
@@ -51,30 +54,42 @@ const TopicsCurrent = ({ data }) => {
                 {
                 <div className={currentcss.imagecontainer}>
                   <Carousel settings={carouselSettings} />
-          </div>}
+             </div>}
 
               </div>
+              <p className={item.caption ? currentcss.textboxes : "none"}>
+                {item.caption}</p>
 
-              <h2>this is a title, number</h2>
+            </div>
+          )
+        }
+
+        else if(item.media_type == "VIDEO"){
+
+          return(
+          <div key={id} className={currentcss.boxes}>
+               <video className={currentcss.videos} src={item.media_url}
+               height="450" controls>       
+              </video>
               <p className={item.caption ? currentcss.textboxes : "none"}>
                 {item.caption}</p>
             </div>
           )
+
         }
 
         else {
           return (
             <div key={id} className={currentcss.boxes}>
               <div className={currentcss.images}>
-                <Image
+                {<Image
                   src={item.media_url}
                   alt="Spaziergang"
                   width={imagesWidth}
                   height={imagesHeight}
-                  priority />
-              </div>
+          priority />}
+          </div>
 
-              <h2>this is a title</h2>
               <p className={item.caption ? currentcss.textboxes : "none"}>
                 {item.caption}</p>
             </div>

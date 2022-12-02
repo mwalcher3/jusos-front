@@ -4,6 +4,7 @@ import Image from 'next/image'
 import carcss from '../../styles/component-modules/carousel.module.scss'
 
 const Carousel = ({ settings }) => {
+  console.log(settings);
 
   const [handleChange, current, next, previous, reduceBoolean] = useCounter(settings.length);
 
@@ -21,12 +22,11 @@ const Carousel = ({ settings }) => {
   // set the distance the image will move to the right/left to the size of its container
   //to avoid spacing between the images
   useEffect(() => {
-    if (settings.boxWidth) {
-      var r = document.querySelector(':root');
-      var rs = getComputedStyle(r);
-      r.style.setProperty('--translation-width', `${settings.boxWidth}`);
-    }
-  }, [settings.boxWidth])
+    var r = document.querySelector(':root');
+    var rs = getComputedStyle(r);
+    if (settings.boxWidth) r.style.setProperty('--translation-width', `${settings.boxWidth}`)
+    if(settings.translationTime) r.style.setProperty('--translation-time', `${settings.translationTime}`)
+  }, [settings.boxWidth, settings.translationTime])
 
 
   return (

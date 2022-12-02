@@ -9,7 +9,7 @@
 
 .current{
     @include movingslides($translate: 0);
-    transition:  0.6s ease-in-out;
+    transition:  var(--translation-time) ease-in-out;
 }
 
 .next{
@@ -19,7 +19,7 @@
 
 .previous{
     @include movingslides($translate: calc(var(--translation-width)*-1));
-    transition: transform 0.6s ease-in-out;
+    transition: transform var(--translation-time) ease-in-out;
 }
 
 .nextreduce{
@@ -28,8 +28,7 @@
 
 .previousreduce{
     @include movingslides($translate: var(--translation-width));
-    transition: transform 0.6s ease-in-out;
-
+    transition: transform var(--translation-time) ease-in-out;
 }
 
 .none{
@@ -38,26 +37,32 @@
 
 
 .button1, .button2{
+    color: var(--darkmode-text-color);
+    background-color: var(--lightblacktrans);
     position: absolute;
-    background-color: var(--lightdark);
-    font-size: 2.7rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 2.4rem;
     font-weight: bolder;
     border: none;
     height: fit-content;
     width: fit-content;
     cursor:pointer;
     z-index: 2;
+    border-radius: 40px;
+    padding: 0 5px 0 5px;
 }
 
 .button1{
-    left: 1vw;
+    left: 10px;
 }
 
 
 
 .button2{
     transform: scaleX(-1);
-    right: 1vw;
+    right: 10px;
 }
 
 .dotcontainer{

@@ -65,3 +65,22 @@
             display: none
         }
 }
+
+.schweringerManifest{
+    display: flex;
+    margin: auto;
+    border: 1px solid var(--red);
+    padding: 5px;
+
+    h3{
+        padding:0;
+        margin: 0;
+        font-size: 1.5rem
+    }
+
+    svg{
+        width: 25px;
+        height: 25px;
+        padding-left: 3px;
+    }
+}
