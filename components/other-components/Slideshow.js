@@ -17,7 +17,8 @@ const Slideshow = ({data}) => {
           imageAlt: "slideshow ",
           dots: true,
           buttonType: "button-a",
-          boxWidth: "100vw"
+          boxWidth: "100vw",
+          translationTime: '0.6s',
      }
 
 
