@@ -102,7 +102,6 @@ export default function Contact({data}) {
           </svg>
         
         </form>
-        <div className="lastupdated">{data.data.attributes.updatedAt}</div>
         </>
 	)
 }

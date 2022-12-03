@@ -62,10 +62,10 @@ const SimplePage = ({data}) => {
 
 
                 case "component.links": 
-                return( <div key={index}><ExternalLinks data={item}/></div>)
+                return( <ExternalLinks key={index} data={item}/>)
 
                 case "component.internal-link-box": 
-                return(<InternalLinks data={item.internalLinks}/>)
+                return(<InternalLinks key={index} data={item.internalLinks}/>)
     
 
                 case "component.list":
@@ -91,7 +91,6 @@ const SimplePage = ({data}) => {
           }
         })
       }
-      <div className="lastupdated">{data.data.attributes.updatedAt}</div> 
     </div>
   )
 }

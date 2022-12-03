@@ -22,6 +22,7 @@
         margin: 0px 0 10px 0;
     }
 
+
     h3{
         font-size: 1.5rem;
         margin-bottom: 0px;
@@ -31,6 +32,7 @@
     ul{
         list-style-type: square;
     }
+
 
     .pimage{
         height: 250px;
@@ -50,6 +52,7 @@
         overflow-y: hidden;
 
     }
+
 
     .externalLinks{
         @include links();

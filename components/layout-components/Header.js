@@ -120,14 +120,14 @@ const Header = ({ menuData }) => {
                                     {item.children.map((itemChildren, index) => {
                                         if(itemChildren.hide_from_header!=true){
                                         return (
-                                            <>
-                                                <Link key={index} href={`/${itemChildren.url}`} passHref>
-                                                    <div className={headercss.navsubitems}>
-                                                        {itemChildren.title}
-                                                    </div>
-                                                </Link>
-                                                <div className='horizontalLine'></div>
-                                            </>
+                                            <div key={index}>
+                                            <Link href={`/${itemChildren.url}`} passHref>
+                                                <div className={headercss.navsubitems}>
+                                                    {itemChildren.title}
+                                                </div>
+                                            </Link>
+                                            <div className='horizontalLine'></div>
+                                            </div>
                                         )
                                         }
                                     })}

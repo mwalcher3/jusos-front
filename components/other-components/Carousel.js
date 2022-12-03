@@ -4,7 +4,6 @@ import Image from 'next/image'
 import carcss from '../../styles/component-modules/carousel.module.scss'
 
 const Carousel = ({ settings }) => {
-  console.log(settings);
 
   const [handleChange, current, next, previous, reduceBoolean] = useCounter(settings.length);
 
