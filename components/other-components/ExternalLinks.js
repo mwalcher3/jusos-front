@@ -6,21 +6,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 const ExternalLinks = ({data}) => {
-
+  const [hover, setHover]= React.useState(-1)
 
   return(
     <section className={extcss.externalLinkBox}>
     {data.map((item, index)=>{
       
-   const [hover, setHover]= React.useState(false)
      return (
-        <div key={index} className={extcss.externalLinks + " " + (hover==false? "" :extcss.externalLinksHover)}>
+        <div key={index} className={extcss.externalLinks + " " + (hover!=index? "" :extcss.externalLinksHover)}>
           {item.copyToClipboard!=false? <CopyToClipboard textToCopy={item.URL}/>: <div></div>}
         <Link 
               href={item.URL}
               target="_blank" 
-              onMouseOver={() => { setHover(true) }}
-              onMouseOut={() => { setHover(false) }}
+              onMouseOver={() => { setHover(index) }}
+              onMouseOut={() => { setHover(-1) }}
           >
     
           {item.displayedTitle}

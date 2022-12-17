@@ -93,12 +93,11 @@ const Header = ({ menuData }) => {
                         className={headercss.logo + " " + (intersection == false || burgerOpen ? headercss.logoscrolled : "")}>
                         </img>
                 </div>
-                <div style={{'white-space':'nowrap'}}>Jusos Heidelberg</div>
-
+        
 
                 {/*Nav Bar*/}
                 <div className={headercss.navmenu}>
-                    
+                <div style={{'white-space':'nowrap'}}>Jusos Heidelberg</div>
                     {menuData.menu.items.map((item, index) => {
                         return (
                             <div key={index}>
