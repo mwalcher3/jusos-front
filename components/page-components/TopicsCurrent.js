@@ -1,7 +1,9 @@
 import React from 'react'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import currentcss from '../../styles/page-modules/topics.current.module.scss'
 import Carousel from "../other-components/Carousel"
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from "rehype-raw";
 
 const TopicsCurrent = ({ data }) => {
   const instagramData = data.data.attributes.instagramFeed
@@ -70,8 +72,8 @@ const TopicsCurrent = ({ data }) => {
                <video className={currentcss.videos} src={item.media_url}
                height="450" controls>       
               </video>
-              <p className={item.caption ? currentcss.textboxes : "none"}>
-                {item.caption}</p>
+  
+                <ReactMarkdown className={item.caption ? currentcss.textboxes : "none"} rehypePlugins={[rehypeRaw]}>{item.caption}</ReactMarkdown>
             </div>
           )
 
@@ -84,8 +86,8 @@ const TopicsCurrent = ({ data }) => {
                 {<Image
                   src={item.media_url}
                   alt="Spaziergang"
-                  width={imagesWidth}
-                  height={imagesHeight}
+                 width={imagesWidth}
+                 height={imagesHeight}
           priority />}
           </div>
 

@@ -74,7 +74,7 @@ const Calendar = ({data}) => {
                 {item.attributes.subtitle!=null? <h3>{item.attributes.subtitle}</h3>: <div></div>}
 
                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.description}</ReactMarkdown>
-                 {item.attributes.links.map((item, index)=>{ return(<ExternalLinks key={index} data={item}/>)})}
+                 {<ExternalLinks key={index} data={item.attributes.links}/>}
               </div>
 
               <div onClick={()=>{if(mapsCount!=-1){setMapsCount(-2)}}} className={index==mapsCount? "overlay": "none"}>
@@ -100,11 +100,7 @@ const Calendar = ({data}) => {
     <section className={calcss.links}>
       <h2>{data.data.attributes.linkBoxTitle}</h2>
       <div className={calcss.linkBox}>
-      {data.data.attributes.links.map((item, index)=>{
-        return(
-          <ExternalLinks key={index} data={item}/>
-        )
-      })}
+     {<ExternalLinks data={data.data.attributes.links}/>}
       </div>
     </section>
       <div className="lastupdated">{data.data.attributes.updatedAt}</div>

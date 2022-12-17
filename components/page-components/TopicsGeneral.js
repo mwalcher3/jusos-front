@@ -48,7 +48,7 @@ const TopicsGeneral = ({data}) => {
           )
         })}
       </section>
-      {<Link className={generalcss.schweringerManifest} href={`${global.host}${dataAttributes.schweringerManifest.data.attributes.url}`}  target="_blank">
+      {<Link className={generalcss.schwerinerManifest} href={`${global.host}${dataAttributes.schwerinerManifest.data.attributes.url}`}  target="_blank">
                   <h3>Schweriner Manifest</h3>
                   <FontAwesomeIcon icon={faFile} />
       </Link>}

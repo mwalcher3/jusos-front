@@ -79,13 +79,7 @@ export default function Home({ menuData, pageData }) {
         <Description data={attributes.aboutUs} />
         {<Slider data={attributes.sliders} />}
         <InternalLinks data={attributes.internalLinks}/>
-        <section className="externalLinksBox">
-          {attributes.Links.map((item, index)=>{
-            return(
-              <ExternalLinks key={index} data={item}/>
-            )
-          })}
-        </section>
+        <ExternalLinks data={attributes.externalLinks}/>
        
       </Layout>
 

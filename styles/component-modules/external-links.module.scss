@@ -1,22 +1,31 @@
 @import "../../styles/config";
 
-.externalLinks{
-    @include links();
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 0 10px;
 
-    a{
+.externalLinkBox{
     display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    width: fit-content;
-    padding: 13px 0;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    justify-content: center;
+    
+    .externalLinks{
+        @include links();
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 10px;
+
+        a{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        width: fit-content;
+        padding: 13px 0;
+        }
     }
-}
 
-.externalLinksHover{
-    background-color: var(--link-box-hover);
+    .externalLinksHover{
+        background-color: var(--link-box-hover);
+    }
 }

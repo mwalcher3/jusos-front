@@ -57,9 +57,9 @@ const Articles = ({data}) => {
                     {item.attributes.image.data!=null? 
                       <div className={articlecss.images}> 
                     <Image
-                          src={`${global.host}${item.attributes.image.data.attributes.url}`}
-                          alt={`${global.host}${item.attributes.image.data.attributes.alternativeText}`}
-                         objectFit= {'cover'}
+                        src={`${global.host}${item.attributes.image.data.attributes.url}`}
+                        alt={`${global.host}${item.attributes.image.data.attributes.alternativeText}`}
+                        className="imageCover"
                         fill
                         priority
                   />
