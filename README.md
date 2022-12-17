@@ -5,7 +5,7 @@ A simplistic front-end component for the possible new website of the Jusos Heide
 
 This application is made with React Netxt.js. It serves for the front-end the new website of Jusos Heidelberg. It is deployed on Uberspace. To change the app, it needs to be running locally on your computer.
 
-**Note:** This is the current domain of the app: https://jusoshd.uber.space it does not have a pourposeful meaning. 
+**Note:** This is the current domain of the app: https://hdjusos.uber.space it does not have a pourposeful meaning. 
 
 ## Installation 
 
