@@ -3,6 +3,8 @@ import SocialMediaIcons from "../../other-components/SocialMediaIcons"
 import articlecss from "../../../styles/page-modules/article.module.scss"
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
+import {global} from '../../../pages/_app'
+import Image from 'next/image'
 
 const SingleArticles = ({data}) => {
   if(data!=null){
@@ -11,8 +13,20 @@ const SingleArticles = ({data}) => {
          <div className={articlecss.content}>
           <h2>{data.attributes.title}</h2>
           <section className={articlecss.articletext}>
+            {data.attributes.image.data!=null?
+              <Image
+                src={`${global.host}${data.attributes.image.data.attributes.url}`}
+                alt={data.attributes.image.data.attributes.alternativeText}
+                className={articlecss.textimage}
+                fill
+                quality={100}
+                priority
+              />
+            : <></>}
           <ReactMarkdown rehypePlugins={[rehypeRaw]}>{data.attributes.article}</ReactMarkdown>
           </section>
+        
+         
           <div className={articlecss.socialMedia}>
             <SocialMediaIcons data={data.attributes.socialMediaLinks}/>
           </div>

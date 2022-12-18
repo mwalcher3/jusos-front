@@ -79,7 +79,7 @@ const Team = ({ data }) => {
               </Link>
               <section className={teamcss.name}>
                 <h4>{item.attributes.name}</h4>
-                <h4>{item.attributes.otherRoles}</h4>
+                <h4><ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.otherRoles}</ReactMarkdown></h4>
               </section>
             </div>
           )

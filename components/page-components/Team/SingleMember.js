@@ -26,12 +26,11 @@ const SingleMember = ({ data }) => {
 
       <section className={smembercss.roles}>
         <div className={data.attributes.role == "Sprecher" ? "displayBlock" : "none"}>{data.attributes.role}</div>
-        <div>{data.attributes.otherRoles}</div>
+        <ReactMarkdown  rehypePlugins={[rehypeRaw]}>{data.attributes.otherRoles}</ReactMarkdown>
       </section>
 
 
-      <ReactMarkdown className="paragraph" rehypePlugins={[rehypeRaw]}>{data.attributes.description}</ReactMarkdown>
-
+      <ReactMarkdown className={smembercss.description} rehypePlugins={[rehypeRaw]}>{data.attributes.description}</ReactMarkdown>
       <div className="lastupdated">{data.attributes.updatedAt}</div>
     </div>
   )

@@ -24,7 +24,9 @@ const MeetingTypes = ({data}) => {
 
         return(
           <div key={index}>
-          <section className={mtcss.imageBox}  onClick={()=>
+          <section 
+          className={mtcss.imageBox + " " + (popUpCount==index? mtcss.imageBoxClicked : "")}  
+          onClick={()=>
                 {index == popUpCount ? setPopUpCount(-1): setPopUpCount(index)}
             }>
             <div className={mtcss.images}>

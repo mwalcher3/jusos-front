@@ -48,7 +48,6 @@ body{
 
 body.burgeropen{
   overflow-y: hidden;
-  height: calc(var(--window-inner-height) - 1px);
 }
 
 

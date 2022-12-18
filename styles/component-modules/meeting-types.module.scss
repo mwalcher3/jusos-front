@@ -1,7 +1,6 @@
 @import "../../styles/config";
 
 
-
 .popupscontainer{
     display: grid;
     justify-content: center;
@@ -35,17 +34,16 @@
 
     }
 
-    .imageBox:hover{
+    //include hover css state when the popup is open and on hover
 
+    .imageBoxClicked, .imageBox:hover{
         transform: scale(1.03);
         transition: .2s ease-in-out;
-        h2{
-            
+        h2{   
             transition: .2s ease-in-out;
         }
-    
-        
     }
+
 
     .textcontainer{
         background-color: var(--red);
