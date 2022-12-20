@@ -28,8 +28,7 @@ const Motions = ({data}) => {
                       className={motioncss.documentsbox} 
                       href={`${global.host}${motion.document.data.attributes.url}`}  
                       target="_blank">
-                          <h3>{motion.title}</h3>
-                          <FontAwesomeIcon icon={faFile} />
+                          <h3>{motion.title} <FontAwesomeIcon icon={faFile} /></h3>
                     </Link>
                    </li>
                   )

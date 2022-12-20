@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import currentcss from '../../styles/page-modules/topics.current.module.scss'
 import Carousel from "../other-components/Carousel"
 import ReactMarkdown from 'react-markdown'
@@ -9,7 +10,7 @@ const TopicsCurrent = ({ data }) => {
   const instagramData = data.data.attributes.instagramFeed
   const dataAttributes = data.data.attributes
   const imagesWidth = "350"
-  const imagesHeight = "350"
+  const imagesHeight = "380"
 
   return (
     <div className={currentcss.maincontainer}>
@@ -17,6 +18,20 @@ const TopicsCurrent = ({ data }) => {
       <h1>{dataAttributes.title}</h1>
 
       {instagramData.data ? instagramData.data.map((item, id) => {
+
+        const patternHashtags= /(#)[\s\S]*?(\s|$)/g
+        const patternAccounts= /(@)[\s\S]*?(\s|$)/g
+          var captionAltered = item.caption.replace(patternHashtags, 
+            function(p) {
+              return `<span className=${currentcss.blue}>${p}</span>`
+          }
+        ).replace(patternAccounts, 
+          function(p) {
+            const endpoint= p.match(/[^@,]/g)
+            return `<a target="_blank" href="https://www.instagram.com/${endpoint.join("")}" className=${currentcss.blue}>${p}</a>`
+        }
+        )
+
 
         if (item.media_type == "CAROUSEL_ALBUM") {
           const imageSource = [];
@@ -51,53 +66,59 @@ const TopicsCurrent = ({ data }) => {
 
           return (
             <div key={id} className={currentcss.boxes}>
-              <div className={currentcss.images}>
-                {
-                <div className={currentcss.imagecontainer}>
-                  <Carousel settings={carouselSettings} />
-             </div>}
+              <section className={currentcss.mediacontainer}>
+                <div className={currentcss.images}>
+                    <Carousel settings={carouselSettings} />
+                </div>
+                <Link 
+                  className={currentcss.viewOnInsta}
+                  target="_blank" 
+                  href={item.permalink}>
+                  <div>Post auf Instagram besichtigen</div>
+                </Link>
+               </section>
+             
+              <ReactMarkdown className={item.caption ? currentcss.textboxes : "none"} rehypePlugins={[rehypeRaw]}>
+                  {captionAltered}
+               </ReactMarkdown>
 
-              </div>
-              <p className={item.caption ? currentcss.textboxes : "none"}>
-                {item.caption}</p>
 
             </div>
           )
         }
 
-        else if(item.media_type == "VIDEO"){
-
+        else{
           return(
           <div key={id} className={currentcss.boxes}>
-               <video className={currentcss.videos} src={item.media_url}
-               height="450" controls>       
-              </video>
-  
-                <ReactMarkdown className={item.caption ? currentcss.textboxes : "none"} rehypePlugins={[rehypeRaw]}>{item.caption}</ReactMarkdown>
-            </div>
-          )
+            <section className={currentcss.mediacontainer}>
 
-        }
-
-        else {
-          return (
-            <div key={id} className={currentcss.boxes}>
+            {item.media_type=="VIDEO" ? 
+            <video className={currentcss.videos} src={item.media_url}
+               controls>       
+            </video>
+            :  
               <div className={currentcss.images}>
-                {<Image
-                  src={item.media_url}
-                  alt="Spaziergang"
-                 width={imagesWidth}
-                 height={imagesHeight}
-          priority />}
-          </div>
-
-              <p className={item.caption ? currentcss.textboxes : "none"}>
-                {item.caption}</p>
+              {<Image
+                src={item.media_url}
+                alt="Spaziergang"
+                width={imagesWidth}
+                height={imagesHeight}
+                priority />}
+                </div>
+            }
+              <Link 
+                className={currentcss.viewOnInsta}
+                target="_blank" 
+                href={item.permalink}>
+                <div>Post auf Instagram besichtigen</div>
+              </Link>
+            </section>
+              <ReactMarkdown className={item.caption ? currentcss.textboxes : "none"} rehypePlugins={[rehypeRaw]}>
+                {captionAltered}</ReactMarkdown>
             </div>
           )
+
         }
-
-
 
       }) :
         instagramData.error ?

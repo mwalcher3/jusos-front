@@ -11,7 +11,6 @@ import rehypeRaw from "rehype-raw";
 
 
 const SimplePage = ({data}) => {
-  console.log(data)
   const dataAttributes= data.data.attributes
 
   return (
@@ -63,7 +62,6 @@ const SimplePage = ({data}) => {
 
 
                 case "component.external-link-box":
-                  console.log(item)
                   return(<ExternalLinks key={index} data={item.externalLinks}/>)
 
                 case "component.internal-link-box": 

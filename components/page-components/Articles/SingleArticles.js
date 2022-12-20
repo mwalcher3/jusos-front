@@ -31,7 +31,7 @@ const SingleArticles = ({data}) => {
             <SocialMediaIcons data={data.attributes.socialMediaLinks}/>
           </div>
           <Link href='/artikel' passHref>
-          <button className={articlecss.moreArticles}>mehr Artikel</button>
+          <button className="moreButton">mehr Artikel</button>
           </Link>
       
     </div>

@@ -88,7 +88,7 @@ const Header = ({ menuData }) => {
 
                 {/*Jusos Logo*/}
                 <div className={headercss.logodiv}>
-                    <img src="/Jusos_Logo_4c.svg_.png"
+                    <img src="/jusos_logo_ROT_HEIDELBERG_VERSION.png"
                         alt="Jusos Logo"
                         className={headercss.logo + " " + (intersection == false || burgerOpen ? headercss.logoscrolled : "")}>
                         </img>

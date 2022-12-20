@@ -60,6 +60,10 @@
         border: 2px solid var(--red);
         padding: 0 15px;
         font-size: 1.05rem;
+
+        li{
+            margin: 15px;
+        }
     }
 
 }
@@ -87,6 +91,26 @@
     width: 100px;
     height: 100px;
     position: relative;
+}
+
+
+.moreButton{
+    color: var(--black-white-switch);
+    background-color: var(--red);
+    font-size: 1.1rem;
+    padding: 10px;
+    margin: 15px auto;
+    border-radius: 10px;
+    transition: .2s;
+}
+
+
+.moreButton:hover{
+    transform: scale(1.05)
+}
+
+.blue{
+    color: blue
 }
 
 

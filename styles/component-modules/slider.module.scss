@@ -96,8 +96,12 @@
 }
 
 @media(min-width: $medium){
+    .current, .next, .previous, .nextreduce, .previousreduce{
+        padding: 0px;
+    }
+    
     .mainslider{
-        height: 350px;
+        height: 300px;
         font-size: 1.1rem;
         margin: 30px 0px;
         border: 2px solid var(--red);

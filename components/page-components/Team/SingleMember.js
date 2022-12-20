@@ -1,6 +1,7 @@
 import React from 'react';
 import smembercss from "../../../styles/page-modules/singlemember.module.scss"
 import Image from 'next/image'
+import Link from "next/link"
 import { global } from '../../../pages/_app'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
@@ -29,8 +30,14 @@ const SingleMember = ({ data }) => {
         <ReactMarkdown  rehypePlugins={[rehypeRaw]}>{data.attributes.otherRoles}</ReactMarkdown>
       </section>
 
-
+      <section>
       <ReactMarkdown className={smembercss.description} rehypePlugins={[rehypeRaw]}>{data.attributes.description}</ReactMarkdown>
+      <Link href='/team' passHref>
+          <button className="moreButton">weitere Personen</button>
+      </Link>
+      </section>
+
+
       <div className="lastupdated">{data.attributes.updatedAt}</div>
     </div>
   )

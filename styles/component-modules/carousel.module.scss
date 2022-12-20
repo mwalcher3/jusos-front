@@ -68,10 +68,12 @@
 .dotcontainer{
     justify-self: center;
     position: absolute;
+    left: 50%; 
+    transform: translate(-50%, -50%); 
     bottom: 30px;
     display: grid;
     grid-auto-flow: column;
-    gap: 12px;
+    gap: 15px;
     z-index:2;
 }
 

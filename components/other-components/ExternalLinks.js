@@ -14,7 +14,7 @@ const ExternalLinks = ({data}) => {
       
      return (
         <div key={index} className={extcss.externalLinks + " " + (hover!=index? "" :extcss.externalLinksHover)}>
-          {item.copyToClipboard!=false? <CopyToClipboard textToCopy={item.URL}/>: <div></div>}
+          {item.copyToClipboard!=false? <CopyToClipboard textToCopy={item.URL}/>: <></>}
         <Link 
               href={item.URL}
               target="_blank" 
