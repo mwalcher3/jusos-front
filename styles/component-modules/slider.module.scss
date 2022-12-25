@@ -11,12 +11,11 @@
   }
 
 @mixin movingslides($translate){
-    position: absolute;
     grid-column: 1;
     grid-row: 1;
     left:10vw;
     right: 10vw;
-    padding: 10%;
+    margin: 30px 90px;
     transform: translateX($translate);
 }
 
@@ -28,7 +27,6 @@
     align-items:center;
     justify-content: space-between;
     position: relative;
-    height: 70vh;
 
     .div{
         position: absolute;
@@ -73,6 +71,8 @@
 
 
 .button1{
+    position: absolute;
+    right: 0px;
     color: rgb(63, 63, 63);
     background-color: var(--red-slider-button);
     font-size: 1.3rem;
@@ -82,10 +82,12 @@
     border-radius: 0px 100px 100px 0px;
     cursor:pointer;
     z-index: 2;
+    transform: scaleX(-1);
 }
 
 .button2 {
-    transform: scaleX(-1);
+    left: 0px;
+    transform: scaleX(1);
 }
 
 @media(min-width: $small){
@@ -101,7 +103,7 @@
     }
     
     .mainslider{
-        height: 300px;
+        height: max-content;
         font-size: 1.1rem;
         margin: 30px 0px;
         border: 2px solid var(--red);

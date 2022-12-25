@@ -13,7 +13,7 @@ const Slider = ({data}) => {
 return <div className={slidercss.mainslider}>
 
        <button onClick={()=>{
-           handleChange(-1+ dataLength);}} 
+           handleChange(1)}} 
            className={slidercss.button1}>&#60;</button>
 
 
@@ -39,7 +39,7 @@ return <div className={slidercss.mainslider}>
       
 
       <button onClick={()=>{
-          handleChange(1);}} 
+        handleChange(-1+ dataLength);}} 
           className={slidercss.button1 + " " + slidercss.button2}>&#60;</button>
       </div>;
 };

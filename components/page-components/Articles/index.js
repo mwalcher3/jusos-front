@@ -39,9 +39,9 @@ const Articles = ({data}) => {
     const sortedArticles  =  data.data.attributes.articles.data.sort((a,b) => new moment(b.attributes.date).format('YYYYMMDD') - new moment(a.attributes.date).format('YYYYMMDD') )
 
     return (
-      <div>
-    <div className={articlecss.grid}  ref={scrollContainer}>
-    <h1 className={articlecss.pagetitle}>Artikel</h1>
+      <div ref={scrollContainer}>
+      <h1 className="header">{data.data.attributes.title}</h1>
+    <div className={articlecss.grid}  >
 
       {
           sortedArticles.map((item, i)=>{

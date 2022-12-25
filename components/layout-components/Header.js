@@ -87,12 +87,12 @@ const Header = ({ menuData }) => {
             <div className={headercss.nav + " " + (intersection ? "" : headercss.navscrolled)}>
 
                 {/*Jusos Logo*/}
-                <div className={headercss.logodiv}>
+                <Link href={"/"} className={headercss.logodiv}>
                     <img src="/jusos_logo_ROT_HEIDELBERG_VERSION.png"
                         alt="Jusos Logo"
                         className={headercss.logo + " " + (intersection == false || burgerOpen ? headercss.logoscrolled : "")}>
                         </img>
-                </div>
+                </Link>
         
 
                 {/*Nav Bar*/}

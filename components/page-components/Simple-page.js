@@ -27,10 +27,8 @@ const SimplePage = ({data}) => {
       />
       </section> : <div></div>}
       
-      <section className={simplecss.mainheader}>  
-        <h1>{data.data.attributes.title}</h1>
-        <div className={simplecss.horizontalline}></div>
-      </section>
+      <h1 className="header">{data.data.attributes.title}</h1>
+
 
       {
         data.data.attributes.structure.map((item, index)=>{

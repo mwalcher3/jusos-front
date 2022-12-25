@@ -12,7 +12,7 @@ const Motions = ({data}) => {
    
   return (
     <div className="container">
-        <h1>{dataAttributes.title}</h1>
+        <h1 className='header'>{dataAttributes.title}</h1>
         <ReactMarkdown className="paragraph" rehypePlugins={[rehypeRaw]}>{dataAttributes.description}</ReactMarkdown>
         {dataAttributes.motion_types.data.map((item,index)=>{
       

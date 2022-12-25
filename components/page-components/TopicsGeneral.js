@@ -27,7 +27,7 @@ const TopicsGeneral = ({data}) => {
           priority
       />
       </section>
-      <h1>{dataAttributes.titleTopics}</h1>
+      <h1 class="header">{dataAttributes.titleTopics}</h1>
 
       <section className={generalcss.accordioncontainer}>
         {dataAttributes.topics.data.map((item, index)=>{

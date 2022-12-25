@@ -37,7 +37,7 @@ const Team = ({ data }) => {
           priority
         />
       </div>
-      <h1>{dataAttributes.title}</h1>
+      <h1 className="header">{dataAttributes.title}</h1>
 
       <h2>Sprecher*innenkreis</h2>
 
@@ -45,7 +45,7 @@ const Team = ({ data }) => {
 
       <Sprecherkreis data={sprecher} alternativeImage={alternativeImage} />
 
-      <h2>Zusaezliche Positionen</h2>
+      <h2>Sprecher*außenkreis</h2>
 
       <ul className="paragraph">
         {dataAttributes.otherRolesDescription.map((item, index) => {

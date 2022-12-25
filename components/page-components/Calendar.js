@@ -24,7 +24,7 @@ const Calendar = ({data}) => {
  
   return (
     <div className="container">
-      <h1>{dataAttributes.title}</h1>
+      <h1 className="header">{dataAttributes.title}</h1>
       <ReactMarkdown className="paragraph"rehypePlugins={[rehypeRaw]}>{dataAttributes.description}</ReactMarkdown>
       <section className={calcss.entryContainer}>
         {sortedEvents.map((item, index)=>{

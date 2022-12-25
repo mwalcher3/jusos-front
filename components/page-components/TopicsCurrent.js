@@ -15,7 +15,7 @@ const TopicsCurrent = ({ data }) => {
   return (
     <div className={currentcss.maincontainer}>
 
-      <h1>{dataAttributes.title}</h1>
+      <h1 className="header">{dataAttributes.title}</h1>
 
       {instagramData.data ? instagramData.data.map((item, id) => {
 

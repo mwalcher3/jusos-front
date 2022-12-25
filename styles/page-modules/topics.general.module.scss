@@ -9,11 +9,11 @@
     transition: 0.5s;
 }
 
-@mixin paragraphs($opacity, $position){
+@mixin paragraphs($max-height){
     line-height: 1.4rem;
-    opacity: $opacity;
-    transition: 0.2s ;
-    position: $position
+    max-height: $max-height;
+    overflow: hidden;
+    transition: .3s ease-in-out;
 }
 
 
@@ -58,11 +58,11 @@
         }
 
         .paragraphs{
-            @include paragraphs(1, block)
+            @include paragraphs(500px);
         }
 
         .paragraphsclosed{
-            display: none
+            @include paragraphs(0px);
         }
 }
 
