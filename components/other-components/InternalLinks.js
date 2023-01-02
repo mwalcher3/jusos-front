@@ -13,21 +13,24 @@ const InternalLinks = ({data}) => {
   return (
     <section className={intcss.internalLinkBox}>
             {data.map((item, index)=>{
-            const image= item.image.data.attributes
 
             return(
               <section key={index} className={intcss.internalLinks}>
             <Link  href={item.URL} passHref>
               <div>
-                <div className={intcss.images}>
-                {<Image
-                      src={`${global.host}${image.url}`}
-                      alt={image.alternativeText}
-                      fill
-                      className="imageCover"
-                      priority
-                />}
-              </div>
+                {
+                  item.image.data!=null?
+                  <div className={intcss.images}>
+                  {<Image
+                        src={`${global.host}${item.image.data.attributes.url}`}
+                        alt={item.image.data.attributes.alternativeText}
+                        fill
+                        className="imageCover"
+                        priority
+                  />}
+                </div>:<></>
+                }
+              
               <div className={intcss.textarrow}>
               <h4>{item.displayedText}</h4>
               <FontAwesomeIcon icon={faArrowRight} />
