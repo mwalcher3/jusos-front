@@ -45,7 +45,7 @@ const Team = ({ data }) => {
 
       <Sprecherkreis data={sprecher} alternativeImage={alternativeImage} />
 
-      <h2>Sprecher*außenkreis</h2>
+      <h2>Weitere Personen</h2>
 
       <ul className="paragraph">
         {dataAttributes.otherRolesDescription.map((item, index) => {
