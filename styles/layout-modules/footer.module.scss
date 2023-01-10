@@ -9,16 +9,16 @@
 }
 
 .content{
-    margin: 0 50px 0 50px; 
     display: grid;
     justify-items: center;
     text-align: center;
-    gap: 1rem;
+    gap: 1rem 0;
 }
 
 .menu{
     display: grid;
     gap: 1rem;
+    order: 1;
 }
 
 .tab{
@@ -56,16 +56,8 @@
 .logocontainer{
     display: flex;
     gap: 0 10px;
+    order:4;
 }
-
-.lowercontainer{
-    position: relative;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-direction: column;
-
-
 
     .logos{
         background-color: white;
@@ -85,6 +77,7 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
+        order: 3;
 
         h4{
             margin: 0;
@@ -109,7 +102,11 @@
 
     }  
 
-}
+    .horizontalLine{
+        @include horizontalLine(1px);
+        width: 85%;
+        order: 2;
+    }
 
 
 
@@ -117,7 +114,30 @@
 
     .content{
         text-align: left;
-        gap: 1.5rem;
+        grid-auto-flow: column;
+        align-items: flex-end;
+        padding: 0 30px 20px 30px;
+
+        .menu{
+            order:2;
+        }
+
+        .logocontainer{
+            justify-self: flex-start;
+            order: 1;
+        }
+
+        
+        .socialmedia{
+            justify-self: flex-end;
+            flex-direction: row;
+            order: 4;
+            .verticalLine{
+                display: block;
+            }
+        }
+
+        .horizontalLine{ display: none}
     }
 
     .menu{
@@ -133,20 +153,9 @@
         margin: 0;
     }
 
-    .lowercontainer{
-        justify-self: stretch;
-        justify-content: space-between;
-        flex-direction: row;
-
-        .socialmedia{
-            flex-direction: row;
-            .verticalLine{
-                display: block;
-            }
-        }
     }
 
-}
+
 
 
 

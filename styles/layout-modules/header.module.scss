@@ -21,6 +21,8 @@ $navheightmedium: 75px;
 
 
 ////////////
+/// 
+
 
 .nav{
     font-size: 1.4rem;
@@ -187,7 +189,7 @@ $navheightmedium: 75px;
 
 
 .burgerMenuSubtitles{
-    @include burgerMenuSubtitles(100px);
+    @include burgerMenuSubtitles(130px);
     transition: max-height 0.75s;
 
 }
@@ -211,23 +213,28 @@ $navheightmedium: 75px;
 .none{
     display:none;
 }
+.horizontalLine{
+    @include horizontalLine(3px);
+    margin-top: -25px;
+}
 
-.burgersocialmedia{
-    justify-self: center;
-    position: absolute;
-    display: flex;
-    margin: auto;
-    left: 0;
-    right: 0;
-    width: 100px;
-    gap: 10px;
-    bottom: 30px;
-    margin-top: 40px;
-
-    svg{
-        cursor: pointer;
+.burgerlower{
+    width: 100%;
+    margin-top: 30px;
+    h5{
+        margin-bottom:10px;;
     }
-   
+    .burgersocialmedia{
+        display: grid;
+        grid-auto-flow: column;
+        width: fit-content;
+        margin: auto;
+        gap: 10px;
+    }
+
+    .fistLogo{
+        vertical-align: middle;
+    }
 }
 
   
@@ -250,6 +257,12 @@ $navheightmedium: 75px;
         justify-content: start;
         width: 75vw;
         grid-gap: 3.5vw;
+
+        .fistLogo{
+            vertical-align: middle;
+            margin-left: -3.5vw;
+            padding-left: 5px;
+        }
     }
 
     .navlabel{

@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import headercss from '../../styles/layout-modules/header.module.scss'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons'
+import { getFontOverrideCss } from 'next/dist/server/font-utils'
 
 
 const Header = ({ menuData }) => {
@@ -97,7 +101,9 @@ const Header = ({ menuData }) => {
 
                 {/*Nav Bar*/}
                 <div className={headercss.navmenu}>
-                <div style={{'white-space':'nowrap'}}>Jusos Heidelberg</div>
+                <div style={{'white-space':'nowrap'}}>
+                    Jusos Heidelberg
+                    </div>
                     {menuData.menu.items.map((item, index) => {
                         return (
                             <div key={index}>
@@ -135,7 +141,18 @@ const Header = ({ menuData }) => {
                             </div>
                         )
                     })}
-                    <div> SPD </div>
+                    <div>
+                        <Link href="https://jusowerden.spd.de/eintritt-juso" target="_blank"> Mitglied werden </Link>
+                    </div>
+                    <Link href="https://jusowerden.spd.de/eintritt-juso" target="_blank">
+                        <Image 
+                            className={headercss.fistLogo}
+                            src="/Piktogramm.png"
+                            alt="Jusos Piktogramm"
+                            height="30"
+                            width="30"
+                            priority/>
+                    </Link>
                 </div>
 
 
@@ -155,12 +172,12 @@ const Header = ({ menuData }) => {
 
             <div className={burgerOpen ? headercss.burgerMenu : headercss.none}>
                 <div className={headercss.burgerMenuContent}>
-                    <h2>Menü</h2>
+                    <h3>Jusos Heidelberg</h3>
+                  
                     {menuData.menu.items.map((item, index) => {
 
                         return (
                             <>
-                                <div className="horizontalLine"></div>
                                 <div
                                     key={index}
                                     className={headercss.burgerMenuTitles}
@@ -184,10 +201,39 @@ const Header = ({ menuData }) => {
                                         }
                                     })}
                                 </div>
-
+                                <div className="horizontalLine"></div>
                             </>
                         )
                     })}
+                <section className={headercss.burgerlower}>
+       
+                <h3>
+                <Link href="https://jusowerden.spd.de/eintritt-juso" target="_blank"> 
+                Mitglied werden <Image 
+                    className={headercss.fistLogo}
+                    src="/Piktogramm.png"
+                    alt="Jusos Piktogramm"
+                    height="30"
+                    width="30"
+                    priority/>
+                </Link>
+            </h3>
+            <div>
+
+            <h5>Folge uns</h5>
+            <section className={headercss.burgersocialmedia}>
+
+              <Link href={"https://www.instagram.com/jusoshd/?hl=en"} passHref>
+                <FontAwesomeIcon icon={faInstagram} />
+              </Link>
+
+              <Link href={"https://www.facebook.com/jusos.heidelberg/"} passHref>
+                <FontAwesomeIcon icon={faFacebook} />
+              </Link>
+            </section>
+          </div>
+          </section>
+                        
                 </div>
             </div>
         </>

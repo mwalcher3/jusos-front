@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
 const TopicsCurrent = ({ data }) => {
+  console.log(data)
   const instagramData = data.data.attributes.instagramFeed
   const dataAttributes = data.data.attributes
   const imagesWidth = "350"
@@ -21,6 +22,7 @@ const TopicsCurrent = ({ data }) => {
 
         const patternHashtags= /(#)[\s\S]*?(\s|$)/g
         const patternAccounts= /(@)[\s\S]*?(\s|$)/g
+        const patternGenderStar= /\*innen|\*in/g
           var captionAltered = item.caption.replace(patternHashtags, 
             function(p) {
               return `<span className=${currentcss.blue}>${p}</span>`
@@ -30,8 +32,11 @@ const TopicsCurrent = ({ data }) => {
             const endpoint= p.match(/[^@,]/g)
             return `<a target="_blank" href="https://www.instagram.com/${endpoint.join("")}" className=${currentcss.blue}>${p}</a>`
         }
+        ).replace(patternGenderStar,
+          function(p) {
+            return `:innen`
+        }
         )
-
 
         if (item.media_type == "CAROUSEL_ALBUM") {
           const imageSource = [];
@@ -74,7 +79,7 @@ const TopicsCurrent = ({ data }) => {
                   className={currentcss.viewOnInsta}
                   target="_blank" 
                   href={item.permalink}>
-                  <div>Post auf Instagram besichtigen</div>
+                  <div>{dataAttributes.instagramLinkTitle}</div>
                 </Link>
                </section>
              
@@ -100,7 +105,7 @@ const TopicsCurrent = ({ data }) => {
               <div className={currentcss.images}>
               {<Image
                 src={item.media_url}
-                alt="Spaziergang"
+                alt="Instagram image"
                 width={imagesWidth}
                 height={imagesHeight}
                 priority />}
@@ -110,7 +115,7 @@ const TopicsCurrent = ({ data }) => {
                 className={currentcss.viewOnInsta}
                 target="_blank" 
                 href={item.permalink}>
-                <div>Post auf Instagram besichtigen</div>
+                <div>{dataAttributes.instagramLinkTitle}</div>
               </Link>
             </section>
               <ReactMarkdown className={item.caption ? currentcss.textboxes : "none"} rehypePlugins={[rehypeRaw]}>

@@ -45,20 +45,7 @@ const Team = ({ data }) => {
 
       <Sprecherkreis data={sprecher} alternativeImage={alternativeImage} />
 
-      <h2>Weitere Personen</h2>
-
-      <ul className="paragraph">
-        {dataAttributes.otherRolesDescription.map((item, index) => {
-          return (
-            <li key={index}>
-              <span>
-                {`${item.title} `}
-              </span>
-              <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.paragraph}</ReactMarkdown>
-            </li>
-          )
-        })}
-      </ul>
+      <h2>Erweiterter Sprecher*innenkreis</h2>
 
       <section className={teamcss.othermembers}>
         {otherMembers.map((item, index) => {
@@ -66,7 +53,7 @@ const Team = ({ data }) => {
 
           return (
             <div key={index}>
-              <Link href={`/team/${global.endpointSyntax(item.attributes.name)}`} passHref>
+              <Link href={`/sprecher/${global.endpointSyntax(item.attributes.name)}`} passHref>
                 <div className={teamcss.squareimages}>
                   {<Image
                     src={`${global.host}${previewImage != null ? previewImage.attributes.url : alternativeImage.url}`}
@@ -85,7 +72,6 @@ const Team = ({ data }) => {
           )
         })}
       </section>
-      <div className="lastupdated">{dataAttributes.updatedAt}</div>
     </div>
   )
 }

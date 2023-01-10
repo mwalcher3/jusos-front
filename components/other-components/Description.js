@@ -10,7 +10,6 @@ const Description = ({data}) => {
     return (
         <>
         <div className={aboutcss.überuns}>
-        <h2>Über Uns</h2>
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{data}</ReactMarkdown>
         </div>
         </>

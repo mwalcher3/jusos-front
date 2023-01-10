@@ -4,11 +4,11 @@
 
 
 .othermembers{
+    position: relative;
     display : flex;
     gap: 40px 30px;
-    margin: auto;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
 
     .squareimages{
         background-color: white;

@@ -19,20 +19,6 @@
     display: block
 }
 
-.lastupdated::before{
-    content:"letzes mal bearbeitet: ";
-}
-
-
-.lastupdated{
-    font-size: 0.9rem;
-    margin-top: 20px;
-    width: fit-content;
-    position: relative;
-    left: 10px;
-    clear: both;
-}
-
 
 .mainimage{
     position: relative;

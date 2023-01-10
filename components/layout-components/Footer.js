@@ -11,6 +11,43 @@ const Footer = ({ menuData }) => {
   return (
     <div className={footercss.maincontainer}>
       <div className={footercss.content}>
+      <div className={footercss.logocontainer}>
+
+      <div className={footercss.logos + " " + footercss.heidelberglogo}>
+        <Image
+          src={`/Jusos_Heidelberg_Logo.png`}
+          alt="jusos Heidelberg logo"
+          layout="fill"
+          objectFit='contain'
+          priority
+        />
+      </div>
+
+          <Link href={"https://jusos.de/"} passHref>
+            <div className={footercss.logos}>
+              <Image
+                src={`/Jusos_Logo_4c.svg_.png`}
+                alt="jusos logo"
+                layout="fill"
+                objectFit='contain'
+                priority
+              />
+            </div>
+          </Link>
+
+          <Link href={"https://spd.de"} passHref>
+            <div className={footercss.logos}>
+              <Image
+                src={`/Spd_Logo.png`}
+                alt="spd logo"
+                layout= "fill"
+                objectFit='contain'
+                priority
+              />
+            </div>
+          </Link>
+       </div>
+
 
         <div className={footercss.menu} >
           {menuData.menu.items.map((item, index) => {
@@ -34,49 +71,7 @@ const Footer = ({ menuData }) => {
             )
           })}
         </div>
-
-        <div className="horizontalLine"></div>
-
-        <div className={footercss.lowercontainer}>
-          <div className={footercss.logocontainer}>
-
-            <div className={footercss.logos + " " + footercss.heidelberglogo}>
-              <Image
-                src={`/Jusos_Heidelberg_Logo.png`}
-                alt="jusos Heidelberg logo"
-                layout="fill"
-                objectFit='contain'
-                priority
-              />
-            </div>
-
-            <Link href={"https://jusos.de/"} passHref>
-              <div className={footercss.logos}>
-                <Image
-                  src={`/Jusos_Logo_4c.svg_.png`}
-                  alt="jusos logo"
-                  layout="fill"
-                  objectFit='contain'
-                  priority
-                />
-              </div>
-            </Link>
-
-            <Link href={"https://spd.de"} passHref>
-              <div className={footercss.logos}>
-                <Image
-                  src={`/Spd_Logo.png`}
-                  alt="spd logo"
-                  layout= "fill"
-                  objectFit='contain'
-                  priority
-                />
-              </div>
-            </Link>
-
-
-          </div>
-
+         
           <div className={footercss.socialmedia}>
             <h4>Folge uns</h4>
 
@@ -95,11 +90,12 @@ const Footer = ({ menuData }) => {
               </Link>
             </div>
           </div>
+          <div className={footercss.horizontalLine}></div>
 
         </div>
 
+
       </div>
-    </div>
 
   )
 }

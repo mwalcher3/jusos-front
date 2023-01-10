@@ -56,8 +56,7 @@ const TopicsGeneral = ({data}) => {
       <h1>{dataAttributes.titleMeetingTypes}</h1>
 
       <MeetingTypes data={dataAttributes.meetingTypes.data} />
-
-      <div className="lastupdated">{dataAttributes.updatedAt}</div> 
+ 
     </div>
   )
 }

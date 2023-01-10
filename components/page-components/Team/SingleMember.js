@@ -32,7 +32,7 @@ const SingleMember = ({ data }) => {
 
       <section>
       <ReactMarkdown className={smembercss.description} rehypePlugins={[rehypeRaw]}>{data.attributes.description}</ReactMarkdown>
-      <Link href='/team' passHref>
+      <Link href='/sprecher' passHref>
           <button className="moreButton">weitere Personen</button>
       </Link>
       </section>

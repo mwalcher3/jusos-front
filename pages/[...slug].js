@@ -9,7 +9,7 @@ import SimplePage from '../components/page-components/Simple-page'
 import kontakt from '../components/page-components/Contact'
 import aktuelles from '../components/page-components/TopicsCurrent'
 import schwerpunkte from '../components/page-components/TopicsGeneral'
-import team from "../components/page-components/Team/index"
+import sprecher from "../components/page-components/Team/index"
 import singleMember from "../components/page-components/Team/SingleMember"
 import kalender from "../components/page-components/Calendar"
 import anträge from "../components/page-components/Motions"
@@ -34,7 +34,7 @@ const Slugs = ({ menuData, pageData }) => {
     kontakt: kontakt,
     aktuelles: aktuelles,
     schwerpunkte: schwerpunkte,
-    team: team,
+    sprecher: sprecher,
     dummy: SimplePage,
     kalender: kalender,
     anträge: anträge,
@@ -42,7 +42,7 @@ const Slugs = ({ menuData, pageData }) => {
   }
 
   const subPagesObject = {
-    team: singleMember,
+    sprecher: singleMember,
     artikel: singleArticles
   }
 

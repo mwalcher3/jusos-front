@@ -103,7 +103,6 @@ const Calendar = ({data}) => {
      {<ExternalLinks data={data.data.attributes.links}/>}
       </div>
     </section>
-      <div className="lastupdated">{data.data.attributes.updatedAt}</div>
       
     </div>
   )
