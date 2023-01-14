@@ -8,8 +8,10 @@ const Slideshow = ({data}) => {
           imageSource.push(`${global.host}${item.attributes.url}`)
      })
 
-     let carouselSettings= {
-          length: data.data.length,
+     if(imageSource.length == 2) imageSource.push(...imageSource)
+
+     var carouselSettings= {
+          length: imageSource.length,
           onClick: true,
           automatic: true,
           delay: 7000,
@@ -20,8 +22,7 @@ const Slideshow = ({data}) => {
           boxWidth: "100vw",
           translationTime: '0.6s',
      }
-
-
+     if(data.data.length == 2) carouselSettings.dots= false
 
      return(
           <div className={slideshowcss.maincontainer}>

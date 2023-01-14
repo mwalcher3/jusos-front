@@ -7,7 +7,6 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
 const TopicsCurrent = ({ data }) => {
-  console.log(data)
   const instagramData = data.data.attributes.instagramFeed
   const dataAttributes = data.data.attributes
   const imagesWidth = "350"

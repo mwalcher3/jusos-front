@@ -9,7 +9,6 @@ import moment from 'moment';
 import motioncss from "../../styles/page-modules/motion.module.scss"
 
 const Motions = ({data}) => {
-  console.log(data);
     const dataAttributes= data.data.attributes
     const sortedMotions=  dataAttributes.motion_types.data.sort((a,b) => new moment(b.attributes.date).format('YYYYMMDD') - new moment(a.attributes.date).format('YYYYMMDD') )
    

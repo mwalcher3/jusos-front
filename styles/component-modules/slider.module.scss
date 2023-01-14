@@ -20,14 +20,23 @@
     height: var(--slider-max-height);
     display: grid;
     align-content: center;
-    padding: 10%;
 
     .sliderboxes{
         display: -webkit-box;
         -webkit-line-clamp: 12;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        margin: auto;
+        margin-bottom: 50px;
+    }
+
+    .viewMore{
+        section{
+            position: fixed;
+            left: 0 !important;
+            bottom: -5px ;
+            margin: auto;
+        }
+
     }
   
 }
@@ -38,14 +47,15 @@
     display: grid;
     align-items:center;
     justify-content: space-between;
-    position: relative;
     grid-auto-flow: column;
+    position: relative;
 }
 
 
 .none{
     @include movingslides(none);
     opacity: 0;
+    z-index: -100;
 }
 
 .current{

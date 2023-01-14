@@ -29,7 +29,6 @@ const Slider = ({data, instaData}) => {
         })
         var r = document.querySelector(':root');
         r.style.setProperty('--slider-max-height', Math.max(...sliderHeights));
-        console.log(sliderHeights);
     })
    
     const dataLength= dataArray.length;
@@ -56,8 +55,11 @@ return <div className={slidercss.mainslider}>
                 <div ref={el => sliderRef.current[index] = el}   className={slidercss.sliderboxes}>
                   <h3><ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.title}</ReactMarkdown></h3>
                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.text}</ReactMarkdown>
+               </div>  
+               <div className={slidercss.viewMore}>
+               {<InternalLinks data={[{displayedText: "weiterlesen", URL: item.link, image: {data: null}}]}/>}
                </div>
-               <InternalLinks data={[{displayedText: "weiterlesen", URL: item.link, image: {data: null}}]}/>
+                
            </div>
          )
 
