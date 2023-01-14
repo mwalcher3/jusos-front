@@ -15,8 +15,8 @@ const InternalLinks = ({data}) => {
             {data.map((item, index)=>{
 
             return(
-              <section key={index} className={intcss.internalLinks}>
-            <Link  href={item.URL} passHref>
+            <section key={index} className={intcss.internalLinks + " " +(item.image.data!=null || item.description!=null? '': intcss.internalLinks2)}>
+            <Link href={item.URL} passHref>
               <div>
                 {
                   item.image.data!=null?
@@ -35,7 +35,7 @@ const InternalLinks = ({data}) => {
               <h4>{item.displayedText}</h4>
               <FontAwesomeIcon icon={faArrowRight} />
                 </div>
-                <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.description}</ReactMarkdown>
+                {item.description? <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.description}</ReactMarkdown>: <></>}
                 </div>
               </Link>
                 </section>

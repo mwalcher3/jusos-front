@@ -65,7 +65,7 @@ const Calendar = ({data}) => {
                 <button onClick={()=>{mapsCount==index? setMapsCount(-2) : setMapsCount(index)}}>
                 <FontAwesomeIcon className={calcss.locationDot} icon={faLocationDot}/>
               </button>
-               :<div></div>
+               :<></>
               }
 
               </div>
@@ -73,7 +73,7 @@ const Calendar = ({data}) => {
               <div className={calcss.subtitleAndText}>
                 {item.attributes.subtitle!=null? <h3>{item.attributes.subtitle}</h3>: <div></div>}
 
-                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.description}</ReactMarkdown>
+                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.text}</ReactMarkdown>
                  {<ExternalLinks key={index} data={item.attributes.links}/>}
               </div>
 

@@ -19,22 +19,24 @@ export const getStaticProps = async () => {
   const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`);
   const pageJson = await pageData.json()
 
-  // fetch internalLinks Data
-  const internalLinksData = await fetch(`${global.fetchURI}/home-page?populate[internalLinks][populate][0]=image`);
-  const internalLinksJson = await internalLinksData.json()
+  // fetch slider and internalLinks data seperately, because the slider data cannot be put in the JSON stringify
+  const extraData = await fetch(`${global.fetchURI}/home-page?populate[internalLinks][populate][0]=image&populate[slider][populate][0]=articles&populate[slider][populate][1]=calendar_entries&populate[slider][populate][2]=topics&populate[slider][populate][3]=meeting_types`);
+  const extraJson = await extraData.json()
+
+  const token= process.env.INSTAGRAM_TOKEN
+  const instagramData = await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,username,timestamp,caption,children{media_url}&limit=1&access_token=${token}`);
+  const instagramJson = await instagramData.json()
 
 
   // there is only one deep relation on home-page
   const pageJsonFull = JSON.parse(
     JSON.stringify(pageJson, (key, value) => {
       switch (key) {
-        case "internalLinks": return internalLinksJson.data.attributes.internalLinks
+        case "sliderInstagram": return instagramJson
         default: return value
       }
     }
     ))
-
-
 
   // we retrieve path to URL lookup table from file generated
   // by getStaticPaths method of [..slug].js
@@ -63,24 +65,25 @@ export const getStaticProps = async () => {
   return {
     props: {
       menuData: menuJsonFull,
-      pageData: pageJsonFull
+      pageData: pageJsonFull,
+      extraData: extraJson
     },
     revalidate: 30,
   }
 }
 
-export default function Home({ menuData, pageData }) {
+export default function Home({ menuData, pageData, extraData }) {
   const attributes = pageData.data.attributes
+  const extraAttributes = extraData.data.attributes
 
   return (
     <div>
       <Layout menuData={menuData}>
         <Slideshow data={attributes.slideShowImages} />
         <Description data={attributes.aboutUs} />
-        {<Slider data={attributes.sliders} />}
-        <InternalLinks data={attributes.internalLinks}/>
+        <Slider data={extraAttributes.slider} instaData={attributes.slider.sliderInstagram}/>
+        <InternalLinks data={extraAttributes.internalLinks}/>
         <ExternalLinks data={attributes.externalLinks}/>
-       
       </Layout>
 
     </div>

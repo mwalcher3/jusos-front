@@ -23,7 +23,7 @@ const SingleArticles = ({data}) => {
                 priority
               />
             : <></>}
-          <ReactMarkdown rehypePlugins={[rehypeRaw]}>{data.attributes.article}</ReactMarkdown>
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>{data.attributes.text}</ReactMarkdown>
           </section>
         
          

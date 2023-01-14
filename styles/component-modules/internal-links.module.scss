@@ -6,7 +6,7 @@
     font-size: 1.2rem;
     background-color: var(--links-background);
     border-radius: 3px;
-    width: fit-content;
+    width: min-content;
     height: fit-content;
     transition: .3s;
     
@@ -21,6 +21,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 40px;
+    padding: 20px 0 20px 0;
 
     .internalLinks{
         @include links();
@@ -53,13 +54,24 @@
     .internalLinks:hover{
         background-color: var(--link-box-hover);
     }
+
+    .internalLinks2{
+        display: block;
+        width: max-content;
+        margin-top: 50px;
+    }
 }
 
 @media(min-width: $medium){
     .internalLinkBox{
-        padding: 30px;
+        padding: 20px 0 0 0;
         .internalLinks{
             width: 250px;
+        }
+
+        .internalLinks2{
+            display: block;
+            width: max-content; 
         }
     }
   

@@ -23,7 +23,7 @@ const Footer = ({ menuData }) => {
         />
       </div>
 
-          <Link href={"https://jusos.de/"} passHref>
+          <Link target="_blank" href={"https://jusos.de/"} passHref>
             <div className={footercss.logos}>
               <Image
                 src={`/Jusos_Logo_4c.svg_.png`}
@@ -35,10 +35,10 @@ const Footer = ({ menuData }) => {
             </div>
           </Link>
 
-          <Link href={"https://spd.de"} passHref>
+          <Link target="_blank" href={"https://spd-heidelberg.de"} passHref>
             <div className={footercss.logos}>
               <Image
-                src={`/Spd_Logo.png`}
+                src={`/LogoSPDHD.png`}
                 alt="spd logo"
                 layout= "fill"
                 objectFit='contain'
