@@ -3,6 +3,7 @@ import formcss from '../../styles/component-modules/form.module.scss'
 import Introduction from '../other-components/Introduction'
 
 export default function Contact({data}) {
+  console.log(data);
   const formData= data.data.attributes.form.data[0].attributes
   const inputs= formData.inputs
   const title= formData.title
@@ -33,7 +34,7 @@ export default function Contact({data}) {
 
     return (
       <>
-		<form onSubmit={handleSubmit} className={formcss.container}>
+	 <form onSubmit={handleSubmit} className={formcss.container}>
     <h1 className={formcss.title}>{title}</h1>
     <Introduction data={introduction} />
     
@@ -88,8 +89,6 @@ export default function Contact({data}) {
               </ul>
             </button>
 
-
-          {/* SVG*/}
           <svg xmlns="http://www.w3.org/2000/svg" style={{display: 'none'}}>
             <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 100" id="btn-layer" preserveAspectRatio="none">
               <path d="M133,77.5H7c-3.9,0-7-3.1-7-7v-41c0-3.9,3.1-7,7-7h126c3.9,0,7,3.1,7,7v41C140,74.4,136.9,77.5,133,77.5z"/>

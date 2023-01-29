@@ -35,9 +35,8 @@ $navheightmedium: 75px;
     top: 0px;
     height: $navheightsmall;
     width: 100%;
-    display: grid;
-    grid-auto-flow: column;
-    justify-items: start;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 3%;
 }
@@ -47,6 +46,10 @@ $navheightmedium: 75px;
 }
 
 .navmenu{
+    display: none;
+}
+
+.becomeMember{
     display: none;
 }
 
@@ -259,6 +262,7 @@ $navheightmedium: 75px;
     }
 
     .becomeMember{
+        display: block;
         justify-self: end;
         margin-right: 50px;
         .fistLogo{

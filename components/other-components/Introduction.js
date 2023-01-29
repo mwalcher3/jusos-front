@@ -9,7 +9,7 @@ const Introduction = ({data}) => {
 
     return (
         <>
-        <div className={introcss.überuns+ " " + (data.border? + introcss.noborder: "")}>
+        <div className={introcss.überuns+ " " + (data.border==false? introcss.noborder: "")}>
         {data.title? <h2>{data.title}</h2>: <></>}
         <ReactMarkdown rehypePlugins={[rehypeRaw]}>{data.text}</ReactMarkdown>
         </div>

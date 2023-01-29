@@ -214,6 +214,10 @@ export const getStaticProps = async (context) => {
    const calendarData = await fetch(`${global.fetchURI}/calendar-entries?populate=*`);
    const calendarJson = await calendarData.json()
 
+    // fetch calendar entries data
+    const formData = await fetch(`${global.fetchURI}/forms?populate=*`);
+    const formJson = await formData.json()
+
    // fetch motion data
    const motionData = await fetch(`${global.fetchURI}/motion-types?populate[motion][populate][0]=document`);
    const motionJson = await motionData.json()
@@ -277,6 +281,7 @@ export const getStaticProps = async (context) => {
         case "calendar_entries" : return calendarJson
         case "motion_types": return motionJson
         case "topics" : return topicJson
+        case "form" : return formJson
         default: return value
       }
     }

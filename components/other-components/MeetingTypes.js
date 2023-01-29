@@ -12,9 +12,24 @@ const MeetingTypes = ({data}) => {
 
   React.useEffect(()=>{
     var body= document.querySelector("#body")
-    popUpCount!=-1? 
-    body.classList.add('burgeropen'):body.classList.remove('burgeropen')
-  },[popUpCount])
+    function preventScroll(e){
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+  }  
+
+
+  /*  if(popUpCount!=-1){
+      body.addEventListener('wheel', preventScroll, {passive: false});
+    console.log("disabled");
+     
+    } 
+    else if(popUpCount == -1){
+      body.removeEventListener('wheel', preventScroll, {passive: false});
+      console.log("enabled");
+    }
+    //body.classList.add('burgeropen'):body.classList.remove('burgeropen')*/
+  },)
 
 
   return (
