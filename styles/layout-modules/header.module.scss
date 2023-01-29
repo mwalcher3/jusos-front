@@ -35,8 +35,9 @@ $navheightmedium: 75px;
     top: 0px;
     height: $navheightsmall;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: start;
     align-items: center;
     gap: 3%;
 }
@@ -244,7 +245,6 @@ $navheightmedium: 75px;
     //navbar
     .nav{
         height: $navheightmedium;
-        justify-content: flex-start;
     }
     
 
@@ -254,14 +254,15 @@ $navheightmedium: 75px;
         display: grid;
         grid-auto-flow: column;
         align-items: center;
-        justify-content: start;
-        width: 75vw;
+        justify-items: start;
         grid-gap: 3.5vw;
+    }
 
+    .becomeMember{
+        justify-self: end;
+        margin-right: 50px;
         .fistLogo{
             vertical-align: middle;
-            margin-left: -3.5vw;
-            padding-left: 5px;
         }
     }
 
@@ -323,6 +324,7 @@ $navheightmedium: 75px;
     }
 
     .navsubitems:hover{
+        //color: var(--link-box-hover)
         color: var(--red)
     }
 

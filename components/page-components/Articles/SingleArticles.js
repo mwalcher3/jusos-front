@@ -7,6 +7,7 @@ import {global} from '../../../pages/_app'
 import Image from 'next/image'
 
 const SingleArticles = ({data}) => {
+  console.log(data);
   if(data!=null){
     return (
       <>

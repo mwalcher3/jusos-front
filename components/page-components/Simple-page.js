@@ -5,6 +5,7 @@ import simplecss from "../../styles/page-modules/simple-page.module.scss"
 import SocialMediaIcons from "../other-components/SocialMediaIcons"
 import InternalLinks from "../other-components/InternalLinks"
 import ExternalLinks from "../other-components/ExternalLinks"
+import TextBlocks from "../other-components/TextBlocks"
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
@@ -39,25 +40,7 @@ const SimplePage = ({data}) => {
                 )
 
               case 'component.text-block':
-                  return(
-                    <div key={index}>
-                    <h3>{item.title}</h3>
-                    <div className={item.border==true? simplecss.paragraphBorder: ""}>
-                      <div className={item.image? simplecss.pimage: "none"}>
-                      {item.image ==null ? <div></div>: 
-                       <Image
-                            src={`${global.host}${item.image.image.data[0].attributes.url}`}
-                            alt={item.image.image.data[0].attributes.alternativeText}
-                            fill
-                            className="imageCover"
-                            priority
-                       />}
-                      </div>
-                      <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.paragraph}</ReactMarkdown>
-                      </div>
-                    </div>
-                  )
-
+                  return(<TextBlocks key={index} data={item}/>)
 
                 case "component.external-link-box":
                   return(<ExternalLinks key={index} data={item.externalLinks}/>)

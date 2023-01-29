@@ -82,7 +82,6 @@ const Articles = ({data}) => {
           })
       }
 
-
         </div>
       </div>
     )

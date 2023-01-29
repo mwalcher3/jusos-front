@@ -4,6 +4,7 @@ import teamcss from "../../../styles/page-modules/team.module.scss"
 import Image from 'next/image'
 import Link from 'next/link'
 import Sprecherkreis from '../../other-components/SprecherKreis'
+import Introduction from '../../other-components/Introduction'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
@@ -15,7 +16,7 @@ const Team = ({ data }) => {
   const otherMembers = []
 
   dataAttributes.members.data.forEach((item) => {
-    if (item.attributes.role == "Sprecher") {
+    if (item.attributes.role == "Sprecher" | item.attributes.role == "Sprecherin") {
       sprecher.push(item)
     }
     else {
@@ -37,11 +38,10 @@ const Team = ({ data }) => {
           priority
         />
       </div>
-      <h1 className="header">{dataAttributes.title}</h1>
+      <h1 className="header">Sprecher*innenkreis</h1>
 
-      <h2>Sprecher*innenkreis</h2>
 
-      <ReactMarkdown className="paragraph" rehypePlugins={[rehypeRaw]}>{dataAttributes.sprecherDescription}</ReactMarkdown>
+        <Introduction data={dataAttributes.introduction} />
 
       <Sprecherkreis data={sprecher} alternativeImage={alternativeImage} />
 
@@ -52,7 +52,7 @@ const Team = ({ data }) => {
           const previewImage = item.attributes.previewImage.data;
 
           return (
-            <div key={index}>
+            <div className={teamcss.othermember} key={index}>
               <Link href={`/sprecher/${global.endpointSyntax(item.attributes.name)}`} passHref>
                 <div className={teamcss.squareimages}>
                   {<Image
@@ -63,11 +63,12 @@ const Team = ({ data }) => {
                     priority
                   />}
                 </div>
-              </Link>
-              <section className={teamcss.name}>
+                <section className={teamcss.name}>
                 <h4>{item.attributes.name}</h4>
                 <h4><ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.otherRoles}</ReactMarkdown></h4>
               </section>
+              </Link>
+             
             </div>
           )
         })}

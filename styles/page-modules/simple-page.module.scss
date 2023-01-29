@@ -22,25 +22,6 @@
     }
 
 
-    .pimage{
-        height: 250px;
-        width: 250px;
-        float: right;
-        position: relative;
-        display: inline;
-        margin: 10px;
-        vertical-align: -50px;
-    }
-    
-    .paragraphBorder{
-        border: 1px solid var(--red);
-        width: fit-content;
-        padding: 10px;
-        vertical-align: -50px;
-        overflow-y: hidden;
-
-    }
-
 
     .externalLinks{
         @include links();

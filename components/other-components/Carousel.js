@@ -38,6 +38,7 @@ const Carousel = ({ settings }) => {
       
       {settings.dataSource.map((item, index) => {
 
+
         return (
           <div className={
             index == current ? carcss.current :
@@ -53,6 +54,15 @@ const Carousel = ({ settings }) => {
                 height={settings.height}
                 quality={100}
                 priority /> :
+                settings.objectFit== "contain"?
+                <Image
+                src={item}
+                alt={settings.imageAlt}
+                fill
+                className="imageContain"
+                quality={100}
+                priority
+              />:
               <Image
                 src={item}
                 alt={settings.imageAlt}

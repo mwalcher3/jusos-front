@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { global } from './_app'
-import Description from '../components/other-components/Description'
+import Introduction from '../components/other-components/Introduction'
 import Slider from '../components/other-components/Slider'
 import Slideshow from '../components/other-components/Slideshow'
 import ExternalLinks from '../components/other-components/ExternalLinks'
@@ -80,7 +80,7 @@ export default function Home({ menuData, pageData, extraData }) {
     <div>
       <Layout menuData={menuData}>
         <Slideshow data={attributes.slideShowImages} />
-        <Description data={attributes.aboutUs} />
+        <Introduction data={attributes.introduction} />
         <Slider data={extraAttributes.slider} instaData={attributes.slider.sliderInstagram}/>
         <InternalLinks data={extraAttributes.internalLinks}/>
         <ExternalLinks data={attributes.externalLinks}/>

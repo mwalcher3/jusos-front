@@ -22,11 +22,10 @@ const SprecherKreis = ({data, alternativeImage}) => {
                         priority
                     />
                     </div>
-                    </Link>
-
                     <div className={skcss.name}>
                     {item.attributes.name}
                     </div>
+                    </Link>
                 </li>
             )
         })}

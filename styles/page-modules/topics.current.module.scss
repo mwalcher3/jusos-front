@@ -28,8 +28,8 @@
         margin: auto;
   
         .images{
-            height: 380px;
-            width: 350px;
+            height: var(--insta-image-height);
+            width: var(--insta-image-width);
             overflow: hidden;
             position: relative;
         }
@@ -37,7 +37,6 @@
         .videos{
             margin: auto;
             width: 270px;
-
         }
         .viewOnInsta{
             color: var(--hashtag);

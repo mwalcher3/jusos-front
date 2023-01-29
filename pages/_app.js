@@ -1,5 +1,6 @@
 import React from 'react'
 import {useRouter} from 'next/router'
+import Head from 'next/head'
 
 // font awsome
 import { config } from '@fortawesome/fontawesome-svg-core'
@@ -24,6 +25,9 @@ function MyApp({ Component, pageProps}) {
 
   return(
     <>
+    <Head>
+        <title>Jusos Heidelberg</title>
+      </Head>
   <Script src="/javascript/initialColorMode.js" strategy="beforeInteractive" />
   <Component {...pageProps} />
   </>

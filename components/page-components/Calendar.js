@@ -3,6 +3,7 @@ import calcss from '../../styles/page-modules/calendar.module.scss'
 import moment from 'moment';
 import 'moment/locale/de';
 import ExternalLinks from '../other-components/ExternalLinks';
+import Introduction from '../other-components/Introduction'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import ReactMarkdown from 'react-markdown'
@@ -25,7 +26,7 @@ const Calendar = ({data}) => {
   return (
     <div className="container">
       <h1 className="header">{dataAttributes.title}</h1>
-      <ReactMarkdown className="paragraph"rehypePlugins={[rehypeRaw]}>{dataAttributes.description}</ReactMarkdown>
+      <Introduction data={dataAttributes.introduction} />
       <section className={calcss.entryContainer}>
         {sortedEvents.map((item, index)=>{
           var filteredUrl

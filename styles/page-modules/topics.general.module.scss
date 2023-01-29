@@ -83,4 +83,10 @@
         height: 25px;
         padding-left: 3px;
     }
+    transition: .2s;
+}
+
+.schwerinerManifest:hover{
+    color: var(--link-box-hover);
+    transition: .2s;
 }

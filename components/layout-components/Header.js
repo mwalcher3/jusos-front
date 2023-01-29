@@ -141,10 +141,10 @@ const Header = ({ menuData }) => {
                             </div>
                         )
                     })}
-                    <div>
+                </div>
+                <div className={headercss.becomeMember}>
                         <Link href="https://jusowerden.spd.de/eintritt-juso" target="_blank"> Mitglied werden </Link>
-                    </div>
-                    <Link href="https://jusowerden.spd.de/eintritt-juso" target="_blank">
+                        <Link href="https://jusowerden.spd.de/eintritt-juso" target="_blank">
                         <Image 
                             className={headercss.fistLogo}
                             src="/Piktogramm.png"
@@ -153,7 +153,7 @@ const Header = ({ menuData }) => {
                             width="30"
                             priority/>
                     </Link>
-                </div>
+                    </div>
 
 
 

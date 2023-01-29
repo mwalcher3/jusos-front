@@ -26,7 +26,7 @@ const SingleMember = ({ data }) => {
       <h1>{data.attributes.name}</h1>
 
       <section className={smembercss.roles}>
-        <div className={data.attributes.role == "Sprecher" ? "displayBlock" : "none"}>{data.attributes.role}</div>
+        <div className={data.attributes.role == "Sprecher"| data.attributes.role == "Sprecherin" ? "displayBlock" : "none"}>{data.attributes.role}</div>
         <ReactMarkdown  rehypePlugins={[rehypeRaw]}>{data.attributes.otherRoles}</ReactMarkdown>
       </section>
 
@@ -37,14 +37,13 @@ const SingleMember = ({ data }) => {
       </Link>
       </section>
 
-
-      <div className="lastupdated">{data.attributes.updatedAt}</div>
+      <div className={smembercss.purgeFloats}></div>
     </div>
   )
   }
   else{
     return(
-      <h1>hello</h1>
+      <></>
     )
   }
 }

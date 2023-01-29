@@ -12,10 +12,12 @@
         margin: auto;
     }
 
+
     .roles{
         filter: brightness(70%);
         font-style: italic;
-        font-size: 1.2rem
+        font-size: 1.2rem;
+        width: fit-content;
     }
 
     p{
@@ -32,9 +34,12 @@
 
 .maincontainer{
     .image{
-        margin-left: 30px;
-        margin-bottom: 30px;
+        margin-left: 20px;
         float: right;
+    }
+
+    .purgeFloats{
+        clear: both;
     }
   }
 }

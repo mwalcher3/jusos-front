@@ -1,14 +1,12 @@
 import React from 'react'
 import formcss from '../../styles/component-modules/form.module.scss'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from "rehype-raw";
-
+import Introduction from '../other-components/Introduction'
 
 export default function Contact({data}) {
   const formData= data.data.attributes.form.data[0].attributes
   const inputs= formData.inputs
   const title= formData.title
-  const description= data.data.attributes.description
+  const introduction= data.data.attributes.introduction
   const [submitActive, setSubmitActive] = React.useState(false)
   
   
@@ -37,7 +35,7 @@ export default function Contact({data}) {
       <>
 		<form onSubmit={handleSubmit} className={formcss.container}>
     <h1 className={formcss.title}>{title}</h1>
-    <ReactMarkdown className={formcss.description} rehypePlugins={[rehypeRaw]}>{description}</ReactMarkdown>
+    <Introduction data={introduction} />
     
     <div className={formcss.inputcontainer}>
   

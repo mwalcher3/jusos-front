@@ -1,0 +1,9 @@
+@import "../../styles/config";
+
+.paragraphBorder{
+    border: 1px solid var(--red);
+    width: fit-content;
+    padding: 10px;
+    vertical-align: -50px;
+    overflow-y: hidden;
+}

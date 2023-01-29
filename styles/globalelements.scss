@@ -79,8 +79,6 @@
 
 .imageContain{
     object-fit: contain;
-    width: 100px;
-    height: 100px;
     position: relative;
 }
 
@@ -100,8 +98,16 @@
     transform: scale(1.05)
 }
 
-.blue{
-    color: blue
+
+
+.pimage{
+    height: 270px;
+    width: 270px;
+    float: right;
+    position: relative;
+    display: inline;
+    margin: 10px;
+    vertical-align: -50px;
 }
 
 

@@ -27,10 +27,11 @@ const TopicsGeneral = ({data}) => {
           priority
       />
       </section>
-      <h1 class="header">{dataAttributes.titleTopics}</h1>
+      <h1 className="header">{dataAttributes.titleTopics}</h1>
 
       <section className={generalcss.accordioncontainer}>
         {dataAttributes.topics.data.map((item, index)=>{
+          console.log(item.attributes.image);
           return(
             <div key={index}>
               <div className={generalcss.accordionbanner}>
@@ -42,7 +43,20 @@ const TopicsGeneral = ({data}) => {
                 </span>
               </div>
 
-              <ReactMarkdown className={accordionCount==index? generalcss.paragraphs: generalcss.paragraphsclosed} rehypePlugins={[rehypeRaw]}>{item.attributes.text}</ReactMarkdown>
+              <section className={accordionCount==index? generalcss.paragraphs: generalcss.paragraphsclosed}>
+              {<div className={item.attributes.image.data? "pimage": "none"}>
+              {item.attributes.image.data == null ? <div></div>: 
+              <Image
+                    src={`${global.host}${item.attributes.image.data.attributes.url}`}
+                    alt={item.attributes.image.data.attributes.alternativeText}
+                    fill
+                    className="imageCover"
+                    priority
+              />}
+          </div>}
+
+              <ReactMarkdown  rehypePlugins={[rehypeRaw]}>{item.attributes.text}</ReactMarkdown>
+              </section>
               <div className="horizontalLine"></div>
               </div>
           )

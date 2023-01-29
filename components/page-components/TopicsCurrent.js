@@ -6,11 +6,10 @@ import Carousel from "../other-components/Carousel"
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
+
 const TopicsCurrent = ({ data }) => {
   const instagramData = data.data.attributes.instagramFeed
   const dataAttributes = data.data.attributes
-  const imagesWidth = "350"
-  const imagesHeight = "380"
 
   return (
     <div className={currentcss.maincontainer}>
@@ -18,10 +17,12 @@ const TopicsCurrent = ({ data }) => {
       <h1 className="header">{dataAttributes.title}</h1>
 
       {instagramData.data ? instagramData.data.map((item, id) => {
+          let imagesWidth = "350"
+          let imagesHeight = "380"
 
         const patternHashtags= /(#)[\s\S]*?(\s|$)/g
         const patternAccounts= /(@)[\s\S]*?(\s|$)/g
-        const patternGenderStar= /\*innen|\*in/g
+        const patternGenderStar= /(\*)[\s\S]*?(\s|$)/g
           var captionAltered = item.caption.replace(patternHashtags, 
             function(p) {
               return `<span className=${currentcss.blue}>${p}</span>`
@@ -33,9 +34,12 @@ const TopicsCurrent = ({ data }) => {
         }
         ).replace(patternGenderStar,
           function(p) {
-            return `:innen`
+            const x= p.replace(/\*/g, '')
+            return `:${x} `
         }
         )
+
+        
 
         if (item.media_type == "CAROUSEL_ALBUM") {
           const imageSource = [];
@@ -43,10 +47,6 @@ const TopicsCurrent = ({ data }) => {
           item.children.data.map((item) => {
             imageSource.push(item.media_url)
           })
-
-          // if(item.children.data.legnth == 1){
-          //   imageSource.push(...imageSource)
-          // }
 
           if(imageSource.length == 2){
             imageSource.push(...imageSource)
@@ -105,8 +105,8 @@ const TopicsCurrent = ({ data }) => {
               {<Image
                 src={item.media_url}
                 alt="Instagram image"
-                width={imagesWidth}
-                height={imagesHeight}
+                className="imageContain"
+                fill
                 priority />}
                 </div>
             }

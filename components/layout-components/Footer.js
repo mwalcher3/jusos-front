@@ -13,15 +13,6 @@ const Footer = ({ menuData }) => {
       <div className={footercss.content}>
       <div className={footercss.logocontainer}>
 
-      <div className={footercss.logos + " " + footercss.heidelberglogo}>
-        <Image
-          src={`/Jusos_Heidelberg_Logo.png`}
-          alt="jusos Heidelberg logo"
-          layout="fill"
-          objectFit='contain'
-          priority
-        />
-      </div>
 
           <Link target="_blank" href={"https://jusos.de/"} passHref>
             <div className={footercss.logos}>
@@ -45,6 +36,18 @@ const Footer = ({ menuData }) => {
                 priority
               />
             </div>
+          </Link>
+
+          <Link target="_blank" href={"https://www.spd.de/"} passHref>
+          <div className={footercss.logos}>
+            <Image
+              src={`/Spd_Logo.png`}
+              alt="jusos Heidelberg logo"
+              layout="fill"
+              objectFit='contain'
+              priority
+            />
+          </div>
           </Link>
        </div>
 

@@ -51,7 +51,7 @@ const MeetingTypes = ({data}) => {
               onClick={()=>{if(popUpCount!=-1){setPopUpCount(-1)}}}
               icon={faCircleXmark} />
               <h2>{item.attributes.title}</h2>
-              <ReactMarkdown className={mtcss.description} rehypePlugins={[rehypeRaw]}>{item.attributes.description}</ReactMarkdown>
+              <ReactMarkdown className={mtcss.description} rehypePlugins={[rehypeRaw]}>{item.attributes.text}</ReactMarkdown>
         
               </div>
           </div>         
