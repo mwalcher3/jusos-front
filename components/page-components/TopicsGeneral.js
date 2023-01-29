@@ -31,7 +31,6 @@ const TopicsGeneral = ({data}) => {
 
       <section className={generalcss.accordioncontainer}>
         {dataAttributes.topics.data.map((item, index)=>{
-          console.log(item.attributes.image);
           return(
             <div key={index}>
               <div className={generalcss.accordionbanner}>

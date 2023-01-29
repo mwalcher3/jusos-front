@@ -10,7 +10,6 @@ import 'moment/locale/de';
 import {useEffect} from "react";
 
 const TopicsCurrent = ({ data }) => {
-  console.log(data);
   const instagramData = data.data.attributes.instagramFeed;
   const dataAttributes = data.data.attributes;
 

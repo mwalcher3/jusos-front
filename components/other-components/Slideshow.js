@@ -4,7 +4,6 @@ import Carousel from "./Carousel"
 import { i } from 'mathjs';
 
 const Slideshow = ({data, smallScreenData}) => {
-     console.log(smallScreenData);
      const imageSource=[]
      const smallScreenImageSource=[]
      data.data.map((item)=>{
