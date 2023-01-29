@@ -1,7 +1,7 @@
 
 @import "../styles/config";
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 //css variables chaged in javascript
 :root{
@@ -24,10 +24,9 @@ html,
 
 
 body{
-  font-family: 'Roboto', sans-serif;
-  //font-family: "Computer Modern", sans-serif;
- // font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", 'Inter', "Helvetica Neue", sans-serif;
- //font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", 'Inter', "Helvetica Neue", sans-serif;
+ // font-family: 'Roboto', sans-serif;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", 'Inter', "Helvetica Neue", sans-serif;
+ //font-family: -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", 'Inter', "Helvetica Neue", sans-serif;
  margin: 0px;
   position: relative;
   overflow-x: clip;

@@ -5,10 +5,12 @@ import currentcss from "../../styles/page-modules/topics.current.module.scss";
 import Carousel from "../other-components/Carousel";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-
+import moment from 'moment';
+import 'moment/locale/de';
 import {useEffect} from "react";
 
 const TopicsCurrent = ({ data }) => {
+  console.log(data);
   const instagramData = data.data.attributes.instagramFeed;
   const dataAttributes = data.data.attributes;
 
@@ -37,6 +39,10 @@ const TopicsCurrent = ({ data }) => {
         instagramData.data.map((item, id) => {
           let imagesWidth = "375";
           let imagesHeight = "380";
+
+          moment.locale('de')
+          let m= moment(item.timestamp, moment.ISO_8601)
+          let formatedTimestamp= m.format("DD. MMMM YYYY, H U[h]r") 
 
           const patternHashtags = /(#)[\s\S]*?(\s|$)/g;
           const patternAccounts = /(@)[\s\S]*?(\s|$)/g;
@@ -97,12 +103,14 @@ const TopicsCurrent = ({ data }) => {
                   </Link>
                 </section>
 
+                <section className={item.caption ? currentcss.textboxes : "none"}>
                 <ReactMarkdown
-                  className={item.caption ? currentcss.textboxes : "none"}
                   rehypePlugins={[rehypeRaw]}
                 >
                   {captionAltered}
                 </ReactMarkdown>
+                {formatedTimestamp}
+                </section>
               </div>
             );
           } else {
@@ -136,12 +144,15 @@ const TopicsCurrent = ({ data }) => {
                     <div>{dataAttributes.instagramLinkTitle}</div>
                   </Link>
                 </section>
+
+                <section  className={item.caption ? currentcss.textboxes : "none"}>
                 <ReactMarkdown
-                  className={item.caption ? currentcss.textboxes : "none"}
                   rehypePlugins={[rehypeRaw]}
                 >
                   {captionAltered}
                 </ReactMarkdown>
+                {formatedTimestamp}
+                </section>
               </div>
             );
           }

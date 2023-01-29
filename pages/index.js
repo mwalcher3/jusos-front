@@ -79,7 +79,7 @@ export default function Home({ menuData, pageData, extraData }) {
   return (
     <div>
       <Layout menuData={menuData}>
-        <Slideshow data={attributes.slideShowImages} />
+        <Slideshow data={attributes.slideShowImages} smallScreenData={attributes.slideShowSmallScreens}/>
         <Introduction data={attributes.introduction} />
         <Slider data={extraAttributes.slider} instaData={attributes.slider.sliderInstagram}/>
         <InternalLinks data={extraAttributes.internalLinks}/>

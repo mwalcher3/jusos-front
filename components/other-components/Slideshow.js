@@ -1,14 +1,22 @@
 import slideshowcss from '../../styles/component-modules/slideshow.module.scss'
 import {global} from '../../pages/_app'
 import Carousel from "./Carousel"
+import { i } from 'mathjs';
 
-const Slideshow = ({data}) => {
+const Slideshow = ({data, smallScreenData}) => {
+     console.log(smallScreenData);
      const imageSource=[]
+     const smallScreenImageSource=[]
      data.data.map((item)=>{
           imageSource.push(`${global.host}${item.attributes.url}`)
      })
 
-     if(imageSource.length == 2) imageSource.push(...imageSource)
+     smallScreenData.data.map((item)=>{
+          smallScreenImageSource.push(`${global.host}${item.attributes.url}`)
+     })
+
+     if(imageSource.length == 2) imageSource.push(...imageSource);
+     if(smallScreenImageSource.length == 2) smallScreenImageSource.push(...smallScreenImageSource)
 
      var carouselSettings= {
           length: imageSource.length,
@@ -22,12 +30,20 @@ const Slideshow = ({data}) => {
           boxWidth: "100vw",
           translationTime: '0.6s',
      }
-     if(data.data.length == 2) carouselSettings.dots= false
+
+     var carouselSmallSettings= { ...carouselSettings,  ...{dataSource: smallScreenImageSource, length:smallScreenImageSource.length } }
+
+     if(data.data.length == 2) {carouselSettings.dots= false}
+     if(smallScreenData.data.length==2){carouselSmallSettings.dots=false}
 
      return(
           <div className={slideshowcss.maincontainer}>
              <div className={slideshowcss.imagecontainer}>
                <Carousel settings={carouselSettings}/>
+             </div>
+
+             <div className={slideshowcss.imagesmallcontainer}>
+               <Carousel settings={carouselSmallSettings}/>
              </div>
           </div>
      )

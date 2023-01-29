@@ -10,13 +10,7 @@
       }
   }
 
-.maincontainer{
-    width: 100vw;
-    overflow: hidden;
-}
-
-
-.imagecontainer{
+@mixin imagecontainer(){
     border: 2px var(--red) solid;
     position: relative;
     display: grid;
@@ -26,5 +20,30 @@
     grid-column: 1;
     grid-row: 1;
     height: 400px;
+}
+
+.maincontainer{
+    width: 100vw;
+    overflow: hidden;
+}
+
+
+.imagecontainer{
+    display: none;
+}
+
+.imagesmallcontainer{
+    @include imagecontainer()
+}
+
+@media(min-width: $medium){
+    .imagecontainer{
+        @include imagecontainer()
+    }
+
+    .imagesmallcontainer{
+        display: none
+    }
+   
 }
 
