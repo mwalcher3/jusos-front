@@ -49,6 +49,14 @@
     .maincontainer button{
         height: 60px;
         width: 60px;
+
+        svg{
+           transform: scale(1.9);
+        }
+
+        svg:hover{
+            transform: scale(2)
+        }
     }
   
 }

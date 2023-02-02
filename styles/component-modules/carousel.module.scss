@@ -52,13 +52,14 @@
     z-index: 2;
     border-radius: 40px;
     padding: 0 5px 0 5px;
+    span{
+        margin: auto;
+    }
 }
 
 .button1{
     left: 10px;
 }
-
-
 
 .button2{
     transform: scaleX(-1);

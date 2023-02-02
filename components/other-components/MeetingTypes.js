@@ -74,7 +74,6 @@ const MeetingTypes = ({data}) => {
         )
       })}
 
-
     </div>
   )
 }

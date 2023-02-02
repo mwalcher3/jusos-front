@@ -32,7 +32,7 @@ const Carousel = ({ settings }) => {
     <>
       <button onClick={() => { handleChange(-1 + settings.length) }}
         className={carcss.button1 + " " + settings.buttonType}>
-        &#60;
+        <span>&#60;</span>
       </button>
 
       
@@ -78,7 +78,7 @@ const Carousel = ({ settings }) => {
 
       <button onClick={() => { handleChange(1) }}
         className={carcss.button2 + " " + settings.buttonType}>
-        &#60;
+        <span>&#60;</span>
       </button>
 
       <div className={carcss.dotcontainer}>

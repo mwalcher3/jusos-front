@@ -13,6 +13,7 @@ import sprecher from "../components/page-components/Team/index"
 import singleMember from "../components/page-components/Team/SingleMember"
 import kalender from "../components/page-components/Calendar"
 import anträge from "../components/page-components/Motions"
+import unsereArbeit from "../components/page-components/Organization"
 import zoom from "../components/page-components/Zoom"
 
 import fs from "fs"
@@ -39,6 +40,7 @@ const Slugs = ({ menuData, pageData }) => {
     kalender: kalender,
     anträge: anträge,
     zoom: zoom,
+    unsere_arbeit: unsereArbeit,
   }
 
   const subPagesObject = {
@@ -226,6 +228,7 @@ export const getStaticProps = async (context) => {
   const token= process.env.INSTAGRAM_TOKEN
   const instagramData = await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,username,timestamp,caption,children{media_url}&access_token=${token}`);
   const instagramJson = await instagramData.json()
+  console.log(instagramJson);
   // const instaData = instagramJson.data
 
 
@@ -267,7 +270,7 @@ export const getStaticProps = async (context) => {
   const pageJsonFull = JSON.parse(
     JSON.stringify(pageJson, (key, value) => {
       switch (key) {
-        case "meetingTypes": {
+        case "meeting_types": {
           // const popupData = await fetch(`${global.fetchURI}/popups?populate=*`);
           // const popupJson = await popupData.json()
           return meetingTypesJson

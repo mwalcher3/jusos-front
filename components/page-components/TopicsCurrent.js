@@ -27,8 +27,14 @@ const TopicsCurrent = ({ data }) => {
           document.getElementById(first.id + i).style.height=desiredHeight+"px";
         }
       }
+      else if(item.media_type == "IMAGE"){
+        const singleImage= document.getElementById("singleImage"+id)
+        console.log(singleImage);
+        console.log(singleImage.naturalHeight);
+        singleImage.style.height=singleImage.naturalHeight+"px"
+      }
     })
-  })
+  },[])
 
   return (
     <div className={currentcss.maincontainer}>
@@ -126,13 +132,14 @@ const TopicsCurrent = ({ data }) => {
                     <div className={currentcss.images}>
                       {
                         <Image
+                          id={"singleImage"+id}
                           src={item.media_url}
                           alt="Instagram image"
-                          className="imageContain"
-                          fill
+                          height= {50}
+                          width={375}
                           priority
                         />
-                      }
+                      }                   
                     </div>
                   )}
                   <Link

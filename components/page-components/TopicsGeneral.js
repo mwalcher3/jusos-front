@@ -2,8 +2,8 @@ import React from 'react'
 import {global} from '../../pages/_app'
 import Image from 'next/image'
 import Link from 'next/link'
-import MeetingTypes from '../other-components/MeetingTypes'
 import generalcss from '../../styles/page-modules/topics.general.module.scss'
+import MainImage from "../other-components/MainImage"
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,16 +17,8 @@ const TopicsGeneral = ({data}) => {
 
   return (
     <div className="container">
-      <section className="mainimage">
-        <Image
-          src={`${global.host}${dataAttributes.mainImage.data.attributes.url}`}
-          alt={dataAttributes.mainImage.data.attributes.alternativeText}
-          className="imageCover"
-          fill
-          quality={100}
-          priority
-      />
-      </section>
+      <MainImage largeImage={dataAttributes.mainImage} smallImage={dataAttributes.mainImageSmallScreens}/>
+      
       <h1 className="header">{dataAttributes.titleTopics}</h1>
 
       <section className={generalcss.accordioncontainer}>
@@ -66,10 +58,6 @@ const TopicsGeneral = ({data}) => {
                   <FontAwesomeIcon icon={faFile} />
       </Link>}
 
-      <h1>{dataAttributes.titleMeetingTypes}</h1>
-
-      <MeetingTypes data={dataAttributes.meetingTypes.data} />
- 
     </div>
   )
 }

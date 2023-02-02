@@ -28,7 +28,6 @@
         margin: auto;
  
         .images{
-            height: var(--insta-image-height);
             width: var(--insta-image-width);
             overflow: hidden;
             position: relative;
@@ -36,17 +35,14 @@
 
         .videos{
             margin: auto;
-            width: 270px;
+            width: 300px;
         }
         .viewOnInsta{
             color: var(--hashtag);
-            text-decoration: underline var(--hashtag)
+            text-decoration: underline var(--hashtag);
         }
 
     }
-
- 
-
 }
 
 .blue{

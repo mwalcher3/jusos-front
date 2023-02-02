@@ -1,35 +1,27 @@
 import React from 'react'
-import Image from "next/image"
-import {global} from '../../pages/_app'
 import simplecss from "../../styles/page-modules/simple-page.module.scss"
 import SocialMediaIcons from "../other-components/SocialMediaIcons"
 import InternalLinks from "../other-components/InternalLinks"
 import ExternalLinks from "../other-components/ExternalLinks"
 import TextBlocks from "../other-components/TextBlocks"
+import MainImage from "../other-components/MainImage"
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
 
 
 const SimplePage = ({data}) => {
+  console.log(data);
   const dataAttributes= data.data.attributes
 
   return (
     <div className={simplecss.container}>
-       {dataAttributes.mainImage.data!= null?
-        <section className="mainimage">
-        <Image
-          src={`${global.host}${dataAttributes.mainImage.data.attributes.url}`}
-          alt={dataAttributes.mainImage.data.attributes.alternativeText}
-          fill
-          className="imageCover"
-          quality={100}
-          priority
-      />
-      </section> : <div></div>}
-      
+        <MainImage largeImage={dataAttributes.mainImage} smallImage={dataAttributes.mainImageSmallScreens}/>
+      {dataAttributes.slug=="geschichte" && dataAttributes.mainImage.data!=null? 
+      <span className="mainImageCaption">{dataAttributes.mainImage.data.attributes.alternativeText}{dataAttributes.mainImage.data.attributes.caption}
+      </span>:<></>}
+  
       <h1 className="header">{data.data.attributes.title}</h1>
-
 
       {
         data.data.attributes.structure.map((item, index)=>{

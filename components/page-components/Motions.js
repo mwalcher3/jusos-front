@@ -24,11 +24,13 @@ const Motions = ({data}) => {
                 {item.attributes.motion.map((motion, index)=>{
                   return(
                     <li   className={motioncss.documentsbox}  key={index}>
+                      <h3>
                       <Link 
                       href={`${global.host}${motion.document.data.attributes.url}`}  
                       target="_blank">
-                          <h3>{`${motion.title}`} <FontAwesomeIcon icon={faFile} /></h3>
+                          {`${motion.title}`} <FontAwesomeIcon icon={faFile} />
                     </Link>
+                    </h3>
                     {motion.status!= null ? motion.status: <></>}
                    </li>
                   )

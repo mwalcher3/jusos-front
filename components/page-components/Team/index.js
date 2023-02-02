@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Sprecherkreis from '../../other-components/SprecherKreis'
 import Introduction from '../../other-components/Introduction'
+import MainImage from "../../other-components/MainImage"
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
@@ -27,17 +28,7 @@ const Team = ({ data }) => {
 
   return (
     <div className="container">
-      <div className="mainimage">
-        <Image
-          src={`${global.host}${dataAttributes.image.data.attributes.url}`}
-          alt={`${global.host}${dataAttributes.image.data.attributes.alternativeText}`}
-          fill
-          className="imageCover"
-          style={{objectPosition: '50% 25%'}}
-          quality={100}
-          priority
-        />
-      </div>
+      <MainImage largeImage={dataAttributes.mainImage} smallImage={dataAttributes.mainImageSmallScreens}/>
       <h1 className="header">Sprecher*innenkreis</h1>
 
 

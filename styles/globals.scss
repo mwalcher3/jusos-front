@@ -17,7 +17,7 @@
   --slider-max-height: 350px;
 
   --insta-image-height: 380px;
-  --insta-image-width: 375px;
+  --insta-image-width: var(--translation-width);
 }
 
 html,
@@ -59,7 +59,6 @@ button{
 	color: inherit;
 	border: none;
 	padding: 0;
-	font: inherit;
 	outline: inherit;
 }
 
