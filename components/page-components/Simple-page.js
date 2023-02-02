@@ -11,7 +11,6 @@ import rehypeRaw from "rehype-raw";
 
 
 const SimplePage = ({data}) => {
-  console.log(data);
   const dataAttributes= data.data.attributes
 
   return (

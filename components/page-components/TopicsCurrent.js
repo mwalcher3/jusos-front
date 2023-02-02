@@ -29,8 +29,6 @@ const TopicsCurrent = ({ data }) => {
       }
       else if(item.media_type == "IMAGE"){
         const singleImage= document.getElementById("singleImage"+id)
-        console.log(singleImage);
-        console.log(singleImage.naturalHeight);
         singleImage.style.height=singleImage.naturalHeight+"px"
       }
     })
