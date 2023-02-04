@@ -25,8 +25,19 @@
         display: -webkit-box;
         -webkit-line-clamp: 12;
         -webkit-box-orient: vertical;
-        overflow: clip;
+        overflow: hidden;
         margin-bottom: 50px;
+        
+    p {
+        display: inline;
+        margin-bottom: 0;
+    }
+  
+    p::after {
+        content: " \A\A";
+        white-space: pre;
+    }
+    
     }
 
     .viewMore{
