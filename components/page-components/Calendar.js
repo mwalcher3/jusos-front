@@ -97,13 +97,6 @@ const Calendar = ({data}) => {
 
     })}
     </section>
-
-    <section className={calcss.links}>
-      <h2>{data.data.attributes.linkBoxTitle}</h2>
-      <div className={calcss.linkBox}>
-     {<ExternalLinks data={data.data.attributes.links}/>}
-      </div>
-    </section>
       
     </div>
   )
