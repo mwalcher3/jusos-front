@@ -37,9 +37,6 @@ function MyApp({ Component, pageProps}) {
 
 export default MyApp
 
-
-
-
 // variables and functions used globaly
 
 
