@@ -36,7 +36,6 @@ const MeetingTypes = ({data}) => {
     <div className={mtcss.popupscontainer}>
 
       {data.map((item,index)=>{
-
         return(
           <div key={index}>
           <section 
@@ -44,7 +43,8 @@ const MeetingTypes = ({data}) => {
           onClick={()=>
                 {index == popUpCount ? setPopUpCount(-1): setPopUpCount(index)}
             }>
-            <div className={mtcss.images}>
+              {item.attributes.image.data!=null?
+               <div className={mtcss.images}>
         
                 <Image
                 src={`${global.host}${item.attributes.image.data.attributes.url}`}
@@ -54,6 +54,8 @@ const MeetingTypes = ({data}) => {
                 priority
             />
             </div>
+              :<></>}
+           
             <h2>{item.attributes.title}</h2>
           </section>
 

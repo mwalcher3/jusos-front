@@ -4,8 +4,9 @@ import TextBlocks from "../other-components/TextBlocks"
 import MainImage from "../other-components/MainImage"
 
 const Organization = ({data}) => {
-    
+
     const dataAttributes= data.data.attributes
+    console.log(dataAttributes.meeting_types.data);
   return (
     <div>
        <MainImage largeImage={dataAttributes.mainImage} smallImage={dataAttributes.mainImageSmallScreens}/>
