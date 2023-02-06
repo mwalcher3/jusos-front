@@ -26,17 +26,21 @@
     justify-items: center;
     align-content: start;
     gap: 2px;
+
+    a{
+        @include linksOmitStyling;
+        color: var(--footer);
+
+    }
 }
 .title{
     font-size: 1.1rem;
     font-weight: bolder;
     padding-bottom:10px;
-    //border: 2px solid black;
 }
 
 .subtitle{
     cursor: pointer; 
-    //border: 2px solid black;
     width: fit-content;
     height: fit-content;
     position: relative;
@@ -46,6 +50,7 @@
 
 .subtitle:after{
     @include underline(var(--red), 2px); 
+
 }
 
 

@@ -11,7 +11,7 @@ import aktuelles from '../components/page-components/TopicsCurrent'
 import schwerpunkte from '../components/page-components/TopicsGeneral'
 import sprecher from "../components/page-components/Team/index"
 import singleMember from "../components/page-components/Team/SingleMember"
-import kalender from "../components/page-components/Calendar"
+import termine from "../components/page-components/Calendar"
 import anträge from "../components/page-components/Motions"
 import unsereArbeit from "../components/page-components/Organization"
 import zoom from "../components/page-components/Zoom"
@@ -37,7 +37,7 @@ const Slugs = ({ menuData, pageData }) => {
     schwerpunkte: schwerpunkte,
     sprecher: sprecher,
     dummy: SimplePage,
-    kalender: kalender,
+    termine: termine,
     anträge: anträge,
     zoom: zoom,
     unsere_arbeit: unsereArbeit,

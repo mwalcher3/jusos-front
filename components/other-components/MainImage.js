@@ -13,7 +13,6 @@ const MainImage = ({largeImage, smallImage}) => {
         alt={largeImage.data.attributes.alternativeText}
         className="imageCover"
         fill
-        quality={100}
         priority
     />
     </section>:<>
@@ -24,7 +23,6 @@ const MainImage = ({largeImage, smallImage}) => {
       alt={smallImage.data.attributes.alternativeText}
       fill
       className="imageCover"
-      quality={100}
       priority
   />
   </section>: <></>}
@@ -37,7 +35,6 @@ const MainImage = ({largeImage, smallImage}) => {
       alt={smallImage.data.attributes.alternativeText}
       fill
       className="imageCover"
-      quality={100}
       priority
   />
   </section>: 
@@ -49,7 +46,6 @@ const MainImage = ({largeImage, smallImage}) => {
         alt={largeImage.data.attributes.alternativeText}
         fill
         className="imageCover"
-        quality={100}
         priority
          />
   </section>:<></>

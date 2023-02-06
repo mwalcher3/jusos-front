@@ -33,6 +33,10 @@
 @media(min-width: $medium){
     .othermembers{
         .othermember{
+            a{
+                @include linksOmitStyling;
+                color: inherit
+            }
             width: 17vw;
         
             .squareimages{

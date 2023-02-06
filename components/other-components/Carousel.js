@@ -53,7 +53,6 @@ const Carousel = ({ settings }) => {
                 width={settings.width}
                 height={settings.height}
                 id={settings.firstId+index}
-                quality={100}
                 priority /> :
                 settings.objectFit== "contain"?
                 <Image
@@ -61,7 +60,6 @@ const Carousel = ({ settings }) => {
                 alt={settings.imageAlt}
                 fill
                 className="imageContain"
-                quality={100}
                 priority
               />:
               <Image
@@ -69,7 +67,6 @@ const Carousel = ({ settings }) => {
                 alt={settings.imageAlt}
                 fill
                 className="imageCover"
-                quality={100}
                 priority
               />}
           </div>

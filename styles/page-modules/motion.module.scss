@@ -2,6 +2,10 @@
 
 .typescontainer{
     //border: 2px solid white;
+    a{
+        @include linksOmitStyling;
+        color: inherit
+      } 
 
     ul{
        padding: 0

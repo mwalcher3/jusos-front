@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
   const pageJson = await pageData.json()
 
   // fetch slider and internalLinks data seperately, because the slider data cannot be put in the JSON stringify
-  const extraData = await fetch(`${global.fetchURI}/home-page?populate[internalLinks][populate][0]=image&populate[slider][populate][0]=articles&populate[slider][populate][1]=calendar_entries&populate[slider][populate][2]=topics&populate[slider][populate][3]=meeting_types`);
+  const extraData = await fetch(`${global.fetchURI}/home-page?populate[internalLinks][populate][0]=image&populate[slider][populate][0]=articles&populate[slider][populate][1]=calendar_entries&populate[slider][populate][2]=topics&populate[slider][populate][3]=meeting_types&populate[slider][populate][4]=quotes`);
   const extraJson = await extraData.json()
 
   const token= process.env.INSTAGRAM_TOKEN

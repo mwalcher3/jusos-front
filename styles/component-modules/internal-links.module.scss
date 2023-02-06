@@ -1,19 +1,6 @@
 @import "../../styles/config";
 
-@mixin links(){
-    cursor: pointer;
-    color: white;
-    font-size: 1.2rem;
-    background-color: var(--links-background);
-    border-radius: 3px;
-    width: min-content;
-    height: fit-content;
-    transition: .3s;
-    
-    svg{
-        transition: .2s;
-    }
-}
+
 
 .internalLinkBox{
     display: flex;

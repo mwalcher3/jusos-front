@@ -26,7 +26,6 @@
         -webkit-line-clamp: 12;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        margin-bottom: 50px;
         
     p {
         display: inline;
@@ -37,10 +36,18 @@
         content: " \A\A";
         white-space: pre;
     }
+
+    h3{
+        p::after{
+            display:none;
+        }
+    }
     
     }
 
+
     .viewMore{
+        margin-top: 60px;
         section{
             position: fixed;
             left: 0 !important;
@@ -124,7 +131,7 @@
 @media(min-width: $medium){
     .none, .current, .next, .previous, .nextreduce, .previousreduce{
         padding: 0px;
-        margin: 20px 90px;
+        margin: 20px 90px 40px 90px;
 
         .sliderboxes{
             -webkit-line-clamp: 7;

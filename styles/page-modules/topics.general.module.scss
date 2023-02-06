@@ -67,6 +67,8 @@
 }
 
 .schwerinerManifest{
+    @include linksOmitStyling;
+    color: inherit;
     display: flex;
     margin: auto;
     border: 1px solid var(--red);
@@ -89,4 +91,5 @@
 .schwerinerManifest:hover{
     color: var(--link-box-hover);
     transition: .2s;
+    
 }

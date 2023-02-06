@@ -48,7 +48,7 @@ const Calendar = ({data}) => {
           var diffTodayExpired = todayDate.diff(expiredDate);
           var diffTodayEvent= todayDate.diff(eventDate);
         
-          let displayedDate= event.format("dddd, DD MMMM YYYY, h.mm A") 
+          let displayedDate= event.format("dddd, DD MMMM YYYY, H.mm") 
 
           return(
             <div key={index} className={diffTodayExpired >0? "none": calcss.entryBox} >

@@ -19,7 +19,6 @@ const SingleArticles = ({data}) => {
                 alt={data.attributes.image.data.attributes.alternativeText}
                 className={articlecss.textimage}
                 fill
-                quality={100}
                 priority
               />
             : <></>}

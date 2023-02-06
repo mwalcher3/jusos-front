@@ -7,6 +7,10 @@
     display: grid;
     gap: 40px 0;
     justify-content: center;
+    a{
+      @include linksOmitStyling;
+      color: inherit
+    } 
 }
 
 

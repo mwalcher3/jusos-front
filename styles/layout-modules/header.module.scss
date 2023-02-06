@@ -24,6 +24,7 @@ $navheightmedium: 75px;
 /// 
 
 
+
 .nav{
     font-size: 1.4rem;
     font-weight: 700;
@@ -39,6 +40,10 @@ $navheightmedium: 75px;
     justify-content: space-between;
     align-items: center;
     gap: 3%;
+
+    a{
+        @include linksOmitStyling
+    }
 }
 
 .navscrolled{
@@ -328,7 +333,6 @@ $navheightmedium: 75px;
     }
 
     .navsubitems:hover{
-        //color: var(--link-box-hover)
         color: var(--red)
     }
 

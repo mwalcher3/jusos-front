@@ -26,13 +26,15 @@
             margin: auto;
             transition: .2s;
         }
-        
-        svg:hover{
-            transform: scale(1.65);
-            transition: .2s;
-        }
+    
     }
 
+}
+.maincontainer button:hover{
+    svg{
+        transform: scale(1.8);
+        transition: .2s;
+    }
 }
 
 .iconsun{
@@ -54,9 +56,14 @@
            transform: scale(1.9);
         }
 
-        svg:hover{
-            transform: scale(2)
+        
+    }
+
+    .maincontainer button:hover{
+        svg{
+            transform: scale(2.15)
         }
+
     }
   
 }

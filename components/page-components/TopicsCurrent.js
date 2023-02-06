@@ -32,7 +32,7 @@ const TopicsCurrent = ({ data }) => {
         singleImage.style.height=singleImage.naturalHeight+"px"
       }
     })
-  },[])
+  })
 
   return (
     <div className={currentcss.maincontainer}>
@@ -45,7 +45,7 @@ const TopicsCurrent = ({ data }) => {
 
           moment.locale('de')
           let m= moment(item.timestamp, moment.ISO_8601)
-          let formatedTimestamp= m.format("DD. MMMM YYYY, H U[h]r") 
+          let formatedTimestamp= m.format("DD. MMMM YYYY, H.mm") 
 
           const patternHashtags = /(#)[\s\S]*?(\s|$)/g;
           const patternAccounts = /(@)[\s\S]*?(\s|$)/g;
