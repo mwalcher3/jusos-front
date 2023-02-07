@@ -175,6 +175,9 @@ $navheightmedium: 75px;
     scrollbar-width: none;  /* Firefox */
     z-index: 3;
     text-align: center;
+    a{
+        @include linksOmitStyling
+    }
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -198,7 +201,7 @@ $navheightmedium: 75px;
 
 
 .burgerMenuSubtitles{
-    @include burgerMenuSubtitles(130px);
+    @include burgerMenuSubtitles(160px);
     transition: max-height 0.75s;
 
 }

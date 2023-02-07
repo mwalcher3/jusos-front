@@ -18,8 +18,7 @@ export default function Contact({data}) {
     setTimeout(()=>{setSubmitActive(false)}, 2300)
 
     const targetElementsFiltered= Array.from(e.currentTarget.elements).filter((item) => item.name);
-    
-      targetElementsFiltered.forEach((item)=>{
+      targetElementsFiltered.forEach((item, id)=>{
       formData[item.name]= e.target[item.name].value;
   
     });
