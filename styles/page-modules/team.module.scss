@@ -3,9 +3,14 @@
 .othermembers{
     position: relative;
     display : flex;
+    margin: auto;
     gap: 40px 50px;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    a{
+        @include linksOmitStyling;
+        color: inherit
+    }
 
     .squareimages{
         background-color: white;
@@ -33,10 +38,6 @@
 @media(min-width: $medium){
     .othermembers{
         .othermember{
-            a{
-                @include linksOmitStyling;
-                color: inherit
-            }
             width: 17vw;
         
             .squareimages{

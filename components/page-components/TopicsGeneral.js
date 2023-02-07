@@ -53,13 +53,15 @@ const TopicsGeneral = ({data}) => {
           )
         })}
       </section>
+      
+      <section>
+      <ReactMarkdown  rehypePlugins={[rehypeRaw]}>{dataAttributes.schwerinerManifestText}</ReactMarkdown>
       {<Link className={generalcss.schwerinerManifest} href={`${global.host}${dataAttributes.schwerinerManifest.data.attributes.url}`}  target="_blank">
                   <h3>Schweriner Manifest</h3>
 
                   <FontAwesomeIcon icon={faFile} />
       </Link>}
-      <ReactMarkdown  rehypePlugins={[rehypeRaw]}>{dataAttributes.schwerinerManifestText}</ReactMarkdown>
-
+      </section>
     </div>
   )
 }

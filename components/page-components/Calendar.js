@@ -21,7 +21,7 @@ const Calendar = ({data}) => {
     body.classList.add('burgeropen'):body.classList.remove('burgeropen')
   },[mapsCount])
 
-  const sortedEvents  =  dataAttributes.calendar_entries.data.sort((a,b) => new moment(b.attributes.date).format('YYYYMMDD') - new moment(a.attributes.date).format('YYYYMMDD') )
+  const sortedEvents  =  dataAttributes.calendar_entries.data.sort((a,b) => new moment(a.attributes.date).format('YYYYMMDD') - new moment(b.attributes.date).format('YYYYMMDD') )
  
   return (
     <div className="container">
@@ -50,12 +50,12 @@ const Calendar = ({data}) => {
         
           let displayedDate= event.format("dddd, DD MMMM YYYY, H.mm") 
 
+
           return(
             <div key={index} className={diffTodayExpired >0? "none": calcss.entryBox} >
 
               <div className={ calcss.titleAndDate + " "+ (diffTodayEvent>0? calcss.titleAndDateLight: "")}>
-                <h2 className={calcss.entryTitle}>{item.attributes.title}</h2>
-                <h3 className={calcss.date}>{displayedDate}</h3>
+                <h2 className={calcss.date}>{displayedDate}</h2>
 
                 {item.attributes.location!=null ?
                 <h3>Treffpunkt: {item.attributes.location}</h3>
@@ -73,7 +73,7 @@ const Calendar = ({data}) => {
 
               <div className={calcss.subtitleAndText}>
                 {item.attributes.subtitle!=null? <h3>{item.attributes.subtitle}</h3>: <div></div>}
-
+                <h2 className={calcss.entryTitle}>{item.attributes.title}</h2>
                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.text}</ReactMarkdown>
                  {<ExternalLinks key={index} data={item.attributes.links}/>}
               </div>

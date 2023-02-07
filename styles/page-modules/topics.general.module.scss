@@ -71,6 +71,7 @@
     color: inherit;
     display: flex;
     margin: auto;
+    width: fit-content;
     border: 1px solid var(--red);
     padding: 5px;
 
@@ -84,6 +85,7 @@
         width: 25px;
         height: 25px;
         padding-left: 3px;
+        vertical-align: bottom;
     }
     transition: .2s;
 }
