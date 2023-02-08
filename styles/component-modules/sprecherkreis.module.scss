@@ -82,6 +82,11 @@
   list-style: none;  
   margin-left: 0;
   padding: 0;
+  a{
+    @include linksOmitStyling;
+    color: inherit;
+  }
+
   .roundimages{
     background-color: white;
     position: relative;
@@ -91,6 +96,7 @@
   .name{
     padding: 7px;
     font-size: 1.2rem;
+    font-weight: bold;
   }
 }
  
@@ -104,6 +110,7 @@
 
     .name{
       font-size: var(--font-size);
+   
     }
 
   }

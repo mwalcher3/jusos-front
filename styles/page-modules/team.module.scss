@@ -1,39 +1,50 @@
 @import "../../styles/config";
 
 .othermembers{
-    position: relative;
-    display : flex;
-    margin: auto;
-    gap: 40px 50px;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    
+    h2{
+        margin: 50px auto 40px auto;
+        width: fit-content;
+    }
     a{
         @include linksOmitStyling;
         color: inherit
     }
-
-    .squareimages{
-        background-color: white;
+    .otherMembersBoxes{
         position: relative;
-        width: 80vw;
-        height: 40vh;
-        cursor: pointer
-    }
+        display : flex;
+        margin: auto;
+        gap: 40px 50px;
+        flex-wrap: wrap;
+        justify-content: center;
+     
 
-   .name{
-    margin: 0;
-    padding: 7px;
-    font-size: 1.2rem;
-
-    h4{
-        margin:0;
-        p{
-            margin:0;
-            padding:0;
+    
+        .squareimages{
+            background-color: white;
+            position: relative;
+            width: 80vw;
+            height: 40vh;
+            cursor: pointer
         }
+    
+       .name{
+        margin: 0;
+        padding: 7px;
+        font-size: 1.2rem;
+    
+        h4{
+            margin:0;
+            p{
+                margin:0;
+                padding:0;
+            }
+        }
+       }
     }
-   }
 }
+
 
 @media(min-width: $medium){
     .othermembers{

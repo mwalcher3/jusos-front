@@ -24,7 +24,7 @@ const Calendar = ({data}) => {
   const sortedEvents  =  dataAttributes.calendar_entries.data.sort((a,b) => new moment(a.attributes.date).format('YYYYMMDD') - new moment(b.attributes.date).format('YYYYMMDD') )
  
   return (
-    <div className="container">
+    <div>
       <h1 className="header">{dataAttributes.title}</h1>
       <Introduction data={dataAttributes.introduction} />
       <section className={calcss.entryContainer}>
@@ -54,7 +54,7 @@ const Calendar = ({data}) => {
           return(
             <div key={index} className={diffTodayExpired >0? "none": calcss.entryBox} >
 
-              <div className={ calcss.titleAndDate + " "+ (diffTodayEvent>0? calcss.titleAndDateLight: "")}>
+              <div className={ calcss.locationAndDate + " "+ (diffTodayEvent>0? calcss.locationAndDateLight: "")}>
                 <h2 className={calcss.date}>{displayedDate}</h2>
 
                 {item.attributes.location!=null ?
@@ -71,7 +71,7 @@ const Calendar = ({data}) => {
 
               </div>
 
-              <div className={calcss.subtitleAndText}>
+              <div className={calcss.titleAndText}>
                 {item.attributes.subtitle!=null? <h3>{item.attributes.subtitle}</h3>: <div></div>}
                 <h2 className={calcss.entryTitle}>{item.attributes.title}</h2>
                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.attributes.text}</ReactMarkdown>

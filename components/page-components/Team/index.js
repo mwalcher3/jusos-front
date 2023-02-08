@@ -36,9 +36,10 @@ const Team = ({ data }) => {
 
       <Sprecherkreis data={sprecher} alternativeImage={alternativeImage} />
 
-      <h2>Erweiterter Sprecher*innenkreis</h2>
-
+ 
       <section className={teamcss.othermembers}>
+      <h2>Erweiterter Sprecher*innenkreis</h2>
+      <section className={teamcss.otherMembersBoxes}>
         {otherMembers.map((item, index) => {
           const previewImage = item.attributes.previewImage.data;
 
@@ -63,6 +64,7 @@ const Team = ({ data }) => {
             </div>
           )
         })}
+        </section>
       </section>
     </div>
   )
