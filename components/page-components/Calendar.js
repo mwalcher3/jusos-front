@@ -48,7 +48,7 @@ const Calendar = ({data}) => {
           var diffTodayExpired = todayDate.diff(expiredDate);
           var diffTodayEvent= todayDate.diff(eventDate);
         
-          let displayedDate= event.format("dddd, DD MMMM YYYY, H.mm") 
+          let displayedDate= event.format("dddd, DD MMMM YYYY, H.mm U[h]r") 
 
 
           return(
