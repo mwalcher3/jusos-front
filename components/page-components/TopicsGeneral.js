@@ -15,6 +15,8 @@ const TopicsGeneral = ({data}) => {
   const [accordionCount, setAccordionCount] = React.useState(-1)
   const dataAttributes= data.data.attributes
 
+  const sortedTopics= dataAttributes.topics.data.sort((a, b) => a.id - b.id);
+
   return (
     <div className="container">
       <MainImage largeImage={dataAttributes.mainImage} smallImage={dataAttributes.mainImageSmallScreens}/>
@@ -22,7 +24,7 @@ const TopicsGeneral = ({data}) => {
       <h1 className="header">{dataAttributes.titleTopics}</h1>
 
       <section className={generalcss.accordioncontainer}>
-        {dataAttributes.topics.data.map((item, index)=>{
+        {sortedTopics.map((item, index)=>{
           return(
             <div key={index}>
               <div className={generalcss.accordionbanner}>

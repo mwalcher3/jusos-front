@@ -16,23 +16,52 @@ const TopicsCurrent = ({ data }) => {
   useEffect(() => {
     instagramData.data.map((item,id) => {
       if ( item.media_type == "CAROUSEL_ALBUM") { 
+        //calculate the natural height of the image
         const first = item.children.data[0];
         let album = document.getElementById("album"+first.id)
         let firstImg = document.getElementById(first.id+"0")
-        let desiredHeight = firstImg.naturalHeight;
-        album.style.height = desiredHeight+"px";
-        let albumLength = item.children.data.length;
-        if(albumLength ==2) { albumLength = 2*albumLength }
-        for (let i = 0; i < albumLength; i++) { 
-          document.getElementById(first.id + i).style.height=desiredHeight+"px";
-        }
+
+        let p= new Promise((resolve,reject)=>{
+          if (firstImg.naturalHeight !== 0){
+            const desiredHeight= firstImg.naturalHeight
+            resolve(desiredHeight)
+          }
+          else{
+            reject("rejected")
+          }
+        })
+        p.then((desiredHeight)=>{
+            //set the images to their natural height
+          album.style.height = desiredHeight+"px";
+          let albumLength = item.children.data.length;
+          if(albumLength ==2) { albumLength = 2*albumLength }
+          for (let i = 0; i < albumLength; i++) { 
+            document.getElementById(first.id + i).style.height=desiredHeight+"px";
+          }
+        }).catch((desiredHeight)=>{
+          console.log(desiredHeight)
+        })
       }
+      
       else if(item.media_type == "IMAGE"){
         const singleImage= document.getElementById("singleImage"+id)
-        singleImage.style.height=singleImage.naturalHeight+"px"
+        let p= new Promise((resolve,reject)=>{
+          if (singleImage.naturalHeight !== 0){
+            const desiredHeight= singleImage.naturalHeight
+            resolve(desiredHeight)
+          }
+          else{
+            reject("rejected")
+          }
+        })
+        p.then((desiredHeight)=>{
+          singleImage.style.height=desiredHeight+"px"
+        }).catch((desiredHeight)=>{
+          console.log(desiredHeight)
+        })
       }
     })
-  })
+  },[])
 
   return (
     <div className={currentcss.maincontainer}>

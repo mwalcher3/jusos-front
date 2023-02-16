@@ -12,8 +12,6 @@ const Footer = ({ menuData }) => {
     <div className={footercss.maincontainer}>
       <div className={footercss.content}>
       <div className={footercss.logocontainer}>
-
-
           <Link target="_blank" href={"https://jusos.de/"} passHref>
             <div className={footercss.logos}>
               <Image

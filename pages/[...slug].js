@@ -200,7 +200,7 @@ export const getStaticProps = async (context) => {
   const meetingTypesJson = await meetingTypesData.json()
 
     // fetch topicsData
-    const topicData = await fetch(`${global.fetchURI}/topics?populate=*`);
+    const topicData = await fetch(`${global.fetchURI}/topics?populate=*&pagination[start]=0&pagination[limit]=100000`);
     const topicJson = await topicData.json()
   
 
@@ -209,11 +209,11 @@ export const getStaticProps = async (context) => {
   const memberJson = await memberData.json()
 
   // fetch articleData
-  const articleData = await fetch(`${global.fetchURI}/articles?populate=*`);
+  const articleData = await fetch(`${global.fetchURI}/articles?populate=*&pagination[start]=0&pagination[limit]=100000`);
   const articleJson = await articleData.json()
 
    // fetch calendar entries data
-   const calendarData = await fetch(`${global.fetchURI}/calendar-entries?populate=*`);
+   const calendarData = await fetch(`${global.fetchURI}/calendar-entries?populate=*&pagination[start]=0&pagination[limit]=100000`);
    const calendarJson = await calendarData.json()
 
     // fetch calendar entries data
