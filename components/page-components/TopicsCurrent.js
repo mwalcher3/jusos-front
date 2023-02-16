@@ -61,7 +61,7 @@ const TopicsCurrent = ({ data }) => {
         })
       }
     })
-  },[])
+  },[instagramData.data])
 
   return (
     <div className={currentcss.maincontainer}>

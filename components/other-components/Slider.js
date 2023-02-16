@@ -9,7 +9,9 @@ import 'moment/locale/de';
 
 
 const Slider = ({data, instaData}) => {  
-    const dataArray=[{title: "Aktuelles", text: instaData.data[0].caption, link:"/aktuelles"}]
+    // const dataArray=[{title: "Aktuelles", text: instaData.data[0].caption, link:"/aktuelles"}]
+    const dataArray=[{title: "Aktuelles", text: 
+      (instaData && instaData.data && instaData.data.length()>0)? instaData.data[0].caption: "", link:"/aktuelles"}]
     const relations= [{access: data.articles, endpoint: "/artikel"}, 
                       {access: data.topics, endpoint: "/schwerpunkte"}, 
                       {access: data.calendar_entries, endpoint: "/termine"}, 
