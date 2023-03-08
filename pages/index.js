@@ -27,7 +27,6 @@ export const getStaticProps = async () => {
   const instagramData = await fetch(`https://graph.instagram.com/me/media?fields=id,media_type,media_url,permalink,username,timestamp,caption,children{media_url}&limit=1&access_token=${token}`);
   const instagramJson = await instagramData.json()
 
-
   // there is only one deep relation on home-page
   const pageJsonFull = JSON.parse(
     JSON.stringify(pageJson, (key, value) => {
@@ -81,7 +80,7 @@ export default function Home({ menuData, pageData, extraData }) {
       <Layout menuData={menuData}>
         <Slideshow data={attributes.slideShowImages} smallScreenData={attributes.slideShowSmallScreens}/>
         <Introduction data={attributes.introduction} />
-        <Slider data={extraAttributes.slider} instaData={attributes.slider.sliderInstagram}/>
+        <Slider data={extraAttributes.slider} instaData={attributes.slider.sliderInstagram}/> 
         <InternalLinks data={extraAttributes.internalLinks}/>
         <ExternalLinks data={attributes.externalLinks}/>
       </Layout>

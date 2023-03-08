@@ -38,7 +38,7 @@ const TopicsCurrent = ({ data }) => {
         singleImage.style.height=desiredHeight+"px"
       }
     })
-  },[])
+  },[instagramData.data])
 
   return (
     <div className={currentcss.maincontainer}>
