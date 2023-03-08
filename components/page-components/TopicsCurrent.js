@@ -10,10 +10,11 @@ import 'moment/locale/de';
 import {useEffect} from "react";
 
 const TopicsCurrent = ({ data }) => {
+  console.log(data);
   const instagramData = data.data.attributes.instagramFeed;
   const dataAttributes = data.data.attributes;
 
-  useEffect(() => {
+ useEffect(() => {
     instagramData.data.map((item,id) => {
       if ( item.media_type == "CAROUSEL_ALBUM") { 
         //calculate the natural height of the image
@@ -55,21 +56,24 @@ const TopicsCurrent = ({ data }) => {
           const patternHashtags = /(#)[\s\S]*?(\s|$)/g;
           const patternAccounts = /(@)[\s\S]*?(\s|$)/g;
           const patternGenderStar = /(\*)[\s\S]*?(\s|$)/g;
-          var captionAltered = item.caption
+          if(item.caption!=null){
+            var captionAltered = item.caption
             .replace(patternHashtags, function (p) {
-              return `<span className=${currentcss.blue}>${p}</span>`;
-            })
-            .replace(patternAccounts, function (p) {
-              const endpoint = p.match(/[^@,]/g);
-              return `<a target="_blank" href="https://www.instagram.com/${endpoint.join(
-                ""
-              )}" className=${currentcss.blue}>${p}</a>`;
-            })
-            .replace(patternGenderStar, function (p) {
-              const x = p.replace(/\*/g, "");
-              return `:${x} `;
-            });
+               return `<span className=${currentcss.blue}>${p}</span>`;
+             })
+             .replace(patternAccounts, function (p) {
+               const endpoint = p.match(/[^@,]/g);
+               return `<a target="_blank" href="https://www.instagram.com/${endpoint.join(
+                 ""
+               )}" className=${currentcss.blue}>${p}</a>`;
+             })
+             .replace(patternGenderStar, function (p) {
+               const x = p.replace(/\*/g, "");
+               return `:${x} `;
+             });
 
+          }
+         
           if (item.media_type == "CAROUSEL_ALBUM") {
             const imageSource = [];
             const albumId = item.children.data[0].id 
