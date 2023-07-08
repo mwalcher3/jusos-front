@@ -1,4 +1,4 @@
-import { global } from "@/jusos.config";
+import { global } from "jusos.config";
 
 import ContactForm from "@components/other-components/ContactForm";
 

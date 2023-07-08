@@ -1,6 +1,6 @@
 "use client";
 
-import { global } from "@/jusos.config";
+import { global } from "jusos.config";
 
 import React from "react";
 import Image from "next/legacy/image";

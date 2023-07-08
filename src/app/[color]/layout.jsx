@@ -1,5 +1,5 @@
 
-import { global } from '@/jusos.config'
+import { global } from 'jusos.config'
 
 import Layout from '@components/layout-components/Layout'
 

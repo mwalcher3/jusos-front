@@ -1,4 +1,4 @@
-import { global } from "@/jusos.config";
+import { global } from "jusos.config";
 
 import teamcss from "@styles/page-modules/team.module.scss";
 import Image from "next/image";

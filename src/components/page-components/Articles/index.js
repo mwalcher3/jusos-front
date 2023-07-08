@@ -1,4 +1,4 @@
-import { global } from "@/jusos.config";
+import { global } from "jusos.config";
 
 import moment from "moment";
 import "moment/locale/de";

@@ -1,6 +1,6 @@
 "use client";
 
-import { global } from "@/jusos.config";
+import { global } from "jusos.config";
 
 import generalcss from "@styles/page-modules/topics.general.module.scss";
 import ReactMarkdown from "react-markdown";
@@ -44,8 +44,7 @@ const Accordion = ({ accordionData }) => {
                     <div></div>
                   ) : (
                     <Image
-                      src={`https://content.jusoshd.uber.space${item.attributes.image.data.attributes.url}`}
-                      // src={`${global.host}${item.attributes.image.data.attributes.url}`}
+                      src={`${global.host}${item.attributes.image.data.attributes.url}`}
                       alt={item.attributes.image.data.attributes.alternativeText}
                       fill
                       className="imageCover"

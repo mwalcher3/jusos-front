@@ -1,6 +1,6 @@
 
 
-import { global, collections, collectionComponents } from '@/jusos.config'
+import { global, collections, collectionComponents } from 'jusos.config'
 
 import { notFound } from 'next/navigation'
 import qs from "qs";
