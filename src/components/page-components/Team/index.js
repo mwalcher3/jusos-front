@@ -1,3 +1,4 @@
+import React from "react";
 import { global } from "@/jusos.config";
 import teamcss from "@styles/page-modules/team.module.scss";
 import Image from "next/image";
@@ -26,6 +27,8 @@ const Team = async ({ data }) => {
       otherMembers.push(item);
     }
   });
+
+  return <>HELLO</>
 
   return (
     <div className="container">

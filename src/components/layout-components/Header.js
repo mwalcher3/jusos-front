@@ -1,6 +1,5 @@
 "use client"
 
-
 import React, { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -178,9 +177,8 @@ const Header = ({ menuData }) => {
                     {menuData.menu.items.map((item, index) => {
 
                         return (
-                            <>
+                            <div key={index}>
                                 <div
-                                    key={index}
                                     className={headercss.burgerMenuTitles}
                                     onClick={() => { index == subMenuCount ? setSubMenuCount(-1) : setSubMenuCount(index) }}>
                                     {item.title}
@@ -203,7 +201,7 @@ const Header = ({ menuData }) => {
                                     })}
                                 </div>
                                 <div className="horizontalLine"></div>
-                            </>
+                            </div>
                         )
                     })}
                 <section className={headercss.burgerlower}>

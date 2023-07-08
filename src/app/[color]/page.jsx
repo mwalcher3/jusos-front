@@ -40,9 +40,8 @@ export default async function FrontPage({ params }) {
     const extraAttributes = extraJson.data.attributes
 
     return (<>
-        <h1> This is colormode {params.color} </h1>
         {/* <Slideshow data={attributes.slideShowImages} smallScreenData={attributes.slideShowSmallScreens} /> */}
-        {/* <Introduction data={attributes.introduction} /> */}
+        <Introduction data={attributes.introduction} />
         <Slider data={extraAttributes.slider} instaData={attributes.slider.sliderInstagram} />
         {/* <InternalLinks data={extraAttributes.internalLinks} /> */}
         <ExternalLinks data={attributes.externalLinks} />
