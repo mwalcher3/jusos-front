@@ -23,7 +23,6 @@ import sprecher from "@components/page-components/Team/index";
 import termine from "@components/page-components/Calendar";
 import anträge from "@components/page-components/Motions";
 import unsereArbeit from "@components/page-components/Organization";
-import zoom from "@components/page-components/Zoom";
 
 export const singleComponents = {
   artikel: artikel,
@@ -34,7 +33,6 @@ export const singleComponents = {
   dummy: SimplePage,
   termine: termine,
   anträge: anträge,
-  zoom: zoom,
   unsere_arbeit: unsereArbeit,
 };
 

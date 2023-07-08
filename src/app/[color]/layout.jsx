@@ -50,9 +50,9 @@ export default async function DefaultLayout({ children }) {
 
     return (
         <div>
-            {/* <Layout menuData={menuJsonFull}> */}
+            <Layout menuData={menuJsonFull}>
                 {children}
-            {/* </Layout> */}
+            </Layout>
         </div>
     );
 }

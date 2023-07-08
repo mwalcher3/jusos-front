@@ -15,7 +15,9 @@ export default async function CategoryPage({ params }) {
   const pathsToUrls = await getPathsToUrls()
   const endpoint = pathsToUrls.find((pathToUrl) => pathToUrl.category == decodeURI(params.category))?.endpoint
 
-  const ComponentName = singleComponents[decodeURI(params.category)]
+  const ComponentName = singleComponents[decodeURI(params.category)] || singleComponents["dummy"]
+
+
 
   if (!endpoint) {
     notFound()

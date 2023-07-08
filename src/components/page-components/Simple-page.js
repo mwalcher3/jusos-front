@@ -8,8 +8,6 @@ import MainImage from "@components/other-components/MainImage"
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 
-
-
 const SimplePage = ({data}) => {
   const dataAttributes= data.data.attributes
 
@@ -39,7 +37,6 @@ const SimplePage = ({data}) => {
                 case "component.internal-link-box": 
                 return(<InternalLinks key={index} data={item.internalLinks}/>)
     
-
                 case "component.list":
                   return(
                   <ul key={index}>
