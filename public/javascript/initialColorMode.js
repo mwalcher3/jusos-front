@@ -1,3 +1,5 @@
+"use client"
+
 ;(function initTheme() {
     function getInitialColorMode() {
         const persistedColorPreference = window.localStorage.getItem('color-mode');
