@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
-// const withPWA = require('next-pwa')({
-//   dest: 'public',
-// })
 
 module.exports = {
-  // reactStrictMode: true,
+  reactStrictMode: true,
   images: {
     domains: [
       "content.jusoshd.uber.space",

@@ -94,7 +94,7 @@ const Header = ({ menuData }) => {
 
                 {/*Jusos Logo*/}
                 <Link href={"/"} className={headercss.logodiv}>
-                    <img src="/jusos_logo_ROT_HEIDELBERG_VERSION.png"
+                    <img src="/logos/jusos_logo_ROT_HEIDELBERG_VERSION.png"
                         alt="Jusos Logo"
                         className={headercss.logo + " " + (intersection == false || burgerOpen ? headercss.logoscrolled : "")}>
                         </img>
@@ -147,7 +147,7 @@ const Header = ({ menuData }) => {
                         <Link href="https://jusowerden.spd.de/eintritt-juso" target="_blank">
                         <Image 
                             className={headercss.fistLogo}
-                            src="/Piktogramm.png"
+                            src="/logos/Piktogramm.png"
                             alt="Jusos Piktogramm"
                             height="30"
                             width="30"
@@ -210,7 +210,7 @@ const Header = ({ menuData }) => {
                 <Link href="https://jusowerden.spd.de/eintritt-juso" target="_blank"> 
                 Mitglied werden <Image 
                     className={headercss.fistLogo}
-                    src="/Piktogramm.png"
+                    src="/logos/Piktogramm.png"
                     alt="Jusos Piktogramm"
                     height="30"
                     width="30"

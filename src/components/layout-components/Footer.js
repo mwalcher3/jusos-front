@@ -13,7 +13,7 @@ const Footer = ({ menuData }) => {
           <Link target="_blank" href={"https://jusos.de/"} passHref>
             <div className={footercss.logos}>
               <Image
-                src={`/Jusos_Logo_4c.svg_.png`}
+                src={`/logos/Jusos_Logo_4c.svg_.png`}
                 alt="jusos logo"
                 layout="fill"
                 objectFit="contain"
@@ -25,7 +25,7 @@ const Footer = ({ menuData }) => {
           <Link target="_blank" href={"https://spd-heidelberg.de"} passHref>
             <div className={footercss.logos}>
               <Image
-                src={`/LogoSPDHD.png`}
+                src={`/logos/LogoSPDHD.png`}
                 alt="spd logo"
                 layout="fill"
                 objectFit="contain"
@@ -37,7 +37,7 @@ const Footer = ({ menuData }) => {
           <Link target="_blank" href={"https://www.spd.de/"} passHref>
             <div className={footercss.logos}>
               <Image
-                src={`/Spd_Logo.png`}
+                src={`/logos/Spd_Logo.png`}
                 alt="jusos Heidelberg logo"
                 layout="fill"
                 objectFit="contain"

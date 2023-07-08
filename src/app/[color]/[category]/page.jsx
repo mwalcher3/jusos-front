@@ -17,8 +17,6 @@ export default async function CategoryPage({ params }) {
 
   const ComponentName = singleComponents[decodeURI(params.category)] || singleComponents["dummy"]
 
-
-
   if (!endpoint) {
     notFound()
   }

@@ -16,8 +16,8 @@ export const metadata = {
     'ein sozialistischer, feministischer, antifaschistischer und internationalistischer Richtungsverband. ' +
     'Bei uns engagieren sich junge Menschen zwischen 14 und 35 Jahren und setzen sich für eine gerechtere ' +
     'Gesellschaft ein.',
-  icon: '/jusosFavicon.png',
-  shortcut: '/jusosFavicon.png',
+  icon: '/logos/jusosFavicon.png',
+  shortcut: '/lgoos/jusosFavicon.png',
 }
 
 export default async function RootLayout({ children }) {
