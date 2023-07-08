@@ -2,9 +2,9 @@ export const global = {
   fetchURI: "https://content.jusoshd.uber.space/api",
   host: "https://content.jusoshd.uber.space",
   endpointSyntax: (item) => {
+    item = item.toLowerCase();
 
     const endpointAltered = item
-      .toLowerCase()
       .replace(/ /g, "_")
       .replace(/\*/g, "")
       .replace(/"/g, "")

@@ -1,4 +1,4 @@
-import { global } from "jusos.config";
+import { global } from "@/jusos.config";
 
 import Link from "next/link";
 import Introduction from "@components/other-components/Introduction";

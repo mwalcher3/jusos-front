@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { global, singleComponents } from 'jusos.config'
+import { global, singleComponents } from '@/jusos.config'
 import { getPathsToUrls } from '../layout'
 
 

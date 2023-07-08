@@ -1,6 +1,6 @@
 "use client";
 
-import { global } from "jusos.config";
+import { global } from "@/jusos.config";
 
 import generalcss from "@styles/page-modules/topics.general.module.scss";
 import ReactMarkdown from "react-markdown";

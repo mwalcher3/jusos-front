@@ -1,4 +1,4 @@
-import { global } from "jusos.config";
+import { global } from "@/jusos.config";
 
 import React from "react";
 import MeetingTypes from "@components/other-components/MeetingTypes";

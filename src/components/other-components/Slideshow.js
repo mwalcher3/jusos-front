@@ -1,6 +1,6 @@
 "use client";
 
-import { global } from "jusos.config";
+import { global } from "@/jusos.config";
 
 import slideshowcss from "@styles/component-modules/slideshow.module.scss";
 import Carousel from "@components/other-components/Carousel";

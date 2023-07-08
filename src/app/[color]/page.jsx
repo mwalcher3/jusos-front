@@ -1,4 +1,4 @@
-import { global } from 'jusos.config'
+import { global } from '@/jusos.config'
 
 
 import React from 'react'
@@ -41,10 +41,10 @@ export default async function FrontPage({ params }) {
 
     return (<>
         <h1> This is colormode {params.color} </h1>
-        <Slideshow data={attributes.slideShowImages} smallScreenData={attributes.slideShowSmallScreens} />
-        <Introduction data={attributes.introduction} />
+        {/* <Slideshow data={attributes.slideShowImages} smallScreenData={attributes.slideShowSmallScreens} /> */}
+        {/* <Introduction data={attributes.introduction} /> */}
         <Slider data={extraAttributes.slider} instaData={attributes.slider.sliderInstagram} />
-        <InternalLinks data={extraAttributes.internalLinks} />
+        {/* <InternalLinks data={extraAttributes.internalLinks} /> */}
         <ExternalLinks data={attributes.externalLinks} />
     </>
 

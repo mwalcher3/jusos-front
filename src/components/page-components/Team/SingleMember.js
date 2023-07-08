@@ -1,4 +1,4 @@
-import { global } from "jusos.config";
+import { global } from "@/jusos.config";
 
 import React from "react";
 import smembercss from "@styles/page-modules/singlemember.module.scss";

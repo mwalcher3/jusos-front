@@ -1,6 +1,6 @@
 "use client";
 
-import { global } from "jusos.config";
+import { global } from "@/jusos.config";
 
 import articlecss from "@styles/page-modules/article.module.scss";
 import moment from "moment";
