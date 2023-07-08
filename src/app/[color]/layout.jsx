@@ -32,7 +32,7 @@ export async function generateStaticParams() {
     return colors
 }
 
-export default async function DefaultLayout({ children }) {
+export default async function DefaultLayout({ params, children }) {
 
     const pathsToUrls = await getPathsToUrls()
 
@@ -49,8 +49,8 @@ export default async function DefaultLayout({ children }) {
     )
 
     return (
-        <div>
-            <Layout menuData={menuJsonFull}>
+        <div id={"main-container"} className={`${params.color}-mode`}>
+            <Layout menuData={menuJsonFull} dark={params.color == "dark"}>
                 {children}
             </Layout>
         </div>

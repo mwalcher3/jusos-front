@@ -16,6 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@sendgrid/mail": "^7.7.0",
+    "cookies-next": "^2.1.2",
     "mathjs": "^10.5.0",
     "moment": "^2.29.4",
     "next": "^13.4.0",

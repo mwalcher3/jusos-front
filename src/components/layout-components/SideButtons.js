@@ -1,21 +1,27 @@
 "use client";
 
-import React from "react";
-import sidebuttoncss from "../../styles/layout-modules/sidebutton.module.scss";
+import { setCookie } from "cookies-next";
+import sidebuttoncss from "@styles/layout-modules/sidebutton.module.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faEnvelope, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 const SideButtons = () => {
   const toggleTheme = () => {
-    var colorTheme = localStorage.getItem("color-mode");
+    const currentColor = document.getElementById("main-container").classList.contains("dark-mode")
+      ? "dark"
+      : "light";
 
-    localStorage.setItem("color-mode", colorTheme === "light" ? "dark" : "light");
-
-    if (colorTheme == "light") {
-      document.body.classList.add("dark");
-    } else {
+    if (currentColor == "dark") {
+      document.getElementById("main-container").classList.remove("dark-mode");
+      document.getElementById("main-container").classList.add("light-mode");
       document.body.classList.remove("dark");
+      setCookie("preferredColormode", "light", { maxAge: 180*24*60*60 });
+    } else {
+      document.getElementById("main-container").classList.remove("light-mode");
+      document.getElementById("main-container").classList.add("dark-mode");
+      document.body.classList.add("dark");
+      setCookie("preferredColormode", "dark", { maxAge: 180*24*60*60 });
     }
   };
 

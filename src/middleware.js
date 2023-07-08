@@ -11,13 +11,11 @@ export const config = {
      * - icons
      * - service worker
      */
-    "/((?!api|_next/static|favicons|icons|images|logos|_next/image|sw.js).*)",
+    "/((?!api|_next/static|manifest|images|logos|_next/image|sw.js|workbox).*)",
   ],
 };
 
-
 export default function middleware(request) {
-
   // const searchParams = request.nextUrl.searchParams;
   // we very much don't want to use searchParams for routing
   const cookieColormode = request.cookies.get("preferredColormode")?.value;
@@ -29,6 +27,5 @@ export default function middleware(request) {
   const rewritePath =
     request.nextUrl.pathname == "/" ? `/${color}` : `/${color}${request.nextUrl.pathname}`;
   const rewriteUrl = new URL(rewritePath, request.nextUrl);
-  console.log("HELLO FROM MIDDLEWARE", rewritePath)
   return NextResponse.rewrite(rewriteUrl);
 }

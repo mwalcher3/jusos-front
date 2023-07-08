@@ -1,4 +1,10 @@
-body{
+// body{ background-color: white}
+// body.dark {background-color: rgb(0,0,0)}
+
+body {background-color: pink}
+body.dark {background-color: blue}
+
+.light-mode {
     background-color: white;
     color: black;
     --darkmode-text-color: rgb(187, 187, 187);
@@ -40,7 +46,7 @@ body{
     --hashtag: #960028;
 }
 
-body.dark{
+.dark-mode {
     background-color: rgb(0, 0, 0);
     color: var(--darkmode-text-color);
     --shadow: rgba(204, 0, 0, 0.394);

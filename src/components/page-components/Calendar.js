@@ -8,7 +8,6 @@ import Introduction from "@components/other-components/Introduction";
 import CalendarDisplay from "../other-components/CalendarDisplay";
 
 const Calendar = async ({ data }) => {
-  return <>HILO</>
   const dataAttributes = data.data.attributes;
   // fetch calendar entries data
   const calendarData = await fetch(
