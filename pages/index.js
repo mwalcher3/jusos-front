@@ -51,7 +51,7 @@ export const getStaticProps = async () => {
   })
 
   // fetch menu data
-  const menuData = await fetch(`${global.fetchURI}/menus/menu?nested`);
+  const menuData = await fetch(`${global.fetchURI}/menus/1?nested&populate=*`);
   const menuJson = await menuData.json();
   // and replace url endpoint with corresponding slug
   const menuJsonFull = JSON.parse(

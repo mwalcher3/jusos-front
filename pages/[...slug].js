@@ -92,7 +92,7 @@ export async function getStaticPaths() {
   const pathsToUrls = {}
 
   // single page types are listed in menu
-  const menuData = await fetch(`${global.fetchURI}/menus/menu?nested`);
+  const menuData = await fetch(`${global.fetchURI}/menus/1?nested&populate=*`);
   const menuDataJson = await menuData.json();
 
   const endpointsToFetch = []
@@ -290,7 +290,7 @@ export const getStaticProps = async (context) => {
     ))
 
   // fetch menu data
-  const menuData = await fetch(`${global.fetchURI}/menus/menu?nested`);
+  const menuData = await fetch(`${global.fetchURI}/menus/1?nested&populate=*`);
   const menuJson = await menuData.json();
   // and replace url endpoint with corresponding slug
   const menuJsonFull = JSON.parse(
