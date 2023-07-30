@@ -84,95 +84,99 @@ const Slugs = ({ menuData, pageData }) => {
 
 export default Slugs
 
-export async function getStaticPaths() {
+// export async function getStaticPaths() {
 
-  // the paths (slugs) of pages
-  const paths = []
-  // the rewrite map from paths to URL endpoints
-  const pathsToUrls = {}
+//   // the paths (slugs) of pages
+//   const paths = []
+//   // the rewrite map from paths to URL endpoints
+//   const pathsToUrls = {}
 
-  // single page types are listed in menu
-  const menuData = await fetch(`${global.fetchURI}/menus/1?nested&populate=*`);
-  const menuDataJson = await menuData.json();
+//   // single page types are listed in menu
+//   const menuData = await fetch(`${global.fetchURI}/menus/1?nested&populate=*`);
+//   const menuDataJson = await menuData.json();
 
-  const endpointsToFetch = []
-  JSON.stringify(menuDataJson, (key, value) => {
-    if (key == "url" && value != "" && !endpointsToFetch.includes(value)) endpointsToFetch.push(value)
-    return (value)
-  })
+//   const endpointsToFetch = []
+//   JSON.stringify(menuDataJson, (key, value) => {
+//     if (key == "url" && value != "" && !endpointsToFetch.includes(value)) endpointsToFetch.push(value)
+//     return (value)
+//   })
 
-  for (let endpoint of endpointsToFetch) {
-    const data = await fetch(`${global.fetchURI}${endpoint}?fields[0]=slug`);
-    const json = await data.json()
-    const slug = [global.endpointSyntax(json.data.attributes.slug)]
-    paths.push(slug)
-    pathsToUrls[slug] = endpoint
-  }
+//   for (let endpoint of endpointsToFetch) {
+//     const data = await fetch(`${global.fetchURI}${endpoint}?fields[0]=slug`);
+//     const json = await data.json()
+//     const slug = [global.endpointSyntax(json.data.attributes.slug)]
+//     paths.push(slug)
+//     pathsToUrls[slug] = endpoint
+//   }
 
-  // (some) collection content types appear as children on specific pages 
-  // their full props can be fetched via the collection API endpoint
+//   // (some) collection content types appear as children on specific pages 
+//   // their full props can be fetched via the collection API endpoint
 
-  const collections = [
+//   const collections = [
 
-    {
-      "parentEndpoint": "/article-page", "childrenField": "articles",
-      "collectionEndpoint": "/articles", "slugField": "title"
-    },
+//     {
+//       "parentEndpoint": "/article-page", "childrenField": "articles",
+//       "collectionEndpoint": "/articles", "slugField": "title"
+//     },
 
-    {
-      "parentEndpoint": "/team-page", "childrenField": "members",
-      "collectionEndpoint": "/members", "slugField": "name"
-    }
-  ]
+//     {
+//       "parentEndpoint": "/team-page", "childrenField": "members",
+//       "collectionEndpoint": "/members", "slugField": "name"
+//     }
+//   ]
 
-  for (let collection of collections) {
-    const query = qs.stringify({
-      fields: [`slug`],
-      populate: {
-        [collection.childrenField]: {
-          fields: [`${collection.slugField}`, `id`]
-        }
-      }
-    })
+//   for (let collection of collections) {
+//     const query = qs.stringify({
+//       fields: [`slug`],
+//       populate: {
+//         [collection.childrenField]: {
+//           fields: [`${collection.slugField}`, `id`]
+//         }
+//       }
+//     })
 
-    // const qquery = "fields[0]=slug&populate[articles][fields][0]=title&populate[articles][fields][1]=id"
+//     // const qquery = "fields[0]=slug&populate[articles][fields][0]=title&populate[articles][fields][1]=id"
 
-    const data = await fetch(`${global.fetchURI}${collection.parentEndpoint}?${query}`)
-    const json = await data.json()
-    const slug = json.data.attributes.slug
-    const kids = json.data.attributes[collection.childrenField].data
-    for (let child of kids) {
-      const alias = global.endpointSyntax(child.attributes[collection.slugField])
-      const id = child.id
-      const childSlug = [`${slug}`, `${alias}`]
-      paths.push(childSlug)
-      pathsToUrls[childSlug] = `${collection.collectionEndpoint}/${id}`
-    }
-  }
+//     const data = await fetch(`${global.fetchURI}${collection.parentEndpoint}?${query}`)
+//     const json = await data.json()
+//     const slug = json.data.attributes.slug
+//     const kids = json.data.attributes[collection.childrenField].data
+//     for (let child of kids) {
+//       const alias = global.endpointSyntax(child.attributes[collection.slugField])
+//       const id = child.id
+//       const childSlug = [`${slug}`, `${alias}`]
+//       paths.push(childSlug)
+//       pathsToUrls[childSlug] = `${collection.collectionEndpoint}/${id}`
+//     }
+//   }
 
-  // write path to URL lookup table to file cache...
-  fs.writeFile(
-    path.join(process.cwd(), 'staticstore/pathsToUrls.db'),
-    JSON.stringify(pathsToUrls), (err) => { }
-  )
+//   // write path to URL lookup table to file cache...
+//   fs.writeFile(
+//     path.join(process.cwd(), 'staticstore/pathsToUrls.db'),
+//     JSON.stringify(pathsToUrls), (err) => { }
+//   )
 
-  // ... and return fetched slugs as static paths
-  const params =
-    paths.map((path) => {
-      return {
-        params: { slug: path }
-      }
-    })
+//   // ... and return fetched slugs as static paths
+//   const params =
+//     paths.map((path) => {
+//       return {
+//         params: { slug: path }
+//       }
+//     })
 
-  return {
-    paths: [
-      ...params,
-    ],
-    fallback: 'blocking'
-  }
-}
+//   // return { 
+//   //   paths: []
+//   // }
 
-export const getStaticProps = async (context) => {
+//   return {
+//     paths: [
+//       ...params,
+//     ],
+//     fallback: 'blocking'
+//   }
+// }
+
+export const getServerSideProps = async (context) => {
 
   //note that it is not possible to pass down data from getStaticPaths to 
   // getStaticProps or create a global function to fetch the data
@@ -313,6 +317,6 @@ export const getStaticProps = async (context) => {
       menuData: menuJsonFull,
       pageData: pageJsonFull
     },
-    revalidate: 30,
+    // revalidate: 30,
   }
 }
