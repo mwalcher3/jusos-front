@@ -51,15 +51,16 @@ const Footer = ({ menuData }) => {
 
 
         <div className={footercss.menu} >
-          {menuData.menu.items.map((item, index) => {
+          {menuData.data.attributes.items.data.map((item, index) => {
             return (
               <div key={index} className={footercss.tab}>
 
                 <div className={footercss.title}>
-                  {item.title}
+                  {item.attributes.title}
                 </div>
 
-                {item.children.map((itemChildren, index) => {
+                {item.attributes.children.data.map((child, index) => {
+                  const itemChildren= child.attributes
                   return (
                     <Link key={index} href={`/${itemChildren.url}`} passHref>
                       <div className={footercss.subtitle}>

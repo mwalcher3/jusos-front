@@ -15,6 +15,7 @@ const TopicsCurrent = ({ data }) => {
   const dataAttributes = data.data.attributes;
 
  useEffect(() => {
+    instagramData.data? 
     instagramData.data.map((item,id) => {
       if ( item.media_type == "CAROUSEL_ALBUM") { 
         //calculate the natural height of the image
@@ -37,7 +38,7 @@ const TopicsCurrent = ({ data }) => {
         const desiredHeight= singleImage.naturalHeight
         singleImage.style.height=desiredHeight+"px"
       }
-    })
+    }) : {}
   },[instagramData.data])
 
   return (
@@ -172,8 +173,9 @@ const TopicsCurrent = ({ data }) => {
         })
       ) : instagramData.error ? (
         <>
-          <div> Instagram Error {instagramData.error.code} </div>
-          <div> {instagramData.error.message} </div>
+          <div> Unser <a href="https://www.instagram.com/jusoshd/?hl=en">InstagramFeed</a> steht 
+          hier aktuell nicht zur Verfügung.  </div>
+          <div> Fehler {instagramData.error.code} </div>
         </>
       ) : (
         ""

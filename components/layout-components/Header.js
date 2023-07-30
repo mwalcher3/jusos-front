@@ -102,7 +102,7 @@ const Header = ({ menuData }) => {
                 {/*Nav Bar*/}
                 <div className={headercss.navmenu}>
 
-                    {menuData.menu.items.map((item, index) => {
+                    {menuData.data.attributes.items.data.map((item, index) => {
                         return (
                             <div key={index}>
                                 <nobr>
@@ -112,7 +112,7 @@ const Header = ({ menuData }) => {
                                         onMouseOut={() => { setHoveringCount(-1) }}
                                         key={index}>
 
-                                        {item.title}
+                                        {item.attributes.title}
                                         <div className={headercss.navlabelunderline + " " + (hoveringCount == index ? "" : headercss.navlabelunderlineclosed)}></div>
                                     </div>
                                 </nobr>
@@ -121,7 +121,8 @@ const Header = ({ menuData }) => {
                                     onMouseOver={() => { setHoveringCount(index) }}
                                     onMouseOut={() => { setHoveringCount(-1) }}
                                     className={hoveringCount == index ? headercss.navsublabel : headercss.navsubclosed} >
-                                    {item.children.map((itemChildren, index) => {
+                                    {item.attributes.children.data.map((child, index) => {
+                                        const itemChildren=child.attributes
                                         if(itemChildren.hide_from_header!=true){
                                         return (
                                             <div key={index}>
@@ -172,7 +173,7 @@ const Header = ({ menuData }) => {
                 <div className={headercss.burgerMenuContent}>
                     <h3>Jusos Heidelberg</h3>
                   
-                    {menuData.menu.items.map((item, index) => {
+                    {menuData.data.attributes.items.data.map((item, index) => {
 
                         return (
                             <>
@@ -180,13 +181,14 @@ const Header = ({ menuData }) => {
                                     key={index}
                                     className={headercss.burgerMenuTitles}
                                     onClick={() => { index == subMenuCount ? setSubMenuCount(-1) : setSubMenuCount(index) }}>
-                                    {item.title}
+                                    {item.attributes.title}
                                 </div>
 
                                 <div
                                     className={index == subMenuCount ?
                                         headercss.burgerMenuSubtitles : headercss.burgerMenuSubtitlesHidden}>
-                                    {item.children.map((itemChildren) => {
+                                    {item.attributes.children.data.map((child) => {
+                                        const itemChildren=child.attributes
                                         if(itemChildren.hide_from_header!=true){
                                         return (
                                             <div key={itemChildren.title}>
