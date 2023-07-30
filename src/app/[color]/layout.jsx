@@ -5,7 +5,7 @@ import Layout from '@components/layout-components/Layout'
 
 export async function getPathsToUrls() {
     // category page types are listed in menu
-    const menuData = await fetch(`${global.fetchURI}/menus/menu?nested`);
+    const menuData = await fetch(`${global.fetchURI}/menus/1?nested&populate=*`);
     const menuDataJson = await menuData.json();
     // extract urls of pages listed in menu
     const endpointsToFetch = [];
@@ -37,7 +37,7 @@ export default async function DefaultLayout({ params, children }) {
     const pathsToUrls = await getPathsToUrls()
 
     // fetch menu data
-    const menuData = await fetch(`${global.fetchURI}/menus/menu?nested`);
+    const menuData = await fetch(`${global.fetchURI}/menus/1?nested&populate=*`);
     const menuJson = await menuData.json();
     // and replace url endpoint with corresponding slug
     const menuJsonFull = JSON.parse(

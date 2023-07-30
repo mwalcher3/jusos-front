@@ -13,29 +13,31 @@ import { useEffect } from "react";
 
 const InstagramDisplay = ({ dataAttributes, instagramData }) => {
   useEffect(() => {
-    instagramData.data.map((item, id) => {
-      if (item.media_type == "CAROUSEL_ALBUM") {
-        //calculate the natural height of the image
-        const first = item.children.data[0];
-        let album = document.getElementById("album" + first.id);
-        let firstImg = document.getElementById(first.id + "0");
-        let desiredHeight = firstImg.naturalHeight;
+    instagramData.data
+      ? instagramData.data.map((item, id) => {
+          if (item.media_type == "CAROUSEL_ALBUM") {
+            //calculate the natural height of the image
+            const first = item.children.data[0];
+            let album = document.getElementById("album" + first.id);
+            let firstImg = document.getElementById(first.id + "0");
+            let desiredHeight = firstImg.naturalHeight;
 
-        //set the images to their natural height
-        album.style.height = desiredHeight + "px";
-        let albumLength = item.children.data.length;
-        if (albumLength == 2) {
-          albumLength = 2 * albumLength;
-        }
-        for (let i = 0; i < albumLength; i++) {
-          document.getElementById(first.id + i).style.height = desiredHeight + "px";
-        }
-      } else if (item.media_type == "IMAGE") {
-        const singleImage = document.getElementById("singleImage" + id);
-        const desiredHeight = singleImage.naturalHeight;
-        singleImage.style.height = desiredHeight + "px";
-      }
-    });
+            //set the images to their natural height
+            album.style.height = desiredHeight + "px";
+            let albumLength = item.children.data.length;
+            if (albumLength == 2) {
+              albumLength = 2 * albumLength;
+            }
+            for (let i = 0; i < albumLength; i++) {
+              document.getElementById(first.id + i).style.height = desiredHeight + "px";
+            }
+          } else if (item.media_type == "IMAGE") {
+            const singleImage = document.getElementById("singleImage" + id);
+            const desiredHeight = singleImage.naturalHeight;
+            singleImage.style.height = desiredHeight + "px";
+          }
+        })
+      : {};
   }, [instagramData.data]);
 
   return (
@@ -147,8 +149,12 @@ const InstagramDisplay = ({ dataAttributes, instagramData }) => {
         })
       ) : instagramData.error ? (
         <>
-          <div> Instagram Error {instagramData.error.code} </div>
-          <div> {instagramData.error.message} </div>
+          <div>
+            {" "}
+            Unser <a href="https://www.instagram.com/jusoshd/?hl=en">Instagram-Feed</a> steht hier
+            aktuell leider nicht zur Verfügung{" "}
+          </div>
+          <div> Fehler-Code: {instagramData.error.code} </div>
         </>
       ) : (
         ""

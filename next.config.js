@@ -3,6 +3,20 @@
 module.exports = {
   reactStrictMode: true,
   images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "1337",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "uber.space",
+        port: "",
+        pathname: "/uploads/**",
+      },
+    ],
     domains: [
       "content.jusoshd.uber.space",
       "video-muc2-1.cdninstagram.com",

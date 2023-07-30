@@ -1,6 +1,10 @@
 export const global = {
-  fetchURI: "https://content.jusoshd.uber.space/api",
-  host: "https://content.jusoshd.uber.space",
+  fetchURI:
+    process.env.HOST == "local"
+      ? "http://localhost:1337/api"
+      : "https://content.jusoshd.uber.space/api",
+  host:
+    process.env.HOST == "local" ? "http://localhost:1337" : "https://content.jusoshd.uber.space",
   endpointSyntax: (item) => {
     item = item.toLowerCase();
 

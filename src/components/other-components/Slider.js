@@ -10,7 +10,8 @@ import moment from "moment";
 import "moment/locale/de";
 
 const Slider = ({ data, instaData }) => {
-  const dataArray = [{ title: "Aktuelles", text: instaData.data[0].caption, link: "/aktuelles" }];
+  // const dataArray = [{ title: "Aktuelles", text: instaData.data[0].caption, link: "/aktuelles" }];
+  const dataArray =[]
   const relations = [
     { access: data.articles, endpoint: "/artikel" },
     { access: data.topics, endpoint: "/schwerpunkte" },
@@ -100,7 +101,7 @@ const Slider = ({ data, instaData }) => {
             >
               {item.title ? (
                 <h3>
-                  <ReactMarkdown rehypePlugins={[rehypeRaw]}> {item.title}</ReactMarkdown>
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>{item.title}</ReactMarkdown>
                 </h3>
               ) : (
                 <></>
