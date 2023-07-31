@@ -3,41 +3,46 @@ import { global, collections, collectionComponents } from 'jusos.config'
 import { notFound } from 'next/navigation'
 import qs from "qs";
 
-async function getItemsToUrls() {
+// 
+// Don't generate all items at build time to avoid ENOMEM not enough memory
+// on Uberspace
+//
 
-    // the rewrite map from paths to URL endpoints
-    const itemsToUrls = [];
+// async function getItemsToUrls() {
 
-    for (let collection of collections) {
-        const query = qs.stringify({
-            fields: [`slug`],
-            populate: {
-                [collection.childrenField]: {
-                    fields: [`${collection.slugField}`, `id`],
-                },
-            },
-        });
+//     // the rewrite map from paths to URL endpoints
+//     const itemsToUrls = [];
 
-        const data = await fetch(`${global.fetchURI}${collection.parentEndpoint}?${query}`);
-        const json = await data.json();
-        const category = global.endpointSyntax(json.data.attributes.slug);
+//     for (let collection of collections) {
+//         const query = qs.stringify({
+//             fields: [`slug`],
+//             populate: {
+//                 [collection.childrenField]: {
+//                     fields: [`${collection.slugField}`, `id`],
+//                 },
+//             },
+//         });
 
-        const kids = json.data.attributes[collection.childrenField].data;
-        for (let child of kids) {
-            const item = global.endpointSyntax(child.attributes[collection.slugField]);
-            const id = child.id
-            const endpoint = `${collection.collectionEndpoint}/${id}`
-            itemsToUrls.push({ category: category, item: item, endpoint: endpoint })
-        }
-    }
-    return itemsToUrls
-}
+//         const data = await fetch(`${global.fetchURI}${collection.parentEndpoint}?${query}`);
+//         const json = await data.json();
+//         const category = global.endpointSyntax(json.data.attributes.slug);
 
-export async function generateStaticParams({ params: { color } }) {
-    const itemsToUrls = await getItemsToUrls()
-    const params = itemsToUrls.map((itemToUrl) => { return { category: itemToUrl.category, item: itemToUrl.item } })
-    return params
-}
+//         const kids = json.data.attributes[collection.childrenField].data;
+//         for (let child of kids) {
+//             const item = global.endpointSyntax(child.attributes[collection.slugField]);
+//             const id = child.id
+//             const endpoint = `${collection.collectionEndpoint}/${id}`
+//             itemsToUrls.push({ category: category, item: item, endpoint: endpoint })
+//         }
+//     }
+//     return itemsToUrls
+// }
+
+// export async function generateStaticParams({ params: { color } }) {
+//     const itemsToUrls = await getItemsToUrls()
+//     const params = itemsToUrls.map((itemToUrl) => { return { category: itemToUrl.category, item: itemToUrl.item } })
+//     return params
+// }
 
 export default async function ItemPage({ params }) {
 
