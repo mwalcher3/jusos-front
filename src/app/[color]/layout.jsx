@@ -34,25 +34,25 @@ export async function generateStaticParams() {
 
 export default async function DefaultLayout({ params, children }) {
 
-    const pathsToUrls = await getPathsToUrls()
+    // const pathsToUrls = await getPathsToUrls()
 
     // fetch menu data
-    const menuData = await fetch(`${global.fetchURI}/menus/1?nested&populate=*`);
-    const menuJson = await menuData.json();
+    // const menuData = await fetch(`${global.fetchURI}/menus/1?nested&populate=*`);
+    // const menuJson = await menuData.json();
     // and replace url endpoint with corresponding slug
-    const menuJsonFull = JSON.parse(
-        JSON.stringify(menuJson, (key, value) => {
-            if (key == "url" && value != "")
-                return pathsToUrls.find((pathToUrl) => pathToUrl.endpoint == value)?.category
-            return value
-        })
-    )
+    // const menuJsonFull = JSON.parse(
+    //     JSON.stringify(menuJson, (key, value) => {
+    //         if (key == "url" && value != "")
+    //             return pathsToUrls.find((pathToUrl) => pathToUrl.endpoint == value)?.category
+    //         return value
+    //     })
+    // )
 
     return (
         <div id={"main-container"} className={`${params.color}-mode`}>
-            <Layout menuData={menuJsonFull} dark={params.color == "dark"}>
+            {/* <Layout menuData={menuJsonFull} dark={params.color == "dark"}> */}
                 {children}
-            </Layout>
+            {/* </Layout> */}
         </div>
     );
 }
