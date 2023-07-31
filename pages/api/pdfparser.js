@@ -1,11 +1,13 @@
 
+import { PDFParser } from "pdf2json"
 
+// import {kColors, kFontFaces, kFontStyles} from "pdf2json/lib/pdfconst"
 
 export default function handler(req, res) {
 
-  const fs = require('fs'),
-  PDFParser = require("pdf2json");
-  const {kColors, kFontFaces, kFontStyles} = require("pdf2json/lib/pdfconst");
+
+  const fs = require('fs')
+  // PDFParser = require("pdf2json");
   const { method } = req;
 
   const pdfParser = new PDFParser();

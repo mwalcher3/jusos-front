@@ -1,9 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
+import { PDFParser } from "pdf2json"
 
 
-const fs = require('fs'),
-PDFParser = require("pdf2json");
+const fs = require('fs')
 
 const pdfParser = new PDFParser();
 
