@@ -4,11 +4,11 @@ import { global, singleComponents } from 'jusos.config'
 import { getPathsToUrls } from '../layout'
 
 
-// export async function generateStaticParams({ params: { color } }) {
-//   const pathsToUrls = await getPathsToUrls()
-//   const params = pathsToUrls.map((pathToUrl) => { return { category: pathToUrl.category } })
-//   return params
-// }
+export async function generateStaticParams({ params: { color } }) {
+  const pathsToUrls = await getPathsToUrls()
+  const params = pathsToUrls.map((pathToUrl) => { return { category: pathToUrl.category } })
+  return params
+}
 
 export default async function CategoryPage({ params }) {
 
