@@ -8,35 +8,35 @@ import qs from "qs";
 // on Uberspace
 //
 
-// async function getItemsToUrls() {
+async function getItemsToUrls() {
 
-//     // the rewrite map from paths to URL endpoints
-//     const itemsToUrls = [];
+    // the rewrite map from paths to URL endpoints
+    const itemsToUrls = [];
 
-//     for (let collection of collections) {
-//         const query = qs.stringify({
-//             fields: [`slug`],
-//             populate: {
-//                 [collection.childrenField]: {
-//                     fields: [`${collection.slugField}`, `id`],
-//                 },
-//             },
-//         });
+    for (let collection of collections) {
+        const query = qs.stringify({
+            fields: [`slug`],
+            populate: {
+                [collection.childrenField]: {
+                    fields: [`${collection.slugField}`, `id`],
+                },
+            },
+        });
 
-//         const data = await fetch(`${global.fetchURI}${collection.parentEndpoint}?${query}`);
-//         const json = await data.json();
-//         const category = global.endpointSyntax(json.data.attributes.slug);
+        const data = await fetch(`${global.fetchURI}${collection.parentEndpoint}?${query}`);
+        const json = await data.json();
+        const category = global.endpointSyntax(json.data.attributes.slug);
 
-//         const kids = json.data.attributes[collection.childrenField].data;
-//         for (let child of kids) {
-//             const item = global.endpointSyntax(child.attributes[collection.slugField]);
-//             const id = child.id
-//             const endpoint = `${collection.collectionEndpoint}/${id}`
-//             itemsToUrls.push({ category: category, item: item, endpoint: endpoint })
-//         }
-//     }
-//     return itemsToUrls
-// }
+        const kids = json.data.attributes[collection.childrenField].data;
+        for (let child of kids) {
+            const item = global.endpointSyntax(child.attributes[collection.slugField]);
+            const id = child.id
+            const endpoint = `${collection.collectionEndpoint}/${id}`
+            itemsToUrls.push({ category: category, item: item, endpoint: endpoint })
+        }
+    }
+    return itemsToUrls
+}
 
 // export async function generateStaticParams({ params: { color } }) {
 //     const itemsToUrls = await getItemsToUrls()
