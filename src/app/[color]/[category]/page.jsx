@@ -8,7 +8,7 @@ export async function generateStaticParams({ params: { color } }) {
   const pathsToUrlsData = await getPathsToUrls()
   const pathsToUrls = pathsToUrlsData.map((pathToUrl) => { return { category: pathToUrl.category } })
 
-  const params = process.env.HOST == "local" ? pathsToUrls : []
+  const params = process.env.HOST == "local" ? pathsToUrls : pathsToUrls
   return params
 }
 
