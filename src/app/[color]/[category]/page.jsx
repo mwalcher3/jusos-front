@@ -5,8 +5,10 @@ import { getPathsToUrls } from '../layout'
 
 
 export async function generateStaticParams({ params: { color } }) {
-  const pathsToUrls = await getPathsToUrls()
-  const params = pathsToUrls.map((pathToUrl) => { return { category: pathToUrl.category } })
+  const pathsToUrlsData = await getPathsToUrls()
+  const pathsToUrls = pathsToUrlsData.map((pathToUrl) => { return { category: pathToUrl.category } })
+  
+  const params = process.env.HOST == "local" ? pathsToUrls : pathsToUrls
   return params
 }
 

@@ -3,11 +3,6 @@ import { global, collections, collectionComponents } from 'jusos.config'
 import { notFound } from 'next/navigation'
 import qs from "qs";
 
-// 
-// Don't generate all items at build time to avoid ENOMEM not enough memory
-// on Uberspace
-//
-
 async function getItemsToUrls() {
 
     // the rewrite map from paths to URL endpoints
@@ -38,17 +33,24 @@ async function getItemsToUrls() {
     return itemsToUrls
 }
 
-// export async function generateStaticParams({ params: { color } }) {
-//     const itemsToUrls = await getItemsToUrls()
-//     const params = itemsToUrls.map((itemToUrl) => { return { category: itemToUrl.category, item: itemToUrl.item } })
-//     return params
-// }
+
+export async function generateStaticParams({ params: { color } }) {
+    const itemsToUrlsData = await getItemsToUrls()
+    const itemsToUrls = itemsToUrlsData.map((itemToUrl) => { return { category: itemToUrl.category, item: itemToUrl.item } })
+    // 
+    // Don't generate items at build time on Uberspace to avoid ENOMEM not enough memory
+    //
+    const params =
+        process.env.HOST == "local" ? itemsToUrls : []
+    return params
+}
 
 export default async function ItemPage({ params }) {
 
     const itemsToUrls = await getItemsToUrls()
     const endpoint = itemsToUrls.find((itemToUrl) =>
-        (itemToUrl.category == decodeURIComponent(params.category) && itemToUrl.item == decodeURIComponent(params.item)))?.endpoint
+    (itemToUrl.category == decodeURIComponent(params.category) &&
+        itemToUrl.item == decodeURIComponent(params.item)))?.endpoint
 
     const SubComponentName = collectionComponents[decodeURIComponent(params.category)]
 

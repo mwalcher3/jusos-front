@@ -28,7 +28,8 @@ export async function getPathsToUrls() {
 
 
 export async function generateStaticParams() {
-    const colors = [{ color: "light" }, { color: "dark" }]
+    const allColors = [{ color: "light" }, { color: "dark" }]
+    const colors = process.env.HOST == "local" ? allColors : [{ color: "dark" }]
     return colors
 }
 

@@ -1,8 +1,10 @@
 export const global = {
+  // the location of strapi api
   fetchURI:
     process.env.HOST == "local"
       ? "http://localhost:1337/api"
       : "https://content.jusoshd.uber.space/api",
+  // the location of other assets 
   host:
     process.env.HOST == "local" ? "http://localhost:1337" : "https://content.jusoshd.uber.space",
   endpointSyntax: (item) => {
@@ -28,6 +30,7 @@ import termine from "@components/page-components/Calendar";
 import anträge from "@components/page-components/Motions";
 import unsereArbeit from "@components/page-components/Organization";
 
+// the map from [category] slugs to page components ("templates")
 export const singleComponents = {
   artikel: artikel,
   kontakt: kontakt,
@@ -43,13 +46,13 @@ export const singleComponents = {
 import singleMember from "@components/page-components/Team/SingleMember";
 import singleArticles from "@components/page-components/Articles/SingleArticles";
 
+// map from collection type to page component
 export const collectionComponents = {
   sprecher: singleMember,
   artikel: singleArticles,
 };
 
-// (some) collection content types appear as children on specific pages
-// their full props can be fetched via the collection API endpoint
+// parameterization of collection component types and fetch endpoints
 
 export const collections = [
   {
