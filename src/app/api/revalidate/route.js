@@ -39,7 +39,6 @@ const revalPayloadToTags = async (payload) => {
   if (payload.model == "meeting-type") return [`/meeting-types/${payload.entry.id}`];
   if (payload.model == "topic") return [`/topics/${payload.entry.id}`];
 
-  console.log(payload);
   return [];
 };
 
@@ -51,8 +50,6 @@ export async function POST(request) {
   const payload = await request.json();
   // get the list of tags to revalidate
   const tags = await revalPayloadToTags(payload);
-  //   const revalpath = "/" + lang;
-  //   console.log("revalidating ", revalpath);
   for (let tag of tags) {
     console.log("revalidating tag", tag);
     revalidateTag(tag);

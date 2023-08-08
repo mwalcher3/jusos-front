@@ -150,7 +150,6 @@ const InstagramDisplay = ({ dataAttributes, instagramData }) => {
       ) : instagramData.error ? (
         <>
           <div>
-            {" "}
             Unser <a href="https://www.instagram.com/jusoshd/?hl=en">Instagram-Feed</a> steht hier
             aktuell leider nicht zur Verfügung{" "}
           </div>
