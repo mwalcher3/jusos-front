@@ -25,7 +25,9 @@ export default async function CategoryPage({ params }) {
     notFound()
   }
 
-  const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`);
+  const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`, {
+    next: { tags: [endpoint] }
+  });
   const pageJson = await pageData.json();
 
   if (!pageJson) {

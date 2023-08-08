@@ -13,14 +13,31 @@ const Team = async ({ data }) => {
   const dataAttributes = data.data.attributes;
   const alternativeImage = dataAttributes.alternativeImage.data.attributes;
 
-  // fetch memberData
-  const memberData = await fetch(`${global.fetchURI}/members?populate=*`);
-  const memberJson = await memberData.json();
+  // fetch list of members listed on team-page
+  const memberListData = await fetch(`${global.fetchURI}/team-page?populate=*`, {
+    next: { tags: ["/team-page"] },
+  });
+  const memberIDList = (await memberListData.json()).data.attributes.members.data.map(
+    (member) => member.id
+  );
+  // fetch member data
+  const memberJson = await Promise.all(
+    memberIDList.map(
+      async (id) =>
+        (
+          await (
+            await fetch(`${global.fetchURI}/members/${id}?populate=*`, {
+              next: { tags: [`/members/${id}`] },
+            })
+          ).json()
+        ).data
+    )
+  );
 
   const sprecher = [];
   const otherMembers = [];
 
-  memberJson.data.forEach((item) => {
+  memberJson.forEach((item) => {
     if ((item.attributes.role == "Sprecher") | (item.attributes.role == "Sprecherin")) {
       sprecher.push(item);
     } else {

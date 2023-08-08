@@ -56,6 +56,8 @@ export const collectionComponents = {
 
 export const collections = [
   {
+    category: "artikel",
+    model: "article",
     parentEndpoint: "/article-page",
     childrenField: "articles",
     collectionEndpoint: "/articles",
@@ -63,6 +65,8 @@ export const collections = [
   },
 
   {
+    category: "sprecher",
+    model: "member",
     parentEndpoint: "/team-page",
     childrenField: "members",
     collectionEndpoint: "/members",

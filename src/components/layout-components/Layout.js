@@ -16,7 +16,7 @@ const Layout = ({ children, menuData, dark }) => {
       document.body.classList.add("dark");
     }
     return () => document.body.classList.remove("dark");
-  }, []);
+  }, [dark]);
 
   return (
     <>

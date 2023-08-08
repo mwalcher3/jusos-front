@@ -1,4 +1,5 @@
 import { global } from 'jusos.config'
+import qs from "qs";
 
 
 import React from 'react'
@@ -15,11 +16,24 @@ export default async function FrontPage({ params }) {
 
     // fetch page data proper
     const endpoint = "/home-page"
-    const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`);
+    const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`, {
+        next: { tags: ['home-page'] }
+    })
     const pageJson = await pageData.json()
 
     // fetch slider and internalLinks data seperately, because the slider data cannot be put in the JSON stringify
-    const extraData = await fetch(`${global.fetchURI}/home-page?populate[internalLinks][populate][0]=image&populate[slider][populate][0]=articles&populate[slider][populate][1]=calendar_entries&populate[slider][populate][2]=topics&populate[slider][populate][3]=meeting_types&populate[slider][populate][4]=quotes`);
+
+    const extraDataQuery = qs.stringify(
+        {
+            populate: {
+                internalLinks: { populate: ["image"] },
+                slider: { populate: ["articles", "calendar_entries", "topics", "meeting_types", "quotes"] }
+            }
+        }
+    )
+    const extraData = await fetch(`${global.fetchURI}/home-page?${extraDataQuery}`, {
+        next: { tags: ['home-page'] }
+    })
     const extraJson = await extraData.json()
 
     const token = process.env.INSTAGRAM_TOKEN

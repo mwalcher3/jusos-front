@@ -3,26 +3,24 @@ import { global, collections, collectionComponents } from 'jusos.config'
 import { notFound } from 'next/navigation'
 import qs from "qs";
 
-async function getItemsToUrls() {
+export async function getItemsToUrls() {
 
     // the rewrite map from paths to URL endpoints
     const itemsToUrls = [];
 
     for (let collection of collections) {
+        const category = collection.category;
+
         const query = qs.stringify({
-            fields: [`slug`],
-            populate: {
-                [collection.childrenField]: {
-                    fields: [`${collection.slugField}`, `id`],
-                },
-            },
+            fields: [`${collection.slugField}`],
+            pagination: { pageSize: 50 }
         });
-
-        const data = await fetch(`${global.fetchURI}${collection.parentEndpoint}?${query}`);
+        const data = await fetch(`${global.fetchURI}${collection.collectionEndpoint}?${query}`, {
+            next: { tags: [collection.model] }
+        });
         const json = await data.json();
-        const category = global.endpointSyntax(json.data.attributes.slug);
+        const kids = json.data;
 
-        const kids = json.data.attributes[collection.childrenField].data;
         for (let child of kids) {
             const item = global.endpointSyntax(child.attributes[collection.slugField]);
             const id = child.id
@@ -36,7 +34,9 @@ async function getItemsToUrls() {
 
 export async function generateStaticParams({ params: { color } }) {
     const itemsToUrlsData = await getItemsToUrls()
-    const itemsToUrls = itemsToUrlsData.map((itemToUrl) => { return { category: itemToUrl.category, item: itemToUrl.item } })
+    const itemsToUrls = itemsToUrlsData.map((itemToUrl) => {
+        return { category: itemToUrl.category, item: itemToUrl.item }
+    })
     // 
     // Don't generate items at build time on Uberspace to avoid ENOMEM not enough memory
     //
@@ -58,9 +58,10 @@ export default async function ItemPage({ params }) {
         notFound()
     }
 
-    const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`);
+    const pageData = await fetch(`${global.fetchURI}${endpoint}?populate=*`, {
+        next: { tags: [endpoint] }
+    });
     const pageJson = await pageData.json();
-
 
     if (!pageJson) {
         notFound()

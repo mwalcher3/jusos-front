@@ -10,13 +10,31 @@ import motioncss from "@styles/page-modules/motion.module.scss";
 const Motions = async ({ data }) => {
   const dataAttributes = data.data.attributes;
 
-  // fetch motion data
-  const motionData = await fetch(
-    `${global.fetchURI}/motion-types?populate[motion][populate][0]=document`
+  // fetch list of motions listed on motion-page
+  const motionListData = await fetch(`${global.fetchURI}/motion-page?populate=*`, {
+    next: { tags: ["/motion-page"] },
+  });
+  const motionIDList = (await motionListData.json()).data.attributes.motion_types.data.map(
+    (motion) => motion.id
   );
-  const motionJson = await motionData.json();
+  // fetch motion data
+  const motionJson = await Promise.all(
+    motionIDList.map(
+      async (id) =>
+        (
+          await (
+            await fetch(
+              `${global.fetchURI}/motion-types/${id}?populate[motion][populate][0]=document`,
+              {
+                next: { tags: [`/motion-types/${id}`] },
+              }
+            )
+          ).json()
+        ).data
+    )
+  );
 
-  const sortedMotions = motionJson.data.sort(
+  const sortedMotions = motionJson.sort(
     (a, b) =>
       new moment(b.attributes.date).format("YYYYMMDD") -
       new moment(a.attributes.date).format("YYYYMMDD")

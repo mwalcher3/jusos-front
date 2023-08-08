@@ -11,7 +11,10 @@ const Calendar = async ({ data }) => {
   const dataAttributes = data.data.attributes;
   // fetch calendar entries data
   const calendarData = await fetch(
-    `${global.fetchURI}/calendar-entries?populate=*&pagination[start]=0&pagination[limit]=100000`
+    `${global.fetchURI}/calendar-entries?populate=*&pagination[start]=0&pagination[limit]=100000`,
+    {
+      next: { tags: ["/calendar-page"] },
+    }
   );
   const calendarJson = await calendarData.json();
   const sortedEvents = calendarJson.data.sort(

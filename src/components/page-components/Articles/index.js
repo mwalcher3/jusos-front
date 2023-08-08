@@ -6,18 +6,32 @@ import "moment/locale/de";
 import ArticleReel from "@components/other-components/ArticleReel";
 
 const Articles = async ({ data }) => {
-  // fetch articleData
-  const articleData = await fetch(
-    `${global.fetchURI}/articles?populate=*&pagination[start]=0&pagination[limit]=100000`
+  // fetch list of articles listed on article page
+  const articleListData = await fetch(`${global.fetchURI}/article-page?populate=*`, {
+    next: { tags: ["/article-page"] },
+  });
+  const articleIDList = (await articleListData.json()).data.attributes.articles.data.map(
+    (article) => article.id
   );
-  const articleJson = await articleData.json();
+  // fetch articles
+  const articleJson = await Promise.all(
+    articleIDList.map(
+      async (id) =>
+        (
+          await (
+            await fetch(`${global.fetchURI}/articles/${id}?populate=*`, {
+              next: { tags: [`/articles/${id}`] },
+            })
+          ).json()
+        ).data
+    )
+  );
 
-  const sortedArticles = articleJson.data.sort(
+  const sortedArticles = articleJson.sort(
     (a, b) =>
       new moment(b.attributes.date).format("YYYYMMDD") -
       new moment(a.attributes.date).format("YYYYMMDD")
   );
-
   return <ArticleReel pageData={data} articles={sortedArticles} />;
 };
 

@@ -94,6 +94,8 @@ const Header = ({ menuData }) => {
           <img
             src="/logos/jusos_logo_ROT_HEIDELBERG_VERSION.png"
             alt="Jusos Logo"
+            // width={200}
+            // height={100}
             className={
               headercss.logo +
               " " +

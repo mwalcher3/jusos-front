@@ -14,12 +14,29 @@ import Accordion from "../other-components/Accordion";
 
 const TopicsGeneral = async ({ data }) => {
   const dataAttributes = data.data.attributes;
-  // fetch topicsData
-  const topicData = await fetch(
-    `${global.fetchURI}/topics?populate=*&pagination[start]=0&pagination[limit]=100000`
+
+  // fetch list of topics listed on general-topic-page
+  const topicListData = await fetch(`${global.fetchURI}/general-topic-page?populate=*`, {
+    next: { tags: ["/general-topic-page"] },
+  });
+  const topicIDList = (await topicListData.json()).data.attributes.topics.data.map(
+    (topic) => topic.id
   );
-  const topicJson = await topicData.json();
-  const sortedTopics = topicJson.data.sort((a, b) => a.id - b.id);
+  // fetch topics data
+  const topicJson = await Promise.all(
+    topicIDList.map(
+      async (id) =>
+        (
+          await (
+            await fetch(`${global.fetchURI}/topics/${id}?populate=*`, {
+              next: { tags: [`/topics/${id}`] },
+            })
+          ).json()
+        ).data
+    )
+  );
+
+  const sortedTopics = topicJson.sort((a, b) => a.id - b.id);
 
   return (
     <div className="container">
