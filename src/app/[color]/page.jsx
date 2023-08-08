@@ -27,7 +27,14 @@ export default async function FrontPage({ params }) {
         {
             populate: {
                 internalLinks: { populate: ["image"] },
-                slider: { populate: ["articles", "calendar_entries", "topics", "meeting_types", "quotes"] }
+                slider: {
+                    populate: ["articles",
+                        "calendar_entries",
+                        "topics",
+                        "meeting_types",
+                        "quotes",
+                        "sliderInstagram"]
+                }
             }
         }
     )
@@ -39,7 +46,7 @@ export default async function FrontPage({ params }) {
     const token = process.env.INSTAGRAM_TOKEN
     const instagramURI = "https://graph.instagram.com/me/media"
     const query = `fields=id,media_type,media_url,permalink,username,timestamp,caption,children{media_url}&limit=1&access_token=${token}`
-    const instagramData = await fetch(`${instagramURI}/${query}`)
+    const instagramData = await fetch(`${instagramURI}/?${query}`)
     const instagramJson = await instagramData.json()
 
     // there is only one deep relation on home-page
