@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
-  experimental: {
-    isrMemoryCacheSize: 50,
-  },
   reactStrictMode: true,
   images: {
     unoptimized: true,
