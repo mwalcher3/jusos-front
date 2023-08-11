@@ -17,6 +17,7 @@ $navheightmedium: 75px;
     overflow: hidden;
     display: grid;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 
@@ -195,8 +196,8 @@ $navheightmedium: 75px;
 
 .burgerMenuTitles{
     font-weight: bold;
-    padding-top:10px;
     cursor: pointer;
+    margin: 10px;
 }
 
 

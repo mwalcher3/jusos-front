@@ -9,6 +9,8 @@
 
     .imageBox{
         cursor: pointer;
+        transform: scale(1);
+        
 
         h2{
             color: var(--black-white-switch);
@@ -22,6 +24,7 @@
             width: fit-content;
             transition: .2s ease-in-out;
         }
+
         .images{
             background-color: white;
             position: relative;

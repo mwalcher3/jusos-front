@@ -3,7 +3,7 @@ import Image from "next/legacy/image";
 import Link from "next/link";
 import footercss from "../../styles/layout-modules/footer.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faFacebook, faTiktok } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = ({ menuData }) => {
   return (
@@ -74,12 +74,16 @@ const Footer = ({ menuData }) => {
           </div>
 
           <div className={footercss.socialmedialinks}>
-            <Link href={"https://www.instagram.com/jusoshd/?hl=en"} passHref>
+            <Link target="_blank" href={"https://www.instagram.com/jusoshd/?hl=en"} passHref>
               <FontAwesomeIcon icon={faInstagram} />
             </Link>
 
-            <Link href={"https://www.facebook.com/jusos.heidelberg/"} passHref>
+            <Link target="_blank" href={"https://www.facebook.com/jusos.heidelberg/"} passHref>
               <FontAwesomeIcon icon={faFacebook} />
+            </Link>
+
+            <Link target="_blank" href={"https://www.tiktok.com/@jusosheidelberg"} passHref>
+              <FontAwesomeIcon icon={faTiktok} />
             </Link>
           </div>
         </div>

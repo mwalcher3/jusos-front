@@ -10,13 +10,22 @@ import moment from "moment";
 import "moment/locale/de";
 
 const Slider = ({ data, instaData }) => {
-  const dataArray = [{ title: "Aktuelles", text: instaData.data[0].caption, link: "/aktuelles" }];
+  const dataArray = [];
   const relations = [
     { access: data.articles, endpoint: "/artikel" },
-    { access: data.topics, endpoint: "/schwerpunkte" },
     { access: data.calendar_entries, endpoint: "/termine" },
+    { access: data.topics, endpoint: "/schwerpunkte" },
     { access: data.meeting_types, endpoint: "/unsere_arbeit" },
   ];
+
+  data.quotes.map((quote) => {
+    dataArray.push({
+      title: quote.title,
+      text: quote.text,
+      link: quote.link,
+      author: quote.author,
+    });
+  });
 
   relations.map((relation) => {
     const { access, endpoint } = relation;
@@ -25,7 +34,7 @@ const Slider = ({ data, instaData }) => {
       if (endpoint == "/termine") {
         let m = moment(item.attributes.date, moment.ISO_8601);
         let formatedDate = m.format("dddd, DD MMMM YYYY, H.mm");
-        dataArray.push({
+        dataArray.unshift({
           title: item.attributes.title,
           text: item.attributes.text,
           link: endpoint,
@@ -42,14 +51,9 @@ const Slider = ({ data, instaData }) => {
     });
   });
 
-  data.quotes.map((quote) => {
-    dataArray.push({
-      title: quote.title,
-      text: quote.text,
-      link: quote.link,
-      author: quote.author,
-    });
-  });
+  dataArray.push({ title: "Aktuelles", text: instaData.data[0].caption, link: "/aktuelles" })
+
+ 
 
   const sliderRef = React.useRef([]);
   const sliderHeights = [];

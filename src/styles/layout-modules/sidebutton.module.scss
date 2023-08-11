@@ -1,18 +1,18 @@
 @import "../../styles/config";
 
-.maincontainer{
-    position: fixed; 
+.maincontainer {
+    position: fixed;
     right: 0;
     bottom: 15vh;
     z-index: 10;
-    display: flex; 
+    display: flex;
     gap: 10px;
     flex-direction: column;
     text-align: right;
 }
 
-.maincontainer{
-    button{
+.maincontainer {
+    button {
         background-color: var(--red);
         color: black;
         border: none;
@@ -21,49 +21,49 @@
         height: 50px;
         width: 50px;
 
-        svg{
-            transform:scale(1.45);
+        svg {
+            transform: scale(1.45);
             margin: auto;
             transition: .2s;
         }
-    
-    }
 
+    }
 }
-.maincontainer button:hover{
-    svg{
+
+.maincontainer button:hover {
+    svg {
         transform: scale(1.8);
         transition: .2s;
     }
 }
 
-.iconsun{
+.iconsun {
     display: var(--sundisplay)
 }
 
-.iconmoon{
+.iconmoon {
     display: var(--moondisplay)
 }
 
 
 
-@media(min-width: $medium){
-    .maincontainer button{
+@media(min-width: $medium) {
+    .maincontainer button {
         height: 60px;
         width: 60px;
 
-        svg{
-           transform: scale(1.9);
+        svg {
+            transform: scale(1.9);
         }
 
-        
+
     }
 
-    .maincontainer button:hover{
-        svg{
+    .maincontainer button:hover {
+        svg {
             transform: scale(2.15)
         }
 
     }
-  
+
 }

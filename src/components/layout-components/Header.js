@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import headercss from "@styles/layout-modules/header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faFacebook, faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { getFontOverrideCss } from "next/dist/server/font-utils";
 
 const Header = ({ menuData }) => {
@@ -205,7 +205,7 @@ const Header = ({ menuData }) => {
                     index == subMenuCount ? setSubMenuCount(-1) : setSubMenuCount(index);
                   }}
                 >
-                  {item.title}
+                  {item.attributes.title}
                 </div>
 
                 <div
@@ -219,14 +219,14 @@ const Header = ({ menuData }) => {
                     if (itemChildren.hide_from_header != true) {
                       return (
                         <div key={itemChildren.title}>
-                          <Link href={`/${itemChildren.url}`} passHref>
+                          <Link href={`/${itemChildren.attributes.url}`} passHref>
                             <div
                               onClick={() => {
                                 setBurgerOpen(false);
                               }}
                               className={headercss.burgerlinks}
                             >
-                              {itemChildren.title}
+                              {itemChildren.attributes.title}
                             </div>
                           </Link>
                         </div>
@@ -255,12 +255,16 @@ const Header = ({ menuData }) => {
             <div>
               <h5>Folge uns</h5>
               <section className={headercss.burgersocialmedia}>
-                <Link href={"https://www.instagram.com/jusoshd/?hl=en"} passHref>
+                <Link target="blank" href={"https://www.instagram.com/jusoshd/?hl=en"} passHref>
                   <FontAwesomeIcon icon={faInstagram} />
                 </Link>
 
-                <Link href={"https://www.facebook.com/jusos.heidelberg/"} passHref>
+                <Link target="blank" href={"https://www.facebook.com/jusos.heidelberg/"} passHref>
                   <FontAwesomeIcon icon={faFacebook} />
+                </Link>
+
+                <Link target="blank" href={"https://www.tiktok.com/@jusosheidelberg"} passHref>
+                  <FontAwesomeIcon icon={faTiktok} />
                 </Link>
               </section>
             </div>

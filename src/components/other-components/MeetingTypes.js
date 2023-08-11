@@ -55,7 +55,7 @@ const MeetingTypes = ({ data }) => {
                   />
                 </div>
               ) : (
-                <></>
+                <div></div>
               )}
 
               <h2>{item.attributes.title}</h2>
