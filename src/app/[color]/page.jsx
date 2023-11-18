@@ -4,7 +4,7 @@ import qs from "qs";
 
 import React from 'react'
 import Introduction from '@components/other-components/Introduction'
-import Slider from '@components/other-components/Slider'
+//import Slider from '@components/other-components/Slider'
 import Slideshow from '@components/other-components/Slideshow'
 import ExternalLinks from '@components/other-components/ExternalLinks'
 import InternalLinks from '@components/other-components/InternalLinks'
@@ -32,8 +32,8 @@ export default async function FrontPage({ params }) {
                         "calendar_entries",
                         "topics",
                         "meeting_types",
-                        "quotes",
-                        "sliderInstagram"]
+                        "quotes"]
+                    //"sliderInstagram"]
                 }
             }
         }
@@ -43,17 +43,17 @@ export default async function FrontPage({ params }) {
     })
     const extraJson = await extraData.json()
 
-    const token = process.env.INSTAGRAM_TOKEN
-    const instagramURI = "https://graph.instagram.com/me/media"
-    const query = `fields=id,media_type,media_url,permalink,username,timestamp,caption,children{media_url}&limit=1&access_token=${token}`
-    const instagramData = await fetch(`${instagramURI}/?${query}`)
-    const instagramJson = await instagramData.json()
+    // const token = process.env.INSTAGRAM_TOKEN
+    // const instagramURI = "https://graph.instagram.com/me/media"
+    // const query = `fields=id,media_type,media_url,permalink,username,timestamp,caption,children{media_url}&limit=1&access_token=${token}`
+    // const instagramData = await fetch(`${instagramURI}/?${query}`)
+    // const instagramJson = await instagramData.json()
 
     // there is only one deep relation on home-page
     const pageJsonFull = JSON.parse(
         JSON.stringify(pageJson, (key, value) => {
             switch (key) {
-                case "sliderInstagram": return instagramJson
+                //case "sliderInstagram": return instagramJson
                 default: return value
             }
         }
@@ -66,11 +66,10 @@ export default async function FrontPage({ params }) {
     return (<>
         <Slideshow data={attributes.slideShowImages} smallScreenData={attributes.slideShowSmallScreens} />
         <Introduction data={attributes.introduction} />
-        <Slider data={extraAttributes.slider} instaData={attributes.slider.sliderInstagram} />
         <InternalLinks data={extraAttributes.internalLinks} />
         <ExternalLinks data={attributes.externalLinks} />
     </>
-
+        //<Slider data={extraAttributes.slider} instaData={attributes.slider.sliderInstagram} />
     )
 }
 
