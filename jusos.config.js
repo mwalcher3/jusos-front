@@ -2,11 +2,11 @@ export const global = {
   // the location of strapi api
   fetchURI:
     process.env.HOST == "local"
-      ? "http://localhost:1337/api"
+      ? "http://127.0.0.1:1337/api"
       : "https://content.jusoshd.uber.space/api",
   // the location of other assets 
   host:
-    process.env.HOST == "local" ? "http://localhost:1337" : "https://content.jusoshd.uber.space",
+    process.env.HOST == "local" ? "http://127.0.0.1:1337" : "https://content.jusoshd.uber.space",
   endpointSyntax: (item) => {
     item = item.toLowerCase();
 

@@ -153,7 +153,7 @@ const InstagramDisplay = ({ dataAttributes, instagramData }) => {
             Unser <a href="https://www.instagram.com/jusoshd/?hl=en">Instagram-Feed</a> steht hier
             aktuell leider nicht zur Verfügung{" "}
           </div>
-          <div> Fehler-Code: {instagramData.error.code} </div>
+          <div className={currentcss.instaError}> Fehler-Code: {instagramData.error.code} </div>
         </>
       ) : (
         ""

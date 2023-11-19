@@ -8,8 +8,9 @@ const TopicsCurrent = async ({ data }) => {
   const token = process.env.INSTAGRAM_TOKEN;
   const instagramURI = "https://graph.instagram.com/me/media" 
   const query = `fields=id,media_type,media_url,permalink,username,timestamp,caption,children{media_url}&access_token=${token}`
-  const instagramDataFetched = await fetch(`${instagramURI}/?${query}`)
-  const instagramJson = await instagramDataFetched.json();
+  // const instagramDataFetched = await fetch(`${instagramURI}/?${query}`)
+  // const instagramJson = await instagramDataFetched.json();
+  const instagramJson = {error: {text: "error", code: "418"}}
 
   return (
     <div className={currentcss.maincontainer}>
