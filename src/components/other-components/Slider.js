@@ -51,9 +51,10 @@ const Slider = ({ data, instaData }) => {
     });
   });
 
-  dataArray.push({ title: "Aktuelles", text: instaData.data[0].caption, link: "/aktuelles" })
+  // dataArray.push({ title: "Aktuelles", text: instaData.data[0].caption, link: "/aktuelles" })
 
- 
+  dataArray.push({ title: "Aktuelles", text: "Instagram aktuell nicht verfügbar", link: "/aktuelles" })
+
 
   const sliderRef = React.useRef([]);
   const sliderHeights = [];
