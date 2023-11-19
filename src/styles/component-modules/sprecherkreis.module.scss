@@ -103,7 +103,7 @@
 
 @media(min-width: $medium){
   .circlecontainer{
-    @include on-circle($item-count: 5, $circle-size: 30em, $item-size: 10em); 
+    @include on-circle($item-count: 7, $circle-size: 30em, $item-size: 10em); 
     margin: 5em auto 0;
     margin-bottom: 5em;
     border: solid 5px var(--red);
